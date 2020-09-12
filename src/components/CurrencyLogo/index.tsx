@@ -2,7 +2,7 @@ import { Currency, ETHER, Token } from '@uniswap/sdk'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-import EthereumLogo from '../../assets/images/ethereum-logo.png'
+import EthereumLogo from '../../assets/images/matic.png'
 import { WrappedTokenInfo } from '../../state/lists/hooks'
 import uriToHttp from '../../utils/uriToHttp'
 

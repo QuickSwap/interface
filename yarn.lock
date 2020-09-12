@@ -2555,10 +2555,10 @@
   resolved "https://registry.yarnpkg.com/@uniswap/lib/-/lib-1.1.1.tgz#0afd29601846c16e5d082866cbb24a9e0758e6bc"
   integrity sha512-2yK7sLpKIT91TiS5sewHtOa7YuM8IuBXVl4GZv2jZFys4D2sY7K5vZh6MqD25TPA95Od+0YzCVq6cTF2IKrOmg==
 
-"@uniswap/sdk@npm:quickswap-sdk@3.0.4":
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/quickswap-sdk/-/quickswap-sdk-3.0.4.tgz#d19a2de4512e2bfe7f99985ea2f2e5b666360727"
-  integrity sha512-ZNOu/gwTR2z02IREh/ToCcHQYRacpkWs20E0Dwc6ohrkoxL2heE//o/A1s5Aj/UHvhFpKcGRLN9t8nFIpCiM+A==
+"@uniswap/sdk@npm:quickswap-sdk@3.0.6":
+  version "3.0.6"
+  resolved "https://registry.yarnpkg.com/quickswap-sdk/-/quickswap-sdk-3.0.6.tgz#2aae90188a5ebe127fcf85b13ee92ca6d6bb6c7a"
+  integrity sha512-0v4vYM3I8UmUMvhVeLOxIDoiEqmwcd004T31lC5KBIS4zZleW37/gP7lYripHEQhZMsSRiZEW2EwaRYlZ/K7Jg==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"
