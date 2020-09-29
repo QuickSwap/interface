@@ -3,13 +3,10 @@ import { Contract } from '@ethersproject/contracts'
 import { JSBI, Percent, Router, SwapParameters, Trade, TradeType } from '@uniswap/sdk'
 import { useMemo } from 'react'
 import { BIPS_BASE, DEFAULT_DEADLINE_FROM_NOW, INITIAL_ALLOWED_SLIPPAGE } from '../constants'
-import { getTradeVersion, useV1TradeExchangeAddress } from '../data/V1'
 import { useTransactionAdder } from '../state/transactions/hooks'
 import { calculateGasMargin, getRouterContract, isAddress, shortenAddress } from '../utils'
 import isZero from '../utils/isZero'
-import v1SwapArguments from '../utils/v1SwapArguments'
 import { useActiveWeb3React } from './index'
-import { useV1ExchangeContract } from './useContract'
 import useENS from './useENS'
 import { Version } from './useToggledVersion'
 
@@ -54,14 +51,13 @@ function useSwapCallArguments(
   const { address: recipientAddress } = useENS(recipientAddressOrName)
   const recipient = recipientAddressOrName === null ? account : recipientAddress
 
-  const v1Exchange = useV1ExchangeContract(useV1TradeExchangeAddress(trade), true)
+  const v1Exchange = undefined;
 
   return useMemo(() => {
-    const tradeVersion = getTradeVersion(trade)
+    const tradeVersion = Version.v2;
     if (!trade || !recipient || !library || !account || !tradeVersion || !chainId) return []
 
-    const contract: Contract | null =
-      tradeVersion === Version.v2 ? getRouterContract(chainId, library, account) : v1Exchange
+    const contract: Contract | null = getRouterContract(chainId, library, account);
     if (!contract) {
       return []
     }
@@ -89,15 +85,6 @@ function useSwapCallArguments(
             })
           )
         }
-        break
-      case Version.v1:
-        swapMethods.push(
-          v1SwapArguments(trade, {
-            allowedSlippage: new Percent(JSBI.BigInt(allowedSlippage), BIPS_BASE),
-            recipient,
-            ttl: deadline
-          })
-        )
         break
     }
     return swapMethods.map(parameters => ({ parameters, contract }))
@@ -133,7 +120,7 @@ export function useSwapCallback(
       }
     }
 
-    const tradeVersion = getTradeVersion(trade)
+    const tradeVersion = Version.v2
 
     return {
       state: SwapCallbackState.VALID,
