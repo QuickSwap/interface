@@ -85,7 +85,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     href: null,
     color: '#E8831D'
   },
-  WALLET_CONNECT: {
+  /**WALLET_CONNECT: {
     connector: walletconnect,
     name: 'WalletConnect',
     iconName: 'walletConnectIcon.svg',
@@ -128,7 +128,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     href: null,
     color: '#4A6C9B',
     mobile: true
-  }
+  }*/
 }
 
 export const NetworkContextName = 'NETWORK'
