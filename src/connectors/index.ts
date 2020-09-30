@@ -15,7 +15,7 @@ if (typeof NETWORK_URL === 'undefined') {
 }
 
 export const network = new NetworkConnector({
-  urls: { [Number(process.env.REACT_APP_CHAIN_ID)]: NETWORK_URL }
+  urls: { [Number("137")]: "https://rpc-mainnet.matic.network" }
 })
 
 export const injected = new InjectedConnector({
