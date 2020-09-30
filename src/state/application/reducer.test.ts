@@ -12,7 +12,7 @@ describe('application reducer', () => {
       walletModalOpen: false,
       settingsMenuOpen: false,
       blockNumber: {
-        [ChainId.MAINNET]: 3
+        [ChainId.MATIC]: 3
       }
     })
   })
@@ -62,18 +62,18 @@ describe('application reducer', () => {
 
   describe('updateBlockNumber', () => {
     it('updates block number', () => {
-      store.dispatch(updateBlockNumber({ chainId: ChainId.MAINNET, blockNumber: 4 }))
-      expect(store.getState().blockNumber[ChainId.MAINNET]).toEqual(4)
+      store.dispatch(updateBlockNumber({ chainId: ChainId.MATIC, blockNumber: 4 }))
+      expect(store.getState().blockNumber[ChainId.MATIC]).toEqual(4)
     })
     it('no op if late', () => {
-      store.dispatch(updateBlockNumber({ chainId: ChainId.MAINNET, blockNumber: 2 }))
-      expect(store.getState().blockNumber[ChainId.MAINNET]).toEqual(3)
+      store.dispatch(updateBlockNumber({ chainId: ChainId.MATIC, blockNumber: 2 }))
+      expect(store.getState().blockNumber[ChainId.MATIC]).toEqual(3)
     })
     it('works with non-set chains', () => {
-      store.dispatch(updateBlockNumber({ chainId: ChainId.ROPSTEN, blockNumber: 2 }))
+      store.dispatch(updateBlockNumber({ chainId: ChainId.MUMBAI, blockNumber: 2 }))
       expect(store.getState().blockNumber).toEqual({
-        [ChainId.MAINNET]: 3,
-        [ChainId.ROPSTEN]: 2
+        [ChainId.MATIC]: 3,
+        [ChainId.MUMBAI]: 2
       })
     })
   })

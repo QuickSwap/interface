@@ -65,7 +65,7 @@ export function useMulticallContract(): Contract | null {
 export function useSocksController(): Contract | null {
   const { chainId } = useActiveWeb3React()
   return useContract(
-    chainId === ChainId.MAINNET ? '0x65770b5283117639760beA3F867b69b3697a91dd' : undefined,
+    chainId === ChainId.MATIC ? undefined : undefined,
     UNISOCKS_ABI,
     false
   )
