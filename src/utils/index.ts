@@ -17,7 +17,7 @@ export function isAddress(value: any): string | false {
   }
 }
 
-export function getEtherscanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address'): string {
+export function getEtherscanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address' | 'block'): string {
   const prefix = "https://" + (chainId === 80001 ? "mumbai-explorer.matic.today":"explorer.matic.network");
 
   switch (type) {
@@ -26,6 +26,9 @@ export function getEtherscanLink(chainId: ChainId, data: string, type: 'transact
     }
     case 'token': {
       return `${prefix}/token/${data}`
+    }
+    case 'block': {
+      return `${prefix}/block/${data}`
     }
     case 'address':
     default: {
@@ -91,7 +94,7 @@ export function escapeRegExp(string: string): string {
   return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') // $& means the whole matched string
 }
 
-export function isDefaultToken(defaultTokens: TokenAddressMap, currency?: Currency): boolean {
+export function isTokenOnList(defaultTokens: TokenAddressMap, currency?: Currency): boolean {
   if (currency === ETHER) return true
   return Boolean(currency instanceof Token && defaultTokens[currency.chainId]?.[currency.address])
 }
