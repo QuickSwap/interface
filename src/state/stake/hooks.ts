@@ -21,6 +21,7 @@ export const STAKING_REWARDS_INFO: {
     {
       tokens: [TT01, TT02],
       stakingRewardAddress: '0x39e4F2144484c76dfB22733EB3A0EB9C44d9D906'
+      //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
     },
     
   ]

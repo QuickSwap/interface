@@ -50,11 +50,11 @@ export default function Earn() {
           <CardSection>
             <AutoColumn gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={600}>Uniswap liquidity mining</TYPE.white>
+                <TYPE.white fontWeight={600}>Quickswap liquidity mining</TYPE.white>
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                  Deposit your Liquidity Provider tokens to receive UNI, the Uniswap protocol governance token.
+                  Deposit your Liquidity Provider tokens to receive QUICK, the Quickswap protocol governance token.
                 </TYPE.white>
               </RowBetween>{' '}
               <ExternalLink
@@ -62,7 +62,7 @@ export default function Earn() {
                 href="https://uniswap.org/blog/uni/"
                 target="_blank"
               >
-                <TYPE.white fontSize={14}>Read more about UNI</TYPE.white>
+                {/*<TYPE.white fontSize={14}>Read more about QUICK</TYPE.white>*/}
               </ExternalLink>
             </AutoColumn>
           </CardSection>
