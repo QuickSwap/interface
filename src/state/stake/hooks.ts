@@ -1,6 +1,6 @@
 import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, Pair } from '@uniswap/sdk'
 import { useMemo } from 'react'
-import { TT01, UNI, TT02 } from '../../constants'
+import { UNI } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
 import { NEVER_RELOAD, useMultipleContractSingleData } from '../multicall/hooks'
@@ -17,14 +17,14 @@ export const STAKING_REWARDS_INFO: {
     stakingRewardAddress: string
   }[]
 } = {
-  [ChainId.MATIC]: [//TODO: MATIC
+  /**[ChainId.MATIC]: [//TODO: MATIC
     {
-      tokens: [TT01, TT02],
-      stakingRewardAddress: '0x39e4F2144484c76dfB22733EB3A0EB9C44d9D906'
+      //tokens: [TT01, TT02],
+      //stakingRewardAddress: '0x39e4F2144484c76dfB22733EB3A0EB9C44d9D906'
       //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
     },
     
-  ]
+  ]*/
 }
 
 export interface StakingInfo {
