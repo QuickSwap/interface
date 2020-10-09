@@ -215,7 +215,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
 
           <HypotheticalRewardRate dim={!hypotheticalRewardRate.greaterThan('0')}>
             <div>
-              <TYPE.black fontWeight={600}>Weekly Rewards</TYPE.black>
+              <TYPE.black fontWeight={600}>Daily Rewards</TYPE.black>
             </div>
 
             <TYPE.black>
