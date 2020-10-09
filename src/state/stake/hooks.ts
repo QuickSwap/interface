@@ -1,14 +1,14 @@
 import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, Pair } from '@uniswap/sdk'
 import { useMemo } from 'react'
-import { UNI } from '../../constants'
+import { UNI, EASY, USDC, ETHER, eUSDC, eUSDT, eDAI, UNITOKEN } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
 import { NEVER_RELOAD, useMultipleContractSingleData } from '../multicall/hooks'
 import { tryParseAmount } from '../swap/hooks'
 
-export const STAKING_GENESIS = 1601572994
+export const STAKING_GENESIS = 1602257400
 
-export const REWARDS_DURATION_DAYS = 60
+export const REWARDS_DURATION_DAYS = 14
 
 // TODO add staking rewards addresses here
 export const STAKING_REWARDS_INFO: {
@@ -17,14 +17,34 @@ export const STAKING_REWARDS_INFO: {
     stakingRewardAddress: string
   }[]
 } = {
-  /**[ChainId.MATIC]: [//TODO: MATIC
+  [ChainId.MATIC]: [//TODO: MATIC
     {
-      //tokens: [TT01, TT02],
-      //stakingRewardAddress: '0x39e4F2144484c76dfB22733EB3A0EB9C44d9D906'
+      tokens: [ETHER, USDC],
+      stakingRewardAddress: '0x0cc1c20c8A5640aeFdD41b2aa3E8Dc2c2EdcDDbD'
       //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
     },
+    {
+      tokens: [EASY, USDC],
+      stakingRewardAddress: '0xE769875f9F0e38b15c9f409F08B583f00d2B14d3'
+      //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
+    },
+    {
+      tokens: [eUSDC, UNITOKEN],
+      stakingRewardAddress: '0x1D43445c82795E4Cc8eF7C3cd735a10C112332A7'
+      //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
+    },
+    {
+      tokens: [eUSDT, UNITOKEN],
+      stakingRewardAddress: '0xD929bbbd983b334D9D638DeC49DF454c3Ee720d9'
+      //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
+    },
+    {
+      tokens: [eDAI, UNITOKEN],
+      stakingRewardAddress: '0xFA190551895cc065EE48E2E36c7cd0F2ae01AED2'
+      //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
+    }
     
-  ]*/
+  ]
 }
 
 export interface StakingInfo {

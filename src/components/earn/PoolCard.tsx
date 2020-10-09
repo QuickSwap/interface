@@ -140,8 +140,8 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
         <RowBetween>
           <TYPE.white> Pool rate </TYPE.white>
           <TYPE.white>{`${stakingInfo.totalRewardRate
-            ?.multiply(`${60 * 60 * 24 * 7}`)
-            ?.toFixed(0, { groupSeparator: ',' })} QUICK / week`}</TYPE.white>
+            ?.multiply(`${60 * 60 * 24}`)
+            ?.toFixed(0, { groupSeparator: ',' })} QUICK / day`}</TYPE.white>
         </RowBetween>
       </StatContainer>
 
@@ -158,8 +158,8 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
                 ⚡
               </span>
               {`${stakingInfo.rewardRate
-                ?.multiply(`${60 * 60 * 24 * 7}`)
-                ?.toSignificant(4, { groupSeparator: ',' })} QUICK / week`}
+                ?.multiply(`${60 * 60 * 24}`)
+                ?.toSignificant(4, { groupSeparator: ',' })} QUICK / day`}
             </TYPE.black>
           </BottomSection>
         </>
