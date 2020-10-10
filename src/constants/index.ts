@@ -25,13 +25,13 @@ export const UNITOKEN = new Token(ChainId.MATIC, '0xb33EaAd8d922B1083446DC23f610
 //export const TT01 = new Token(ChainId.MATIC, '0x55BeE1bD3Eb9986f6d2d963278de09eE92a3eF1D', 18, 'TT01', 'Test Token 01')
 //export const TT02 = new Token(ChainId.MATIC, '0xF6Ad3CcF71Abb3E12beCf6b3D2a74C963859ADCd', 18, 'TT01', 'Test Token 02')
 export const ETHER = new Token(ChainId.MATIC, '0x7ceB23fD6bC0adD59E62ac25578270cFf1b9f619', 18, 'ETH', 'Ether')
-
+export const QUICK = new Token(ChainId.MATIC, '0x831753DD7087CaC61aB5644b308642cc1c33Dc13', 18, 'Quickswap', 'QUICK')
 // TODO this is only approximate, it's actually based on blocks
 export const PROPOSAL_LENGTH_IN_DAYS = 7
 
 export const GOVERNANCE_ADDRESS = '0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'//TODO: MATIC
 
-const UNI_ADDRESS = '0x831753DD7087CaC61aB5644b308642cc1c33Dc13'//TODO: MATIC
+const UNI_ADDRESS = '0x831753DD7087CaC61aB5644b308642cc1c33Dc13'//TODO: MATIC QUICK
 
 export const UNI: { [chainId in ChainId]: Token } = {
   [ChainId.MATIC]: new Token(ChainId.MATIC, UNI_ADDRESS, 18, 'QUICK', 'Quickswap'),
@@ -79,7 +79,25 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
   [ChainId.MATIC]: [
     
     [USDC, USDT],
-    [DAI, USDT]
+    [USDC, DAI],
+    [DAI, USDT],
+    [ETHER, DAI],
+    [ETHER, USDC],
+    [UNITOKEN, eUSDC],
+    [UNITOKEN, eUSDT],
+    [UNITOKEN, eDAI],
+    [EASY, USDC],
+    [WETH[ChainId.MATIC], USDT],
+    [WETH[ChainId.MATIC], USDC],
+    [WETH[ChainId.MATIC], USDT],
+    [WETH[ChainId.MATIC], DAI],
+    [WETH[ChainId.MATIC], eDAI],
+    [WETH[ChainId.MATIC], ETHER],
+    [WETH[ChainId.MATIC], eUSDC],
+    [ETHER, QUICK],
+    [UNITOKEN, USDT],
+    [QUICK, UNITOKEN]
+
   ]
 }
 

@@ -351,8 +351,8 @@ export default function WalletModal({
           )}
           {walletView !== WALLET_VIEWS.PENDING && (
             <Blurb>
-              <span>New to Ethereum? &nbsp;</span>{' '}
-              <ExternalLink href="https://ethereum.org/wallets/">Learn more about wallets</ExternalLink>
+              <span>New to Matic? &nbsp;</span>{' '}
+              <ExternalLink href="https://docs.matic.network/docs/develop/wallets/getting-started">Learn more about wallets</ExternalLink>
             </Blurb>
           )}
         </ContentWrapper>

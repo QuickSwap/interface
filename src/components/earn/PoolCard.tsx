@@ -4,16 +4,16 @@ import { RowBetween } from '../Row'
 import styled from 'styled-components'
 import { TYPE, StyledInternalLink } from '../../theme'
 import DoubleCurrencyLogo from '../DoubleLogo'
-import { ETHER, JSBI, TokenAmount } from '@uniswap/sdk'
+import { ETHER, JSBI/** , TokenAmount*/ } from '@uniswap/sdk'
 import { ButtonPrimary } from '../Button'
 import { StakingInfo } from '../../state/stake/hooks'
 import { useColor } from '../../hooks/useColor'
 import { currencyId } from '../../utils/currencyId'
 import { Break, CardNoise, CardBGImage } from './styled'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
-import { useTotalSupply } from '../../data/TotalSupply'
-import { usePair } from '../../data/Reserves'
-import useUSDCPrice from '../../utils/useUSDCPrice'
+//import { useTotalSupply } from '../../data/TotalSupply'
+//import { usePair } from '../../data/Reserves'
+//import useUSDCPrice from '../../utils/useUSDCPrice'
 
 const StatContainer = styled.div`
   display: flex;
@@ -83,14 +83,14 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
 
   // get the color of the token
   const token = currency0 === ETHER ? token1 : token0
-  const WETH = currency0 === ETHER ? token0 : token1
+  //const WETH = currency0 === ETHER ? token0 : token1
   const backgroundColor = useColor(token)
 
-  const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.token)
-  const [, stakingTokenPair] = usePair(...stakingInfo.tokens)
+  //const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.token)
+  //const [, stakingTokenPair] = usePair(...stakingInfo.tokens)
 
   // let returnOverMonth: Percent = new Percent('0')
-  let valueOfTotalStakedAmountInWETH: TokenAmount | undefined
+  /**let valueOfTotalStakedAmountInWETH: TokenAmount | undefined
   if (totalSupplyOfStakingToken && stakingTokenPair) {
     // take the total amount of LP tokens staked, multiply by ETH value of all LP tokens, divide by all LP tokens
     valueOfTotalStakedAmountInWETH = new TokenAmount(
@@ -103,12 +103,18 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
         totalSupplyOfStakingToken.raw
       )
     )
-  }
+  }*/
+
+  //var stakedToken = JSBI.divide(stakingInfo.totalStakedAmount.raw, JSBI.BigInt(1000000000000000000));
+  let stakedToken09 = JSBI.toNumber(stakingInfo.totalStakedAmount.raw);
+  stakedToken09 = (window as any).web3.fromWei(stakedToken09.toString());
+  var stakedToken = Number(stakedToken09).toFixed(5);
+  console.log(stakedToken);
 
   // get the USD value of staked WETH
-  const USDPrice = useUSDCPrice(WETH)
-  const valueOfTotalStakedAmountInUSDC =
-    valueOfTotalStakedAmountInWETH && USDPrice?.quote(valueOfTotalStakedAmountInWETH)
+  //const USDPrice = useUSDCPrice(WETH)
+  /**const valueOfTotalStakedAmountInUSDC =
+    valueOfTotalStakedAmountInWETH && USDPrice?.quote(valueOfTotalStakedAmountInWETH)*/
 
   return (
     <Wrapper showBackground={isStaking} bgColor={backgroundColor}>
@@ -130,11 +136,9 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
 
       <StatContainer>
         <RowBetween>
-          <TYPE.white> Total deposited</TYPE.white>
+          <TYPE.white> Total deposited Pool Tokens</TYPE.white>
           <TYPE.white>
-            {valueOfTotalStakedAmountInUSDC
-              ? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}`
-              : `${valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
+            {stakedToken}
           </TYPE.white>
         </RowBetween>
         <RowBetween>
