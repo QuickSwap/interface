@@ -1,6 +1,6 @@
 import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, Pair } from '@uniswap/sdk'
 import { useMemo } from 'react'
-import { UNI, EASY, USDC, ETHER, eUSDC, eUSDT, eDAI, UNITOKEN } from '../../constants'
+import { UNI, EASY, USDC, ETHER, eUSDC, eUSDT, eDAI, UNITOKEN, QUICK } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
 import { NEVER_RELOAD, useMultipleContractSingleData } from '../multicall/hooks'
@@ -41,6 +41,11 @@ export const STAKING_REWARDS_INFO: {
     {
       tokens: [eDAI, UNITOKEN],
       stakingRewardAddress: '0xFA190551895cc065EE48E2E36c7cd0F2ae01AED2'
+      //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
+    },
+    {
+      tokens: [QUICK, USDC],
+      stakingRewardAddress: '0x457d88690e0B543445e69c03b5a760b38Ce07078'
       //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
     }
     
