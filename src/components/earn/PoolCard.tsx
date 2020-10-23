@@ -109,6 +109,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
   let stakedToken09 = JSBI.toNumber(stakingInfo.totalStakedAmount.raw);
   stakedToken09 = (window as any).web3.fromWei(stakedToken09.toString());
   var stakedToken = Number(stakedToken09).toFixed(5);
+  var show = isStaking || !stakingInfo.ended;
   console.log(stakedToken);
 
   // get the USD value of staked WETH
@@ -117,6 +118,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
     valueOfTotalStakedAmountInWETH && USDPrice?.quote(valueOfTotalStakedAmountInWETH)*/
 
   return (
+    show ?
     <Wrapper showBackground={isStaking} bgColor={backgroundColor}>
       <CardBGImage desaturate />
       <CardNoise />
@@ -147,9 +149,13 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
             ?.multiply(`${60 * 60 * 24}`)
             ?.toFixed(0, { groupSeparator: ',' })} QUICK / day`}</TYPE.white>
         </RowBetween>
+        <RowBetween>
+          <TYPE.white> Status </TYPE.white>
+          <TYPE.white>{!stakingInfo.ended ? 'Running':'Closed'}</TYPE.white>
+        </RowBetween>
       </StatContainer>
 
-      {isStaking && (
+      {isStaking && !stakingInfo.ended && (
         <>
           <Break />
           <BottomSection showBackground={true}>
@@ -168,6 +174,6 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
           </BottomSection>
         </>
       )}
-    </Wrapper>
+    </Wrapper> : <span></span>
   )
 }

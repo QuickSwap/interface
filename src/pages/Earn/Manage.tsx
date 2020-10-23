@@ -294,6 +294,7 @@ export default function Manage({
                     duration={1}
                   />
                 </TYPE.largeHeader>
+                { !stakingInfo?.ended &&
                 <TYPE.black fontSize={16} fontWeight={500}>
                   <span role="img" aria-label="wizard-icon" style={{ marginRight: '8px ' }}>
                     ⚡
@@ -303,6 +304,7 @@ export default function Manage({
                     ?.toSignificant(4, { groupSeparator: ',' }) ?? '-'}
                   {' QUICK / day'}
                 </TYPE.black>
+              }
               </RowBetween>
             </AutoColumn>
           </StyledBottomCard>
@@ -316,9 +318,11 @@ export default function Manage({
 
         {!showAddLiquidityButton && (
           <DataRow style={{ marginBottom: '1rem' }}>
+            { !stakingInfo?.ended && 
             <ButtonPrimary padding="8px" borderRadius="8px" width="160px" onClick={handleDepositClick}>
               {stakingInfo?.stakedAmount?.greaterThan(JSBI.BigInt(0)) ? 'Deposit' : 'Deposit QUICK-V2 LP Tokens'}
             </ButtonPrimary>
+            } 
 
             {stakingInfo?.stakedAmount?.greaterThan(JSBI.BigInt(0)) && (
               <>

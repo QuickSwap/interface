@@ -15,37 +15,44 @@ export const STAKING_REWARDS_INFO: {
   [chainId in ChainId]?: {
     tokens: [Token, Token]
     stakingRewardAddress: string
+    ended: boolean
   }[]
 } = {
   [ChainId.MATIC]: [//TODO: MATIC
     {
       tokens: [ETHER, USDC],
-      stakingRewardAddress: '0x0cc1c20c8A5640aeFdD41b2aa3E8Dc2c2EdcDDbD'
+      stakingRewardAddress: '0x0cc1c20c8A5640aeFdD41b2aa3E8Dc2c2EdcDDbD',
+      ended: false
       //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
     },
     {
       tokens: [EASY, USDC],
-      stakingRewardAddress: '0xE769875f9F0e38b15c9f409F08B583f00d2B14d3'
+      stakingRewardAddress: '0xE769875f9F0e38b15c9f409F08B583f00d2B14d3',
+      ended: false
       //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
     },
     {
       tokens: [eUSDC, UNITOKEN],
-      stakingRewardAddress: '0x1D43445c82795E4Cc8eF7C3cd735a10C112332A7'
+      stakingRewardAddress: '0x1D43445c82795E4Cc8eF7C3cd735a10C112332A7',
+      ended: false
       //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
     },
     {
       tokens: [eUSDT, UNITOKEN],
-      stakingRewardAddress: '0xD929bbbd983b334D9D638DeC49DF454c3Ee720d9'
+      stakingRewardAddress: '0xD929bbbd983b334D9D638DeC49DF454c3Ee720d9',
+      ended: false
       //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
     },
     {
       tokens: [eDAI, UNITOKEN],
-      stakingRewardAddress: '0xFA190551895cc065EE48E2E36c7cd0F2ae01AED2'
+      stakingRewardAddress: '0xFA190551895cc065EE48E2E36c7cd0F2ae01AED2',
+      ended: false
       //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
     },
     {
       tokens: [QUICK, USDC],
-      stakingRewardAddress: '0x457d88690e0B543445e69c03b5a760b38Ce07078'
+      stakingRewardAddress: '0x457d88690e0B543445e69c03b5a760b38Ce07078',
+      ended: false
       //STAKINGREWARDSFACTORY- 0xE86Ba90bf805cEa452c8FA6E37b4ae2D17D32599
     }
     
@@ -70,6 +77,8 @@ export interface StakingInfo {
   rewardRate: TokenAmount
   // when the period ends
   periodFinish: Date | undefined
+
+  ended: boolean
   // calculates a hypothetical amount of token distributed to the active account per second.
   getHypotheticalRewardRate: (
     stakedAmount: TokenAmount,
@@ -190,6 +199,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
         memo.push({
           stakingRewardAddress: rewardsAddress,
           tokens: info[index].tokens,
+          ended: info[index].ended,
           periodFinish: periodFinishMs > 0 ? new Date(periodFinishMs) : undefined,
           earnedAmount: new TokenAmount(uni, JSBI.BigInt(earnedAmountState?.result?.[0] ?? 0)),
           rewardRate: individualRewardRate,
