@@ -16,79 +16,92 @@ export const STAKING_REWARDS_INFO: {
     tokens: [Token, Token]
     stakingRewardAddress: string
     ended: boolean
+    index: Number
   }[]
 } = {
   [ChainId.MATIC]: [//TODO: MATIC
     {
       tokens: [QUICK, DAI],
       stakingRewardAddress: '0xcd7A989C8a21871ff9Da645F74916e23b7b83601',
-      ended: false
+      ended: false,
+      index: 0
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
     },
     {
       tokens: [QUICK, USDC],
       stakingRewardAddress: '0x7341554a23A89a97186f339597AE365bBB0c4a26',
-      ended: false
+      ended: false,
+      index: 0
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
     },
     {
       tokens: [QUICK, UNITOKEN],
       stakingRewardAddress: '0x7d59413E87dA59552a662103782CcA860Dc3d3c4',
-      ended: false
+      ended: false,
+      index: 0
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
     },
     {
       tokens: [ETHER, USDC],
       stakingRewardAddress: '0xf91056D1A58a38A783a4F6122A1F995EEE4f60B3',
-      ended: false
+      ended: false,
+      index: 0
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
     },
     {
       tokens: [ETHER, DAI],
       stakingRewardAddress: '0x88d4D1a7A0E917DB41De09A1AcA437726c1C418a',
-      ended: false
+      ended: false,
+      index: 0
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
     },
     {
       tokens: [EASY, UNITOKEN],
       stakingRewardAddress: '0xfbEed0206635479BD2Ac204F793BF10E7EEad9df',
-      ended: false
+      ended: false,
+      index: 0
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
     },
     {
       tokens: [ETHER, USDC],
       stakingRewardAddress: '0x0cc1c20c8A5640aeFdD41b2aa3E8Dc2c2EdcDDbD',
-      ended: true
+      ended: true,
+      index: 1
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
     },
     {
       tokens: [EASY, USDC],
       stakingRewardAddress: '0xE769875f9F0e38b15c9f409F08B583f00d2B14d3',
-      ended: true
+      ended: true,
+      index: 0
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
     },
     {
       tokens: [eUSDC, UNITOKEN],
       stakingRewardAddress: '0x1D43445c82795E4Cc8eF7C3cd735a10C112332A7',
-      ended: true
+      ended: true,
+      index: 0
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
     },
     {
       tokens: [eUSDT, UNITOKEN],
       stakingRewardAddress: '0xD929bbbd983b334D9D638DeC49DF454c3Ee720d9',
-      ended: true
+      ended: true,
+      index: 0
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
     },
     {
       tokens: [eDAI, UNITOKEN],
       stakingRewardAddress: '0xFA190551895cc065EE48E2E36c7cd0F2ae01AED2',
-      ended: true
+      ended: true,
+      index: 0
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
     },
     {
       tokens: [QUICK, USDC],
       stakingRewardAddress: '0x457d88690e0B543445e69c03b5a760b38Ce07078',
-      ended: true
+      ended: true,
+      index: 1
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
     }
     
@@ -115,6 +128,8 @@ export interface StakingInfo {
   periodFinish: Date | undefined
 
   ended: boolean
+
+  index: Number
   // calculates a hypothetical amount of token distributed to the active account per second.
   getHypotheticalRewardRate: (
     stakedAmount: TokenAmount,
@@ -236,6 +251,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           stakingRewardAddress: rewardsAddress,
           tokens: info[index].tokens,
           ended: info[index].ended,
+          index: info[index].index,
           periodFinish: periodFinishMs > 0 ? new Date(periodFinishMs) : undefined,
           earnedAmount: new TokenAmount(uni, JSBI.BigInt(earnedAmountState?.result?.[0] ?? 0)),
           rewardRate: individualRewardRate,
