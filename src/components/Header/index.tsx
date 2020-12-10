@@ -14,7 +14,7 @@ import { useActiveWeb3React } from '../../hooks'
 import { useETHBalances, useAggregateUniBalance } from '../../state/wallet/hooks'
 import { CardNoise } from '../earn/styled'
 import { CountUp } from 'use-count-up'
-import { TYPE, /**ExternalLink*/ } from '../../theme'
+import { TYPE, ExternalLink } from '../../theme'
 
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
@@ -226,7 +226,7 @@ const StyledNavLink = styled(NavLink).attrs({
   }
 `
 
-/**const StyledExternalLink = styled(ExternalLink).attrs({
+const StyledExternalLink = styled(ExternalLink).attrs({
   activeClassName
 })<{ isActive?: boolean }>`
   ${({ theme }) => theme.flexRowNoWrap}
@@ -255,7 +255,7 @@ const StyledNavLink = styled(NavLink).attrs({
   ${({ theme }) => theme.mediaWidth.upToExtraSmall`
       display: none;
 `}
-`*/
+`
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
   
@@ -319,9 +319,9 @@ export default function Header() {
           {/*<StyledNavLink id={`stake-nav-link`} to={'/vote'}>*/}
             {/*Vote*/}
           {/*</StyledNavLink>*/}
-          {/*<StyledExternalLink id={`stake-nav-link`} href={'https://uniswap.info'}>*/}
-            {/**Charts <span style={{ fontSize: '11px' }}>↗</span>*/}
-          {/*</StyledExternalLink>*/}
+          <StyledExternalLink id={`stake-nav-link`} href={'https://info.quickswap.exchange'}>
+            Charts <span style={{ fontSize: '11px' }}>↗</span>
+          </StyledExternalLink>
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
