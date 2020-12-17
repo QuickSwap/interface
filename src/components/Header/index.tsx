@@ -4,6 +4,8 @@ import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
 import { darken } from 'polished'
 import { useTranslation } from 'react-i18next'
+import { toast } from 'react-toastify';
+//import { useTransactionAdder } from '../../state/transactions/hooks'
 
 import styled from 'styled-components'
 
@@ -264,7 +266,27 @@ const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
 }
 
 export default function Header() {
+
   const { account, chainId } = useActiveWeb3React()
+
+  const ClaimMatic = async(address: string) => {
+    const response = await fetch("https://api.easyfi.network/api/claimAllowance?ureq=1608049206867", {
+      headers: {
+        'Content-Type': 'application/json',
+        'address': address
+      }
+      
+    });
+    var r = await response.json();
+    if(r.success) {
+      toast.info("Claim Successful. Please refresh page in couple of minutes");
+    }
+    else {
+      toast.dark(r.message);
+    }
+    
+}
+  
   const { t } = useTranslation()
 
   const userEthBalance = useETHBalances(account ? [account] : [])?.[account ?? '']
@@ -286,6 +308,7 @@ export default function Header() {
 
   return (
     <HeaderFrame>
+      
       <ClaimModal />
       <Modal isOpen={showUniBalanceModal} onDismiss={() => setShowUniBalanceModal(false)}>
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
@@ -322,6 +345,8 @@ export default function Header() {
           <StyledExternalLink id={`stake-nav-link`} href={'https://info.quickswap.exchange'}>
             Charts <span style={{ fontSize: '11px' }}>↗</span>
           </StyledExternalLink>
+
+        
         </HeaderLinks>
       </HeaderRow>
       <HeaderControls>
@@ -367,10 +392,17 @@ export default function Header() {
               <CardNoise />
             </UNIWrapper>
           )}
+
+          
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
-            {account && userEthBalance ? (
+            {account && Number(userEthBalance?.toSignificant(4)) > 0 ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
                 {userEthBalance?.toSignificant(4)} MATIC
+              </BalanceText>
+            ) : null}
+            {account && Number(userEthBalance?.toSignificant(4)) === 0 ? (
+              <BalanceText onClick ={ () => ClaimMatic(account)} style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
+                CLAIM MATIC
               </BalanceText>
             ) : null}
             <Web3Status />

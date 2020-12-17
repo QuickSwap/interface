@@ -64,10 +64,10 @@
     "polished": "^3.3.2",
     "prettier": "^1.17.0",
     "qs": "^6.9.4",
-    "react": "^16.13.1",
+    "react": "^17.0.1",
     "react-confetti": "^6.0.0",
     "react-device-detect": "^1.6.2",
-    "react-dom": "^16.13.1",
+    "react-dom": "^17.0.1",
     "react-feather": "^2.0.8",
     "react-ga": "^2.5.7",
     "react-i18next": "^10.7.0",
@@ -120,6 +120,7 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "express": "^4.17.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react-toastify": "^6.2.0"
   }
 }
