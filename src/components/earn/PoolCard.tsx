@@ -107,7 +107,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
 
   //var stakedToken = JSBI.divide(stakingInfo.totalStakedAmount.raw, JSBI.BigInt(1000000000000000000));
   let stakedToken09 = JSBI.toNumber(stakingInfo.totalStakedAmount.raw);
-  stakedToken09 = (window as any).web3.fromWei(stakedToken09.toString());
+  stakedToken09 = Number(stakedToken09)/ Math.pow(10, 18);
   var stakedToken = Number(stakedToken09).toFixed(5);
   var show = isStaking || !stakingInfo.ended;
   console.log(stakedToken);
