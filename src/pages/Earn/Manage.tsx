@@ -140,7 +140,7 @@ export default function Manage({
   var stakedToken:any = 0;
   if(stakingInfo && stakingInfo.totalStakedAmount){
     let stakedToken09 = JSBI.toNumber(stakingInfo.totalStakedAmount.raw);
-    stakedToken09 = (window as any).web3.fromWei(stakedToken09.toString());
+    stakedToken09 = Number(stakedToken09)/ Math.pow(10, 18);
     stakedToken = Number(stakedToken09).toFixed(5);
   }
   
