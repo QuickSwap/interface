@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "9b25433c5b9f762f565bea08ed0cc7ae",
+    "revision": "6dd7fd097a771036373816657bd56638",
     "url": "./index.html"
   },
   {
@@ -60,8 +60,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/js/9.5e058cef.chunk.js"
   },
   {
-    "revision": "6d242296b2b7b4a7d9ec",
-    "url": "./static/js/main.d34a7812.chunk.js"
+    "revision": "b20a470c193094a75086",
+    "url": "./static/js/main.44155726.chunk.js"
   },
   {
     "revision": "76bb73f48f5d9d08d0ff",
@@ -312,8 +312,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "./static/media/portisIcon.b234b2bf.png"
   },
   {
-    "revision": "3c08cd466b6fa767d36faa8d0b5ce30a",
-    "url": "./static/media/qsbg.3c08cd46.png"
+    "revision": "37c040d898a16e6ff1cf9a7a6167130a",
+    "url": "./static/media/qsbg.37c040d8.png"
   },
   {
     "revision": "1ae4d9f4653371789d98b85139933d27",
