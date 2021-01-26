@@ -71,7 +71,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
 
   // pair contract for this token to be staked
   const dummyPair = new Pair(new TokenAmount(stakingInfo.tokens[0], '0'), new TokenAmount(stakingInfo.tokens[1], '0'))
-  const pairContract = usePairContract(dummyPair.liquidityToken.address)
+  const pairContract = usePairContract(stakingInfo.lp && stakingInfo.lp !== '' ? stakingInfo.lp : dummyPair.liquidityToken.address)
 
   // approval data for stake
   const deadline = useTransactionDeadline()
@@ -132,6 +132,10 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
 
     if (isArgentWallet) {
       return approveCallback()
+    }
+
+    if(stakingInfo && stakingInfo?.lp !== '') {
+      return approveCallback();
     }
 
     // try to gather a signature for permission
