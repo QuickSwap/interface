@@ -179,7 +179,7 @@ export default function Manage({
     <PageWrapper gap="lg" justify="center">
       <RowBetween style={{ gap: '24px' }}>
         <TYPE.mediumHeader style={{ margin: 0 }}>
-          {currencyA?.symbol}-{currencyB?.symbol} Liquidity Mining
+        {stakingInfo?.name && stakingInfo?.name !== '' ? stakingInfo?.name : ((currencyA?.symbol ? currencyA?.symbol : '') + '-' + (currencyB?.symbol ? currencyB?.symbol : '' ))} Liquidity Mining
         </TYPE.mediumHeader>
         <DoubleCurrencyLogo currency0={currencyA ?? undefined} currency1={currencyB ?? undefined} size={24} />
       </RowBetween>
@@ -219,7 +219,8 @@ export default function Manage({
               </RowBetween>
               <RowBetween style={{ marginBottom: '1rem' }}>
                 <TYPE.white fontSize={14}>
-                  {`QUICK-V2 LP tokens are required. Once you've added liquidity to the ${currencyA?.symbol}-${currencyB?.symbol} pool you can stake your liquidity tokens on this page.`}
+                  {"QUICK-V2 LP tokens are required. Once you've added liquidity to the " + currencyA?.symbol + "-" + currencyB?.symbol + " pool you can stake your liquidity tokens on " + (stakingInfo?.lp && stakingInfo?.lp !== "" ? "the Aavegotchi page" : "this page.")}
+                
                 </TYPE.white>
               </RowBetween>
               <ButtonPrimary
@@ -276,7 +277,7 @@ export default function Manage({
                 : `${valueOfMyStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
                   </TYPE.white>
                   <TYPE.white>
-                  QUICK-V2 {currencyA?.symbol}-{currencyB?.symbol}
+                  {stakingInfo?.name && stakingInfo?.name && stakingInfo.name !== '' ? stakingInfo.name : 'QUICK-V2 ' + ((currencyA?.symbol !== undefined ? currencyA?.symbol : '') + '-' + (currencyB?.symbol !== undefined ? currencyB?.symbol: ''))}
                   </TYPE.white>
                 </RowBetween>
               </AutoColumn>
@@ -339,7 +340,7 @@ export default function Manage({
           <DataRow style={{ marginBottom: '1rem' }}>
             { !stakingInfo?.ended && 
             <ButtonPrimary padding="8px" borderRadius="8px" width="160px" onClick={handleDepositClick}>
-              {stakingInfo?.stakedAmount?.greaterThan(JSBI.BigInt(0)) ? 'Deposit' : 'Deposit QUICK-V2 LP Tokens'}
+              {stakingInfo?.stakedAmount?.greaterThan(JSBI.BigInt(0)) ? 'Deposit' : stakingInfo  && stakingInfo?.name !== '' ? 'Deposit ' + stakingInfo?.name + " Tokens": 'Deposit QUICK-V2 LP Tokens'}
             </ButtonPrimary>
             } 
 
@@ -358,7 +359,7 @@ export default function Manage({
           </DataRow>
         )}
         {!userLiquidityUnstaked ? null : userLiquidityUnstaked.equalTo('0') ? null : (
-          <TYPE.main>{userLiquidityUnstaked.toSignificant(6)} QUICK-V2 LP tokens available</TYPE.main>
+          <TYPE.main>{userLiquidityUnstaked.toSignificant(6)} {stakingInfo?.name  !== '' ? stakingInfo?.name : 'QUICK-V2 LP'} tokens available</TYPE.main>
         )}
       </PositionInfo>
     </PageWrapper>
