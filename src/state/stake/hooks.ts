@@ -53,7 +53,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [USDC, GHST],
       stakingRewardAddress: '0xC1BB398b6a937889988FD51956385D29D682F85c',
       ended: false,
-      index: 1,
+      index: 0,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
