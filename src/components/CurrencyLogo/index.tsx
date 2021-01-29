@@ -57,6 +57,10 @@ const getTokenLogoURL = (address: string) => {
     if (address?.toLowerCase() === '0x9f5755d47fb80100e7ee65bf7e136fca85dd9334') {
       uri = 'https://etherscan.io/token/images/om_32.png'
     }
+
+    if (address?.toLowerCase() === '0x9719d867a500ef117cc201206b8ab51e794d3f82') {
+      uri = 'https://aavegotchi.com/images/matokens/maUSDC.svg'
+    }
   
     if (address?.toLowerCase() === '0xe6fc6c7cb6d2c31b359a49a33ef08ab87f4de7ce') {
       uri = 'https://assets.coingecko.com/coins/images/7697/small/N7aEdYrY_400x400.png?1561587437'
