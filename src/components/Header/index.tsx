@@ -5,11 +5,14 @@ import { NavLink } from 'react-router-dom'
 import { darken } from 'polished'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify';
+import { isMobile } from 'react-device-detect'
+
 //import { useTransactionAdder } from '../../state/transactions/hooks'
 
 import styled from 'styled-components'
 
 import Logo from '../../assets/images/QuickSwap_logo.png';
+import LogoMobile from '../../assets/images/logo_circle.png';
 //import LogoDark from '../../assets/svg/logo_white.svg'
 import { useActiveWeb3React } from '../../hooks'
 //import { useDarkModeManager } from '../../state/user/hooks'
@@ -253,10 +256,6 @@ const StyledExternalLink = styled(ExternalLink).attrs({
   :focus {
     color: ${({ theme }) => darken(0.1, theme.text1)};
   }
-
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-      display: none;
-`}
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
@@ -316,7 +315,12 @@ export default function Header() {
       <HeaderRow>
         <Title href=".">
           <UniIcon>
-            <img width={'150px'} src={ Logo } alt="logo" />
+            {isMobile ? (
+              <img width={'50px'} src={ LogoMobile } alt="logo" />
+            ) : (
+              <img width={'150px'} src={ Logo } alt="logo" />
+            )}
+            
           </UniIcon>
         </Title>
         <HeaderLinks>

@@ -215,11 +215,11 @@ export default function Manage({
           <CardSection>
             <AutoColumn gap="md">
               <RowBetween>
-                <TYPE.white fontWeight={600}>Step 1. Get QUICK-V2 Liquidity tokens</TYPE.white>
+      <TYPE.white fontWeight={600}>Step 1. Get {(stakingInfo?.name && stakingInfo?.name !== "" ? stakingInfo.name : "QUICK-V2")} Liquidity tokens</TYPE.white>
               </RowBetween>
               <RowBetween style={{ marginBottom: '1rem' }}>
                 <TYPE.white fontSize={14}>
-                  {"QUICK-V2 LP tokens are required. Once you've added liquidity to the " + currencyA?.symbol + "-" + currencyB?.symbol + " pool you can stake your liquidity tokens on " + (stakingInfo?.lp && stakingInfo?.lp !== "" ? "the Aavegotchi page" : "this page.")}
+                  { (stakingInfo?.name && stakingInfo?.name !== "" ? stakingInfo.name : "QUICK-V2") + " tokens are required. Once you've added liquidity to the " + currencyA?.symbol + "-" + currencyB?.symbol + " pool you can stake your liquidity tokens on " + (stakingInfo?.lp && stakingInfo?.lp !== "" ? "the Aavegotchi page" : "this page.")}
                 
                 </TYPE.white>
               </RowBetween>
