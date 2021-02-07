@@ -1,6 +1,6 @@
 import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, Pair } from '@uniswap/sdk'
 import { useMemo } from 'react'
-import { UNI, EASY, USDC, ETHER, /**eUSDC, eUSDT, eDAI,*/ UNITOKEN, QUICK, DAI, /**IGG,*/ WBTC, /**USDT,*/ MATIC, /**OM,*/ GHST, MAUSDC } from '../../constants'
+import { UNI, EASY, USDC, ETHER, /**eUSDC, eUSDT, eDAI,*/ UNITOKEN, QUICK, DAI, /**IGG,*/ WBTC, USDT, MATIC, OM, GHST, MAUSDC } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
 import { NEVER_RELOAD, useMultipleContractSingleData } from '../multicall/hooks'
@@ -226,11 +226,11 @@ export const STAKING_REWARDS_INFO: {
 
 
 
-    /**{
+    {
       tokens: [QUICK, USDC],
       stakingRewardAddress: '0x1e224b8643b68a4d6b869e9596d979A708B26aB7',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -239,7 +239,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [QUICK, UNITOKEN],
       stakingRewardAddress: '0xa78F3cDc2D2aE9d518c2fe60007811e437DEc9CD',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -257,7 +257,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [QUICK, GHST],
       stakingRewardAddress: '0xf9d375F824D108E91c9B3c0F3c47DB2Db0A7c050',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -275,7 +275,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [USDC, GHST],
       stakingRewardAddress: '0x16300c8811C7870260e44dC7ecBCaF854A9aCaED',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -284,7 +284,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [MATIC, USDC],
       stakingRewardAddress: '0xB35Ce61B63994256d263aebDDD1c3eE8447Cab38',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -293,7 +293,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [WBTC, USDC],
       stakingRewardAddress: '0x71a7D3a5e09C21d18FfdF57a7Ad5499B21e587f4',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -302,7 +302,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [ETHER, USDC],
       stakingRewardAddress: '0xbC2710eD5fac42e7b97fc2D3dB37176989c81ddD',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -320,7 +320,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [EASY, USDC],
       stakingRewardAddress: '0xeAb039d3E2489766a7df9E2A11Cab8Db9db0fA7F',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -338,14 +338,14 @@ export const STAKING_REWARDS_INFO: {
       tokens: [USDC, DAI],
       stakingRewardAddress: '0x7a503862489bA1aD2C519E8A875ec56dBAe0e8F1',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
 
 
-    {
+    /**{
       tokens: [QUICK, UNITOKEN],
       stakingRewardAddress: '0xD9298cBea9d1C2f134c1a70D25071DD143E00F3C',
       ended: true,
