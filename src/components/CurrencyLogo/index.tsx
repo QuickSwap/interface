@@ -61,6 +61,42 @@ const getTokenLogoURL = (address: string) => {
     if (address?.toLowerCase() === '0x9719d867a500ef117cc201206b8ab51e794d3f82') {
       uri = 'https://aavegotchi.com/images/matokens/maUSDC.svg'
     }
+
+    if (address?.toLowerCase() === '0xE0b22E0037B130A9F56bBb537684E6fA18192341'.toLowerCase()) {
+      uri = 'https://aavegotchi.com/images/matokens/maDAI.svg'
+    }
+
+    if (address?.toLowerCase() === '0x20D3922b4a1A8560E1aC99FBA4faDe0c849e2142'.toLowerCase()) {
+      uri = 'https://aavegotchi.com/images/matokens/maWETH.svg'
+    }
+
+    if (address?.toLowerCase() === '0x823CD4264C1b951C9209aD0DeAea9988fE8429bF'.toLowerCase()) {
+      uri = 'https://aavegotchi.com/images/matokens/maAAVE.svg'
+    }
+
+    if (address?.toLowerCase() === '0x98ea609569bD25119707451eF982b90E3eb719cD'.toLowerCase()) {
+      uri = 'https://aavegotchi.com/images/matokens/maLINK.svg'
+    }
+
+    if (address?.toLowerCase() === '0xDAE5F1590db13E3B40423B5b5c5fbf175515910b'.toLowerCase()) {
+      uri = 'https://aavegotchi.com/images/matokens/maUSDT.svg'
+    }
+
+    if (address?.toLowerCase() === '0xF4b8888427b00d7caf21654408B7CBA2eCf4EbD9'.toLowerCase()) {
+      uri = 'https://aavegotchi.com/images/matokens/maTUSD.svg'
+    }
+
+    if (address?.toLowerCase() === '0x8c8bdBe9CeE455732525086264a4Bf9Cf821C498'.toLowerCase()) {
+      uri = 'https://aavegotchi.com/images/matokens/maUNI.svg'
+    }
+
+    if (address?.toLowerCase() === '0xe20f7d1f0eC39C4d5DB01f53554F2EF54c71f613'.toLowerCase()) {
+      uri = 'https://aavegotchi.com/images/matokens/maYFI.svg'
+    }
+
+    if (address?.toLowerCase() === '0x840195888Db4D6A99ED9F73FcD3B225Bb3cB1A79'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/sx.jpg'
+    }
   
     if (address?.toLowerCase() === '0xe6fc6c7cb6d2c31b359a49a33ef08ab87f4de7ce') {
       uri = 'https://assets.coingecko.com/coins/images/7697/small/N7aEdYrY_400x400.png?1561587437'
