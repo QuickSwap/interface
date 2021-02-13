@@ -261,7 +261,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [QUICK, GHST],
       stakingRewardAddress: '0x120cCE80Ca4D7CBC2c7A912321Ea1a4c32952938',
       ended: true,
-      index: 1,
+      index: 2,
       name: 'StkQUICK-GHST',
       lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f'
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -270,7 +270,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [QUICK, UNITOKEN],
       stakingRewardAddress: '0xF44eA460Da8938227508075f7b3611A809E53042',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -279,7 +279,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [USDC, QUICK],
       stakingRewardAddress: '0x5F3dc91D19661940C705B9aC4D1A8C456DC3a56E',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -288,7 +288,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [USDC, GHST],
       stakingRewardAddress: '0x776976a62604643fd660bCB23c055d66d86DEc79',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -297,7 +297,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [QUICK, MAUSDC],
       stakingRewardAddress: '0x1538FEc5f4F3F5717929CF6E07168f831690348F',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
@@ -306,7 +306,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [MATIC, ETHER],
       stakingRewardAddress: '0xe341C094D391C40c9e1b0dfD3A0Ecf78D414c38e',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -324,7 +324,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [ETHER, USDC],
       stakingRewardAddress: '0x848E683EeDbaB60Da6a28763318404cc8E625DDB',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -342,7 +342,7 @@ export const STAKING_REWARDS_INFO: {
       tokens: [MATIC, USDC],
       stakingRewardAddress: '0x513826BbF9ddcDE925322f7dFCb01A687E393F54',
       ended: true,
-      index: 1,
+      index: 2,
       name: '',
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
@@ -359,7 +359,7 @@ export const STAKING_REWARDS_INFO: {
 
 
 
-    /**{
+    {
       tokens: [QUICK, GHST],
       stakingRewardAddress: '0x7B471EA4Ee31F316B2426fe5559808c32619aCDa',
       ended: true,
@@ -461,7 +461,7 @@ export const STAKING_REWARDS_INFO: {
 
 
 
-    {
+    /**{
       tokens: [QUICK, USDC],
       stakingRewardAddress: '0x1e224b8643b68a4d6b869e9596d979A708B26aB7',
       ended: true,
