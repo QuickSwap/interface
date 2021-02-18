@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom'
 import ReactGA from 'react-ga'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
+import * as Sentry from "@sentry/react";
+import { Integrations } from "@sentry/tracing";
 import { NetworkContextName } from './constants'
 import './i18n'
 import App from './pages/App'
@@ -41,6 +43,15 @@ window.addEventListener('error', error => {
     fatal: true
   })
 })
+
+Sentry.init({
+  dsn: "https://d2ad9c661214497484bb911b693b7a43@o494931.ingest.sentry.io/5643073",
+  integrations: [new Integrations.BrowserTracing()],
+
+  // We recommend adjusting this value in production, or using tracesSampler
+  // for finer control
+  tracesSampleRate: 1.0,
+});
 
 function Updaters() {
   return (
