@@ -6,7 +6,7 @@ import { SwapPoolTabs } from '../../components/NavigationTabs'
 
 import FullPositionCard from '../../components/PositionCard'
 import { useTokenBalancesWithLoadingIndicator } from '../../state/wallet/hooks'
-import { /**ExternalLink,*/ TYPE, HideSmall } from '../../theme'
+import { StyledInternalLink,/**ExternalLink,*/ TYPE, HideSmall } from '../../theme'
 import { Text } from 'rebass'
 import Card from '../../components/Card'
 import { RowBetween, RowFixed } from '../../components/Row'
@@ -192,7 +192,10 @@ export default function Pool() {
             )}
 
             <AutoColumn justify={'center'} gap="md">
-              
+            <Text textAlign="center" fontSize={14} style={{ padding: '.5rem 0 .5rem 0' }}>
+                Don't see a pool you joined?
+                <StyledInternalLink id="import-pool-link" to='/find'>Import it.</StyledInternalLink>
+              </Text>
             </AutoColumn>
           </AutoColumn>
         </AutoColumn>
