@@ -119,6 +119,7 @@
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "@connext/vector-modal": "^0.1.50",
     "@sentry/react": "^6.2.0",
     "@sentry/tracing": "^6.2.0",
     "express": "^4.17.1",
