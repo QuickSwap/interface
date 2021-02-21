@@ -86,6 +86,30 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://aavegotchi.com/images/matokens/maTUSD.svg'
     }
 
+    if (address?.toLowerCase() === '0xe86E8beb7340659DDDCE61727E500e3A5aD75a90'.toLowerCase()) {
+      uri = 'https://s2.gifyu.com/images/zutlogo.jpg'
+    }
+
+    if (address?.toLowerCase() === '0x0e59D50adD2d90f5111aca875baE0a72D95B4762'.toLowerCase()) {
+      uri = 'https://dark-build.app/logo192.png'
+    }
+
+    if (address?.toLowerCase() === '0x3809dcDd5dDe24B37AbE64A5a339784c3323c44F'.toLowerCase()) {
+      uri = 'https://i.imgur.com/vZnU36G.png'
+    }
+
+    if (address?.toLowerCase() === '0x23D29D30e35C5e8D321e1dc9A8a61BFD846D4C5C'.toLowerCase()) {
+      uri = 'https://hex.com/favicon.png'
+    }
+
+    if (address?.toLowerCase() === '0x8d1566569d5b695d44a9a234540f68D393cDC40D'.toLowerCase()) {
+      uri = 'https://i.imgur.com/IIUglm9.png?1'
+    }
+
+    if (address?.toLowerCase() === '0x66768ad00746aC4d68ded9f64886d55d5243f5Ec'.toLowerCase()) {
+      uri = 'https://rebalancetoken.io/images/logo/logo.png'
+    }
+
     if (address?.toLowerCase() === '0x8c8bdBe9CeE455732525086264a4Bf9Cf821C498'.toLowerCase()) {
       uri = 'https://aavegotchi.com/images/matokens/maUNI.svg'
     }
