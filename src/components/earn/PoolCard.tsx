@@ -131,7 +131,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
           
         </TYPE.white>
 
-        <StyledInternalLink to={`/quick/${currencyId(currency0)}/${currencyId(currency1)}/${stakingInfo.index}`} style={{ width: '100%' }}>
+        <StyledInternalLink to={`/quick/${currencyId(currency0)}/${currencyId(currency1)}/${stakingInfo.stakingRewardAddress}`} style={{ width: '100%' }}>
           <ButtonPrimary padding="8px" borderRadius="8px">
             {isStaking ? 'Manage' : 'Deposit'}
           </ButtonPrimary>
@@ -178,6 +178,6 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
           </BottomSection>
         </>
       )}
-    </Wrapper> : <span></span>
+    </Wrapper> : <span style={{width: 0, display: "none"}}></span>
   )
 }

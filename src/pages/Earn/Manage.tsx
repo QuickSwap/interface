@@ -89,9 +89,9 @@ const DataRow = styled(RowBetween)`
 
 export default function Manage({
   match: {
-    params: { currencyIdA, currencyIdB, index }
+    params: { currencyIdA, currencyIdB, rewardsAddress }
   }
-}: RouteComponentProps<{ currencyIdA: string; currencyIdB: string, index: string }>) {
+}: RouteComponentProps<{ currencyIdA: string; currencyIdB: string, rewardsAddress: string }>) {
   const { account, chainId } = useActiveWeb3React()
 
   // get currencies and pair
@@ -100,7 +100,20 @@ export default function Manage({
   const tokenB = wrappedCurrency(currencyB ?? undefined, chainId)
 
   const [, stakingTokenPair] = usePair(tokenA, tokenB)
-  const stakingInfo = useStakingInfo(stakingTokenPair)?.[Number(index)]
+  const stakingInfos = useStakingInfo(stakingTokenPair)
+  let stakingInfo = stakingInfos?.reduce<any>((memo, staking) => {
+      if(staking.stakingRewardAddress.toLowerCase() === rewardsAddress.toLowerCase()) {
+          return staking;
+      }
+      else {
+        return memo;
+      }
+      
+  }, []);
+
+  if(stakingInfo.length == 0) {
+    stakingInfo = undefined;
+  }
 
   // detect existing unstaked LP position to show add button if none found
   const userLiquidityUnstaked = useTokenBalance(account ?? undefined, stakingInfo?.stakedAmount?.token)
