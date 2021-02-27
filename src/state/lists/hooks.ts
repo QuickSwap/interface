@@ -94,7 +94,8 @@ export function useSelectedTokenList(): TokenAddressMap {
 export function useSelectedListInfo(): { current: TokenList | null; pending: TokenList | null; loading: boolean } {
   const selectedUrl = useSelectedListUrl()
   const listsByUrl = useSelector<AppState, AppState['lists']['byUrl']>(state => state.lists.byUrl)
-  const list = selectedUrl ? listsByUrl[selectedUrl] : undefined
+  let list = selectedUrl ? listsByUrl[selectedUrl] : undefined
+
   return {
     current: list?.current ?? null,
     pending: list?.pendingUpdate ?? null,

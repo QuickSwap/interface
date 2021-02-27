@@ -3,11 +3,16 @@ import React, { KeyboardEvent, RefObject, useCallback, useContext, useEffect, us
 import ReactGA from 'react-ga'
 import { useTranslation } from 'react-i18next'
 import { FixedSizeList } from 'react-window'
+import { useDispatch } from 'react-redux'
 import { Text } from 'rebass'
 import { ThemeContext } from 'styled-components'
 import { useActiveWeb3React } from '../../hooks'
 import { useAllTokens, useToken } from '../../hooks/Tokens'
 import { useSelectedListInfo } from '../../state/lists/hooks'
+import { selectList } from '../../state/lists/actions'
+import {DEFAULT_TOKEN_LIST_URL} from "../../constants/index";
+
+import { AppDispatch } from '../../state'
 import { CloseIcon, LinkStyledButton, TYPE } from '../../theme'
 import { isAddress } from '../../utils'
 import Card from '../Card'
@@ -45,6 +50,8 @@ export function CurrencySearch({
   const { t } = useTranslation()
   const { chainId } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
+  const dispatch = useDispatch<AppDispatch>()
+
 
   const fixedList = useRef<FixedSizeList>()
   const [searchQuery, setSearchQuery] = useState<string>('')
@@ -135,7 +142,13 @@ export function CurrencySearch({
     [filteredSortedTokens, handleCurrencySelect, searchQuery]
   )
 
-  const selectedListInfo = useSelectedListInfo()
+  let selectedListInfo = useSelectedListInfo()
+
+  if (selectedListInfo.current === null) {
+    dispatch(selectList(DEFAULT_TOKEN_LIST_URL))
+  }
+  selectedListInfo = useSelectedListInfo()
+
 
   return (
     <Column style={{ width: '100%', flex: '1 1' }}>
