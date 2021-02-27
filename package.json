@@ -97,7 +97,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "integration-test": "start-server-and-test 'serve build -l 3000' http://localhost:3000 'cypress run'"
+    "integration-test": "start-server-and-test 'serve build -l 3000' http://localhost:3000 'cypress run'",
+    "ipfs-deploy": "ipfs-deploy build"
   },
   "eslintConfig": {
     "extends": "react-app",
@@ -122,6 +123,7 @@
     "@connext/vector-modal": "^0.1.50",
     "@sentry/react": "^6.2.0",
     "@sentry/tracing": "^6.2.0",
+    "@transak/transak-sdk": "^1.0.28",
     "express": "^4.17.1",
     "ipfs-deploy": "^8.0.1",
     "path": "^0.12.7",

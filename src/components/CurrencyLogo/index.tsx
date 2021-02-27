@@ -90,6 +90,22 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://s2.gifyu.com/images/zutlogo.jpg'
     }
 
+    if (address?.toLowerCase() === '0x104592a158490a9228070E0A8e5343B499e125D0'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png'
+    }
+
+    if (address?.toLowerCase() === '0xab0b2ddB9C7e440fAc8E140A89c0dbCBf2d7Bbff'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/harvestfi/assets/main/farm-logo.png'
+    }
+
+    if (address?.toLowerCase() === '0x034b2090b579228482520c589dbD397c53Fc51cC'.toLowerCase()) {
+      uri = 'https://s3-us-west-2.amazonaws.com/acf-uploads/apyvisionlogo200circle.png'
+    }
+
+    if (address?.toLowerCase() === '0x7FBc10850caE055B27039aF31bD258430e714c62'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/2707/small/UnibrightLogo_colorful_500x500_preview.png?1547036916'
+    }
+
     if (address?.toLowerCase() === '0x0e59D50adD2d90f5111aca875baE0a72D95B4762'.toLowerCase()) {
       uri = 'https://dark-build.app/logo192.png'
     }
