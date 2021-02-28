@@ -90,6 +90,18 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://s2.gifyu.com/images/zutlogo.jpg'
     }
 
+    if (address?.toLowerCase() === '0x104592a158490a9228070e0a8e5343b499e125d0'.toLowerCase()) {
+      uri = 'https://avatars.githubusercontent.com/u/56005256?s=200&v=4'
+    }
+
+    if (address?.toLowerCase() === '0x127984b5E6d5c59f81DACc9F1C8b3Bdc8494572e'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/pepedex_32.png?v=2'
+    }
+  
+    if (address?.toLowerCase() === '0x3e121107F6F22DA4911079845a470757aF4e1A1b'.toLowerCase()) {
+      uri = 'https://avatars.githubusercontent.com/u/56005256?s=200&v=4'
+    }
+
     if (address?.toLowerCase() === '0x104592a158490a9228070E0A8e5343B499e125D0'.toLowerCase()) {
       uri = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x853d955aCEf822Db058eb8505911ED77F175b99e/logo.png'
     }

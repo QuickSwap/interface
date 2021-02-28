@@ -6,15 +6,12 @@ import { darken } from 'polished'
 import { useTranslation } from 'react-i18next'
 import { toast } from 'react-toastify';
 import { isMobile, isAndroid, isIOS } from 'react-device-detect'
-import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../../state/index'
 
 // @ts-ignore
 import transakSDK from '@transak/transak-sdk'
 //import { useTransactionAdder } from '../../state/transactions/hooks'
 
 import styled from 'styled-components'
-import { addPopup } from '../../state/application/actions'
 
 
 import Logo from '../../assets/images/QuickSwap_logo.png';
@@ -25,7 +22,7 @@ import { useActiveWeb3React } from '../../hooks'
 import { useETHBalances, useAggregateUniBalance } from '../../state/wallet/hooks'
 import { CardNoise } from '../earn/styled'
 import { CountUp } from 'use-count-up'
-import { TYPE, ExternalLink, LinkStyledButton } from '../../theme'
+import { TYPE, ExternalLink } from '../../theme'
 
 import { YellowCard } from '../Card'
 import Settings from '../Settings'
@@ -264,34 +261,6 @@ const StyledExternalLink = styled(ExternalLink).attrs({
   }
 `
 
-const StyledLinkStyledButton = styled(LinkStyledButton).attrs({
-  activeClassName
-})<{ isActive?: boolean }>`
-  ${({ theme }) => theme.flexRowNoWrap}
-  align-items: left;
-  border-radius: 3rem;
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
-  color: ${({ theme }) => theme.text2};
-  font-size: 1rem;
-  width: fit-content;
-  margin: 0 12px;
-  font-weight: 500;
-
-  &.${activeClassName} {
-    border-radius: 12px;
-    font-weight: 600;
-    color: ${({ theme }) => theme.text1};
-  }
-
-  :hover,
-  :focus {
-    color: ${({ theme }) => darken(0.1, theme.text1)};
-  }
-`
-
-
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
   
   [ChainId.MUMBAI]: 'Mumbai',
@@ -299,43 +268,7 @@ const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
 }
 
 export default function Header() {
-  const dispatch = useDispatch<AppDispatch>()
-const initiateTransak = (account: any) => {
   
-  
-  let transak = new transakSDK({
-    apiKey: '258960cf-1e17-4419-bf7f-77443282f5da',  // Your API Key
-    environment: 'PRODUCTION', // STAGING/PRODUCTION
-    defaultCryptoCurrency: 'ETH',
-    //disablePaymentMethods: 'credit_debit_card',
-    walletAddress: account, // Your customer's wallet address
-    themeColor: '2891f9', // App theme color
-    redirectURL: 'window.location.origin',
-    hostURL: window.location.origin,
-    widgetHeight: mobile? '450px' : '550px',
-    widgetWidth: mobile? '360px': '450px',
-    networks: 'matic'
-  });
-  
-  transak.init();
-  
-  // To get all the events
-  transak.on(transak.TRANSAK_ORDER_FAILED, (data:any) => {
-    dispatch(addPopup(
-      { key: 'abc', content: { txn: { hash: '', summary: 'Buy order failed', success: false } } }
-    ))
-    console.log(data)
-  });
-  
-  // This will trigger when the user marks payment is made.
-  transak.on(transak.EVENTS.TRANSAK_ORDER_SUCCESSFUL, (orderData:any) => {
-    dispatch(addPopup(
-      { key: 'abc', content: { txn: { hash: '', summary: 'Buy '+ orderData.status.cryptoAmount +' '+orderData.status.cryptocurrency+ ' for ' +orderData.status.fiatAmount+ ' ' +orderData.status.fiatCurrency, success: true } } }
-    ))
-    console.log(orderData);
-    transak.close();
-  });
-}
   const { account, chainId } = useActiveWeb3React()
 
   const ClaimMatic = async(address: string) => {
@@ -422,10 +355,7 @@ const initiateTransak = (account: any) => {
           <StyledExternalLink id={`stake-nav-link`} href={'https://info.quickswap.exchange'} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
             Charts {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
-          {account && <StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
-            Buy
-          </StyledLinkStyledButton>
-}
+         
           
           
         </HeaderLinks>
