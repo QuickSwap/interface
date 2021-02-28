@@ -94,8 +94,16 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://avatars.githubusercontent.com/u/56005256?s=200&v=4'
     }
 
+    if (address?.toLowerCase() === '0x9C78EE466D6Cb57A4d01Fd887D2b5dFb2D46288f'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/cometh_32.png'
+    }
+
     if (address?.toLowerCase() === '0x127984b5E6d5c59f81DACc9F1C8b3Bdc8494572e'.toLowerCase()) {
       uri = 'https://etherscan.io/token/images/pepedex_32.png?v=2'
+    }
+
+    if (address?.toLowerCase() === '0x2a93172c8DCCbfBC60a39d56183B7279a2F647b4'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/dg.jpg'
     }
   
     if (address?.toLowerCase() === '0x3e121107F6F22DA4911079845a470757aF4e1A1b'.toLowerCase()) {
