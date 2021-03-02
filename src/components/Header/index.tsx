@@ -304,7 +304,7 @@ export default function Header() {
       apiKey: '258960cf-1e17-4419-bf7f-77443282f5da',  // Your API Key
       environment: 'PRODUCTION', // STAGING/PRODUCTION
       defaultCryptoCurrency: 'ETH',
-      //disablePaymentMethods: 'credit_debit_card',
+      disablePaymentMethods: 'credit_debit_card',
       walletAddress: account, // Your customer's wallet address
       themeColor: '2891f9', // App theme color
       redirectURL: 'window.location.origin',
