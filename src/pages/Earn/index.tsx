@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
-import { STAKING_REWARDS_INFO, useStakingInfo } from '../../state/stake/hooks'
+import { STAKING_REWARDS_INFO, useStakingInfo, useOldStakingInfo } from '../../state/stake/hooks'
 import { TYPE/**, ExternalLink*/ } from '../../theme'
 import PoolCard from '../../components/earn/PoolCard'
 import { RowBetween } from '../../components/Row'
@@ -29,9 +29,33 @@ const PoolSection = styled.div`
   justify-self: center;
 `
 
+const PageButtons = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+`
+
+const Arrow = styled.div`
+  color: ${({ theme }) => theme.primary1};
+  padding: 0 20px;
+  user-select: none;
+  :hover {
+    cursor: pointer;
+  }
+`
+
 export default function Earn() {
+
+  // pagination
+  const [page, setPage] = useState(1)
+  const maxPage = 5;
+  const ITEMS_PER_PAGE = 10;
+
   const { chainId } = useActiveWeb3React()
   const stakingInfos = useStakingInfo()
+  const oldStakingInfos = useOldStakingInfo();
 
   const DataRow = styled(RowBetween)`
     ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -78,16 +102,47 @@ export default function Earn() {
         </DataRow>
 
         <PoolSection>
+        {stakingRewardsExist && oldStakingInfos?.length === 0 ? (
+            <div />
+          ) : !stakingRewardsExist ? (
+            'No active rewards'
+          ) : (
+            oldStakingInfos?.map(stakingInfo => {
+              // need to sort by added liquidity here
+              return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} />
+            })
+          )}    
+
           {stakingRewardsExist && stakingInfos?.length === 0 ? (
             <Loader style={{ margin: 'auto' }} />
           ) : !stakingRewardsExist ? (
             'No active rewards'
           ) : (
-            stakingInfos?.map(stakingInfo => {
+            stakingInfos?.slice(
+              page === 1 ? 0 : (page - 1) * ITEMS_PER_PAGE,
+              (page * ITEMS_PER_PAGE) < stakingInfos.length ? (page * ITEMS_PER_PAGE): stakingInfos.length  
+            ).map(stakingInfo => {
               // need to sort by added liquidity here
               return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} />
             })
           )}
+          <PageButtons>
+        <div
+          onClick={(e) => {
+            setPage(page === 1 ? page : page - 1)
+          }}
+        >
+          <Arrow>←</Arrow>
+        </div>
+        <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
+        <div
+          onClick={(e) => {
+            setPage(page === maxPage ? page : page + 1)
+          }}
+        >
+          <Arrow>→</Arrow>
+        </div>
+      </PageButtons>
         </PoolSection>
       </AutoColumn>
     </PageWrapper>
