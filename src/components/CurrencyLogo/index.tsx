@@ -190,6 +190,34 @@ const getTokenLogoURL = (address: string) => {
       address = '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2'
     }
 
+    if (address?.toLowerCase() === '0x53E0bca35eC356BD5ddDFebbD1Fc0fD03FaBad39'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png'
+    }
+
+    if (address?.toLowerCase() === '0x9f5755D47fB80100E7ee65Bf7e136FCA85Dd9334'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/mantradao_32.png'
+    }
+
+    if (address?.toLowerCase() === '0xaaAEBE6Fe48E54f431b0C390CfaF0b017d09D42d'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/3263/small/CEL_logo.png?1609598753'
+    }
+
+    if (address?.toLowerCase() === '0x46F48FbdedAa6F5500993BEDE9539ef85F4BeE8e'.toLowerCase()) {
+      uri = 'https://aria.fyi/images/Aria_Logo_256.png'
+    }
+
+    if (address?.toLowerCase() === '0xeCf8f2FA183b1C4d2A269BF98A54fCe86C812d3e'.toLowerCase()) {
+      uri = 'https://i.imgur.com/Z8V1O7H.png'
+    }
+
+    if (address?.toLowerCase() === '0xa0E390e9ceA0D0e8cd40048ced9fA9EA10D71639'.toLowerCase()) {
+      uri = 'https://storage.googleapis.com/stacktical-public/dsla.png'
+    }
+
+    if (address?.toLowerCase() === '0xFeD16c746CB5BFeD009730f9E3e6A673006105c7'.toLowerCase()) {
+      uri = 'https://pbs.twimg.com/profile_images/1318783238291292160/R4DxXdRA_400x400.jpg'
+    }
+
     if (!uri) {
       uri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
     }
