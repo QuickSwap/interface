@@ -194,7 +194,7 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x514910771AF9Ca656af840dff83E8264EcF986CA/logo.png'
     }
 
-    if (address?.toLowerCase() === '0x9f5755D47fB80100E7ee65Bf7e136FCA85Dd9334'.toLowerCase()) {
+    if (address?.toLowerCase() === '0xC3Ec80343D2bae2F8E680FDADDe7C17E71E114ea'.toLowerCase()) {
       uri = 'https://etherscan.io/token/images/mantradao_32.png'
     }
 
