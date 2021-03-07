@@ -37,7 +37,7 @@ export function Countdown({ exactEnd }: { exactEnd?: Date }) {
   } else {
     const ongoing = timeUntilEnd >= 0
     if (ongoing) {
-      message = 'Rewards end in'
+      message = 'Next Rewards in '
       timeRemaining = timeUntilEnd
     } else {
       message = 'Rewards have ended!'
