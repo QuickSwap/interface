@@ -61,7 +61,7 @@ export const VISION  = new Token(ChainId.MATIC, '0x034b2090b579228482520c589dbD3
 export const IFARM  = new Token(ChainId.MATIC, '0xab0b2ddB9C7e440fAc8E140A89c0dbCBf2d7Bbff', 18, 'iFARM', 'iFARM')
 export const PPDEX  = new Token(ChainId.MATIC, '0x127984b5E6d5c59f81DACc9F1C8b3Bdc8494572e', 18, 'PPDEX', 'Pepedex')
 
-export const CEL  = new Token(ChainId.MATIC, '0xaaAEBE6Fe48E54f431b0C390CfaF0b017d09D42d', 4, 'CEL', 'Celsius')
+export const CEL  = new Token(ChainId.MATIC, '0xd85d1e945766fea5eda9103f918bd915fbca63e6', 4, 'CEL', 'Celsius')
 export const ARIA20  = new Token(ChainId.MATIC, '0x46F48FbdedAa6F5500993BEDE9539ef85F4BeE8e', 18, 'ARIA20', 'ARIANEE')
 export const CFI  = new Token(ChainId.MATIC, '0xeCf8f2FA183b1C4d2A269BF98A54fCe86C812d3e', 18, 'CFI', 'CyberFi Token')
 export const DSLA  = new Token(ChainId.MATIC, '0xa0E390e9ceA0D0e8cd40048ced9fA9EA10D71639', 18, 'DSLA', 'DSLA')
@@ -249,4 +249,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.0.41/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.0.42/build/quickswap-default.tokenlist.json'
