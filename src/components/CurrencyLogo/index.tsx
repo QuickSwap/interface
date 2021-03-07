@@ -198,7 +198,7 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://etherscan.io/token/images/mantradao_32.png'
     }
 
-    if (address?.toLowerCase() === '0xaaAEBE6Fe48E54f431b0C390CfaF0b017d09D42d'.toLowerCase()) {
+    if (address?.toLowerCase() === '0xd85d1e945766fea5eda9103f918bd915fbca63e6'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/3263/small/CEL_logo.png?1609598753'
     }
 
