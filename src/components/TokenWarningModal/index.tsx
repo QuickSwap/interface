@@ -30,7 +30,7 @@ const WarningContainer = styled.div`
 `
 
 const StyledWarningIcon = styled(AlertTriangle)`
-  stroke: ${({ theme }) => theme.red2};
+  stroke: ${({ theme }) => theme.blue1};
 `
 
 interface TokenWarningCardProps {
@@ -102,17 +102,17 @@ export default function TokenWarningModal({
         <AutoColumn gap="lg">
           <AutoRow gap="6px">
             <StyledWarningIcon />
-            <TYPE.main color={'red2'}>Token imported</TYPE.main>
+            <TYPE.main color={'blue1'}>Token imported</TYPE.main>
           </AutoRow>
-          <TYPE.body color={'red2'}>
-            Anyone can create an ERC20 token on Ethereum with <em>any</em> name, including creating fake versions of
+          <TYPE.body color={'blue1'}>
+            Anyone can create an ERC20 token on Ethereum/Polygon with <em>any</em> name, including creating fake versions of
             existing tokens and tokens that claim to represent projects that do not have a token.
           </TYPE.body>
-          <TYPE.body color={'red2'}>
+          <TYPE.body color={'blue1'}>
             This interface can load arbitrary tokens by token addresses. Please take extra caution and do your research
             when interacting with arbitrary ERC20 tokens.
           </TYPE.body>
-          <TYPE.body color={'red2'}>
+          <TYPE.body color={'blue1'}>
             If you purchase an arbitrary token, <strong>you may be unable to sell it back.</strong>
           </TYPE.body>
           {tokens.map(token => {
@@ -132,7 +132,7 @@ export default function TokenWarningModal({
             </div>
             <ButtonError
               disabled={!understandChecked}
-              error={true}
+              error={false}
               width={'140px'}
               padding="0.5rem 1rem"
               className="token-dismiss-button"
