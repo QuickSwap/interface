@@ -11,6 +11,7 @@ import { AppDispatch } from '../../state/index'
 
 // @ts-ignore
 import transakSDK from '@transak/transak-sdk'
+import { ConnextModal } from '@connext/vector-modal'
 //import { useTransactionAdder } from '../../state/transactions/hooks'
 
 import styled from 'styled-components'
@@ -295,6 +296,7 @@ const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
 }
 
 export default function Header() {
+  const [showModal, setShowModal] = useState(false)
 
   const dispatch = useDispatch<AppDispatch>()
   const initiateTransak = (account: any) => {
@@ -424,8 +426,20 @@ export default function Header() {
           {account && <StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
             Buy
           </StyledLinkStyledButton>}
-         
-          
+
+          {account && (
+            <StyledLinkStyledButton
+              id={`stake-nav-link`}
+              onClick={() => {
+                setShowModal(true)
+              }}
+              style={{
+                marginLeft: mobile ? '0px' : '12px',
+                marginRight: mobile ? '4px' : '12px'
+              }}
+            >
+              Bridge
+            </StyledLinkStyledButton>)}
           
         </HeaderLinks>
       </HeaderRow>
@@ -493,6 +507,20 @@ export default function Header() {
           {/*<Menu />*/}
         </HeaderElementWrap>
       </HeaderControls>
+      <ConnextModal
+        showModal={showModal}
+        onClose={() => setShowModal(false)}
+        withdrawalAddress={account ?? ''}
+        loginProvider={window.ethereum}
+        injectedProvider={window.ethereum}
+        routerPublicIdentifier="vector892GMZ3CuUkpyW8eeXfW2bt5W73TWEXtgV71nphXUXAmpncnj8"
+        depositAssetId={'0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'}
+        depositChainProvider="https://mainnet.infura.io/v3/"
+        depositChainId={1}
+        withdrawAssetId={'0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'}
+        withdrawChainProvider="https://rpc-mainnet.maticvigil.com"
+        withdrawChainId={137}
+      />
     </HeaderFrame>
   )
 }
