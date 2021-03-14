@@ -222,6 +222,10 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/azuki.png'
     }
 
+    if (address?.toLowerCase() === '0xd28449BB9bB659725aCcAd52947677ccE3719fD7'.toLowerCase()) {
+      uri = 'https://darkmatter.finance/i/favicon/512x512.png'
+    }
+
     if (address?.toLowerCase() === '0x521CddC0CBa84F14c69C1E99249F781AA73Ee0BC'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/13719/small/hh.png?1611137626'
     }
