@@ -210,6 +210,30 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://i.imgur.com/Z8V1O7H.png'
     }
 
+    if (address?.toLowerCase() === '0xa1428174F516F527fafdD146b883bB4428682737'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14040/small/6YPdWn6.png?1613975899'
+    }
+
+    if (address?.toLowerCase() === '0x42435F467D33e5C4146a4E8893976ef12BBCE762'.toLowerCase()) {
+      uri = 'https://i.imgur.com/uVGtugL.png'
+    }
+
+    if (address?.toLowerCase() === '0x7CdC0421469398e0F3aA8890693d86c840Ac8931'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/azuki.png'
+    }
+
+    if (address?.toLowerCase() === '0x521CddC0CBa84F14c69C1E99249F781AA73Ee0BC'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/13719/small/hh.png?1611137626'
+    }
+
+    if (address?.toLowerCase() === '0x82B6205002ecd05e97642D38D61e2cFeaC0E18cE'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/deflect_32.png?=v1'
+    }
+
+    if (address?.toLowerCase() === '0xf153EfF70DC0bf3b085134928daeEA248d9B30d0'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/trustwallet/assets/8cb78aca77b340510958ed98a3cd260d2d7f0420/blockchains/ethereum/assets/0x36b679bd64Ed73DBfd88909cDCB892cB66Bd4CBb/logo.png'
+    }
+
     if (address?.toLowerCase() === '0xa0E390e9ceA0D0e8cd40048ced9fA9EA10D71639'.toLowerCase()) {
       uri = 'https://storage.googleapis.com/stacktical-public/dsla.png'
     }
