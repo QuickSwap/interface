@@ -66,6 +66,21 @@ export default function Earn() {
 
   const stakingRewardsExist = Boolean(typeof chainId === 'number' && (STAKING_REWARDS_INFO[chainId]?.length ?? 0) > 0)
 
+  stakingInfos?.sort((a,b) => {
+    if(Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
+      return -1;
+    }
+    if(!Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
+      return 1;
+    }
+    if(Boolean(a.stakedAmount.greaterThan('0')) && !Boolean(b.stakedAmount.greaterThan('0'))) {
+      return -1;
+    }
+    else {
+      return 1;
+    }
+  })
+
   return (
     <PageWrapper gap="lg" justify="center">
       <TopSection gap="md">
