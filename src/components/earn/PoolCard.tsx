@@ -4,7 +4,7 @@ import { RowBetween } from '../Row'
 import styled from 'styled-components'
 import { TYPE, StyledInternalLink } from '../../theme'
 import DoubleCurrencyLogo from '../DoubleLogo'
-import { ETHER, JSBI , TokenAmount } from '@uniswap/sdk'
+import { JSBI , TokenAmount } from '@uniswap/sdk'
 import { ButtonPrimary } from '../Button'
 import { StakingInfo } from '../../state/stake/hooks'
 import { useColor } from '../../hooks/useColor'
@@ -14,6 +14,7 @@ import { unwrappedToken } from '../../utils/wrappedCurrency'
 import { useTotalSupply } from '../../data/TotalSupply'
 import { usePair } from '../../data/Reserves'
 import useUSDCPrice from '../../utils/useUSDCPrice'
+import {EMPTY} from "../../constants/index";
 
 const StatContainer = styled.div`
   display: flex;
@@ -78,26 +79,29 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
 
   const currency0 = unwrappedToken(token0)
   const currency1 = unwrappedToken(token1)
+  const baseTokenCurrency = unwrappedToken(stakingInfo.baseToken);
+  const empty = unwrappedToken(EMPTY);
 
   const isStaking = Boolean(stakingInfo.stakedAmount.greaterThan('0'))
 
   // get the color of the token
-  const token = currency0 === ETHER ? token1 : token0
-  const WETH = currency0 === ETHER ? token0 : token1
+  const baseToken = baseTokenCurrency === empty ? token0: stakingInfo.baseToken;
+  const token = baseTokenCurrency === empty ? token1: baseTokenCurrency === currency0 ? token1: token0;
+  
   const backgroundColor = useColor(token)
 
   const totalSupplyOfStakingToken = useTotalSupply(stakingInfo.stakedAmount.token)
   const [, stakingTokenPair] = usePair(...stakingInfo.tokens)
 
   // let returnOverMonth: Percent = new Percent('0')
-  let valueOfTotalStakedAmountInWETH: TokenAmount | undefined
+  let valueOfTotalStakedAmountInBaseToken: TokenAmount | undefined
   if (totalSupplyOfStakingToken && stakingTokenPair) {
     // take the total amount of LP tokens staked, multiply by ETH value of all LP tokens, divide by all LP tokens
-    valueOfTotalStakedAmountInWETH = new TokenAmount(
-      WETH,
+    valueOfTotalStakedAmountInBaseToken = new TokenAmount(
+      baseToken,
       JSBI.divide(
         JSBI.multiply(
-          JSBI.multiply(stakingInfo.totalStakedAmount.raw, stakingTokenPair.reserveOf(WETH).raw),
+          JSBI.multiply(stakingInfo.totalStakedAmount.raw, stakingTokenPair.reserveOf(baseToken).raw),
           JSBI.BigInt(2) // this is b/c the value of LP shares are ~double the value of the WETH they entitle owner to
         ),
         totalSupplyOfStakingToken.raw
@@ -114,9 +118,9 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
   var show = isStaking || !stakingInfo.ended;
 
   // get the USD value of staked WETH
-  const USDPrice = useUSDCPrice(WETH)
+  const USDPrice = useUSDCPrice(baseToken)
   const valueOfTotalStakedAmountInUSDC =
-    valueOfTotalStakedAmountInWETH && USDPrice?.quote(valueOfTotalStakedAmountInWETH)
+    valueOfTotalStakedAmountInBaseToken && USDPrice?.quote(valueOfTotalStakedAmountInBaseToken)
 
   return (
     show ?
@@ -152,7 +156,7 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
           <TYPE.white>
             {valueOfTotalStakedAmountInUSDC
               ? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}`
-              : `${valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
+              : `${valueOfTotalStakedAmountInBaseToken?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
           </TYPE.white>
         </RowBetween>
         <RowBetween>

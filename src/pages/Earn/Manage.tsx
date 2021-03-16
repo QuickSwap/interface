@@ -3,7 +3,7 @@ import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import { JSBI, TokenAmount, ETHER } from '@uniswap/sdk'
+import { JSBI, TokenAmount } from '@uniswap/sdk'
 import { RouteComponentProps } from 'react-router-dom'
 import DoubleCurrencyLogo from '../../components/DoubleLogo'
 import { useCurrency } from '../../hooks/Tokens'
@@ -22,13 +22,14 @@ import { useActiveWeb3React } from '../../hooks'
 import { useColor } from '../../hooks/useColor'
 import { CountUp } from 'use-count-up'
 
-import { wrappedCurrency } from '../../utils/wrappedCurrency'
+import { wrappedCurrency, unwrappedToken } from '../../utils/wrappedCurrency'
 import { currencyId } from '../../utils/currencyId'
 import { useTotalSupply } from '../../data/TotalSupply'
 import { usePair } from '../../data/Reserves'
 import usePrevious from '../../hooks/usePrevious'
 import useUSDCPrice from '../../utils/useUSDCPrice'
 import { BIG_INT_ZERO } from '../../constants'
+import {EMPTY} from "../../constants/index";
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -118,6 +119,10 @@ export default function Manage({
     stakingInfo = undefined;
   }
 
+  const baseTokenCurrency = unwrappedToken(stakingInfo?.baseToken);
+  const empty = unwrappedToken(EMPTY);
+
+
   // detect existing unstaked LP position to show add button if none found
   const userLiquidityUnstaked = useTokenBalance(account ?? undefined, stakingInfo?.stakedAmount?.token)
   const showAddLiquidityButton = Boolean(stakingInfo?.stakedAmount?.equalTo('0') && userLiquidityUnstaked?.equalTo('0'))
@@ -130,32 +135,34 @@ export default function Manage({
   // fade cards if nothing staked or nothing earned yet
   const disableTop = !stakingInfo?.stakedAmount || stakingInfo.stakedAmount.equalTo(JSBI.BigInt(0))
 
-  const token = currencyA === ETHER ? tokenB : tokenA
-  const WETH = currencyA === ETHER ? tokenA : tokenB
+  const baseToken = baseTokenCurrency === empty ? tokenA: stakingInfo.baseToken;
+  const token = baseTokenCurrency === empty ? tokenB: baseTokenCurrency === currencyA ? tokenB: tokenA;
+
+  
   const backgroundColor = useColor(token)
 
   // get WETH value of staked LP tokens
   const totalSupplyOfStakingToken = useTotalSupply(stakingInfo?.stakedAmount?.token)
-  let valueOfTotalStakedAmountInWETH: TokenAmount | undefined
-  let valueOfMyStakedAmountInWETH: TokenAmount | undefined
+  let valueOfTotalStakedAmountInBaseToken: TokenAmount | undefined
+  let valueOfMyStakedAmountInBaseToken: TokenAmount | undefined
 
-  if (totalSupplyOfStakingToken && stakingTokenPair && stakingInfo && WETH) {
+  if (totalSupplyOfStakingToken && stakingTokenPair && stakingInfo && baseToken) {
     // take the total amount of LP tokens staked, multiply by ETH value of all LP tokens, divide by all LP tokens
-    valueOfTotalStakedAmountInWETH = new TokenAmount(
-      WETH,
+    valueOfTotalStakedAmountInBaseToken = new TokenAmount(
+      baseToken,
       JSBI.divide(
         JSBI.multiply(
-          JSBI.multiply(stakingInfo.totalStakedAmount.raw, stakingTokenPair.reserveOf(WETH).raw),
+          JSBI.multiply(stakingInfo.totalStakedAmount.raw, stakingTokenPair.reserveOf(baseToken).raw),
           JSBI.BigInt(2) // this is b/c the value of LP shares are ~double the value of the WETH they entitle owner to
         ),
         totalSupplyOfStakingToken.raw
       )
     )
-    valueOfMyStakedAmountInWETH = new TokenAmount(
-      WETH,
+    valueOfMyStakedAmountInBaseToken = new TokenAmount(
+      baseToken,
       JSBI.divide(
         JSBI.multiply(
-          JSBI.multiply(stakingInfo.stakedAmount.raw, stakingTokenPair.reserveOf(WETH).raw),
+          JSBI.multiply(stakingInfo.stakedAmount.raw, stakingTokenPair.reserveOf(baseToken).raw),
           JSBI.BigInt(2) // this is b/c the value of LP shares are ~double the value of the WETH they entitle owner to
         ),
         totalSupplyOfStakingToken.raw
@@ -174,12 +181,12 @@ export default function Manage({
   
   
   // get the USD value of staked WETH
-  const USDPrice = useUSDCPrice(WETH)
+  const USDPrice = useUSDCPrice(baseToken)
   const valueOfTotalStakedAmountInUSDC =
-    valueOfTotalStakedAmountInWETH && USDPrice?.quote(valueOfTotalStakedAmountInWETH)
+    valueOfTotalStakedAmountInBaseToken && USDPrice?.quote(valueOfTotalStakedAmountInBaseToken)
 
     const valueOfMyStakedAmountInUSDC =
-    valueOfMyStakedAmountInWETH && USDPrice?.quote(valueOfMyStakedAmountInWETH)
+    valueOfMyStakedAmountInBaseToken && USDPrice?.quote(valueOfMyStakedAmountInBaseToken)
 
   const toggleWalletModal = useWalletModalToggle()
 
@@ -207,7 +214,7 @@ export default function Manage({
             <TYPE.body fontSize={24} fontWeight={500}>
             {valueOfTotalStakedAmountInUSDC
                 ? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}`
-                : `${valueOfTotalStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
+                : `${valueOfTotalStakedAmountInBaseToken?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
             </TYPE.body>
           </AutoColumn>
         </PoolData>
@@ -290,7 +297,7 @@ export default function Manage({
                   <TYPE.white fontSize={36} fontWeight={600}>
                   {valueOfMyStakedAmountInUSDC
                 ? `$${valueOfMyStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}`
-                : `${valueOfMyStakedAmountInWETH?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
+                : `${valueOfMyStakedAmountInBaseToken?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
                   </TYPE.white>
                   <TYPE.white>
                   {stakingInfo?.name && stakingInfo?.name && stakingInfo.name !== '' ? stakingInfo.name : 'QUICK-V2 ' + ((currencyA?.symbol !== undefined ? currencyA?.symbol : '') + '-' + (currencyB?.symbol !== undefined ? currencyB?.symbol: ''))}

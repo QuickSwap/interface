@@ -53,7 +53,8 @@ import {
   AZUKI,
   HH,
   MDEF,
-  DMT
+  DMT,
+  EMPTY
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -72,6 +73,7 @@ export const STAKING_REWARDS_INFO: {
     ended: boolean
     name: string
     lp: string
+    baseToken: Token
   }[]
 } = {
   [ChainId.MATIC]: [//TODO: MATIC
@@ -79,382 +81,461 @@ export const STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x19FD308bfC9fdC7979a7141A10bc0B4C0267AbBB',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+      baseToken: USDC },
     { tokens: [GHST,QUICK],
       stakingRewardAddress: '0xe8ebE7e46D885d283fb0e0177af7df454DCA111C',
       ended: false,
       name: 'StkGHST-QUICK',
-      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f' },
+      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f',
+      baseToken: QUICK
+      
+    },
     { tokens: [WBTC,ETHER],
       stakingRewardAddress: '0x62AEF7797512095b6d640E4103264c41386063ae',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+      baseToken: ETHER },
     { tokens: [MATIC,QUICK],
       stakingRewardAddress: '0xbEe47F087200a493bb8a71c6C76A9CD5396e9F94',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+      baseToken: QUICK },
     { tokens: [ETHER,MATIC],
       stakingRewardAddress: '0x5298d2Ea83ca981fCda625df1F9AA03a305738C0',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+      baseToken: ETHER },
     { tokens: [ETHER,USDC],
       stakingRewardAddress: '0x16b4Ea4417C610f0F11dAf49EAb8155bbAE4FeEE',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: USDC },
     { tokens: [GHST,USDC],
       stakingRewardAddress: '0x201D66d7d7139E137c51be0DD22c3736B3A81835',
       ended: false,
       name: 'stkGHST-USDC',
-      lp: '0x04439eC4ba8b09acfae0E9b5D75A82cC63b19f09' },
+      lp: '0x04439eC4ba8b09acfae0E9b5D75A82cC63b19f09',
+      baseToken: USDC
+    },
     { tokens: [LINK,ETHER],
       stakingRewardAddress: '0x90BB3F41c7c4C47A16406347EC1112D42c189A9e',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [DAI,ETHER],
       stakingRewardAddress: '0xEc1294419F2dda918a14d1D14fE9f3faacf81008',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [FRAX,FXS],
       stakingRewardAddress: '0x99cbBa72d919791009a8c6Db5AaDF1DeA883e0d1',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: FRAX },
     { tokens: [ETHER,DEFI5],
       stakingRewardAddress: '0xBe3AF49Bd0EeB5ff7990deaA381ed887eD25938a',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [QUICK,DEFI5],
       stakingRewardAddress: '0xD2d83D63205f5bc44787c21D382FB9f9b8752FFF',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [ETHER,QUICK],
       stakingRewardAddress: '0xff2cc7bb508c40bC201D45A32b1804e822F48058',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [CEL,ETHER],
       stakingRewardAddress: '0xef2c19bbc8e6AA85BBB5F50aB7528c2c0eFDb74C',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [MAAAVE,QUICK],
       stakingRewardAddress: '0x5104D3b09b6b12c63584d9abE1f3EcF96E5Fe56C',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [FRAX,QUICK],
       stakingRewardAddress: '0x34aC099bea7Ac58B4a9a6c10ac8F2Eae247d2928',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [QUICK,CEL],
       stakingRewardAddress: '0xEA782586eA4f463B022A63D24C221cb4335c32A6',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [USDC,QUICK],
       stakingRewardAddress: '0x1d86182103c803DD6bde2412A5a9D66Ca7E80a67',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: USDC },
     { tokens: [SX,ETHER],
       stakingRewardAddress: '0x5074f8250534B20160c87bF7Cb48Fe06811C0DBb',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [QUICK,XMARK],
       stakingRewardAddress: '0x7334054b00bA72DeE9a84B1135D76851d21A2938',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [DB,MATIC],
       stakingRewardAddress: '0x30aD68a11A4c904Eb7B4858CFa643e9D26516Bc6',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MATIC },
     { tokens: [SUPER,QUICK],
       stakingRewardAddress: '0xdc00407aF961A1F116d9484fB240Bf226BC9bFf3',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [IFARM,MATIC],
       stakingRewardAddress: '0xB367eF9Ff258bCCaF7004b9bC7a007E955C92120',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MATIC },
     { tokens: [SUPER,ETHER],
       stakingRewardAddress: '0xa6c3a26D8b0c4f811413CD7Fc7817C0d04e408A7',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [MAUSDT,MAUSDC],
       stakingRewardAddress: '0x5Ce6c2521538711997707105132055De2E334684',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MAUSDC },
     { tokens: [MATUSD,MAUSDC],
       stakingRewardAddress: '0x3655D05758d68938B3Beb3A5461A4863e9327345',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MAUSDC },
     { tokens: [LINK,QUICK],
       stakingRewardAddress: '0xd143d387fC456608a117Ab730a023F80e7A914f5',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [MADAI,MAUSDC],
       stakingRewardAddress: '0x9869367db942A5D690Bfe238347f2d91Bb94A139',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MAUSDC },
     { tokens: [SWAP,ETHER],
       stakingRewardAddress: '0x87ADb629401664EA47F58c03805F0c28e75943C4',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [SWAP,QUICK],
       stakingRewardAddress: '0x4eB3EfC4b04eE340A6C3623921Be21c285a3034f',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [MATIC,USDC],
       stakingRewardAddress: '0xfD15a6a3F07C89B15DB9b59e6880EF1a6550aFb9',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: USDC },
     { tokens: [UBT,ETHER],
       stakingRewardAddress: '0x3765C3b243c456020BD8f947E439f06ba9A8049e',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [DB,ETHER],
       stakingRewardAddress: '0x34c065c2aE774037734877B8C308688415AE6688',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [DG,QUICK],
       stakingRewardAddress: '0xF9414A4FB22fc040b354f1F9E7C2567F477d8536',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [DG,ETHER],
       stakingRewardAddress: '0xF077a4789666eF79E0CfC409b66E2082c3b53872',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [IFARM,QUICK],
       stakingRewardAddress: '0xd8Be944Dd5F5BbC2De00478c44A7770333fdc446',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [MAYFI,MAUSDC],
       stakingRewardAddress: '0xC87328298649DACA11228e6Bbf36d3B4AAF4Ae2b',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MAUSDC },
     { tokens: [MAWETH,MAUSDC],
       stakingRewardAddress: '0x046bd5fb1A30046B96Ea85f587241029b0991Cd5',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MAUSDC },
     { tokens: [QUICK,AZUKI],
       stakingRewardAddress: '0xb7A25b8f17Ad1B5E12dab7B03f8e5fEa5043f7b8',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [ETHER,AZUKI],
       stakingRewardAddress: '0x2ab140994D8f060b70f1D9f8F775E9dA8D1e6Cd1',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [MAUNI,MAUSDC],
       stakingRewardAddress: '0x483A66864e09F62272b4dC57EE6a36F1313D6730',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MAUSDC },
     { tokens: [MAUSDC,QUICK],
       stakingRewardAddress: '0xdF39E6998bDE3131F8E79d3110fC772ba74e4613',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [UNITOKEN,QUICK],
       stakingRewardAddress: '0xBF6407a5aBD5215dC5aC9B7554C5C9EA8D9953BF',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [HEX,ETHER],
       stakingRewardAddress: '0x8b6156625C7879421Bf2C8C498F8f1dfE9eA8391',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [HEX,QUICK],
       stakingRewardAddress: '0x8B6e5dF82AB0393c26abEeC1dBf6D9a635be45D6',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [ARIA20,ETHER],
       stakingRewardAddress: '0xd78bBf1D86d3D27A59368371E6482B79D284c6b5',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [MALINK,MAUSDC],
       stakingRewardAddress: '0x0f8CB585A95A807CB68E7c2b5DEBbc2d9E8398d3',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MAUSDC },
     { tokens: [QUICK,OM],
       stakingRewardAddress: '0x295B6bd267B49F5CcaCc0378A15BE4805A7CbBdD',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [QUICK,HH],
       stakingRewardAddress: '0xa9987f077d583305eDB335E2241C18c37c91f1AD',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [UBT,QUICK],
       stakingRewardAddress: '0x00A289344afF9dcA5c40350dCbb4885DFf9521C0',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [QUICK,DMT],
       stakingRewardAddress: '0x739e730D85F0E5C154d2BB9b31B4f3bA5e95ba3F',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [GAME,QUICK],
       stakingRewardAddress: '0xA05Bd910424E2c848D8874C48E9fb8207C496E03',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [MAAAVE,MAUSDC],
       stakingRewardAddress: '0x41204E879Cf5f499C1b419792F9E47c6538c040B',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MAUSDC },
     { tokens: [ETHER,HH],
       stakingRewardAddress: '0x976a261de050935CC816f6e4Df149FEe41b0949F',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [GAME,ETHER],
       stakingRewardAddress: '0x2ef72f744366c6c7c9D9BA967EE0703D6F1f24E9',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [ETHER,DMT],
       stakingRewardAddress: '0x43180e5D0aeC6d3be1E81DC6a83c1DEC049aF5fC',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [EASY,QUICK],
       stakingRewardAddress: '0x43EbA9B080f465138b97BD17C36bbb73C1C2A0F0',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [SX,DAI],
       stakingRewardAddress: '0x38f8eB09a82B96B5a86773681D20d1Ad587385b8',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: DAI },
     { tokens: [ETHER,OM],
       stakingRewardAddress: '0x7aB50EC4b2df4283219996C92d1BE0Eca5F974dB',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [ARIA20,QUICK],
       stakingRewardAddress: '0xed2D83020610d216ed41feD8F9e2361e4A9B5e13',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [SX,QUICK],
       stakingRewardAddress: '0x02D3B842c8Cb2B217D87E9d73cd76CB70242587A',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [VISION,ETHER],
       stakingRewardAddress: '0x2c2b1b3e180E227F87E3AA0Ec4338866109566eD',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [CFI,QUICK],
       stakingRewardAddress: '0x6eD883d937fedce9505868433E6749a63eb974fE',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [VISION,QUICK],
       stakingRewardAddress: '0x9d87912B51Fb2bc9eF395512Fdc7066FCba78201',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [MRBAL,QUICK],
       stakingRewardAddress: '0x14d69736b4B72E14dB372A36a0944C025759DfF1',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [ZUT,QUICK],
       stakingRewardAddress: '0x4E6ab1521c5A02E1b7F00D726445910E68164C67',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [MUST,MATIC],
       stakingRewardAddress: '0x74Bf881daDaFa45149FEd02D269D6bDF2C482E32',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MATIC },
     { tokens: [DSLA,ETHER],
       stakingRewardAddress: '0x5A61ac95F86C2458d844ff1869AC3b3BB5F72D6c',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: ETHER },
     { tokens: [CFI,USDC],
       stakingRewardAddress: '0x2ee4CF224546DA48453474472A96138c1A2fCc98',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: USDC },
     { tokens: [DSLA,QUICK],
       stakingRewardAddress: '0x05378BdAeE39e1EDda3a711BE174c7771712387E',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [QUICK,MDEF],
       stakingRewardAddress: '0x5E3A895cE02f8c8101A6Bc44520CFE2D0f5654ec',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [MATIC,MRBAL],
       stakingRewardAddress: '0xEa4A37B036E15ec89b71ffaf445795f9f70f10E0',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: MATIC },
     { tokens: [DRC,QUICK],
       stakingRewardAddress: '0xf86Cffba04665e549EFBd946CA1DDFa58af998D4',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [MUST,QUICK],
       stakingRewardAddress: '0x76eaF915ea94fD8261CAF9d8453446768753c82d',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [PPDEX,QUICK],
       stakingRewardAddress: '0xD6c4b56BCd1Fd5A5E3e684125865D995Ff282EB0',
       ended: false,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: QUICK },
     { tokens: [DRC,USDC],
       stakingRewardAddress: '0x8E85aA9d2D28130D603F855747fC863aE531120b',
       ended: false,
       lp: '',
-      name: '' }
+      name: '',
+baseToken: USDC }
     
   ]
 }
@@ -467,6 +548,7 @@ export const OLD_STAKING_REWARDS_INFO: {
     ended: boolean
     name: string
     lp: string
+    baseToken: Token
   }[]
 } = {
   [ChainId.MATIC]: [//TODO: MATIC
@@ -481,6 +563,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
     ended: boolean
     name: string
     lp: string
+    baseToken: Token
   }[]
 } = {
   [ChainId.MATIC]: [//TODO: MATIC
@@ -488,323 +571,388 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x111C8Fb82c3BAf533ca7A0deeB5a7BF31D6B2b57',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+      baseToken: EMPTY },
     { tokens: [QUICK, GHST],
       stakingRewardAddress: '0x0A1d12b089577870FE94176Cc6fb2B87A94f268C',
       ended: true,
       name: 'StkGHST-QUICK',
-      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f' },
+      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f',
+      baseToken: EMPTY },
     { tokens: [ETHER,USDC],
       stakingRewardAddress: '0x4571948F99Af3c39ac9831874E413E907981a341',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MATIC,QUICK],
       stakingRewardAddress: '0x6376Fd1ee8d76096a5Ba7A54D9E0Dea9B6c89C20',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [FRAX,FXS],
       stakingRewardAddress: '0x71Fe8138C81d7a0cd7e463c8C7Ff524085A411ab',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [WBTC,ETHER],
       stakingRewardAddress: '0xdD7538d82E7A38A07A09E96c15279CE74cC14ABC',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [ETHER,MATIC],
       stakingRewardAddress: '0x88963CC8DF67208DdD7FF78A093fB2F9242d9e00',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [CEL,ETHER],
       stakingRewardAddress: '0xdeeFB589f8dd66b9A4FbCaff589028f6DE9D4C73',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [QUICK,CEL],
       stakingRewardAddress: '0x6dED557bd6E2bcD2653bA0B43d0e0f1B2D3Dbd99',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [GHST,USDC],
       stakingRewardAddress: '0xF235f75ea0F053037F5de99778aefae9c6AB9C84',
       ended: true,
       name: 'stkGHST-USDC',
-      lp: '0x04439eC4ba8b09acfae0E9b5D75A82cC63b19f09' },
+      lp: '0x04439eC4ba8b09acfae0E9b5D75A82cC63b19f09',
+      baseToken: EMPTY
+    },
     { tokens: [FRAX,QUICK],
       stakingRewardAddress: '0x536D4757dfA353a4Db2B821cF1adD3A76cc0E63b',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [DAI,ETHER],
       stakingRewardAddress: '0x1732a459fba48ab2E5fEA9d3932906E2FF7cAA99',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MAAAVE,QUICK],
       stakingRewardAddress: '0xF0756eB4106b82c4CBd82Db266313a58A5E5844E',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [ETHER,QUICK],
       stakingRewardAddress: '0xAEB63c546Be3d6b4f1390e59A07933bc9abB3839',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [SWAP,ETHER],
       stakingRewardAddress: '0x4c44AF5349e651cb886Fb0dc3D3668a179733762',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [USDC,QUICK],
       stakingRewardAddress: '0x8cf4f5b9A2d87F176ED23272aE9DcE4959f7C8FF',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [LINK,ETHER],
       stakingRewardAddress: '0xA0dC0D47C064b228a56cE3ee821408AE74473e2a',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [LINK,QUICK],
       stakingRewardAddress: '0x1c26fa3280814aFD43Fe55cB94e842Ce38070060',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [SWAP,QUICK],
       stakingRewardAddress: '0xB0955Ed458cd03Ff2d46903020de4549C72E3995',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [SX,ETHER],
       stakingRewardAddress: '0x4Ee7A892E887902248bbE6D10dad20C6edB603b4',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MATIC,USDC],
       stakingRewardAddress: '0x682e7eac9A54c1d50DbFCE15a0e48Ee04d8b4EE7',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [IFARM,MATIC],
       stakingRewardAddress: '0xA61d3F278E01bF427ebd180C5cb316DB7156d3DF',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MATUSD,MAUSDC],
       stakingRewardAddress: '0x6a0E0Cfae54D0e8e713367F3da0D1E95C385a130',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MAUSDT,MAUSDC],
       stakingRewardAddress: '0x94E34803393882eF97D8254d6682ab03fC407ED3',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [IFARM,QUICK],
       stakingRewardAddress: '0xbd3FAB81C05D6BC92F85059B93f62E6031fBb39c',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MADAI,MAUSDC],
       stakingRewardAddress: '0xD454425F85C1CEfFACd91172312F6704A6b158F5',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MAYFI,MAUSDC],
       stakingRewardAddress: '0x5DD8BE8E5b43b4db266d3d7b911a8241d6610BBf',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [UBT,ETHER],
       stakingRewardAddress: '0x048B32F30C115F033D0aAf869351e872F21A7cab',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [DB,MATIC],
       stakingRewardAddress: '0x152f15A8128D8De734932CA7986F97321006f0Ad',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [QUICK,OM],
       stakingRewardAddress: '0xb160BF8878123AE85b3DB6dCE37B5F848ec9cf0f',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [ETHER,OM],
       stakingRewardAddress: '0x5356c27664C5e23513a9419E272576a5d2E6832e',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MAWETH,MAUSDC],
       stakingRewardAddress: '0x3c6C4F00a1c7525D229046512E03d1474B27E7C7',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MAAAVE,MAUSDC],
       stakingRewardAddress: '0xA2C4BE3F83DEACb1e60a62675Aef314a2cB3D05E',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [UNITOKEN,QUICK],
       stakingRewardAddress: '0xCB26D1DFa93F0506Fded0F3C799D46784B65Abd5',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MALINK,MAUSDC],
       stakingRewardAddress: '0x453f7e2Ae4a7829Aeb7F95CAe18CE083e38fd78F',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MAUNI,MAUSDC],
       stakingRewardAddress: '0xCeBe4F02454DF590532f3980e0fcF076BE6e3301',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [DG,ETHER],
       stakingRewardAddress: '0xBcf91097e3585B8B201E642C5429cc0caa453C3b',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [DG,QUICK],
       stakingRewardAddress: '0xA4FF67A10f7250e9Ce5468f267a72e1E200c0F82',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [UBT,QUICK],
       stakingRewardAddress: '0xB169F29E98Db049ccD9118bf3eF17BB1B576fEF5',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [DB,ETHER],
       stakingRewardAddress: '0x74D7E554abc97f0700E79bfB1a12a72DbdE7414B',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [HEX,ETHER],
       stakingRewardAddress: '0x790faEbd419e68F862fc2AC178530e5993150136',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [HEX,QUICK],
       stakingRewardAddress: '0xbeB94A09E8ea0bCaBdF45Dc35c063be5eFa8098A',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MAUSDC,QUICK],
       stakingRewardAddress: '0xAA0505C616070aDBB5849Cd2e69001D790F83C23',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [EASY,QUICK],
       stakingRewardAddress: '0x2F5240381Aaf4bd933497d237441FdcA29c547b5',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [SX,QUICK],
       stakingRewardAddress: '0x6E2c6Ec20B1D37C68d55853F041E26C7085F0609',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [GAME,QUICK],
       stakingRewardAddress: '0x5d5E93dAf02503838839cC2Efc469dDF09f9970B',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [GAME,ETHER],
       stakingRewardAddress: '0x8a2c0E8668CEA0ed4E4F7f8054CCf2B596dB6593',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [ARIA20,ETHER],
       stakingRewardAddress: '0x4BaCe30A7d51fC6143B76630F0d4dDe9A84aD026',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [SX,DAI],
       stakingRewardAddress: '0xd730DA4945Ed2cAb4859F5Ff5120563F89F4d946',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [ARIA20,QUICK],
       stakingRewardAddress: '0xf993e7aB870414b975c0c86fEBc485Ac55Ca4ce2',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [ZUT,QUICK],
       stakingRewardAddress: '0xe71Ee2AEd6ac7F0f79a39e8eabC661A8a81d9445',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MRBAL,QUICK],
       stakingRewardAddress: '0xED4632e6e62F0B21Da5FcCc73219F90679180a10',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [VISION,ETHER],
       stakingRewardAddress: '0x5688d4a096EaaC58A4E97cDAf47148156aEa894d',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MUST,MATIC],
       stakingRewardAddress: '0xF1c11f2db9a79674D37A2B5143bA75C3C37B4b24',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [MUST,QUICK],
       stakingRewardAddress: '0x3EFF4110dE6BB8fa02a13a13811c4A0b951e5868',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [VISION,QUICK],
       stakingRewardAddress: '0x443991561B978B910b2A712e747Bf73B62F59Fd7',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [CFI,USDC],
       stakingRewardAddress: '0x79Dc8AC9a0062D283F2EA755cB8671a76c1F4289',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [CFI,QUICK],
       stakingRewardAddress: '0xECc943eB73877450F43142265fB4EfFc102988C2',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [PPDEX,QUICK],
       stakingRewardAddress: '0xCaAF5CC13cb23988028a95c9162FCf11B5524D36',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [DSLA,QUICK],
       stakingRewardAddress: '0x67a7CC86D3Cf578b1a4AC37dC503F0d1093d45Fa',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [DSLA,ETHER],
       stakingRewardAddress: '0xa9B2852263a7e32B5D90f43380c21e367e350472',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [DRC,QUICK],
       stakingRewardAddress: '0x0684311298C4F705517098c142f095bc0d810e37',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     { tokens: [DRC,USDC],
       stakingRewardAddress: '0x98c700BC3F366Bc1b7759a8149c94dDE0edC0536',
       ended: true,
       lp: '',
-      name: '' },
+      name: '',
+baseToken: EMPTY },
     {
       tokens: [USDC, MAUSDC],
       stakingRewardAddress: '0x68910d18332fFDc1D11caEA4fE93C94Ccd540732',
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -814,7 +962,8 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: 'StkGHST-QUICK',
-      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f'
+      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f',
+      baseToken: EMPTY
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
     {
@@ -823,6 +972,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -832,6 +982,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -841,6 +992,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -850,7 +1002,8 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: 'stkGHST-USDC',
-      lp: '0x04439eC4ba8b09acfae0E9b5D75A82cC63b19f09'
+      lp: '0x04439eC4ba8b09acfae0E9b5D75A82cC63b19f09',
+      baseToken: EMPTY
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
     {
@@ -859,6 +1012,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -868,6 +1022,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -877,6 +1032,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -886,6 +1042,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -895,6 +1052,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -904,6 +1062,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -913,6 +1072,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -922,6 +1082,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -931,6 +1092,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -940,6 +1102,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -949,6 +1112,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -958,6 +1122,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -967,6 +1132,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -976,6 +1142,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -985,6 +1152,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -994,6 +1162,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1003,6 +1172,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1012,6 +1182,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1021,6 +1192,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1030,6 +1202,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1039,6 +1212,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1048,6 +1222,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1057,6 +1232,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1066,6 +1242,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1075,6 +1252,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1084,6 +1262,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1093,6 +1272,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1102,6 +1282,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1111,6 +1292,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1120,6 +1302,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1129,6 +1312,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1138,6 +1322,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1147,6 +1332,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1156,6 +1342,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1165,6 +1352,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1174,6 +1362,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1183,6 +1372,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1192,6 +1382,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1201,6 +1392,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1210,6 +1402,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1219,6 +1412,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1228,6 +1422,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1237,6 +1432,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1246,6 +1442,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1255,7 +1452,8 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: 'StkQUICK-GHST',
-      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f'
+      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f',
+      baseToken: EMPTY
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
     {
@@ -1264,6 +1462,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1273,6 +1472,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1282,6 +1482,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1291,6 +1492,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1300,6 +1502,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1309,6 +1512,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1318,6 +1522,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1327,6 +1532,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1336,6 +1542,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1345,6 +1552,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1354,6 +1562,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1363,6 +1572,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1372,6 +1582,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1381,6 +1592,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1390,6 +1602,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1399,6 +1612,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1408,6 +1622,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1417,6 +1632,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1426,6 +1642,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1435,6 +1652,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1444,6 +1662,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1455,7 +1674,8 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: 'StkQUICK-GHST',
-      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f'
+      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f',
+      baseToken: EMPTY
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
     {
@@ -1464,6 +1684,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1473,6 +1694,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1482,6 +1704,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1491,6 +1714,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1500,6 +1724,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1509,6 +1734,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1518,6 +1744,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1527,6 +1754,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1536,6 +1764,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1545,6 +1774,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1557,7 +1787,8 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: 'StkQUICK-GHST',
-      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f'
+      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f',
+      baseToken: EMPTY
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
     {
@@ -1566,6 +1797,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1575,6 +1807,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1584,6 +1817,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1593,6 +1827,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1602,6 +1837,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1611,6 +1847,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1620,6 +1857,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1629,6 +1867,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1638,6 +1877,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1647,6 +1887,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1659,6 +1900,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1668,6 +1910,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1677,6 +1920,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1686,6 +1930,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1695,6 +1940,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1704,6 +1950,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1713,6 +1960,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1722,6 +1970,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1731,6 +1980,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1740,6 +1990,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1749,6 +2000,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1758,6 +2010,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1767,6 +2020,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -1778,6 +2032,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1787,6 +2042,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1796,6 +2052,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1805,6 +2062,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1814,6 +2072,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1823,6 +2082,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1832,6 +2092,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1841,6 +2102,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1850,6 +2112,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1859,6 +2122,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1868,6 +2132,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xce2944738CA9Ae803E692124F6Fa78C1cbE3a354
     },
@@ -1879,6 +2144,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xEbA9170fd5c04452Ebd40276515803687fF64162
     },
@@ -1888,6 +2154,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xEbA9170fd5c04452Ebd40276515803687fF64162
     },
@@ -1897,6 +2164,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xEbA9170fd5c04452Ebd40276515803687fF64162
     },
@@ -1906,6 +2174,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xEbA9170fd5c04452Ebd40276515803687fF64162
     },
@@ -1915,6 +2184,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xEbA9170fd5c04452Ebd40276515803687fF64162
     },
@@ -1924,6 +2194,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xEbA9170fd5c04452Ebd40276515803687fF64162
     },
@@ -1933,6 +2204,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xEbA9170fd5c04452Ebd40276515803687fF64162
     },
@@ -1942,6 +2214,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xEbA9170fd5c04452Ebd40276515803687fF64162
     },
@@ -1951,6 +2224,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xEbA9170fd5c04452Ebd40276515803687fF64162
     },
@@ -1960,6 +2234,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xEbA9170fd5c04452Ebd40276515803687fF64162
     },
@@ -1969,6 +2244,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xEbA9170fd5c04452Ebd40276515803687fF64162
     },
@@ -1980,6 +2256,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x8A121aECBFFa81A9d4B1eeA6290F20C4487d990D
@@ -1990,6 +2267,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x8A121aECBFFa81A9d4B1eeA6290F20C4487d990D
@@ -2000,6 +2278,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x8A121aECBFFa81A9d4B1eeA6290F20C4487d990D
@@ -2010,6 +2289,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x8A121aECBFFa81A9d4B1eeA6290F20C4487d990D
@@ -2020,6 +2300,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x8A121aECBFFa81A9d4B1eeA6290F20C4487d990D
@@ -2030,6 +2311,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x8A121aECBFFa81A9d4B1eeA6290F20C4487d990D
@@ -2040,6 +2322,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x8A121aECBFFa81A9d4B1eeA6290F20C4487d990D
@@ -2050,6 +2333,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x8A121aECBFFa81A9d4B1eeA6290F20C4487d990D
@@ -2060,6 +2344,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x8A121aECBFFa81A9d4B1eeA6290F20C4487d990D
@@ -2070,6 +2355,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x8A121aECBFFa81A9d4B1eeA6290F20C4487d990D
@@ -2080,6 +2366,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x8A121aECBFFa81A9d4B1eeA6290F20C4487d990D
@@ -2093,6 +2380,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0xE8aF51444824b23d71987166b3ECa9d4C28eA4A6
@@ -2103,6 +2391,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0xE8aF51444824b23d71987166b3ECa9d4C28eA4A6
@@ -2113,6 +2402,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0xE8aF51444824b23d71987166b3ECa9d4C28eA4A6
@@ -2123,6 +2413,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0xE8aF51444824b23d71987166b3ECa9d4C28eA4A6
@@ -2133,6 +2424,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0xE8aF51444824b23d71987166b3ECa9d4C28eA4A6
@@ -2143,6 +2435,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0xE8aF51444824b23d71987166b3ECa9d4C28eA4A6
@@ -2153,6 +2446,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0xE8aF51444824b23d71987166b3ECa9d4C28eA4A6
@@ -2163,6 +2457,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0xE8aF51444824b23d71987166b3ECa9d4C28eA4A6
@@ -2173,6 +2468,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0xE8aF51444824b23d71987166b3ECa9d4C28eA4A6
@@ -2183,6 +2479,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0xE8aF51444824b23d71987166b3ECa9d4C28eA4A6
@@ -2195,6 +2492,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x122cfEd20D7C812cbcEC5538BB8DE3e46c94BEf6
@@ -2205,6 +2503,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x122cfEd20D7C812cbcEC5538BB8DE3e46c94BEf6
@@ -2215,6 +2514,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x122cfEd20D7C812cbcEC5538BB8DE3e46c94BEf6
@@ -2225,6 +2525,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x122cfEd20D7C812cbcEC5538BB8DE3e46c94BEf6
@@ -2235,6 +2536,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x122cfEd20D7C812cbcEC5538BB8DE3e46c94BEf6
@@ -2245,6 +2547,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
 
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x122cfEd20D7C812cbcEC5538BB8DE3e46c94BEf6
@@ -2254,6 +2557,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x46385DF67DF1A058d0C07420e4B7D9c3a40eACE8',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x122cfEd20D7C812cbcEC5538BB8DE3e46c94BEf6
@@ -2263,6 +2567,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x6d48CeD6521B55F64Bdb5FbFe27e0A19Fb46F1C8',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x122cfEd20D7C812cbcEC5538BB8DE3e46c94BEf6
@@ -2272,6 +2577,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x9Ad3a1B339A796A5D373f4ec7BD8eC865f1ea5aC',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x122cfEd20D7C812cbcEC5538BB8DE3e46c94BEf6
@@ -2281,6 +2587,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x5d445F4EDdCaee519F51Bb9AB7fEE0A74c8F37C1',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x122cfEd20D7C812cbcEC5538BB8DE3e46c94BEf6
@@ -2292,6 +2599,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0xcd7A989C8a21871ff9Da645F74916e23b7b83601',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
@@ -2301,6 +2609,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x7341554a23A89a97186f339597AE365bBB0c4a26',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
@@ -2310,6 +2619,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x7d59413E87dA59552a662103782CcA860Dc3d3c4',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
@@ -2319,6 +2629,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0xf91056D1A58a38A783a4F6122A1F995EEE4f60B3',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
@@ -2328,6 +2639,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x88d4D1a7A0E917DB41De09A1AcA437726c1C418a',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
@@ -2337,6 +2649,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0xfbEed0206635479BD2Ac204F793BF10E7EEad9df',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x17D0a95553625CfF6A7320c69aD0060969331e39
@@ -2348,6 +2661,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x0cc1c20c8A5640aeFdD41b2aa3E8Dc2c2EdcDDbD',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
@@ -2357,6 +2671,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0xE769875f9F0e38b15c9f409F08B583f00d2B14d3',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
@@ -2366,6 +2681,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x1D43445c82795E4Cc8eF7C3cd735a10C112332A7',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
@@ -2375,6 +2691,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0xD929bbbd983b334D9D638DeC49DF454c3Ee720d9',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
@@ -2384,6 +2701,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0xFA190551895cc065EE48E2E36c7cd0F2ae01AED2',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
@@ -2393,6 +2711,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0x457d88690e0B543445e69c03b5a760b38Ce07078',
       ended: true,
       name: '',
+baseToken: EMPTY,
       lp: ''
       
       //STAKINGREWARDSFACTORY- 0x80F13018Eb0CbD2579924Eb8039C5d36E467EB49
@@ -2406,6 +2725,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2415,7 +2735,8 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: 'StkGHST-QUICK',
-      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f'
+      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f',
+      baseToken: EMPTY
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
     {
@@ -2424,6 +2745,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2433,6 +2755,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2442,6 +2765,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2451,6 +2775,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2460,7 +2785,8 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: 'stkGHST-USDC',
-      lp: '0x04439eC4ba8b09acfae0E9b5D75A82cC63b19f09'
+      lp: '0x04439eC4ba8b09acfae0E9b5D75A82cC63b19f09',
+      baseToken: EMPTY
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
     {
@@ -2469,6 +2795,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2478,6 +2805,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2487,6 +2815,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2496,6 +2825,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2505,6 +2835,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2514,6 +2845,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2523,6 +2855,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2532,6 +2865,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2541,6 +2875,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2550,6 +2885,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2559,6 +2895,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2568,6 +2905,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2577,6 +2915,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2586,6 +2925,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2595,6 +2935,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2604,6 +2945,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2613,6 +2955,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2622,6 +2965,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2631,6 +2975,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2640,6 +2985,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2649,6 +2995,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2658,6 +3005,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2667,6 +3015,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2676,6 +3025,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2685,6 +3035,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2694,6 +3045,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2703,6 +3055,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     },
@@ -2712,6 +3065,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       ended: true,
       
       name: '',
+baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
     }
@@ -2742,6 +3096,8 @@ export interface StakingInfo {
   name: string
 
   lp: string
+
+  baseToken: Token
   // calculates a hypothetical amount of token distributed to the active account per second.
   getHypotheticalRewardRate: (
     stakedAmount: TokenAmount,
@@ -2872,7 +3228,8 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           totalRewardRate: totalRewardRate,
           stakedAmount: stakedAmount,
           totalStakedAmount: totalStakedAmount,
-          getHypotheticalRewardRate
+          getHypotheticalRewardRate,
+          baseToken: info[index].baseToken
         })
       }
       return memo
@@ -3002,6 +3359,7 @@ export function useVeryOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo
           totalRewardRate: totalRewardRate,
           stakedAmount: stakedAmount,
           totalStakedAmount: totalStakedAmount,
+          baseToken: info[index].baseToken,
           getHypotheticalRewardRate
         })
       }
@@ -3131,6 +3489,7 @@ export function useOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           totalRewardRate: totalRewardRate,
           stakedAmount: stakedAmount,
           totalStakedAmount: totalStakedAmount,
+          baseToken: info[index].baseToken,
           getHypotheticalRewardRate
         })
       }
