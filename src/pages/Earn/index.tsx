@@ -68,7 +68,7 @@ export default function Earn() {
 
   stakingInfos?.sort((a,b) => {
     if(Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
-      return -1;
+      return 1;
     }
     if(!Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
       return 1;
