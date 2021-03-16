@@ -217,7 +217,7 @@ export default function Manage({
             <TYPE.body fontSize={24} fontWeight={500}>
               {stakingInfo?.totalRewardRate
                 ?.multiply((60 * 60 * 24).toString())
-                ?.toFixed(0, { groupSeparator: ',' }) ?? '-'}
+                ?.toFixed(2, { groupSeparator: ',' })?.replace(/[.,]00$/, "") ?? '-'}
               {' QUICK / day'}
             </TYPE.body>
           </AutoColumn>
