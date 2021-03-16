@@ -2,9 +2,11 @@ import React, { useState } from 'react'
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
 import { STAKING_REWARDS_INFO, useStakingInfo, useOldStakingInfo } from '../../state/stake/hooks'
-import { TYPE/**, ExternalLink*/ } from '../../theme'
+import { TYPE, ExternalLink} from '../../theme'
+import { isMobile } from 'react-device-detect'
 import PoolCard from '../../components/earn/PoolCard'
 import { RowBetween } from '../../components/Row'
+import { ButtonPrimary } from '../../components/Button'
 import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/earn/styled'
 import { Countdown } from './Countdown'
 import Loader from '../../components/Loader'
@@ -56,7 +58,6 @@ export default function Earn() {
   const { chainId } = useActiveWeb3React()
   const stakingInfos = useStakingInfo()
   const oldStakingInfos = useOldStakingInfo();
-
   const DataRow = styled(RowBetween)`
     ${({ theme }) => theme.mediaWidth.upToSmall`
     flex-direction: column;
@@ -80,7 +81,16 @@ export default function Earn() {
                 <TYPE.white fontSize={14}>
                   Deposit your Liquidity Provider tokens to receive QUICK, the Quickswap protocol governance token.
                 </TYPE.white>
+                
               </RowBetween>{' '}
+              <RowBetween>
+              <ExternalLink id={`old-pools-link`} href={'https://quickswap.exchange/#/archive'} style={{width: isMobile?'50%':'25%'}}>
+              
+                  <ButtonPrimary padding="8px" borderRadius="8px">
+                    Archived Pools
+                  </ButtonPrimary>
+                  </ExternalLink>
+              </RowBetween>
               {/*<ExternalLink
                 style={{ color: 'white', textDecoration: 'underline' }}
                 href="https://uniswap.org/blog/uni/"
@@ -109,9 +119,9 @@ export default function Earn() {
           ) : (
             oldStakingInfos?.map(stakingInfo => {
               // need to sort by added liquidity here
-              return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} />
+              return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} isOld={false}/>
             })
-          )}    
+          )}   
 
           {stakingRewardsExist && stakingInfos?.length === 0 ? (
             <Loader style={{ margin: 'auto' }} />
@@ -123,7 +133,7 @@ export default function Earn() {
               (page * ITEMS_PER_PAGE) < stakingInfos.length ? (page * ITEMS_PER_PAGE): stakingInfos.length  
             ).map(stakingInfo => {
               // need to sort by added liquidity here
-              return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} />
+              return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} isOld={true}/>
             })
           )}
           <PageButtons>

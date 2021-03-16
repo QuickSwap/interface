@@ -18,6 +18,8 @@ import {
   RedirectToAddLiquidity
 } from './AddLiquidity/redirects'
 import Earn from './Earn'
+import Old from './Earn/Old';
+import ManageOld from './Earn/ManageOld';
 import Manage from './Earn/Manage'
 import Pool from './Pool'
 import PoolFinder from './PoolFinder'
@@ -94,6 +96,7 @@ export default function App() {
               <Route exact strict path="/find" component={PoolFinder} />
               <Route exact strict path="/pool" component={Pool} />
               <Route exact strict path="/quick" component={Earn} />
+              <Route exact strict path="/archive" component={Old} />
               <Route exact strict path="/vote" component={Vote} />
               <Route exact strict path="/create" component={RedirectToAddLiquidity} />
               <Route exact path="/add" component={AddLiquidity} />
@@ -105,6 +108,7 @@ export default function App() {
               <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
               <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
               <Route exact strict path="/quick/:currencyIdA/:currencyIdB/:rewardsAddress" component={Manage} />
+              <Route exact strict path="/archive/:currencyIdA/:currencyIdB/:rewardsAddress" component={ManageOld} />
               <Route exact strict path="/vote/:id" component={VotePage} />
               <Route component={RedirectPathToSwapOnly} />
             </Switch>

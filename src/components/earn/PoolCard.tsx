@@ -72,7 +72,7 @@ const BottomSection = styled.div<{ showBackground: boolean }>`
   z-index: 1;
 `
 
-export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) {
+export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingInfo, isOld: Boolean}) {
   const token0 = stakingInfo.tokens[0]
   const token1 = stakingInfo.tokens[1]
 
@@ -130,12 +130,20 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
           {stakingInfo.name && stakingInfo.name !== '' ? stakingInfo.name : (currency0.symbol + '-' + currency1.symbol)}
           
         </TYPE.white>
-
-        <StyledInternalLink to={`/quick/${currencyId(currency0)}/${currencyId(currency1)}/${stakingInfo.stakingRewardAddress}`} style={{ width: '100%' }}>
+        {isOld ? (
+          <StyledInternalLink to={`/archive/${currencyId(currency0)}/${currencyId(currency1)}/${stakingInfo.stakingRewardAddress}`} style={{ width: '100%' }}>
           <ButtonPrimary padding="8px" borderRadius="8px">
             {isStaking ? 'Manage' : 'Deposit'}
           </ButtonPrimary>
         </StyledInternalLink>
+        ) : (
+          <StyledInternalLink to={`/quick/${currencyId(currency0)}/${currencyId(currency1)}/${stakingInfo.stakingRewardAddress}`} style={{ width: '100%' }}>
+            <ButtonPrimary padding="8px" borderRadius="8px">
+              {isStaking ? 'Manage' : 'Deposit'}
+            </ButtonPrimary>
+          </StyledInternalLink>
+        ) }
+        
       </TopSection>
 
       <StatContainer>
@@ -151,7 +159,7 @@ export default function PoolCard({ stakingInfo }: { stakingInfo: StakingInfo }) 
           <TYPE.white> Pool rate </TYPE.white>
           <TYPE.white>{`${stakingInfo.totalRewardRate
             ?.multiply(`${60 * 60 * 24}`)
-            ?.toFixed(2, { groupSeparator: ',' })?.replace(/[.,]00$/, "")} QUICK / day`}</TYPE.white>
+            ?.toFixed(2, { groupSeparator: ',' }).replace(/[.,]00$/, "")} QUICK / day`}</TYPE.white>
         </RowBetween>
         <RowBetween>
           <TYPE.white> Status </TYPE.white>

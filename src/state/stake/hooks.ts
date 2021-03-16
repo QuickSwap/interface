@@ -470,6 +470,20 @@ export const OLD_STAKING_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [//TODO: MATIC
+    
+  ]
+}
+
+export const VERY_OLD_STAKING_REWARDS_INFO: {
+  [chainId in ChainId]?: {
+    tokens: [Token, Token]
+    stakingRewardAddress: string
+    ended: boolean
+    name: string
+    lp: string
+  }[]
+} = {
+  [ChainId.MATIC]: [//TODO: MATIC
     { tokens: [MAUSDC,USDC],
       stakingRewardAddress: '0x111C8Fb82c3BAf533ca7A0deeB5a7BF31D6B2b57',
       ended: true,
@@ -2866,6 +2880,136 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   }, [balances, chainId, earnedAmounts, info, periodFinishes, rewardRates, rewardsAddresses, totalSupplies, uni])
 }
 
+// gets the staking info from the network for the active chain id
+export function useVeryOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
+  const { chainId, account } = useActiveWeb3React()
+
+  const info = useMemo(
+    () =>
+      chainId
+        ? VERY_OLD_STAKING_REWARDS_INFO[chainId]?.filter(stakingRewardInfo =>
+            pairToFilterBy === undefined
+              ? true
+              : pairToFilterBy === null
+              ? true
+              : pairToFilterBy.involvesToken(stakingRewardInfo.tokens[0]) &&
+                pairToFilterBy.involvesToken(stakingRewardInfo.tokens[1])
+          ) ?? []
+        : [],
+    [chainId, pairToFilterBy]
+  )
+
+  const uni = chainId ? UNI[chainId] : undefined
+
+  const rewardsAddresses = useMemo(() => info.map(({ stakingRewardAddress }) => stakingRewardAddress), [info])
+
+  const accountArg = useMemo(() => [account ?? undefined], [account])
+
+  // get all the info from the staking rewards contracts
+  const balances = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'balanceOf', accountArg)
+  const earnedAmounts = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'earned', accountArg)
+  const totalSupplies = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'totalSupply')
+
+  // tokens per second, constants
+  const rewardRates = useMultipleContractSingleData(
+    rewardsAddresses,
+    STAKING_REWARDS_INTERFACE,
+    'rewardRate',
+    undefined,
+    NEVER_RELOAD
+  )
+  const periodFinishes = useMultipleContractSingleData(
+    rewardsAddresses,
+    STAKING_REWARDS_INTERFACE,
+    'periodFinish',
+    undefined,
+    NEVER_RELOAD
+  )
+
+  return useMemo(() => {
+    if (!chainId || !uni) return []
+
+    return rewardsAddresses.reduce<StakingInfo[]>((memo, rewardsAddress, index) => {
+      // these two are dependent on account
+      const balanceState = balances[index]
+      const earnedAmountState = earnedAmounts[index]
+
+      // these get fetched regardless of account
+      const totalSupplyState = totalSupplies[index]
+      const rewardRateState = rewardRates[index]
+      const periodFinishState = periodFinishes[index]
+
+      if (
+        // these may be undefined if not logged in
+        !balanceState?.loading &&
+        !earnedAmountState?.loading &&
+        // always need these
+        totalSupplyState &&
+        !totalSupplyState.loading &&
+        rewardRateState &&
+        !rewardRateState.loading &&
+        periodFinishState &&
+        !periodFinishState.loading
+      ) {
+        if (
+          balanceState?.error ||
+          earnedAmountState?.error ||
+          totalSupplyState.error ||
+          rewardRateState.error ||
+          periodFinishState.error
+        ) {
+          console.error('Failed to load staking rewards info')
+          return memo
+        }
+
+        // get the LP token
+        const tokens = info[index].tokens
+        const dummyPair = new Pair(new TokenAmount(tokens[0], '0'), new TokenAmount(tokens[1], '0'))
+
+        // check for account, if no account set to 0
+        const lp = info[index].lp;
+
+        const stakedAmount = new TokenAmount(lp && lp !== '' ? new Token(137, lp, 18, "SLP", "Staked LP") : dummyPair.liquidityToken, JSBI.BigInt(balanceState?.result?.[0] ?? 0))
+        const totalStakedAmount = new TokenAmount(lp && lp !== '' ? new Token(137, lp, 18, "SLP", "Staked LP") : dummyPair.liquidityToken, JSBI.BigInt(totalSupplyState.result?.[0]))
+        const totalRewardRate = new TokenAmount(uni, JSBI.BigInt(rewardRateState.result?.[0]))
+
+        const getHypotheticalRewardRate = (
+          stakedAmount: TokenAmount,
+          totalStakedAmount: TokenAmount,
+          totalRewardRate: TokenAmount
+        ): TokenAmount => {
+          return new TokenAmount(
+            uni,
+            JSBI.greaterThan(totalStakedAmount.raw, JSBI.BigInt(0))
+              ? JSBI.divide(JSBI.multiply(totalRewardRate.raw, stakedAmount.raw), totalStakedAmount.raw)
+              : JSBI.BigInt(0)
+          )
+        }
+
+        const individualRewardRate = getHypotheticalRewardRate(stakedAmount, totalStakedAmount, totalRewardRate)
+
+        const periodFinishMs = periodFinishState.result?.[0]?.mul(1000)?.toNumber()
+
+        memo.push({
+          stakingRewardAddress: rewardsAddress,
+          tokens: info[index].tokens,
+          ended: info[index].ended,
+          name: info[index].name,
+          lp: info[index].lp,
+          periodFinish: periodFinishMs > 0 ? new Date(periodFinishMs) : undefined,
+          earnedAmount: new TokenAmount(uni, JSBI.BigInt(earnedAmountState?.result?.[0] ?? 0)),
+          rewardRate: individualRewardRate,
+          totalRewardRate: totalRewardRate,
+          stakedAmount: stakedAmount,
+          totalStakedAmount: totalStakedAmount,
+          getHypotheticalRewardRate
+        })
+      }
+      return memo
+    }, [])
+  }, [balances, chainId, earnedAmounts, info, periodFinishes, rewardRates, rewardsAddresses, totalSupplies, uni])
+}
+
 export function useOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const { chainId, account } = useActiveWeb3React()
 
@@ -3000,7 +3144,7 @@ export function useTotalUniEarned(): TokenAmount | undefined {
   const uni = chainId ? UNI[chainId] : undefined
   const newStakingInfos = useStakingInfo()
   const oldStakingInfos = useOldStakingInfo();
-  const stakingInfos = oldStakingInfos.concat(newStakingInfos);
+  const stakingInfos = newStakingInfos.concat(oldStakingInfos);
 
   return useMemo(() => {
     if (!uni) return undefined
