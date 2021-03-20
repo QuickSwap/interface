@@ -104,7 +104,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], GAME, DAI, USDC, USDT, GHST, QUICK, ETHER, UNITOKEN, MAUSDC, WBTC, MADAI, DG, SX, FRAX, FXS, MAAAVE, HEX, SWAP, UBT, IFARM, LINK, CEL, ARIA20,SUPER,DEFI5, DB]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], DAI, USDC, GHST, QUICK, ETHER, UNITOKEN, MAUSDC, WBTC, FRAX, MAAAVE, SWAP, LINK, CEL,SUPER,DEFI5, DB]
 }
 
 /**

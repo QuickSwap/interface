@@ -136,7 +136,7 @@ export function useSwapCallback(
               .then(gasEstimate => {
                 return {
                   call,
-                  gasEstimate
+                  gasEstimate: gasEstimate.add(100000)
                 }
               })
               .catch(gasError => {
