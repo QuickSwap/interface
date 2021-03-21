@@ -226,6 +226,10 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://darkmatter.finance/i/favicon/512x512.png'
     }
 
+    if (address?.toLowerCase() === '0x8a2870fb69A90000D6439b7aDfB01d4bA383A415'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/DEGEN_LOGO.png'
+    }
+
     if (address?.toLowerCase() === '0x521CddC0CBa84F14c69C1E99249F781AA73Ee0BC'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/13719/small/hh.png?1611137626'
     }
