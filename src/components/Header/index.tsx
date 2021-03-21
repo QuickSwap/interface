@@ -515,7 +515,7 @@ export default function Header() {
         injectedProvider={window.ethereum}
         routerPublicIdentifier="vector892GMZ3CuUkpyW8eeXfW2bt5W73TWEXtgV71nphXUXAmpncnj8"
         depositAssetId={'0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48'}
-        depositChainProvider="https://mainnet.infura.io/v3/"
+        depositChainProvider="https://cloudflare-eth.com/"
         depositChainId={1}
         withdrawAssetId={'0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174'}
         withdrawChainProvider="https://rpc-mainnet.maticvigil.com"
