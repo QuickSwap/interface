@@ -550,6 +550,21 @@ export const OLD_STAKING_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [//TODO: MATIC
+    
+  ]
+}
+
+export const VERY_OLD_STAKING_REWARDS_INFO: {
+  [chainId in ChainId]?: {
+    tokens: [Token, Token]
+    stakingRewardAddress: string
+    ended: boolean
+    name: string
+    lp: string
+    baseToken: Token
+  }[]
+} = {
+  [ChainId.MATIC]: [//TODO: MATIC
     { tokens: [MAUSDC,USDC],
       stakingRewardAddress: '0x19FD308bfC9fdC7979a7141A10bc0B4C0267AbBB',
       ended: true,
@@ -1008,21 +1023,7 @@ baseToken: QUICK },
       ended: true,
       lp: '',
       name: '',
-baseToken: USDC }
-  ]
-}
-
-export const VERY_OLD_STAKING_REWARDS_INFO: {
-  [chainId in ChainId]?: {
-    tokens: [Token, Token]
-    stakingRewardAddress: string
-    ended: boolean
-    name: string
-    lp: string
-    baseToken: Token
-  }[]
-} = {
-  [ChainId.MATIC]: [//TODO: MATIC
+baseToken: USDC },
     { tokens: [MAUSDC,USDC],
       stakingRewardAddress: '0x111C8Fb82c3BAf533ca7A0deeB5a7BF31D6B2b57',
       ended: true,
