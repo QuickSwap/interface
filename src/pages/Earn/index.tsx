@@ -5,6 +5,8 @@ import { STAKING_REWARDS_INFO, useStakingInfo, useOldStakingInfo } from '../../s
 import { TYPE, ExternalLink} from '../../theme'
 import { isMobile } from 'react-device-detect'
 import PoolCard from '../../components/earn/PoolCard'
+import LairCard from '../../components/QuickLair/LairCard'
+
 import { RowBetween } from '../../components/Row'
 import { ButtonPrimary } from '../../components/Button'
 import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/earn/styled'
@@ -119,6 +121,28 @@ export default function Earn() {
           <CardNoise />
         </DataCard>
       </TopSection>
+      <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
+        <DataRow style={{ alignItems: 'baseline' }}>
+          <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>QuickSwap Lair</TYPE.mediumHeader>
+          
+        </DataRow>
+
+        <PoolSection>
+          {stakingRewardsExist && stakingInfos?.length === 0 ? (
+            <Loader style={{ margin: 'auto' }} />
+          ) : !stakingRewardsExist ? (
+            'No active rewards'
+          ) : (
+            stakingInfos?.slice(
+              page === 1 ? 0 : (page - 1) * ITEMS_PER_PAGE,
+              (page * ITEMS_PER_PAGE) < stakingInfos.length ? (page * ITEMS_PER_PAGE): stakingInfos.length  
+            ).map(stakingInfo => {
+              // need to sort by added liquidity here
+              return <LairCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} isOld={false}/>
+            })
+          )}
+        </PoolSection>
+      </AutoColumn>
 
       <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
         <DataRow style={{ alignItems: 'baseline' }}>
