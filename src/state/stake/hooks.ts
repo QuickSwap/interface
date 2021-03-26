@@ -5,15 +5,15 @@ import {
   EASY,
   USDC,
   ETHER,
-  //eUSDC,
-  //eUSDT,
-  //eDAI,
+  eUSDC,
+  eUSDT,
+  eDAI,
   UNITOKEN,
   QUICK,
   DAI,
-  //IGG,
+  IGG,
   WBTC,
-  //USDT,
+  USDT,
   MATIC,
   OM,
   GHST,
@@ -1762,8 +1762,8 @@ baseToken: EMPTY,
 baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
-    }
-    /**{
+    },
+    {
       tokens: [MATIC, DB],
       stakingRewardAddress: '0xa7a2FC8D0AA647dFF90Bb914f81F8ebbfDaC54E5',
       ended: true,
@@ -3525,7 +3525,7 @@ baseToken: EMPTY,
 baseToken: EMPTY,
       lp: ''
       //STAKINGREWARDSFACTORY- 0xbD20FAdBdd65A73A15452Ce0adf7d4943e102b69
-    }*/
+    }
   ]
 }
 
