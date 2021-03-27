@@ -234,6 +234,10 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/13719/small/hh.png?1611137626'
     }
 
+    if (address?.toLowerCase() === '0x6968105460f67c3BF751bE7C15f92F5286Fd0CE5'.toLowerCase()) {
+      uri = 'https://i.imgur.com/FR12tmm.jpg'
+    }
+
     if (address?.toLowerCase() === '0x82B6205002ecd05e97642D38D61e2cFeaC0E18cE'.toLowerCase()) {
       uri = 'https://etherscan.io/token/images/deflect_32.png?=v1'
     }
