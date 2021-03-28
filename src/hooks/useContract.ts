@@ -6,7 +6,7 @@ import { abi as MERKLE_DISTRIBUTOR_ABI } from '@uniswap/merkle-distributor/build
 import { ChainId, WETH } from '@uniswap/sdk'
 import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 import { useMemo } from 'react'
-import { GOVERNANCE_ADDRESS, MERKLE_DISTRIBUTOR_ADDRESS, UNI } from '../constants'
+import { GOVERNANCE_ADDRESS, MERKLE_DISTRIBUTOR_ADDRESS, UNI, LAIR_ADDRESS } from '../constants'
 import {
   ARGENT_WALLET_DETECTOR_ABI,
   ARGENT_WALLET_DETECTOR_MAINNET_ADDRESS
@@ -22,6 +22,7 @@ import { MULTICALL_ABI, MULTICALL_NETWORKS } from '../constants/multicall'
 import { V1_EXCHANGE_ABI, V1_FACTORY_ABI, V1_FACTORY_ADDRESSES } from '../constants/v1'
 import { getContract } from '../utils'
 import { useActiveWeb3React } from './index'
+import { abi as LairABI } from '../abis/DragonLair.json'; 
 
 // returns null on errors
 function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
@@ -38,6 +39,9 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
   }, [address, ABI, library, withSignerIfPossible, account])
 }
 
+export function useLairContract(): Contract | null {
+  return useContract(LAIR_ADDRESS, LairABI, true)
+}
 export function useV1FactoryContract(): Contract | null {
   const { chainId } = useActiveWeb3React()
   return useContract(chainId && V1_FACTORY_ADDRESSES[chainId], V1_FACTORY_ABI, false)

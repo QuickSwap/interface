@@ -55,12 +55,15 @@ import {
   MDEF,
   DMT,
   DEGEN,
+  LAIR_ADDRESS,
+  DQUICK,
   EMPTY
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
-import { NEVER_RELOAD, useMultipleContractSingleData } from '../multicall/hooks'
+import { NEVER_RELOAD, useMultipleContractSingleData, useSingleCallResult } from '../multicall/hooks'
 import { tryParseAmount } from '../swap/hooks'
+import { useLairContract } from '../../hooks/useContract'
 
 export const STAKING_GENESIS = 1616346000;
 
@@ -3529,6 +3532,18 @@ baseToken: EMPTY,
   ]
 }
 
+export interface LairInfo {
+  lairAddress: string
+
+  dQUICKtoQUICK: TokenAmount
+
+  QUICKtodQUICK: TokenAmount
+
+  dQUICKBalance: TokenAmount
+
+  QUICKBalance: TokenAmount
+}
+
 export interface StakingInfo {
   // the address of the reward contract
   stakingRewardAddress: string
@@ -3563,10 +3578,39 @@ export interface StakingInfo {
   ) => TokenAmount
 }
 
+export function useLairInfo(): LairInfo {
+  const { account } = useActiveWeb3React()
+
+  const accountArg = useMemo(() => [account ?? undefined], [account])
+
+  const inputs = useMemo(() => ['1000000000000000000'], ['1000000000000000000'])
+
+  const lair = useLairContract()
+  const dQuickToQuick = useSingleCallResult(lair, 'dQUICKForQUICK', inputs);
+  const quickToDQuick = useSingleCallResult(lair, 'QUICKForDQUICK', inputs);
+  const quickBalance = useSingleCallResult(lair, 'QUICKBalance', accountArg);
+  const dQuickBalance = useSingleCallResult(lair, 'balanceOf', accountArg);
+
+  return useMemo(() => {
+    return (
+      {
+        lairAddress: LAIR_ADDRESS,
+        dQUICKtoQUICK: new TokenAmount(QUICK, JSBI.BigInt(dQuickToQuick?.result?.[0] ?? 0)),
+        QUICKtodQUICK: new TokenAmount(DQUICK, JSBI.BigInt(quickToDQuick?.result?.[0] ?? 0)),
+        dQUICKBalance: new TokenAmount(DQUICK, JSBI.BigInt(dQuickBalance?.result?.[0] ?? 0)),
+        QUICKBalance: new TokenAmount(QUICK, JSBI.BigInt(quickBalance?.result?.[0] ?? 0))
+      }
+    )
+    
+  }, [LAIR_ADDRESS, dQuickToQuick, quickToDQuick, quickBalance, dQuickBalance])
+
+}
+
 // gets the staking info from the network for the active chain id
 export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const { chainId, account } = useActiveWeb3React()
-
+  const a = useLairInfo();
+  console.log(a);
   const info = useMemo(
     () =>
       chainId
@@ -3587,7 +3631,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const rewardsAddresses = useMemo(() => info.map(({ stakingRewardAddress }) => stakingRewardAddress), [info])
 
   const accountArg = useMemo(() => [account ?? undefined], [account])
-
+   
   // get all the info from the staking rewards contracts
   const balances = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'balanceOf', accountArg)
   const earnedAmounts = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'earned', accountArg)

@@ -7,6 +7,8 @@ export const ROUTER_ADDRESS = '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff'; //'0
 
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
+export const LAIR_ADDRESS = '0xf28164a485b0b2c90639e47b0f377b4a438a16b1';
+
 
 // a list of tokens by chain
 type ChainTokenList = {
@@ -77,6 +79,7 @@ export const HH  = new Token(ChainId.MATIC, '0x521CddC0CBa84F14c69C1E99249F781AA
 export const MDEF  = new Token(ChainId.MATIC, '0x82B6205002ecd05e97642D38D61e2cFeaC0E18cE', 9, 'mDEF', 'Matic Deflect Protocol')
 export const DMT  = new Token(ChainId.MATIC, '0xd28449BB9bB659725aCcAd52947677ccE3719fD7', 18, 'DMT', 'Dark Matter Token')
 export const DEGEN  = new Token(ChainId.MATIC, '0x8a2870fb69A90000D6439b7aDfB01d4bA383A415', 18, 'DEGEN', 'DEGEN Index')
+export const DQUICK = new Token(ChainId.MATIC, '0xf28164A485B0B2C90639E47b0f377b4a438a16B1', 18, 'dQUICK', 'Dragon QUICK')
 
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
@@ -125,7 +128,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], DEGEN, MRBAL, GAME, SENT, ELET, DAI, USDC, USDT, COMP, GHST, QUICK, ETHER, UNITOKEN, EASY, IGG, WBTC, OM, MAUSDC, SWG, MADAI, RBAL, DG, SX, WRX, MUST, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, DB, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], DQUICK, DEGEN, MRBAL, GAME, SENT, ELET, DAI, USDC, USDT, COMP, GHST, QUICK, ETHER, UNITOKEN, EASY, IGG, WBTC, OM, MAUSDC, SWG, MADAI, RBAL, DG, SX, WRX, MUST, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, DB, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
-import { STAKING_REWARDS_INFO, useStakingInfo, useOldStakingInfo } from '../../state/stake/hooks'
+import { STAKING_REWARDS_INFO, useStakingInfo, useOldStakingInfo, useLairInfo } from '../../state/stake/hooks'
 import { TYPE, ExternalLink} from '../../theme'
 import { isMobile } from 'react-device-detect'
 import PoolCard from '../../components/earn/PoolCard'
@@ -59,6 +59,7 @@ export default function Earn() {
 
   const { chainId } = useActiveWeb3React()
   const stakingInfos = useStakingInfo()
+  const lairInfo = useLairInfo();
   const oldStakingInfos = useOldStakingInfo();
   const DataRow = styled(RowBetween)`
     ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -128,19 +129,7 @@ export default function Earn() {
         </DataRow>
 
         <PoolSection>
-          {stakingRewardsExist && stakingInfos?.length === 0 ? (
-            <Loader style={{ margin: 'auto' }} />
-          ) : !stakingRewardsExist ? (
-            'No active rewards'
-          ) : (
-            stakingInfos?.slice(
-              page === 1 ? 0 : (page - 1) * ITEMS_PER_PAGE,
-              (page * ITEMS_PER_PAGE) < stakingInfos.length ? (page * ITEMS_PER_PAGE): stakingInfos.length  
-            ).map(stakingInfo => {
-              // need to sort by added liquidity here
-              return <LairCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} isOld={false}/>
-            })
-          )}
+        <LairCard lairInfo={lairInfo}/>
         </PoolSection>
       </AutoColumn>
 
