@@ -30,6 +30,7 @@ import { OpenClaimAddressModalAndRedirectToSwap, RedirectPathToSwapOnly, Redirec
 
 import Vote from './Vote'
 import VotePage from './Vote/VotePage'
+import ManageLair from './QuickLair/ManageLair'
 
 const AppWrapper = styled.div`
   display: flex;
@@ -108,7 +109,7 @@ export default function App() {
               <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
               <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
               <Route exact strict path="/quick/:currencyIdA/:currencyIdB/:rewardsAddress" component={Manage} />
-              <Route exact strict path="/dquick" component={Manage} />
+              <Route exact strict path="/dquick" component={ManageLair} />
               <Route exact strict path="/archive/:currencyIdA/:currencyIdB/:rewardsAddress" component={ManageOld} />
               <Route exact strict path="/vote/:id" component={VotePage} />
               <Route component={RedirectPathToSwapOnly} />
