@@ -238,6 +238,22 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://i.imgur.com/FR12tmm.jpg'
     }
 
+    if (address?.toLowerCase() === '0x9c49BA0212Bb5Db371e66b59D1565b7c06E4894e'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/indexed-cc10_32.png'
+    }
+
+    if (address?.toLowerCase() === '0x282d8efCe846A88B159800bd4130ad77443Fa1A1'.toLowerCase()) {
+      uri = 'https://oceanprotocol.com/static/4ad704a150d436a1f32d495413fc47cd/favicon-white.png'
+    }
+
+    if (address?.toLowerCase() === '0x232eaB56c4fB3f84c6Fb0a50c087c74b7B43c6Ad'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/zuzprotocol_32.png'
+    }
+
+    if (address?.toLowerCase() === '0xB77e62709e39aD1cbeEBE77cF493745AeC0F453a'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/wisetoken_32.png'
+    }
+
     if (address?.toLowerCase() === '0x82B6205002ecd05e97642D38D61e2cFeaC0E18cE'.toLowerCase()) {
       uri = 'https://etherscan.io/token/images/deflect_32.png?=v1'
     }
