@@ -152,7 +152,7 @@ export default function LairCard({ stakingInfo, isOld }: { stakingInfo: StakingI
 
       <StatContainer>
         <RowBetween>
-          <TYPE.white> Total deposits</TYPE.white>
+          <TYPE.white> Total QUICK</TYPE.white>
           <TYPE.white>
             {valueOfTotalStakedAmountInUSDC
               ? `$${valueOfTotalStakedAmountInUSDC.toFixed(0, { groupSeparator: ',' })}`
@@ -163,7 +163,7 @@ export default function LairCard({ stakingInfo, isOld }: { stakingInfo: StakingI
           <TYPE.white> Pool rate </TYPE.white>
           <TYPE.white>{`${stakingInfo.totalRewardRate
             ?.multiply(`${60 * 60 * 24}`)
-            ?.toFixed(2, { groupSeparator: ',' }).replace(/[.,]00$/, "")} QUICK / day`}</TYPE.white>
+            ?.toFixed(2, { groupSeparator: ',' }).replace(/[.,]00$/, "")} dQUICK / QUICK`}</TYPE.white>
         </RowBetween>
         <RowBetween>
           <TYPE.white> Status </TYPE.white>
