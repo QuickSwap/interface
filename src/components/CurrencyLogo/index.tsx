@@ -198,6 +198,10 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://etherscan.io/token/images/mantradao_32.png'
     }
 
+    if (address?.toLowerCase() === '0xf28164A485B0B2C90639E47b0f377b4a438a16B1'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-interface/master/public/favicon.jpeg'
+    }
+
     if (address?.toLowerCase() === '0xd85d1e945766fea5eda9103f918bd915fbca63e6'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/3263/small/CEL_logo.png?1609598753'
     }

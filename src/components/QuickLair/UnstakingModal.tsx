@@ -5,8 +5,8 @@ import styled from 'styled-components'
 import { RowBetween } from '../Row'
 import { TYPE, CloseIcon } from '../../theme'
 import { ButtonError } from '../Button'
-import { StakingInfo } from '../../state/stake/hooks'
-import { useStakingContract } from '../../hooks/useContract'
+import { LairInfo } from '../../state/stake/hooks'
+import { useLairContract } from '../../hooks/useContract'
 import { SubmittedView, LoadingView } from '../ModalViews'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useTransactionAdder } from '../../state/transactions/hooks'
@@ -21,10 +21,10 @@ const ContentWrapper = styled(AutoColumn)`
 interface StakingModalProps {
   isOpen: boolean
   onDismiss: () => void
-  stakingInfo: StakingInfo
+  lairInfo: LairInfo
 }
 
-export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: StakingModalProps) {
+export default function UnstakingModal({ isOpen, onDismiss, lairInfo }: StakingModalProps) {
   const { account } = useActiveWeb3React()
 
   // monitor call to help UI loading state
@@ -38,13 +38,15 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
     onDismiss()
   }
 
-  const stakingContract = useStakingContract(stakingInfo.stakingRewardAddress)
+  const lairContract = useLairContract();
 
   async function onWithdraw() {
-    if (stakingContract && stakingInfo?.stakedAmount) {
+    if (lairContract && lairInfo?.dQUICKBalance) {
       setAttempting(true)
-      await stakingContract
-        .exit({ gasLimit: 300000 })
+      var balanceString = lairInfo?.dQUICKBalance?.toSignificant(4);
+      var  balance = Number(balanceString) * Math.pow(10, 18);
+      await lairContract
+        .leave( balance.toString() ,{ gasLimit: 300000 })
         .then((response: TransactionResponse) => {
           addTransaction(response, {
             summary: `Withdraw deposited liquidity`
@@ -62,7 +64,7 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
   if (!account) {
     error = 'Connect Wallet'
   }
-  if (!stakingInfo?.stakedAmount) {
+  if (!lairInfo?.dQUICKBalance) {
     error = error ?? 'Enter an amount'
   }
 
@@ -74,26 +76,26 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
             <TYPE.mediumHeader>Withdraw</TYPE.mediumHeader>
             <CloseIcon onClick={wrappedOndismiss} />
           </RowBetween>
-          {stakingInfo?.stakedAmount && (
+          {lairInfo?.dQUICKBalance && (
             <AutoColumn justify="center" gap="md">
               <TYPE.body fontWeight={600} fontSize={36}>
-                {<FormattedCurrencyAmount currencyAmount={stakingInfo.stakedAmount} />}
+                {<FormattedCurrencyAmount currencyAmount={lairInfo?.dQUICKBalance} />}
               </TYPE.body>
-              <TYPE.body>Deposited liquidity:</TYPE.body>
+              <TYPE.body>dQUICK</TYPE.body>
             </AutoColumn>
           )}
-          {stakingInfo?.earnedAmount && (
+          {lairInfo?.QUICKBalance && (
             <AutoColumn justify="center" gap="md">
               <TYPE.body fontWeight={600} fontSize={36}>
-                {<FormattedCurrencyAmount currencyAmount={stakingInfo?.earnedAmount} />}
+                {<FormattedCurrencyAmount currencyAmount={lairInfo?.QUICKBalance} />}
               </TYPE.body>
-              <TYPE.body>Unclaimed QUICK</TYPE.body>
+              <TYPE.body>Available QUICK</TYPE.body>
             </AutoColumn>
           )}
           <TYPE.subHeader style={{ textAlign: 'center' }}>
-            When you withdraw, your QUICK is claimed and your liquidity is removed from the mining pool.
+            When you withdraw, your QUICK is claimed and your dQUICK tokens are burned.
           </TYPE.subHeader>
-          <ButtonError disabled={!!error} error={!!error && !!stakingInfo?.stakedAmount} onClick={onWithdraw}>
+          <ButtonError disabled={!!error} error={!!error && !!lairInfo?.dQUICKBalance} onClick={onWithdraw}>
             {error ?? 'Withdraw & Claim'}
           </ButtonError>
         </ContentWrapper>
@@ -101,8 +103,8 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
       {attempting && !hash && (
         <LoadingView onDismiss={wrappedOndismiss}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.body fontSize={20}>Withdrawing {stakingInfo?.stakedAmount?.toSignificant(4)} QUICK-V2</TYPE.body>
-            <TYPE.body fontSize={20}>Claiming {stakingInfo?.earnedAmount?.toSignificant(4)} QUICK</TYPE.body>
+            <TYPE.body fontSize={20}>Withdrawing {lairInfo?.dQUICKBalance?.toSignificant(4)} dQUICK</TYPE.body>
+            <TYPE.body fontSize={20}>Claiming {lairInfo?.QUICKBalance?.toSignificant(4)} QUICK</TYPE.body>
           </AutoColumn>
         </LoadingView>
       )}
@@ -110,8 +112,8 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
         <SubmittedView onDismiss={wrappedOndismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>Transaction Submitted</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>Withdrew QUICK-V2!</TYPE.body>
-            <TYPE.body fontSize={20}>Claimed QUICK!</TYPE.body>
+            <TYPE.body fontSize={20}>Withdrew QUICK!</TYPE.body>
+            
           </AutoColumn>
         </SubmittedView>
       )}

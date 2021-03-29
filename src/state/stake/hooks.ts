@@ -4049,8 +4049,68 @@ export function useDerivedStakeInfo(
   }
 }
 
+export function useDerivedLairInfo(
+  typedValue: string,
+  stakingToken: Token,
+  userLiquidityUnstaked: TokenAmount | undefined
+): {
+  parsedAmount?: CurrencyAmount
+  error?: string
+} {
+  const { account } = useActiveWeb3React()
+
+  const parsedInput: CurrencyAmount | undefined = tryParseAmount(typedValue, stakingToken)
+
+  const parsedAmount =
+    parsedInput && userLiquidityUnstaked && JSBI.lessThanOrEqual(parsedInput.raw, userLiquidityUnstaked.raw)
+      ? parsedInput
+      : undefined
+
+  let error: string | undefined
+  if (!account) {
+    error = 'Connect Wallet'
+  }
+  if (!parsedAmount) {
+    error = error ?? 'Enter an amount'
+  }
+
+  return {
+    parsedAmount,
+    error
+  }
+}
+
+
 // based on typed value
 export function useDerivedUnstakeInfo(
+  typedValue: string,
+  stakingAmount: TokenAmount
+): {
+  parsedAmount?: CurrencyAmount
+  error?: string
+} {
+  const { account } = useActiveWeb3React()
+
+  const parsedInput: CurrencyAmount | undefined = tryParseAmount(typedValue, stakingAmount.token)
+
+  const parsedAmount = parsedInput && JSBI.lessThanOrEqual(parsedInput.raw, stakingAmount.raw) ? parsedInput : undefined
+
+  let error: string | undefined
+  if (!account) {
+    error = 'Connect Wallet'
+  }
+  if (!parsedAmount) {
+    error = error ?? 'Enter an amount'
+  }
+
+  return {
+    parsedAmount,
+    error
+  }
+}
+
+// based on typed value
+export function useDerivedUnstakeLairInfo(
   typedValue: string,
   stakingAmount: TokenAmount
 ): {

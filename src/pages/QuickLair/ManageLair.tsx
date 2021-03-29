@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useState }  from 'react'
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
 
@@ -6,7 +6,7 @@ import { JSBI } from '@uniswap/sdk'
 import { QUICK, DQUICK } from "../../constants/index";
 import { useLairInfo } from '../../state/stake/hooks'
 import DoubleCurrencyLogo from '../../components/DoubleLogo'
-
+import { useWalletModalToggle } from '../../state/application/hooks'
 import { TYPE } from '../../theme'
 
 import { RowBetween } from '../../components/Row'
@@ -17,6 +17,8 @@ import { useTokenBalance } from '../../state/wallet/hooks'
 import { useActiveWeb3React } from '../../hooks'
 import { useColor } from '../../hooks/useColor'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
+import StakingModal from '../../components/QuickLair/StakingModal'
+import UnstakingModal from '../../components/QuickLair/UnstakingModal'
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -67,14 +69,24 @@ export default function ManageLair() {
   const currency0 = unwrappedToken(QUICK)
   const currency1 = unwrappedToken(DQUICK)
 
-  /**const [showStakingModal, setShowStakingModal] = useState(false)
+  const [showStakingModal, setShowStakingModal] = useState(false)
   const [showUnstakingModal, setShowUnstakingModal] = useState(false)
-  const [showClaimRewardModal, setShowClaimRewardModal] = useState(false)*/
 
   const backgroundColor = useColor(QUICK);
 
   const userLiquidityUnstaked = useTokenBalance(account ?? undefined, QUICK)
   const showAddLiquidityButton = Boolean(lairInfo?.dQUICKBalance?.equalTo('0') && userLiquidityUnstaked?.equalTo('0'))
+
+
+  const toggleWalletModal = useWalletModalToggle()
+
+  const handleDepositClick = useCallback(() => {
+    if (account) {
+      setShowStakingModal(true)
+    } else {
+      toggleWalletModal()
+    }
+  }, [account, toggleWalletModal])
   return (
     <PageWrapper gap="lg" justify="center">
       <RowBetween style={{ gap: '24px' }}>
@@ -135,26 +147,21 @@ export default function ManageLair() {
         </VoteCard>
       )*/}
 
-      {/**lairInfo && (
+      {lairInfo && (
         <>
           <StakingModal
             isOpen={showStakingModal}
             onDismiss={() => setShowStakingModal(false)}
-            stakingInfo={stakingInfo}
+            lairInfo={lairInfo}
             userLiquidityUnstaked={userLiquidityUnstaked}
           />
           <UnstakingModal
             isOpen={showUnstakingModal}
             onDismiss={() => setShowUnstakingModal(false)}
-            stakingInfo={stakingInfo}
-          />
-          <ClaimRewardModal
-            isOpen={showClaimRewardModal}
-            onDismiss={() => setShowClaimRewardModal(false)}
-            stakingInfo={stakingInfo}
+            lairInfo={lairInfo}
           />
         </>
-      )*/}
+      )}
 
       <PositionInfo gap="lg" justify="center" dim={showAddLiquidityButton}>
         <BottomSection gap="lg" justify="center">
@@ -189,7 +196,7 @@ export default function ManageLair() {
 
         { (
           <DataRow style={{ marginBottom: '1rem' }}>
-            <ButtonPrimary padding="8px" borderRadius="8px" width="160px">
+            <ButtonPrimary padding="8px" borderRadius="8px" width="160px"  onClick={handleDepositClick}>
               Deposit
             </ButtonPrimary>
 
@@ -199,8 +206,9 @@ export default function ManageLair() {
                   padding="8px"
                   borderRadius="8px"
                   width="160px"
-                  
+                  onClick={() => setShowUnstakingModal(true)}
                 >
+                
                   Withdraw
                 </ButtonPrimary>
               </>

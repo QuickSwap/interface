@@ -1,6 +1,4 @@
 import React, { useState, useCallback } from 'react'
-import useIsArgentWallet from '../../hooks/useIsArgentWallet'
-import useTransactionDeadline from '../../hooks/useTransactionDeadline'
 import Modal from '../Modal'
 import { AutoColumn } from '../Column'
 import styled from 'styled-components'
@@ -10,15 +8,11 @@ import { ButtonConfirmed, ButtonError } from '../Button'
 import ProgressCircles from '../ProgressSteps'
 import CurrencyInputPanel from '../CurrencyInputPanel'
 import { TokenAmount, Pair } from '@uniswap/sdk'
-import { useActiveWeb3React } from '../../hooks'
 import { maxAmountSpend } from '../../utils/maxAmountSpend'
-import { usePairContract, useStakingContract } from '../../hooks/useContract'
+import { useLairContract } from '../../hooks/useContract'
 import { useApproveCallback, ApprovalState } from '../../hooks/useApproveCallback'
-import { splitSignature } from 'ethers/lib/utils'
-import { StakingInfo, useDerivedStakeInfo } from '../../state/stake/hooks'
-import { wrappedCurrencyAmount } from '../../utils/wrappedCurrency'
-import { TransactionResponse } from '@ethersproject/providers'
-import { useTransactionAdder } from '../../state/transactions/hooks'
+import { LairInfo, useDerivedLairInfo } from '../../state/stake/hooks'
+
 import { LoadingView, SubmittedView } from '../ModalViews'
 
 const HypotheticalRewardRate = styled.div<{ dim: boolean }>`
@@ -38,29 +32,19 @@ const ContentWrapper = styled(AutoColumn)`
 interface StakingModalProps {
   isOpen: boolean
   onDismiss: () => void
-  stakingInfo: StakingInfo
+  lairInfo: LairInfo
   userLiquidityUnstaked: TokenAmount | undefined
 }
 
-export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiquidityUnstaked }: StakingModalProps) {
-  const { account, chainId, library } = useActiveWeb3React()
+export default function StakingModal({ isOpen, onDismiss, lairInfo, userLiquidityUnstaked }: StakingModalProps) {
 
   // track and parse user input
   const [typedValue, setTypedValue] = useState('')
-  const { parsedAmount, error } = useDerivedStakeInfo(typedValue, stakingInfo.stakedAmount.token, userLiquidityUnstaked)
-  const parsedAmountWrapped = wrappedCurrencyAmount(parsedAmount, chainId)
+  const { parsedAmount, error } = useDerivedLairInfo(typedValue, lairInfo.dQUICKBalance.token, userLiquidityUnstaked)
 
-  let hypotheticalRewardRate: TokenAmount = new TokenAmount(stakingInfo.rewardRate.token, '0')
-  if (parsedAmountWrapped?.greaterThan('0')) {
-    hypotheticalRewardRate = stakingInfo.getHypotheticalRewardRate(
-      stakingInfo.stakedAmount.add(parsedAmountWrapped),
-      stakingInfo.totalStakedAmount.add(parsedAmountWrapped),
-      stakingInfo.totalRewardRate
-    )
-  }
+  let hypotheticalRewardRate: TokenAmount = lairInfo.QUICKtodQUICK;
 
   // state for pending and submitted txn views
-  const addTransaction = useTransactionAdder()
   const [attempting, setAttempting] = useState<boolean>(false)
   const [hash, setHash] = useState<string | undefined>()
   const wrappedOnDismiss = useCallback(() => {
@@ -69,42 +53,17 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
     onDismiss()
   }, [onDismiss])
 
-  // pair contract for this token to be staked
-  const dummyPair = new Pair(new TokenAmount(stakingInfo.tokens[0], '0'), new TokenAmount(stakingInfo.tokens[1], '0'))
-  const pairContract = usePairContract(stakingInfo.lp && stakingInfo.lp !== '' ? stakingInfo.lp : dummyPair.liquidityToken.address)
+  const dummyPair = new Pair(lairInfo.QUICKtodQUICK, lairInfo.dQUICKtoQUICK);
+  
+  const [approval, approveCallback] = useApproveCallback(parsedAmount, lairInfo.lairAddress)
 
-  // approval data for stake
-  const deadline = useTransactionDeadline()
-  const [signatureData, setSignatureData] = useState<{ v: number; r: string; s: string; deadline: number } | null>(null)
-  const [approval, approveCallback] = useApproveCallback(parsedAmount, stakingInfo.stakingRewardAddress)
+  const lairContract = useLairContract();
 
-  const isArgentWallet = useIsArgentWallet()
-  const stakingContract = useStakingContract(stakingInfo.stakingRewardAddress)
   async function onStake() {
     setAttempting(true)
-    if (stakingContract && parsedAmount && deadline) {
+    if (lairContract && parsedAmount) {
       if (approval === ApprovalState.APPROVED) {
-        await stakingContract.stake(`0x${parsedAmount.raw.toString(16)}`, { gasLimit: 350000 })
-      } else if (signatureData) {
-        stakingContract
-          .stakeWithPermit(
-            `0x${parsedAmount.raw.toString(16)}`,
-            signatureData.deadline,
-            signatureData.v,
-            signatureData.r,
-            signatureData.s,
-            { gasLimit: 350000 }
-          )
-          .then((response: TransactionResponse) => {
-            addTransaction(response, {
-              summary: `Deposit liquidity`
-            })
-            setHash(response.hash)
-          })
-          .catch((error: any) => {
-            setAttempting(false)
-            console.log(error)
-          })
+        await lairContract.enter(`0x${parsedAmount.raw.toString(16)}`, { gasLimit: 350000 })
       } else {
         setAttempting(false)
         throw new Error('Attempting to stake without approval or a signature. Please contact support.')
@@ -114,7 +73,6 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
 
   // wrapped onUserInput to clear signatures
   const onUserInput = useCallback((typedValue: string) => {
-    setSignatureData(null)
     setTypedValue(typedValue)
   }, [])
 
@@ -126,74 +84,10 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
   }, [maxAmountInput, onUserInput])
 
   async function onAttemptToApprove() {
-    if (!pairContract || !library || !deadline) throw new Error('missing dependencies')
+    if (!lairContract ) throw new Error('missing dependencies')
     const liquidityAmount = parsedAmount
     if (!liquidityAmount) throw new Error('missing liquidity amount')
-
-    if (isArgentWallet) {
-      return approveCallback()
-    }
-
-    if(stakingInfo && stakingInfo?.lp !== '') {
-      return approveCallback();
-    }
-
-    // try to gather a signature for permission
-    const nonce = await pairContract.nonces(account)
-
-    const EIP712Domain = [
-      { name: 'name', type: 'string' },
-      { name: 'version', type: 'string' },
-      { name: 'chainId', type: 'uint256' },
-      { name: 'verifyingContract', type: 'address' }
-    ]
-    const domain = {
-      name: 'Uniswap V2',
-      version: '1',
-      chainId: chainId,
-      verifyingContract: pairContract.address
-    }
-    const Permit = [
-      { name: 'owner', type: 'address' },
-      { name: 'spender', type: 'address' },
-      { name: 'value', type: 'uint256' },
-      { name: 'nonce', type: 'uint256' },
-      { name: 'deadline', type: 'uint256' }
-    ]
-    const message = {
-      owner: account,
-      spender: stakingInfo.stakingRewardAddress,
-      value: liquidityAmount.raw.toString(),
-      nonce: nonce.toHexString(),
-      deadline: deadline.toNumber()
-    }
-    const data = JSON.stringify({
-      types: {
-        EIP712Domain,
-        Permit
-      },
-      domain,
-      primaryType: 'Permit',
-      message
-    })
-
-    library
-      .send('eth_signTypedData_v4', [account, data])
-      .then(splitSignature)
-      .then(signature => {
-        setSignatureData({
-          v: signature.v,
-          r: signature.r,
-          s: signature.s,
-          deadline: deadline.toNumber()
-        })
-      })
-      .catch(error => {
-        // for all errors other than 4001 (EIP-1193 user rejected request), fall back to manual approve
-        if (error?.code !== 4001) {
-          approveCallback()
-        }
-      })
+    return approveCallback()
   }
 
   return (
@@ -209,7 +103,7 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
             onUserInput={onUserInput}
             onMax={handleMax}
             showMaxButton={!atMaxAmount}
-            currency={stakingInfo.stakedAmount.token}
+            currency={lairInfo.QUICKBalance.token}
             pair={dummyPair}
             label={''}
             disableCurrencySelect={true}
@@ -219,12 +113,12 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
 
           <HypotheticalRewardRate dim={!hypotheticalRewardRate.greaterThan('0')}>
             <div>
-              <TYPE.black fontWeight={600}>Daily Rewards</TYPE.black>
+              <TYPE.black fontWeight={600}>Rate</TYPE.black>
             </div>
 
             <TYPE.black>
-              {hypotheticalRewardRate.multiply((60 * 60 * 24).toString()).toSignificant(4, { groupSeparator: ',' })}{' '}
-              QUICK / day
+              {hypotheticalRewardRate.toSignificant(4, { groupSeparator: ',' })}{' '}
+              dQUICK / QUICK
             </TYPE.black>
           </HypotheticalRewardRate>
 
@@ -232,27 +126,27 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
             <ButtonConfirmed
               mr="0.5rem"
               onClick={onAttemptToApprove}
-              confirmed={approval === ApprovalState.APPROVED || signatureData !== null}
-              disabled={approval !== ApprovalState.NOT_APPROVED || signatureData !== null}
+              confirmed={approval === ApprovalState.APPROVED}
+              disabled={approval !== ApprovalState.NOT_APPROVED}
             >
               Approve
             </ButtonConfirmed>
             <ButtonError
-              disabled={!!error || (signatureData === null && approval !== ApprovalState.APPROVED)}
+              disabled={!!error || (approval !== ApprovalState.APPROVED)}
               error={!!error && !!parsedAmount}
               onClick={onStake}
             >
               {error ?? 'Deposit'}
             </ButtonError>
           </RowBetween>
-          <ProgressCircles steps={[approval === ApprovalState.APPROVED || signatureData !== null]} disabled={true} />
+          <ProgressCircles steps={[approval === ApprovalState.APPROVED ]} disabled={true} />
         </ContentWrapper>
       )}
       {attempting && !hash && (
         <LoadingView onDismiss={wrappedOnDismiss}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.largeHeader>Depositing Liquidity</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>{parsedAmount?.toSignificant(4)} QUICK-V2</TYPE.body>
+            <TYPE.largeHeader>Depositing QUICK Balance</TYPE.largeHeader>
+            <TYPE.body fontSize={20}>{parsedAmount?.toSignificant(4)} QUICK</TYPE.body>
           </AutoColumn>
         </LoadingView>
       )}
