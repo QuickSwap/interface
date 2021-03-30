@@ -101,7 +101,7 @@ export default function ManageLair() {
           <AutoColumn gap="sm">
             <TYPE.body style={{ margin: 0 }}>Total QUICK</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
-            { lairInfo ? lairInfo.QUICKBalance.toFixed(2, {groupSeparator: ','}): 0 }
+            { lairInfo ? lairInfo.totalQuickBalance.toFixed(2, {groupSeparator: ','}): 0 }
             </TYPE.body>
           </AutoColumn>
         </PoolData>

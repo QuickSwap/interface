@@ -83,7 +83,7 @@ export default function LairCard({ lairInfo }: { lairInfo: LairInfo }) {
         <RowBetween>
           <TYPE.white> Total QUICK</TYPE.white>
           <TYPE.white>
-            { lairInfo ? lairInfo.QUICKBalance.toFixed(2, {groupSeparator: ','}): 0 }
+            { lairInfo ? lairInfo.totalQuickBalance.toFixed(2, {groupSeparator: ','}): 0 }
           </TYPE.white>
         </RowBetween>
         <RowBetween>

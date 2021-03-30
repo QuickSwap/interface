@@ -67,7 +67,7 @@ import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
 import { NEVER_RELOAD, useMultipleContractSingleData, useSingleCallResult } from '../multicall/hooks'
 import { tryParseAmount } from '../swap/hooks'
-import { useLairContract } from '../../hooks/useContract'
+import { useLairContract, useQUICKContract } from '../../hooks/useContract'
 
 export const STAKING_GENESIS = 1616950800;
 
@@ -4050,6 +4050,8 @@ export interface LairInfo {
   dQUICKBalance: TokenAmount
 
   QUICKBalance: TokenAmount
+
+  totalQuickBalance: TokenAmount
 }
 
 export interface StakingInfo {
@@ -4089,15 +4091,21 @@ export interface StakingInfo {
 export function useLairInfo(): LairInfo {
   const { account } = useActiveWeb3React()
 
-  const accountArg = useMemo(() => [account ?? undefined], [account])
+  let accountArg = useMemo(() => [account ?? undefined], [account])
 
   const inputs = useMemo(() => ['1000000000000000000'], ['1000000000000000000'])
 
   const lair = useLairContract()
+  const quick = useQUICKContract();
+
   const dQuickToQuick = useSingleCallResult(lair, 'dQUICKForQUICK', inputs);
   const quickToDQuick = useSingleCallResult(lair, 'QUICKForDQUICK', inputs);
   const quickBalance = useSingleCallResult(lair, 'QUICKBalance', accountArg);
   const dQuickBalance = useSingleCallResult(lair, 'balanceOf', accountArg);
+
+  accountArg = useMemo(() => [LAIR_ADDRESS ?? undefined], [LAIR_ADDRESS])
+
+  const lairsQuickBalance = useSingleCallResult(quick, 'balanceOf', accountArg);
 
   return useMemo(() => {
     return (
@@ -4106,7 +4114,8 @@ export function useLairInfo(): LairInfo {
         dQUICKtoQUICK: new TokenAmount(QUICK, JSBI.BigInt(dQuickToQuick?.result?.[0] ?? 0)),
         QUICKtodQUICK: new TokenAmount(DQUICK, JSBI.BigInt(quickToDQuick?.result?.[0] ?? 0)),
         dQUICKBalance: new TokenAmount(DQUICK, JSBI.BigInt(dQuickBalance?.result?.[0] ?? 0)),
-        QUICKBalance: new TokenAmount(QUICK, JSBI.BigInt(quickBalance?.result?.[0] ?? 0))
+        QUICKBalance: new TokenAmount(QUICK, JSBI.BigInt(quickBalance?.result?.[0] ?? 0)),
+        totalQuickBalance: new TokenAmount(QUICK, JSBI.BigInt(lairsQuickBalance?.result?.[0] ?? 0))
       }
     )
     

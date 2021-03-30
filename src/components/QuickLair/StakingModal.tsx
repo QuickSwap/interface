@@ -40,7 +40,7 @@ export default function StakingModal({ isOpen, onDismiss, lairInfo, userLiquidit
 
   // track and parse user input
   const [typedValue, setTypedValue] = useState('')
-  const { parsedAmount, error } = useDerivedLairInfo(typedValue, lairInfo.dQUICKBalance.token, userLiquidityUnstaked)
+  const { parsedAmount, error } = useDerivedLairInfo(typedValue, lairInfo.QUICKBalance.token, userLiquidityUnstaked)
 
   let hypotheticalRewardRate: TokenAmount = lairInfo.QUICKtodQUICK;
 
