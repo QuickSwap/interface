@@ -252,8 +252,8 @@ function Web3StatusInner() {
     )
   } else {
     return (
-      <Web3StatusConnect id="connect-wallet" onClick={(ethereum && ethereum.isMetaMask) ?addMaticToMetamask:toggleWalletModal} faded={!account}>
-        <Text>{(ethereum && ethereum.isMetaMask) ? t('Switch to Matic'): t('Connect to a wallet')}</Text>
+      <Web3StatusConnect id="connect-wallet" onClick={(ethereum && ethereum.isMetaMask && Number(ethereum.chainId) !== 137) ?addMaticToMetamask:toggleWalletModal} faded={!account}>
+        <Text>{(ethereum && ethereum.isMetaMask && Number(ethereum.chainId) !== 137) ? t('Switch to Matic'): t('Connect to a wallet')}</Text>
       </Web3StatusConnect>
     )
   }

@@ -401,7 +401,7 @@ export default function Swap() {
           </AutoColumn>
           <BottomGrouping>
             {!account ? (
-              <ButtonLight onClick={(ethereum && ethereum.isMetaMask) ? addMaticToMetamask : toggleWalletModal}>{(ethereum && ethereum.isMetaMask)? 'Switch to Matic': 'Connect Wallet'}</ButtonLight>
+              <ButtonLight onClick={(ethereum && ethereum.isMetaMask && Number(ethereum.chainId) !== 137) ? addMaticToMetamask : toggleWalletModal}>{(ethereum && ethereum.isMetaMask && Number(ethereum?.chainId) !== 137)? 'Switch to Matic': 'Connect Wallet'}</ButtonLight>
             ) : showWrap ? (
               <ButtonPrimary disabled={Boolean(wrapInputError)} onClick={onWrap}>
                 {wrapInputError ??
