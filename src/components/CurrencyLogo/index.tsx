@@ -250,6 +250,14 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://etherscan.io/token/images/zuzprotocol_32.png'
     }
 
+    if (address?.toLowerCase() === '0xFdc26CDA2d2440d0E83CD1DeE8E8bE48405806DC'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xb683D83a532e2Cb7DFa5275eED3698436371cc9f/logo.png'
+    }
+
+    if (address?.toLowerCase() === '0xB77e62709e39aD1cbeEBE77cF493745AeC0F453a'.toLowerCase()) {
+      uri = 'https://i.imgur.com/eOOhNeh.png'
+    }
+
     if (address?.toLowerCase() === '0xB77e62709e39aD1cbeEBE77cF493745AeC0F453a'.toLowerCase()) {
       uri = 'https://etherscan.io/token/images/wisetoken_32.png'
     }
