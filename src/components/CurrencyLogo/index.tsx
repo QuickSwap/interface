@@ -138,6 +138,10 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://hex.com/favicon.png'
     }
 
+    if (address?.toLowerCase() === '0x07738Eb4ce8932CA961c815Cb12C9d4ab5Bd0Da4'.toLowerCase()) {
+      uri = 'https://etherlegends.com/ELET.png'
+    }
+
     if (address?.toLowerCase() === '0x8d1566569d5b695d44a9a234540f68D393cDC40D'.toLowerCase()) {
       uri = 'https://i.imgur.com/IIUglm9.png?1'
     }
@@ -276,6 +280,16 @@ const getTokenLogoURL = (address: string) => {
 
     if (address?.toLowerCase() === '0xFeD16c746CB5BFeD009730f9E3e6A673006105c7'.toLowerCase()) {
       uri = 'https://pbs.twimg.com/profile_images/1318783238291292160/R4DxXdRA_400x400.jpg'
+    }
+
+    if (address?.toLowerCase() === '0x8f18dC399594b451EdA8c5da02d0563c0b2d0f16'.toLowerCase()) {
+      uri = 'https://i.imgur.com/UIjlQpC.png'
+    }if (address?.toLowerCase() === '0x033d942A6b495C4071083f4CDe1f17e986FE856c'.toLowerCase()) {
+      uri = 'https://i.imgur.com/R0aQlym.png'
+    }if (address?.toLowerCase() === '0xF84BD51eab957c2e7B7D646A3427C5A50848281D'.toLowerCase()) {
+      uri = 'https://i.imgur.com/06BkcTT.png'
+    }if (address?.toLowerCase() === '0x23D29D30e35C5e8D321e1dc9A8a61BFD846D4C5C'.toLowerCase()) {
+      uri = 'https://hex.com/favicon.png'
     }
 
     if (!uri) {
