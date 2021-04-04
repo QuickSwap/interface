@@ -18,7 +18,7 @@ if (typeof NETWORK_URL === 'undefined') {
 }
 
 export const network = new NetworkConnector({
-  urls: { [Number("137")]: "https://rpc-mainnet.maticvigil.com/v1/c9fa2322d8972ddeee326fcb1007e9c409753ebb" }
+  urls: { [Number("137")]: "https://rpc-mainnet.matic.network" }
 })
 
 let networkLibrary: Web3Provider | undefined

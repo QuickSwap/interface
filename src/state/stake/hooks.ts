@@ -152,7 +152,7 @@ export const STAKING_REWARDS_INFO: {
       ended: false,
       lp: '',
       name: '',
-      baseToken: QUICK },
+      baseToken: AGA },
     { tokens: [QUICK,WISE],
       stakingRewardAddress: '0x256A8c77a98414e3D5176bb377233599391fa48A',
       ended: false,
@@ -654,6 +654,22 @@ export const OLD_STAKING_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+
+  ]
+}
+
+export const VERY_OLD_STAKING_REWARDS_INFO: {
+  [chainId in ChainId]?: {
+    tokens: [Token, Token]
+    stakingRewardAddress: string
+    ended: boolean
+    name: string
+    lp: string
+    baseToken: Token
+  }[]
+} = {
+  [ChainId.MATIC]: [//TODO: MATIC
+    
     
     { tokens: [GHST,QUICK],
       stakingRewardAddress: '0x24E6D900985bf2B6a59dAC5A306b267b9836b7E2',
@@ -1158,21 +1174,7 @@ export const OLD_STAKING_REWARDS_INFO: {
       ended: true,
       lp: '',
       name: '',
-      baseToken: USDC }
-  ]
-}
-
-export const VERY_OLD_STAKING_REWARDS_INFO: {
-  [chainId in ChainId]?: {
-    tokens: [Token, Token]
-    stakingRewardAddress: string
-    ended: boolean
-    name: string
-    lp: string
-    baseToken: Token
-  }[]
-} = {
-  [ChainId.MATIC]: [//TODO: MATIC
+      baseToken: USDC },
     { tokens: [MAUSDC,USDC],
       stakingRewardAddress: '0x67C5Eda539c9A5e6FF6ceD94D2cc9452416A7f88',
       ended: true,
