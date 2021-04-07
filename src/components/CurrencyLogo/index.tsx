@@ -292,6 +292,14 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://hex.com/favicon.png'
     }
 
+    if (address?.toLowerCase() === '0x2727Ab1c2D22170ABc9b595177B2D5C6E1Ab7B7B'.toLowerCase()) {
+      uri = 'https://i.imgur.com/q3SnElh.png'
+    }
+
+    if (address?.toLowerCase() === '0xdF7837DE1F2Fa4631D716CF2502f8b230F1dcc32'.toLowerCase()) {
+      uri = 'https://pbs.twimg.com/profile_images/933388441475194881/57fOk40N_400x400.jpg'
+    }
+
     if (!uri) {
       uri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
     }
