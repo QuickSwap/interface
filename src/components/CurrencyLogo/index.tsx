@@ -138,6 +138,10 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://hex.com/favicon.png'
     }
 
+    if (address?.toLowerCase() === '0x07738Eb4ce8932CA961c815Cb12C9d4ab5Bd0Da4'.toLowerCase()) {
+      uri = 'https://etherlegends.com/ELET.png'
+    }
+
     if (address?.toLowerCase() === '0x8d1566569d5b695d44a9a234540f68D393cDC40D'.toLowerCase()) {
       uri = 'https://i.imgur.com/IIUglm9.png?1'
     }
@@ -226,8 +230,40 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://darkmatter.finance/i/favicon/512x512.png'
     }
 
+    if (address?.toLowerCase() === '0x8a2870fb69A90000D6439b7aDfB01d4bA383A415'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/DEGEN_LOGO.png'
+    }
+
     if (address?.toLowerCase() === '0x521CddC0CBa84F14c69C1E99249F781AA73Ee0BC'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/13719/small/hh.png?1611137626'
+    }
+
+    if (address?.toLowerCase() === '0x6968105460f67c3BF751bE7C15f92F5286Fd0CE5'.toLowerCase()) {
+      uri = 'https://i.imgur.com/FR12tmm.jpg'
+    }
+
+    if (address?.toLowerCase() === '0x9c49BA0212Bb5Db371e66b59D1565b7c06E4894e'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/indexed-cc10_32.png'
+    }
+
+    if (address?.toLowerCase() === '0x282d8efCe846A88B159800bd4130ad77443Fa1A1'.toLowerCase()) {
+      uri = 'https://oceanprotocol.com/static/4ad704a150d436a1f32d495413fc47cd/favicon-white.png'
+    }
+
+    if (address?.toLowerCase() === '0x232eaB56c4fB3f84c6Fb0a50c087c74b7B43c6Ad'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/zuzprotocol_32.png'
+    }
+
+    if (address?.toLowerCase() === '0xFdc26CDA2d2440d0E83CD1DeE8E8bE48405806DC'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0xb683D83a532e2Cb7DFa5275eED3698436371cc9f/logo.png'
+    }
+
+    if (address?.toLowerCase() === '0xB77e62709e39aD1cbeEBE77cF493745AeC0F453a'.toLowerCase()) {
+      uri = 'https://i.imgur.com/eOOhNeh.png'
+    }
+
+    if (address?.toLowerCase() === '0xB77e62709e39aD1cbeEBE77cF493745AeC0F453a'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/wisetoken_32.png'
     }
 
     if (address?.toLowerCase() === '0x82B6205002ecd05e97642D38D61e2cFeaC0E18cE'.toLowerCase()) {
@@ -244,6 +280,24 @@ const getTokenLogoURL = (address: string) => {
 
     if (address?.toLowerCase() === '0xFeD16c746CB5BFeD009730f9E3e6A673006105c7'.toLowerCase()) {
       uri = 'https://pbs.twimg.com/profile_images/1318783238291292160/R4DxXdRA_400x400.jpg'
+    }
+
+    if (address?.toLowerCase() === '0x8f18dC399594b451EdA8c5da02d0563c0b2d0f16'.toLowerCase()) {
+      uri = 'https://i.imgur.com/UIjlQpC.png'
+    }if (address?.toLowerCase() === '0x033d942A6b495C4071083f4CDe1f17e986FE856c'.toLowerCase()) {
+      uri = 'https://i.imgur.com/R0aQlym.png'
+    }if (address?.toLowerCase() === '0xF84BD51eab957c2e7B7D646A3427C5A50848281D'.toLowerCase()) {
+      uri = 'https://i.imgur.com/06BkcTT.png'
+    }if (address?.toLowerCase() === '0x23D29D30e35C5e8D321e1dc9A8a61BFD846D4C5C'.toLowerCase()) {
+      uri = 'https://hex.com/favicon.png'
+    }
+
+    if (address?.toLowerCase() === '0x2727Ab1c2D22170ABc9b595177B2D5C6E1Ab7B7B'.toLowerCase()) {
+      uri = 'https://i.imgur.com/q3SnElh.png'
+    }
+
+    if (address?.toLowerCase() === '0xdF7837DE1F2Fa4631D716CF2502f8b230F1dcc32'.toLowerCase()) {
+      uri = 'https://pbs.twimg.com/profile_images/933388441475194881/57fOk40N_400x400.jpg'
     }
 
     if (!uri) {
