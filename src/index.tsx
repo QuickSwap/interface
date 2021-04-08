@@ -6,7 +6,6 @@ import ReactDOM from 'react-dom'
 import ReactGA from 'react-ga'
 import { Provider } from 'react-redux'
 import { HashRouter } from 'react-router-dom'
-
 import { NetworkContextName } from './constants'
 import './i18n'
 import App from './pages/App'
