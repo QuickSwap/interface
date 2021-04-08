@@ -120,9 +120,9 @@
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
-    "@connext/vector-modal": "1.0.3-beta.20",
-    "@connext/vector-types": "^0.2.1-beta.5",
-    "@connext/vector-utils": "^0.2.1-beta.5",
+    "@connext/vector-modal": "1.0.4-beta.3",
+    "@connext/vector-types": "0.2.2-beta.5",
+    "@connext/vector-utils": "0.2.2-beta.5",
     "@sentry/react": "^6.2.0",
     "@sentry/tracing": "^6.2.0",
     "@transak/transak-sdk": "^1.0.28",
