@@ -22,15 +22,42 @@ import { MULTICALL_ABI, MULTICALL_NETWORKS } from '../constants/multicall'
 import { V1_EXCHANGE_ABI, V1_FACTORY_ABI, V1_FACTORY_ADDRESSES } from '../constants/v1'
 import { getContract } from '../utils'
 import { useActiveWeb3React } from './index'
+import { Web3Provider } from '@ethersproject/providers'
+
+const Web3HttpProvider = require('web3-providers-http');
+
+const rpcUrls = [
+  "https://rpc-mainnet.matic.network",
+  "https://rpc-mainnet.maticvigil.com/",
+  "https://matic-mainnet.chainstacklabs.com",
+  "https://matic-mainnet-full-rpc.bwarelabs.com",
+  "https://matic-mainnet-archive-rpc.bwarelabs.com",
+  "https://rpc-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
+  "https://rpc-mainnet.maticvigil.com/v1/c9fa2322d8972ddeee326fcb1007e9c409753ebb"
+]
+
+var lastUsedUrl = -1;
+var maxUrls = 6
 
 // returns null on errors
 function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
-  const { library, account } = useActiveWeb3React()
+  var { library, account, chainId } = useActiveWeb3React()
+  var provider:any = undefined;
 
+  if (chainId && MULTICALL_NETWORKS[chainId] === address) {
+    var url;
+    if(lastUsedUrl === maxUrls) {
+      lastUsedUrl = -1;
+    }
+    url = rpcUrls[++lastUsedUrl];
+
+    const web3Provider = new Web3HttpProvider(url);
+    provider = new Web3Provider(web3Provider);
+  }
   return useMemo(() => {
     if (!address || !ABI || !library) return null
     try {
-      return getContract(address, ABI, library, withSignerIfPossible && account ? account : undefined)
+      return getContract(address, ABI, provider !== undefined ? provider : library, withSignerIfPossible && account ? account : undefined)
     } catch (error) {
       console.error('Failed to get contract', error)
       return null
