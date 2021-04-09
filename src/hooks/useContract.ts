@@ -32,12 +32,12 @@ const rpcUrls = [
   "https://matic-mainnet.chainstacklabs.com",
   "https://matic-mainnet-full-rpc.bwarelabs.com",
   "https://matic-mainnet-archive-rpc.bwarelabs.com",
-  "https://rpc-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
+  //"https://rpc-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   "https://rpc-mainnet.maticvigil.com/v1/c9fa2322d8972ddeee326fcb1007e9c409753ebb"
 ]
 
 var lastUsedUrl = -1;
-var maxUrls = 6
+var maxUrls = 5
 
 // returns null on errors
 function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
