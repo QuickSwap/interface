@@ -412,7 +412,7 @@ export default function Header() {
             {t('pool')}
           </StyledNavLink>
           <StyledNavLink id={`stake-nav-link`} to={'/quick'} style={{marginLeft: mobile?'0px':'12px'}}>
-          QUICK
+          Rewards
           </StyledNavLink>
           {/*<StyledNavLink id={`stake-nav-link`} to={'/vote'}>*/}
             {/*Vote*/}
