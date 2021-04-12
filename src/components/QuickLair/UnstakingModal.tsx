@@ -13,6 +13,10 @@ import { useTransactionAdder } from '../../state/transactions/hooks'
 import FormattedCurrencyAmount from '../FormattedCurrencyAmount'
 import { useActiveWeb3React } from '../../hooks'
 
+import Web3 from "web3";
+
+const web3 = new Web3();
+
 const ContentWrapper = styled(AutoColumn)`
   width: 100%;
   padding: 1rem;
@@ -44,7 +48,7 @@ export default function UnstakingModal({ isOpen, onDismiss, lairInfo }: StakingM
     if (lairContract && lairInfo?.dQUICKBalance) {
       setAttempting(true)
       var balanceString = lairInfo?.dQUICKBalance?.toSignificant(4);
-      var  balance = Number(balanceString) * Math.pow(10, 18);
+      var balance = web3.utils.toWei(balanceString, 'ether');
       await lairContract
         .leave( balance.toString() ,{ gasLimit: 300000 })
         .then((response: TransactionResponse) => {
