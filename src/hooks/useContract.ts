@@ -27,13 +27,14 @@ import { Web3Provider } from '@ethersproject/providers'
 const Web3HttpProvider = require('web3-providers-http');
 
 const rpcUrls = [
-  "https://rpc-mainnet.matic.network",
+  "https://matic-mainnet-archive-rpc.bwarelabs.com",
+  "https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
+  
+  "https://matic-mainnet-full-rpc.bwarelabs.com",
+  
   "https://rpc-mainnet.maticvigil.com/",
   "https://matic-mainnet.chainstacklabs.com",
-  "https://matic-mainnet-full-rpc.bwarelabs.com",
-  "https://matic-mainnet-archive-rpc.bwarelabs.com",
-  //"https://rpc-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
-  "https://rpc-mainnet.maticvigil.com/v1/c9fa2322d8972ddeee326fcb1007e9c409753ebb"
+  "https://rpc-mainnet.matic.network"
 ]
 
 var lastUsedUrl = -1;
