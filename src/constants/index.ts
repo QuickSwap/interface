@@ -93,6 +93,12 @@ export const TEL  = new Token(ChainId.MATIC, '0xdF7837DE1F2Fa4631D716CF2502f8b23
 export const GFARM2  = new Token(ChainId.MATIC, '0x7075cAB6bCCA06613e2d071bd918D1a0241379E2', 18, 'GFARM2', 'Gains V2')
 export const NFTP  = new Token(ChainId.MATIC, '0xf7d9e281c5Cb4C6796284C5b663b3593D2037aF2', 18, 'NFTP', 'NFT Platform Index')
 
+export const AAVE  = new Token(ChainId.MATIC, '0xD6DF932A45C0f255f85145f286eA0b292B21C90B', 18, 'AAVE', 'Aave')
+export const FSN  = new Token(ChainId.MATIC, '0x2bF9b864cdc97b08B6D79ad4663e71B8aB65c45c', 18, 'FSN', 'Fusion')
+export const ANY  = new Token(ChainId.MATIC, '0x6aB6d61428fde76768D7b45D8BFeec19c6eF91A8', 18, 'Any', 'Anyswap')
+export const PLOT  = new Token(ChainId.MATIC, '0xe82808eaA78339b06a691fd92E1Be79671cAd8D3', 18, 'PLOT', 'PLOT')
+export const OPU  = new Token(ChainId.MATIC, '0x7ff2FC33E161E3b1C6511B934F0209D304267857', 18, 'OPU', 'Opu Coin')
+
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
 export const PROPOSAL_LENGTH_IN_DAYS = 7
@@ -120,7 +126,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, GHST, QUICK, ETHER, MAUSDC, WBTC, DAI, AGA]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, GHST, QUICK, ETHER, MAUSDC, WBTC, DAI]
 }
 
 /**
@@ -134,13 +140,13 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], DAI, USDC, USDT,  COMP, GHST, QUICK, ETHER, UNITOKEN, EASY, IGG, WBTC, OM]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], DAI, USDC, USDT,  COMP, GHST, QUICK, ETHER, UNITOKEN, EASY, IGG, WBTC]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC],CTSI, DEGEN, MRBAL, GAME, SENT, ELET, DAI, USDC, USDT, COMP, GHST, QUICK, ETHER, UNITOKEN, EASY, IGG, WBTC, OM, MAUSDC, SWG, MADAI, RBAL, DG, SX, WRX, MUST, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, DB, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT, MONA,WISE,CC10,MOCEAN, ZUZ, BTU, WOLF, AGA, AGAr, TEL, NFTP, GFARM2]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC],CTSI, DEGEN, MRBAL, GAME, SENT, ELET, DAI, USDC, USDT, COMP, GHST, QUICK, ETHER, UNITOKEN, EASY, IGG, WBTC, OM, MAUSDC, SWG, MADAI, RBAL, DG, SX, WRX, MUST, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, DB, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT, MONA,WISE,CC10,MOCEAN, ZUZ, BTU, WOLF, AGA, AGAr, TEL, NFTP, GFARM2,AAVE,FSN,ANY,PLOT,OPU]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {

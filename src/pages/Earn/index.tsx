@@ -52,7 +52,7 @@ export default function Earn() {
 
   // pagination
   const [page, setPage] = useState(1)
-  const maxPage = 10;
+  const maxPage = 11;
   const ITEMS_PER_PAGE = 10;
 
   const { chainId } = useActiveWeb3React()
