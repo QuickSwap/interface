@@ -305,6 +305,18 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/NFTP.png'
     }
 
+    if (address?.toLowerCase() === '0xD6DF932A45C0f255f85145f286eA0b292B21C90B'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/aave_32.png'
+    }if (address?.toLowerCase() === '0x2bF9b864cdc97b08B6D79ad4663e71B8aB65c45c'.toLowerCase()) {
+      uri = 'https://cryptologos.cc/logos/fusion-fsn-logo.png?v=010'
+    }if (address?.toLowerCase() === '0x6aB6d61428fde76768D7b45D8BFeec19c6eF91A8'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/anyswap/Brand-assets/master/logo/c-128-white.svg'
+    }if (address?.toLowerCase() === '0xe82808eaA78339b06a691fd92E1Be79671cAd8D3'.toLowerCase()) {
+      uri = 'https://i.imgur.com/nQDG9AQ.png'
+    }if (address?.toLowerCase() === '0x7ff2FC33E161E3b1C6511B934F0209D304267857'.toLowerCase()) {
+      uri = 'https://www.opucoin.io/wp-content/uploads/2021/04/opu-coiin-icon-border.svg'
+    }
+
     if (!uri) {
       uri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
     }
