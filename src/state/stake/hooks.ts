@@ -1,5 +1,9 @@
 import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, Pair } from '@uniswap/sdk'
-import { useMemo } from 'react'
+import { useMemo/**, useEffect, useState*/ } from 'react'
+//import { client } from '../../apollo/client'
+/**import {
+  TOKEN_CHART
+} from '../../apollo/queries'*/
 import { 
   UNI,
   EASY,
@@ -84,6 +88,7 @@ const web3 = new Web3();
 export const STAKING_GENESIS = 1618765800;
 
 export const REWARDS_DURATION_DAYS = 10;
+
 
 // TODO add staking rewards addresses here
 export const STAKING_REWARDS_INFO: {
@@ -6863,10 +6868,29 @@ export interface StakingInfo {
   ) => TokenAmount
 }
 
+/**const getQUICKPrice  =async(setQuickPrice:any)=>{
+  let result = await client.query({
+    query: TOKEN_CHART,
+    variables: {
+      tokenAddr: '0x831753dd7087cac61ab5644b308642cc1c33dc13'
+    },
+    fetchPolicy: 'cache-first',
+  })
+  setQuickPrice(Number(result.data.tokenDayDatas[0].priceUSD));
+  return result.data.tokenDayDatas[0].priceUSD;
+  
+}*/
+
 // gets the staking info from the network for the active chain id
 export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const { chainId, account } = useActiveWeb3React()
+  //const [quickPrice, setQuickPrice] = useState(0);
 
+  /**useEffect(() => {
+    getQUICKPrice(setQuickPrice).then((price)=>{
+      console.log(Number(price));
+    });
+  }, [])*/
   const info = useMemo(
     () =>
       chainId
