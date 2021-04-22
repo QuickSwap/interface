@@ -6,7 +6,7 @@ import { abi as MERKLE_DISTRIBUTOR_ABI } from '@uniswap/merkle-distributor/build
 import { ChainId, WETH } from '@uniswap/sdk'
 import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 import { useMemo } from 'react'
-import { GOVERNANCE_ADDRESS, MERKLE_DISTRIBUTOR_ADDRESS, UNI } from '../constants'
+import { GOVERNANCE_ADDRESS, MERKLE_DISTRIBUTOR_ADDRESS, UNI, LAIR_ADDRESS, QUICK_ADDRESS } from '../constants'
 import {
   ARGENT_WALLET_DETECTOR_ABI,
   ARGENT_WALLET_DETECTOR_MAINNET_ADDRESS
@@ -23,7 +23,7 @@ import { V1_EXCHANGE_ABI, V1_FACTORY_ABI, V1_FACTORY_ADDRESSES } from '../consta
 import { getContract } from '../utils'
 import { useActiveWeb3React } from './index'
 import { Web3Provider } from '@ethersproject/providers'
-
+import { abi as LairABI } from '../abis/DragonLair.json'; 
 const Web3HttpProvider = require('web3-providers-http');
 
 const rpcUrls = [
@@ -39,6 +39,7 @@ const rpcUrls = [
 
 var lastUsedUrl = -1;
 var maxUrls = 5
+
 
 // returns null on errors
 function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
@@ -64,6 +65,14 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
       return null
     }
   }, [address, ABI, library, withSignerIfPossible, account])
+}
+
+export function useLairContract(): Contract | null {
+  return useContract(LAIR_ADDRESS, LairABI, true)
+}
+
+export function useQUICKContract(): Contract | null {
+  return useContract(QUICK_ADDRESS, ERC20_ABI, true)
 }
 
 export function useV1FactoryContract(): Contract | null {

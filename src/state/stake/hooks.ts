@@ -59,6 +59,8 @@ import {
   MDEF,
   DMT,
   DEGEN,
+  LAIR_ADDRESS,
+  DQUICK,
   CC10,
   ZUZ,
   WISE,
@@ -79,9 +81,10 @@ import {
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
-import { NEVER_RELOAD, useMultipleContractSingleData } from '../multicall/hooks'
+import { NEVER_RELOAD, useMultipleContractSingleData, useSingleCallResult } from '../multicall/hooks'
 import { tryParseAmount } from '../swap/hooks'
 import Web3 from 'web3';
+import { useLairContract, useQUICKContract } from '../../hooks/useContract'
 
 const web3 = new Web3();
 
@@ -6834,6 +6837,20 @@ baseToken: EMPTY,
   ]
 }
 
+export interface LairInfo {
+  lairAddress: string
+
+  dQUICKtoQUICK: TokenAmount
+
+  QUICKtodQUICK: TokenAmount
+
+  dQUICKBalance: TokenAmount
+
+  QUICKBalance: TokenAmount
+
+  totalQuickBalance: TokenAmount
+}
+
 export interface StakingInfo {
   // the address of the reward contract
   stakingRewardAddress: string
@@ -6880,6 +6897,40 @@ export interface StakingInfo {
   return result.data.tokenDayDatas[0].priceUSD;
   
 }*/
+export function useLairInfo(): LairInfo {
+  const { account } = useActiveWeb3React()
+
+  let accountArg = useMemo(() => [account ?? undefined], [account])
+
+  const inputs = useMemo(() => ['1000000000000000000'], ['1000000000000000000'])
+
+  const lair = useLairContract()
+  const quick = useQUICKContract();
+
+  const dQuickToQuick = useSingleCallResult(lair, 'dQUICKForQUICK', inputs);
+  const quickToDQuick = useSingleCallResult(lair, 'QUICKForDQUICK', inputs);
+  const quickBalance = useSingleCallResult(lair, 'QUICKBalance', accountArg);
+  const dQuickBalance = useSingleCallResult(lair, 'balanceOf', accountArg);
+
+  accountArg = useMemo(() => [LAIR_ADDRESS ?? undefined], [LAIR_ADDRESS])
+
+  const lairsQuickBalance = useSingleCallResult(quick, 'balanceOf', accountArg);
+
+  return useMemo(() => {
+    return (
+      {
+        lairAddress: LAIR_ADDRESS,
+        dQUICKtoQUICK: new TokenAmount(QUICK, JSBI.BigInt(dQuickToQuick?.result?.[0] ?? 0)),
+        QUICKtodQUICK: new TokenAmount(DQUICK, JSBI.BigInt(quickToDQuick?.result?.[0] ?? 0)),
+        dQUICKBalance: new TokenAmount(DQUICK, JSBI.BigInt(dQuickBalance?.result?.[0] ?? 0)),
+        QUICKBalance: new TokenAmount(QUICK, JSBI.BigInt(quickBalance?.result?.[0] ?? 0)),
+        totalQuickBalance: new TokenAmount(QUICK, JSBI.BigInt(lairsQuickBalance?.result?.[0] ?? 0))
+      }
+    )
+    
+  }, [LAIR_ADDRESS, dQuickToQuick, quickToDQuick, quickBalance, dQuickBalance])
+
+}
 
 // gets the staking info from the network for the active chain id
 export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
@@ -6911,7 +6962,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const rewardsAddresses = useMemo(() => info.map(({ stakingRewardAddress }) => stakingRewardAddress), [info])
 
   const accountArg = useMemo(() => [account ?? undefined], [account])
-
+   
   // get all the info from the staking rewards contracts
   const balances = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'balanceOf', accountArg)
   const earnedAmounts = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'earned', accountArg)
@@ -7307,8 +7358,68 @@ export function useDerivedStakeInfo(
   }
 }
 
+export function useDerivedLairInfo(
+  typedValue: string,
+  stakingToken: Token,
+  userLiquidityUnstaked: TokenAmount | undefined
+): {
+  parsedAmount?: CurrencyAmount
+  error?: string
+} {
+  const { account } = useActiveWeb3React()
+
+  const parsedInput: CurrencyAmount | undefined = tryParseAmount(typedValue, stakingToken)
+
+  const parsedAmount =
+    parsedInput && userLiquidityUnstaked && JSBI.lessThanOrEqual(parsedInput.raw, userLiquidityUnstaked.raw)
+      ? parsedInput
+      : undefined
+
+  let error: string | undefined
+  if (!account) {
+    error = 'Connect Wallet'
+  }
+  if (!parsedAmount) {
+    error = error ?? 'Enter an amount'
+  }
+
+  return {
+    parsedAmount,
+    error
+  }
+}
+
+
 // based on typed value
 export function useDerivedUnstakeInfo(
+  typedValue: string,
+  stakingAmount: TokenAmount
+): {
+  parsedAmount?: CurrencyAmount
+  error?: string
+} {
+  const { account } = useActiveWeb3React()
+
+  const parsedInput: CurrencyAmount | undefined = tryParseAmount(typedValue, stakingAmount.token)
+
+  const parsedAmount = parsedInput && JSBI.lessThanOrEqual(parsedInput.raw, stakingAmount.raw) ? parsedInput : undefined
+
+  let error: string | undefined
+  if (!account) {
+    error = 'Connect Wallet'
+  }
+  if (!parsedAmount) {
+    error = error ?? 'Enter an amount'
+  }
+
+  return {
+    parsedAmount,
+    error
+  }
+}
+
+// based on typed value
+export function useDerivedUnstakeLairInfo(
   typedValue: string,
   stakingAmount: TokenAmount
 ): {
