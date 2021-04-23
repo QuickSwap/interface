@@ -91,7 +91,7 @@ export default function ManageLair() {
     <PageWrapper gap="lg" justify="center">
       <RowBetween style={{ gap: '24px' }}>
         <TYPE.mediumHeader style={{ margin: 0 }}>
-        Dragon Lair
+        Dragon's Lair
         </TYPE.mediumHeader>
         <DoubleCurrencyLogo currency0={currency0 ?? undefined} currency1={currency1 ?? undefined} size={24} />
       </RowBetween>

@@ -3,7 +3,7 @@ import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-import { JSBI, TokenAmount } from '@uniswap/sdk'
+import { JSBI, TokenAmount, ChainId, WETH } from '@uniswap/sdk'
 import { RouteComponentProps } from 'react-router-dom'
 import DoubleCurrencyLogo from '../../components/DoubleLogo'
 import { useCurrency } from '../../hooks/Tokens'
@@ -119,7 +119,7 @@ export default function Manage({
     stakingInfo = undefined;
   }
 
-  const baseTokenCurrency = unwrappedToken(stakingInfo?.baseToken);
+  const baseTokenCurrency = unwrappedToken(stakingInfo?.baseToken ? stakingInfo?.baseToken : WETH[ChainId.MATIC]);
   const empty = unwrappedToken(EMPTY);
 
 
@@ -135,7 +135,7 @@ export default function Manage({
   // fade cards if nothing staked or nothing earned yet
   const disableTop = !stakingInfo?.stakedAmount || stakingInfo.stakedAmount.equalTo(JSBI.BigInt(0))
 
-  const baseToken = baseTokenCurrency === empty ? tokenA: stakingInfo.baseToken;
+  const baseToken = baseTokenCurrency === empty ? tokenA: stakingInfo?.baseToken;
   const token = baseTokenCurrency === empty ? tokenB: baseTokenCurrency === currencyA ? tokenB: tokenA;
 
   
