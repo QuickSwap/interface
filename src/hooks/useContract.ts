@@ -32,13 +32,13 @@ const rpcUrls = [
   
   "https://matic-mainnet-full-rpc.bwarelabs.com",
   
-  "https://rpc-mainnet.maticvigil.com/",
+  //"https://rpc-mainnet.maticvigil.com/",
   "https://matic-mainnet.chainstacklabs.com",
   "https://rpc-mainnet.matic.network"
 ]
 
 var lastUsedUrl = -1;
-var maxUrls = 5
+var maxUrls = 4
 
 
 // returns null on errors
