@@ -30,7 +30,7 @@ const rpcUrls = [
   "https://matic-mainnet-archive-rpc.bwarelabs.com",
   "https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   
-  "https://matic-mainnet-full-rpc.bwarelabs.com",
+  //"https://matic-mainnet-full-rpc.bwarelabs.com",
   
   //"https://rpc-mainnet.maticvigil.com/",
   "https://matic-mainnet.chainstacklabs.com",
@@ -38,7 +38,7 @@ const rpcUrls = [
 ]
 
 var lastUsedUrl = -1;
-var maxUrls = 4
+var maxUrls = 3
 
 
 // returns null on errors
