@@ -27,13 +27,13 @@ import { abi as LairABI } from '../abis/DragonLair.json';
 const Web3HttpProvider = require('web3-providers-http');
 
 const rpcUrls = [
-  "https://matic-mainnet-archive-rpc.bwarelabs.com",
   "https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   
   //"https://matic-mainnet-full-rpc.bwarelabs.com",
   
   //"https://rpc-mainnet.maticvigil.com/",
   "https://matic-mainnet.chainstacklabs.com",
+  "https://matic-mainnet-archive-rpc.bwarelabs.com",
   "https://rpc-mainnet.matic.network"
 ]
 
