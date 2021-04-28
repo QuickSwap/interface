@@ -121,7 +121,10 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
   const USDPrice = useUSDCPrice(baseToken)
   const valueOfTotalStakedAmountInUSDC =
     valueOfTotalStakedAmountInBaseToken && USDPrice?.quote(valueOfTotalStakedAmountInBaseToken)
-
+  //@ts-ignore
+  //const prelimAPY = (stakingInfo.quickPrice * stakingInfo.rate) + stakingInfo.oneDayVolume;
+  //let ap: any = valueOfTotalStakedAmountInUSDC &&  Number(valueOfTotalStakedAmountInUSDC.toFixed(5)) > 0  && prelimAPY > 0? (((prelimAPY * 365) - Number(valueOfTotalStakedAmountInUSDC.toFixed(5))) / (Number(valueOfTotalStakedAmountInUSDC.toFixed(5)))) * 100 : 0
+  //console.log(ap)
   return (
     show ?
     <Wrapper showBackground={isStaking} bgColor={backgroundColor}>
@@ -168,6 +171,10 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
           <TYPE.white> Status </TYPE.white>
           <TYPE.white>{!stakingInfo.ended ? 'Running':'Closed'}</TYPE.white>
         </RowBetween>
+        {/**<RowBetween>
+          <TYPE.white> APR </TYPE.white>
+          <TYPE.white>{ap + "%"}</TYPE.white>
+        </RowBetween>*/}
       </StatContainer>
 
       {isStaking && !stakingInfo.ended && (
