@@ -1,11 +1,11 @@
 import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, Pair } from '@uniswap/sdk'
-import { useMemo, useEffect, useState } from 'react'
-import { client } from '../../apollo/client'
+import { useMemo/**, useEffect, useState*/ } from 'react'
+/**import { client } from '../../apollo/client'
 import {
   TOKEN_CHART,
   PAIRS_BULK,
   PAIRS_HISTORICAL_BULK
-} from '../../apollo/queries'
+} from '../../apollo/queries'*/
 import { 
   UNI,
   USDC,
@@ -8248,7 +8248,7 @@ export interface StakingInfo {
   ) => TokenAmount
 }
 
-const getQUICKPrice  = async(setQuickPrice:any)=>{
+/**const getQUICKPrice  = async(setQuickPrice:any)=>{
   let result = await client.query({
     query: TOKEN_CHART,
     variables: {
@@ -8258,10 +8258,10 @@ const getQUICKPrice  = async(setQuickPrice:any)=>{
   })
   setQuickPrice(Number(result.data.tokenDayDatas[0].priceUSD));
   return result.data.tokenDayDatas[0].priceUSD;
-}
+}*/
 
 
- const getBulkPairData = async(pairList: any, setPairData:any) => {
+ /**const getBulkPairData = async(pairList: any, setPairData:any) => {
   const current = await web3.eth.getBlockNumber();
   const oneDayOldBlock = current - 45700;
   
@@ -8340,7 +8340,7 @@ function parseData(data: any, oneDayData: any) {
   returnData.oneDayVolumeUSD = parseFloat(oneDayVolumeUSD?.toString())
   
   return returnData;
-}
+}*/
 
 
 export function useLairInfo(): LairInfo {
@@ -8381,8 +8381,8 @@ export function useLairInfo(): LairInfo {
 // gets the staking info from the network for the active chain id
 export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const { chainId, account } = useActiveWeb3React()
-  const [quickPrice,setQuickPrice] = useState(0);
-  const [,setPairData] = useState();
+  //const [quickPrice,setQuickPrice] = useState(0);
+  //const [,setPairData] = useState();
   
   const info = useMemo(
     () =>
@@ -8402,14 +8402,14 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const uni = chainId ? UNI[chainId] : undefined
 
   const rewardsAddresses = useMemo(() => info.map(({ stakingRewardAddress }) => stakingRewardAddress), [info])
-  const pairAddresses = useMemo(() => info.map(({ pair }) => pair), [info])
+  //const pairAddresses = useMemo(() => info.map(({ pair }) => pair), [info])
   
-  useEffect(() => {
+  /**useEffect(() => {
     getQUICKPrice(setQuickPrice).then((price)=>{
     });
     getBulkPairData(pairAddresses, setPairData).then((data)=>{
     })
-  }, [pairAddresses])
+  }, [pairAddresses])*/
 
   const accountArg = useMemo(() => [account ?? undefined], [account])
    
@@ -8515,7 +8515,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           getHypotheticalRewardRate,
           baseToken: info[index].baseToken,
           pair: info[index].pair,
-          quickPrice,
+          quickPrice: 0,
           oneDayVolume: 0,//fees,
           rate: info[index].rate
         })
