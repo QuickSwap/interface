@@ -21,10 +21,6 @@ export const DAI = new Token(ChainId.MATIC, '0x8f3Cf7ad23Cd3CaDbD9735AFf95802323
 export const USDC = new Token(ChainId.MATIC, '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174', 6, 'USDC', 'USDC')
 export const USDT = new Token(ChainId.MATIC, '0xc2132D05D31c914a87C6611C10748AEb04B58e8F', 6, 'USDT', 'Tether USD')
 export const COMP = new Token(ChainId.MATIC, '0x8505b9d2254A7Ae468c0E9dd10Ccea3A837aef5c', 18, 'COMP', 'Compound')
-export const EASY = new Token(ChainId.MATIC, '0xDb3b3b147A030F032633f6C4BEBf9a2fB5a882B5', 18, 'EASY', 'EASY')
-export const eUSDC = new Token(ChainId.MATIC, '0x4eBdE54ba404bE158262EDe801744b92b9878c61', 18, 'eUSDC', 'Easy USDC')
-export const eUSDT = new Token(ChainId.MATIC, '0xfc39742Fe9420a7Af23757Fc7E78D1c3AE4A9474', 18, 'eUSDT', 'Easy USDT')
-export const eDAI = new Token(ChainId.MATIC, '0xa1C09C8F4f5D03fcC27b456475d53d988e98D7C5', 18, 'eDAI', 'Easy DAI')
 export const UNITOKEN = new Token(ChainId.MATIC, '0xb33EaAd8d922B1083446DC23f610c2567fB5180f', 18, 'UNI', 'Uniswap')
 //export const TT01 = new Token(ChainId.MATIC, '0x55BeE1bD3Eb9986f6d2d963278de09eE92a3eF1D', 18, 'TT01', 'Test Token 01')
 //export const TT02 = new Token(ChainId.MATIC, '0xF6Ad3CcF71Abb3E12beCf6b3D2a74C963859ADCd', 18, 'TT01', 'Test Token 02')
@@ -102,6 +98,7 @@ export const FSN  = new Token(ChainId.MATIC, '0x2bF9b864cdc97b08B6D79ad4663e71B8
 export const ANY  = new Token(ChainId.MATIC, '0x6aB6d61428fde76768D7b45D8BFeec19c6eF91A8', 18, 'Any', 'Anyswap')
 export const PLOT  = new Token(ChainId.MATIC, '0xe82808eaA78339b06a691fd92E1Be79671cAd8D3', 18, 'PLOT', 'PLOT')
 export const OPU  = new Token(ChainId.MATIC, '0x7ff2FC33E161E3b1C6511B934F0209D304267857', 18, 'OPU', 'Opu Coin')
+export const KRILL  = new Token(ChainId.MATIC, '0x05089C9EBFFa4F0AcA269e32056b1b36B37ED71b', 18, 'Krill', 'Krill')
 
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
@@ -130,7 +127,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, GHST, QUICK, ETHER, MAUSDC, WBTC, DAI]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, USDT, QUICK, ETHER, WBTC, DAI]
 }
 
 /**
@@ -144,13 +141,13 @@ export const CUSTOM_BASES: { [chainId in ChainId]?: { [tokenAddress: string]: To
 // used for display in the default list when adding liquidity
 export const SUGGESTED_BASES: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], DAI, USDC, USDT,  COMP, GHST, QUICK, ETHER, UNITOKEN, EASY, IGG, WBTC]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], DAI, USDC, USDT, QUICK, ETHER, WBTC]
 }
 
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC],CTSI, DEGEN, MRBAL, GAME, SENT, ELET, DAI, USDC, USDT, COMP, GHST, QUICK, ETHER, UNITOKEN, EASY, IGG, WBTC, OM, MAUSDC, SWG, MADAI, RBAL, DG, SX, WRX, MUST, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, DB, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT, MONA,WISE,CC10,MOCEAN, ZUZ, BTU, WOLF, AGA, AGAr, TEL, NFTP, GFARM2,AAVE,FSN,ANY,PLOT,OPU]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC],CTSI, DEGEN, MRBAL, GAME, SENT, ELET, DAI, USDC, USDT, COMP, GHST, QUICK, ETHER, UNITOKEN, IGG, WBTC, OM, MAUSDC, SWG, MADAI, RBAL, DG, SX, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT, MONA,WISE,CC10,MOCEAN, ZUZ, BTU, WOLF, AGA, AGAr, TEL, NFTP, GFARM2,AAVE,FSN,ANY,PLOT,OPU, KRILL]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -164,17 +161,11 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     [DAI, USDT],
     [ETHER, DAI],
     [ETHER, USDC],
-    [UNITOKEN, eUSDC],
-    [UNITOKEN, eUSDT],
-    [UNITOKEN, eDAI],
-    [EASY, USDC],
     [WETH[ChainId.MATIC], USDT],
     [WETH[ChainId.MATIC], USDC],
     [WETH[ChainId.MATIC], USDT],
     [WETH[ChainId.MATIC], DAI],
-    [WETH[ChainId.MATIC], eDAI],
     [WETH[ChainId.MATIC], ETHER],
-    [WETH[ChainId.MATIC], eUSDC],
     [ETHER, QUICK],
     [UNITOKEN, USDT],
     [QUICK, UNITOKEN]
@@ -284,4 +275,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.0.54/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.0.55/build/quickswap-default.tokenlist.json'
