@@ -4,7 +4,6 @@ import { Text } from 'rebass'
 import { NavLink } from 'react-router-dom'
 import { darken } from 'polished'
 import { useTranslation } from 'react-i18next'
-import { toast } from 'react-toastify';
 import { isMobile, isAndroid, isIOS } from 'react-device-detect'
 import { useDispatch } from 'react-redux'
 import { AppDispatch } from '../../state/index'
@@ -336,7 +335,7 @@ export default function Header() {
   
   const { account, chainId } = useActiveWeb3React()
 
-  const ClaimMatic = async(address: string) => {
+  /**const ClaimMatic = async(address: string) => {
     const response = await fetch("https://api.easyfi.network/api/claimAllowance?ureq=1608049206867", {
       headers: {
         'Content-Type': 'application/json',
@@ -352,7 +351,7 @@ export default function Header() {
       toast.dark(r.message);
     }
     
-}
+}*/
   
   const { t } = useTranslation()
 
@@ -480,11 +479,11 @@ export default function Header() {
                 {userEthBalance?.toSignificant(4)} MATIC
               </BalanceText>
             ) : null}
-            {account && Number(userEthBalance?.toSignificant(4)) === 0 ? (
+            {/**account && Number(userEthBalance?.toSignificant(4)) === 0 ? (
               <BalanceText onClick ={ () => ClaimMatic(account)} style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
                 CLAIM MATIC
               </BalanceText>
-            ) : null}
+            ) : null*/}
             <Web3Status />
           </AccountElement>
         </HeaderElement>

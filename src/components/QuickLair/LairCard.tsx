@@ -89,12 +89,12 @@ export default function LairCard({ lairInfo }: { lairInfo: LairInfo }) {
         <RowBetween>
           <TYPE.white> dQUICK Rate </TYPE.white>
           <TYPE.white>{`${lairInfo.QUICKtodQUICK
-            ?.toFixed(2, { groupSeparator: ',' })} dQUICK / QUICK`}</TYPE.white>
+            ?.toFixed(4, { groupSeparator: ',' })} dQUICK / QUICK`}</TYPE.white>
         </RowBetween>
         <RowBetween>
           <TYPE.white> QUICK Rate </TYPE.white>
           <TYPE.white>{`${lairInfo.dQUICKtoQUICK
-            ?.toFixed(2, { groupSeparator: ',' })} QUICK / dQUICK`}</TYPE.white>
+            ?.toFixed(4, { groupSeparator: ',' })} QUICK / dQUICK`}</TYPE.white>
         </RowBetween>
         <RowBetween>
           <TYPE.white>Your dQUICK Balance </TYPE.white>
