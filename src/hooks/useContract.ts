@@ -27,15 +27,16 @@ import { abi as LairABI } from '../abis/DragonLair.json';
 const Web3HttpProvider = require('web3-providers-http');
 
 const rpcUrls = [
-  //"https://quick.slingshot.finance",
+  "https://matic.slingshot.finance",
   "https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   "https://matic-mainnet.chainstacklabs.com",
-  "https://rpc-mainnet.matic.network"//,
-  //"https://matic.slingshot.finance"
+  "https://rpc-mainnet.matic.network",
+  "https://quick.slingshot.finance"
+  
 ]
 
 var lastUsedUrl = -1;
-var maxUrls = 2
+var maxUrls = 4
 
 
 // returns null on errors
