@@ -110,7 +110,7 @@ export default function ManageLair() {
             <TYPE.body style={{ margin: 0 }}>dQUICK Rate</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
             {`${lairInfo.QUICKtodQUICK
-            ?.toFixed(6, { groupSeparator: ',' })} dQUICK / QUICK`}
+            ?.toFixed(8, { groupSeparator: ',' })} dQUICK / QUICK`}
             </TYPE.body>
           </AutoColumn>
         </PoolData>
@@ -176,7 +176,7 @@ export default function ManageLair() {
                 <RowBetween style={{ alignItems: 'baseline' }}>
                   <TYPE.white fontSize={36} fontWeight={600}>
                   {`${lairInfo.QUICKBalance
-                      ?.toFixed(6, { groupSeparator: ',' })}`}
+                      ?.toFixed(10, { groupSeparator: ',' })}`}
                   </TYPE.white>
                   <TYPE.white>
                     QUICK
