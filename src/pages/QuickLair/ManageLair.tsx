@@ -176,7 +176,7 @@ export default function ManageLair() {
                 <RowBetween style={{ alignItems: 'baseline' }}>
                   <TYPE.white fontSize={36} fontWeight={600}>
                   {`${lairInfo.QUICKBalance
-                      ?.toFixed(2, { groupSeparator: ',' })}`}
+                      ?.toFixed(6, { groupSeparator: ',' })}`}
                   </TYPE.white>
                   <TYPE.white>
                     QUICK
