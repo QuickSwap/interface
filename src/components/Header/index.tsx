@@ -290,7 +290,7 @@ const StyledLinkStyledButton = styled(LinkStyledButton).attrs({
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
   
   [ChainId.MUMBAI]: 'Mumbai',
-  [ChainId.MATIC]: 'Matic'
+  [ChainId.MATIC]: 'Polygon'
 }
 
 export default function Header() {
@@ -433,7 +433,13 @@ export default function Header() {
           <HideSmall>
             {chainId && NETWORK_LABELS[chainId] && (
               <NetworkCard title={NETWORK_LABELS[chainId]}>{NETWORK_LABELS[chainId]}</NetworkCard>
+              
             )}
+          </HideSmall>
+          <HideSmall>
+            <StyledExternalLink id={`stake-nav-link`} href={'https://wallet.matic.network/'} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
+                Bridge {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
+              </StyledExternalLink>
           </HideSmall>
           {availableClaim && !showClaimPopup && (
             <UNIWrapper onClick={toggleClaimModal}>
