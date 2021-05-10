@@ -109,22 +109,25 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
     )
   }
 
-  //var stakedToken = JSBI.divide(stakingInfo.totalStakedAmount.raw, JSBI.BigInt(1000000000000000000));
-  /**let stakedToken09 = JSBI.toNumber(stakingInfo.totalStakedAmount.raw);
-  stakedToken09 = Number(stakedToken09)/ Math.pow(10, 18);
-  var stakedToken = Number(stakedToken09).toFixed(5);
-  console.log(stakedToken);*/
-
   var show = isStaking || !stakingInfo.ended;
 
   // get the USD value of staked WETH
   const USDPrice = useUSDCPrice(baseToken)
   const valueOfTotalStakedAmountInUSDC =
     valueOfTotalStakedAmountInBaseToken && USDPrice?.quote(valueOfTotalStakedAmountInBaseToken)
+  
   //@ts-ignore
-  //const prelimAPY = (stakingInfo.quickPrice * stakingInfo.rate) + stakingInfo.oneDayVolume;
-  //let ap: any = valueOfTotalStakedAmountInUSDC &&  Number(valueOfTotalStakedAmountInUSDC.toFixed(5)) > 0  && prelimAPY > 0? (((prelimAPY * 365) - Number(valueOfTotalStakedAmountInUSDC.toFixed(5))) / (Number(valueOfTotalStakedAmountInUSDC.toFixed(5)))) * 100 : 0
-  //console.log(ap)
+  const valueOfQuickGivenPerYear: any = stakingInfo?.rate * stakingInfo?.quickPrice * 365;
+
+  let apy = 0;
+  let apyWithFee = 0;
+  apy = valueOfQuickGivenPerYear/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
+
+  if(stakingInfo?.oneDayFee && stakingInfo?.oneDayFee > 0) {
+    //@ts-ignore
+    apyWithFee = ((stakingInfo.oneDayFee * 365) + valueOfQuickGivenPerYear)/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
+  }
+
   return (
     show ?
     <Wrapper showBackground={isStaking} bgColor={backgroundColor}>
@@ -167,6 +170,17 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
           <TYPE.white>{`${stakingInfo.totalRewardRate
             ?.toFixed(2, { groupSeparator: ',' }).replace(/[.,]00$/, "")} QUICK / day`}</TYPE.white>
         </RowBetween>
+        <RowBetween>
+          <TYPE.white> APY(excl. fee) </TYPE.white>
+          <TYPE.white>{`${apy.toFixed(2)}%`}</TYPE.white>
+        </RowBetween>
+        { 
+          apyWithFee > 0 && ( 
+          <RowBetween>
+          <TYPE.white> APY(incl. fee) </TYPE.white>
+          <TYPE.white>{`${apyWithFee.toFixed(2)}%`}</TYPE.white>
+        </RowBetween>)
+        }
         <RowBetween>
           <TYPE.white> Status </TYPE.white>
           <TYPE.white>{!stakingInfo.ended ? 'Running':'Closed'}</TYPE.white>

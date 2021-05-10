@@ -20,32 +20,8 @@ export const TOKEN_CHART = gql`
 const PairFields = `
   fragment PairFields on Pair {
     id
-    txCount
-    token0 {
-      id
-      symbol
-      name
-      totalLiquidity
-      derivedETH
-    }
-    token1 {
-      id
-      symbol
-      name
-      totalLiquidity
-      derivedETH
-    }
-    reserve0
-    reserve1
-    reserveUSD
-    totalSupply
     trackedReserveETH
-    reserveETH
     volumeUSD
-    untrackedVolumeUSD
-    token0Price
-    token1Price
-    createdAtTimestamp
   }
 `
 
@@ -75,7 +51,7 @@ export const PAIRS_HISTORICAL_BULK = (block, pairs) => {
   pairsString += ']'
   let queryString = `
   query pairs {
-    pairs(first: 200, where: {id_in: ${pairsString}}, block: {number: ${block}}, orderBy: trackedReserveETH, orderDirection: desc) {
+    pairs(first: 100, where: {id_in: ${pairsString}}, block: {number: ${block}}, orderBy: trackedReserveETH, orderDirection: desc) {
       id
       reserveUSD
       trackedReserveETH

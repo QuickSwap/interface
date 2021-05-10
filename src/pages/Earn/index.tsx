@@ -66,6 +66,34 @@ export default function Earn() {
     flex-direction: column;
   `};
   `
+  var totalRewards:any = 0;
+  var totalFee:any = 0;
+
+  if(stakingInfos.length>0) {
+    totalRewards = stakingInfos?.reduce((sum, current, currentIndex)=>{
+      if(currentIndex === 1)
+        //@ts-ignore
+        return sum.rate + current.rate;
+
+      else
+        //@ts-ignore
+        return sum + current.rate
+    })
+
+    totalFee = stakingInfos?.reduce((sum, current, currentIndex)=>{
+      if(currentIndex === 1)
+        //@ts-ignore
+        return sum.oneDayFee + current.oneDayFee;
+
+      else
+        //@ts-ignore
+        return sum + (current.oneDayFee ? current.oneDayFee : 0);
+    })
+  }
+  
+  console.log(totalRewards);
+  console.log(totalFee);
+
 
   const stakingRewardsExist = Boolean(typeof chainId === 'number' && (STAKING_REWARDS_INFO[chainId]?.length ?? 0) > 0)
 
@@ -138,6 +166,7 @@ export default function Earn() {
           <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Participating pools</TYPE.mediumHeader>
           <Countdown exactEnd={stakingInfos?.[stakingInfos.length - 1]?.periodFinish} />
         </DataRow>
+        
 
         <PoolSection>
         {stakingRewardsExist && oldStakingInfos?.length === 0 ? (

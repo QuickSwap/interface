@@ -1,11 +1,12 @@
 import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, Pair } from '@uniswap/sdk'
-import { useMemo/**, useEffect, useState*/ } from 'react'
-/**import { client } from '../../apollo/client'
+import { useMemo, useEffect/** , useState */ } from 'react'
+import { usePair } from '../../data/Reserves'
+
+import { client } from '../../apollo/client'
 import {
-  TOKEN_CHART,
   PAIRS_BULK,
   PAIRS_HISTORICAL_BULK
-} from '../../apollo/queries'*/
+} from '../../apollo/queries'
 import { 
   UNI,
   USDC,
@@ -91,6 +92,8 @@ export const STAKING_GENESIS = 1619632831;
 
 export const REWARDS_DURATION_DAYS = 7;
 
+var pairs:any = undefined;
+
 
 // TODO add staking rewards addresses here
 export const STAKING_REWARDS_INFO: {
@@ -124,7 +127,7 @@ export const STAKING_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 75,
-      pair: '0x019ba0325f1988213D448b3472fA1cf8D07618d7'
+      pair: '0x019ba0325f1988213d448b3472fa1cf8d07618d7'
     },
     {
       tokens: [WBTC,ETHER],
@@ -134,7 +137,7 @@ export const STAKING_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 65,
-      pair: '0xdC9232E2Df177d7a12FdFf6EcBAb114E2231198D'
+      pair: '0xdc9232e2df177d7a12fdff6ecbab114e2231198d'
     },
     {
       tokens: [ETHER,USDC],
@@ -8258,9 +8261,10 @@ export interface StakingInfo {
 
   quickPrice: Number
 
-  oneDayVolume: Number
-
   rate: Number
+
+  oneDayFee: Number
+
   // calculates a hypothetical amount of token distributed to the active account per second.
   getHypotheticalRewardRate: (
     stakedAmount: TokenAmount,
@@ -8282,7 +8286,11 @@ export interface StakingInfo {
 }*/
 
 
- /**const getBulkPairData = async(pairList: any, setPairData:any) => {
+ const getBulkPairData = async(pairList: any) => {
+   //@ts-ignore
+  if(pairs !== undefined) {
+    return;
+  }
   const current = await web3.eth.getBlockNumber();
   const oneDayOldBlock = current - 45700;
   
@@ -8319,10 +8327,11 @@ export interface StakingInfo {
           return data
         })
     )
-
+    
     const object = convertArrayToObject(pairData, 'id');
     if (Object.keys(object).length > 0){
-      setPairData(object)
+      pairs = object;
+      return object;
     }
     return object
 
@@ -8361,7 +8370,7 @@ function parseData(data: any, oneDayData: any) {
   returnData.oneDayVolumeUSD = parseFloat(oneDayVolumeUSD?.toString())
   
   return returnData;
-}*/
+}
 
 
 export function useLairInfo(): LairInfo {
@@ -8403,8 +8412,8 @@ export function useLairInfo(): LairInfo {
 export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const { chainId, account } = useActiveWeb3React()
   //const [quickPrice,setQuickPrice] = useState(0);
-  //const [,setPairData] = useState();
-  
+  const [, quickUsdcPair] = usePair(QUICK, USDC);
+  const quickPrice = Number(quickUsdcPair?.priceOf(QUICK)?.toSignificant(6))
   const info = useMemo(
     () =>
       chainId
@@ -8423,14 +8432,13 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const uni = chainId ? UNI[chainId] : undefined
 
   const rewardsAddresses = useMemo(() => info.map(({ stakingRewardAddress }) => stakingRewardAddress), [info])
-  //const pairAddresses = useMemo(() => info.map(({ pair }) => pair), [info])
+  const pairAddresses = useMemo(() => info.map(({ pair }) => pair), [info])
   
-  /**useEffect(() => {
-    getQUICKPrice(setQuickPrice).then((price)=>{
-    });
-    getBulkPairData(pairAddresses, setPairData).then((data)=>{
+  useEffect(() => {
+ 
+    getBulkPairData(pairAddresses).then((data)=>{
     })
-  }, [pairAddresses])*/
+  }, [pairAddresses])
 
   const accountArg = useMemo(() => [account ?? undefined], [account])
    
@@ -8520,7 +8528,17 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
         const individualRewardRate = getHypotheticalRewardRate(stakedAmount, totalStakedAmount, totalRewardRate01)
 
         const periodFinishMs = periodFinishState.result?.[0]?.mul(1000)?.toNumber()
-
+        var oneDayFee = 0;
+        //@ts-ignore
+        if(pairs !== undefined){
+          //@ts-ignore
+          oneDayFee = pairs[info[index].pair]?.oneDayVolumeUSD;
+          
+          if(oneDayFee) {
+            oneDayFee = oneDayFee * 0.0025
+          } 
+        }
+        
         memo.push({
           stakingRewardAddress: rewardsAddress,
           tokens: info[index].tokens,
@@ -8536,9 +8554,9 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           getHypotheticalRewardRate,
           baseToken: info[index].baseToken,
           pair: info[index].pair,
-          quickPrice: 0,
-          oneDayVolume: 0,//fees,
-          rate: info[index].rate
+          quickPrice: quickPrice,
+          rate: info[index].rate,
+          oneDayFee: oneDayFee
         })
       }
       return memo
@@ -8660,8 +8678,8 @@ export function useVeryOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo
           getHypotheticalRewardRate,
           pair: info[index].pair,
           quickPrice: 0,
-          oneDayVolume: 0,
-          rate: info[index].rate
+          rate: info[index].rate,
+          oneDayFee: 0
         })
       }
       return memo
@@ -8784,8 +8802,8 @@ export function useOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           getHypotheticalRewardRate,
           pair: info[index].pair,
           quickPrice: 0,
-          oneDayVolume: 0,
-          rate: info[index].rate
+          rate: info[index].rate,
+          oneDayFee: 0
         })
       }
       return memo
