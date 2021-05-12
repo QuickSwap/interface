@@ -319,6 +319,8 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://i.imgur.com/nQDG9AQ.png'
     }if (address?.toLowerCase() === '0x7ff2FC33E161E3b1C6511B934F0209D304267857'.toLowerCase()) {
       uri = 'https://www.opucoin.io/wp-content/uploads/2021/04/opu-coiin-icon-border.svg'
+    }if (address?.toLowerCase() === '0x3a3Df212b7AA91Aa0402B9035b098891d276572B'.toLowerCase()) {
+      uri = 'https://i.imgur.com/ncleoTN.png'
     }
 
     if (!uri) {

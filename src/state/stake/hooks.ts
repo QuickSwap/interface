@@ -8263,7 +8263,7 @@ export interface StakingInfo {
 
   rate: Number
 
-  oneDayFee: Number
+  oneYearFee: Number
 
   // calculates a hypothetical amount of token distributed to the active account per second.
   getHypotheticalRewardRate: (
@@ -8368,6 +8368,7 @@ function parseData(data: any, oneDayData: any) {
   returnData.token0 = data.token0;
   returnData.token1 = data.token1;
   returnData.oneDayVolumeUSD = parseFloat(oneDayVolumeUSD?.toString())
+  returnData.reserveUSD = data.reserveUSD 
   
   return returnData;
 }
@@ -8528,14 +8529,15 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
         const individualRewardRate = getHypotheticalRewardRate(stakedAmount, totalStakedAmount, totalRewardRate01)
 
         const periodFinishMs = periodFinishState.result?.[0]?.mul(1000)?.toNumber()
-        var oneDayFee = 0;
+        var oneYearFee = 0;
         //@ts-ignore
         if(pairs !== undefined){
           //@ts-ignore
-          oneDayFee = pairs[info[index].pair]?.oneDayVolumeUSD;
+          oneYearFee = pairs[info[index].pair]?.oneDayVolumeUSD;
           
-          if(oneDayFee) {
-            oneDayFee = oneDayFee * 0.0025
+          if(oneYearFee) {
+            oneYearFee = ( oneYearFee * 0.003 * 365) / pairs[info[index].pair]?.reserveUSD
+            console.log(info[index].pair, oneYearFee);
           } 
         }
         
@@ -8556,7 +8558,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           pair: info[index].pair,
           quickPrice: quickPrice,
           rate: info[index].rate,
-          oneDayFee: oneDayFee
+          oneYearFee: oneYearFee
         })
       }
       return memo
@@ -8679,7 +8681,7 @@ export function useVeryOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo
           pair: info[index].pair,
           quickPrice: 0,
           rate: info[index].rate,
-          oneDayFee: 0
+          oneYearFee: 0
         })
       }
       return memo
@@ -8803,7 +8805,7 @@ export function useOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           pair: info[index].pair,
           quickPrice: 0,
           rate: info[index].rate,
-          oneDayFee: 0
+          oneYearFee: 0
         })
       }
       return memo

@@ -22,6 +22,7 @@ const PairFields = `
     id
     trackedReserveETH
     volumeUSD
+    reserveUSD
   }
 `
 

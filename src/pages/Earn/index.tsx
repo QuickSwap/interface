@@ -49,6 +49,18 @@ const Arrow = styled.div`
     cursor: pointer;
   }
 `
+const StatContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+  display: none;
+`};
+`
 
 export default function Earn() {
 
@@ -68,6 +80,7 @@ export default function Earn() {
   `
   var totalRewards:any = 0;
   var totalFee:any = 0;
+  var totalRewardsUSD: any = 0;
 
   if(stakingInfos.length>0) {
     totalRewards = stakingInfos?.reduce((sum, current, currentIndex)=>{
@@ -91,9 +104,10 @@ export default function Earn() {
     })
   }
   
-  console.log(totalRewards);
-  console.log(totalFee);
-
+  if(totalRewards > 0) {
+    //@ts-ignore
+    totalRewardsUSD = stakingInfos[0].quickPrice * totalRewards;
+  }
 
   const stakingRewardsExist = Boolean(typeof chainId === 'number' && (STAKING_REWARDS_INFO[chainId]?.length ?? 0) > 0)
 
@@ -167,7 +181,34 @@ export default function Earn() {
           <Countdown exactEnd={stakingInfos?.[stakingInfos.length - 1]?.periodFinish} />
         </DataRow>
         
+        <TopSection gap="md">
+        <DataCard>
+        <CardNoise />
+        <StatContainer>
+        <RowBetween style={{marginTop: "10px"}}>
+          <TYPE.white> Reward Rate</TYPE.white>
+          <TYPE.white>
+            {totalRewards.toFixed(0)} QUICK / day
+          </TYPE.white>
+        </RowBetween>
+        <RowBetween style={{marginTop: "10px"}}>
+          <TYPE.white> Total Rewards</TYPE.white>
+          <TYPE.white>
+            ${totalRewardsUSD.toFixed(0)} / day
+          </TYPE.white>
+        </RowBetween>
 
+        {totalFee > 0 && (
+          <RowBetween style={{marginTop: "10px"}}>
+          <TYPE.white> Total Fees</TYPE.white>
+          <TYPE.white>
+            ${totalFee.toFixed(0)} / day
+          </TYPE.white>
+        </RowBetween>
+        )}
+      </StatContainer>
+          </DataCard>
+          </TopSection>
         <PoolSection>
         {stakingRewardsExist && oldStakingInfos?.length === 0 ? (
             <div />
