@@ -174,24 +174,25 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
           </TYPE.white>
         </RowBetween>
         <RowBetween>
+          <TYPE.white> Total Rewards </TYPE.white>
+          <TYPE.white>{`$${rewards.
+            toFixed(0)} / day`}</TYPE.white>
+        </RowBetween>
+        <RowBetween>
           <TYPE.white> Pool rate </TYPE.white>
           <TYPE.white>{`${stakingInfo.totalRewardRate
             ?.toFixed(2, { groupSeparator: ',' }).replace(/[.,]00$/, "")} QUICK / day`}</TYPE.white>
         </RowBetween>
-        <RowBetween>
-          <TYPE.white> Rewards </TYPE.white>
-          <TYPE.white>{`$${rewards.
-            toFixed(0)} / day`}</TYPE.white>
-        </RowBetween>
+        
         { 
           apyWithFee > 0 && ( 
           <RowBetween>
-          <TYPE.white> APY(incl. fee) </TYPE.white>
+          <TYPE.white> Rewards + Fee APY </TYPE.white>
           <TYPE.white>{`${apyWithFee.toFixed(2)}%`}</TYPE.white>
         </RowBetween>)
         }
         <RowBetween>
-          <TYPE.white> APY(excl. fee) </TYPE.white>
+          <TYPE.white> Rewards APY </TYPE.white>
           <TYPE.white>{`${apy.toFixed(2)} %`}</TYPE.white>
         </RowBetween>
         

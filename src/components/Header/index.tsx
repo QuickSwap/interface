@@ -438,7 +438,7 @@ export default function Header() {
           </HideSmall>
           <HideSmall>
             <StyledExternalLink id={`stake-nav-link`} href={'https://wallet.matic.network/'} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
-                Bridge {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
+                Bridge Assets {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
               </StyledExternalLink>
           </HideSmall>
           {availableClaim && !showClaimPopup && (
