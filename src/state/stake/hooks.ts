@@ -136,7 +136,7 @@ export const STAKING_REWARDS_INFO: {
     name: '',
     baseToken: ETHER,
     rate: 85,
-    pair: '0xdC9232E2Df177d7a12FdFf6EcBAb114E2231198D'
+    pair: '0xdc9232e2df177d7a12fdff6ecbab114e2231198d'
   },
   {
     tokens: [ETHER,USDC],
@@ -156,7 +156,7 @@ export const STAKING_REWARDS_INFO: {
     name: '',
     baseToken: QUICK,
     rate: 65,
-    pair: '0x019ba0325f1988213D448b3472fA1cf8D07618d7'
+    pair: '0x019ba0325f1988213d448b3472fa1cf8d07618d7'
   },
   {
     tokens: [DAI,ETHER],
@@ -8272,8 +8272,11 @@ export interface StakingInfo {
 
   rate: Number
 
+  oneYearFeeAPY: Number
+
   oneYearFee: Number
 
+  accountFee: Number
   // calculates a hypothetical amount of token distributed to the active account per second.
   getHypotheticalRewardRate: (
     stakedAmount: TokenAmount,
@@ -8377,7 +8380,8 @@ function parseData(data: any, oneDayData: any) {
   returnData.token0 = data.token0;
   returnData.token1 = data.token1;
   returnData.oneDayVolumeUSD = parseFloat(oneDayVolumeUSD?.toString())
-  returnData.reserveUSD = data.reserveUSD 
+  returnData.reserveUSD = data.reserveUSD
+  returnData.totalSupply = data.totalSupply
   
   return returnData;
 }
@@ -8538,15 +8542,22 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
         const individualRewardRate = getHypotheticalRewardRate(stakedAmount, totalStakedAmount, totalRewardRate01)
 
         const periodFinishMs = periodFinishState.result?.[0]?.mul(1000)?.toNumber()
+        var oneYearFeeAPY = 0;
         var oneYearFee = 0;
+        var accountFee = 0;
         //@ts-ignore
         if(pairs !== undefined){
           //@ts-ignore
-          oneYearFee = pairs[info[index].pair]?.oneDayVolumeUSD;
+          oneYearFeeAPY = pairs[info[index].pair]?.oneDayVolumeUSD;
           
-          if(oneYearFee) {
-            oneYearFee = ( oneYearFee * 0.003 * 365) / pairs[info[index].pair]?.reserveUSD
-            console.log(info[index].pair, oneYearFee);
+          if(oneYearFeeAPY) {
+            const totalSupply = web3.utils.toWei(pairs[info[index].pair]?.totalSupply, "ether");
+            const ratio = Number(totalSupplyState.result?.[0].toString()) / Number(totalSupply);
+            const myRatio = Number(balanceState?.result?.[0].toString()) / Number(totalSupplyState.result?.[0].toString());
+            oneYearFee = ( oneYearFeeAPY * 0.003) * ratio;
+            accountFee = oneYearFee * myRatio;
+            oneYearFeeAPY = ( oneYearFeeAPY * 0.003 * 365) / pairs[info[index].pair]?.reserveUSD
+            console.log(info[index].pair, oneYearFeeAPY);
           } 
         }
         
@@ -8567,7 +8578,9 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           pair: info[index].pair,
           quickPrice: quickPrice,
           rate: info[index].rate,
-          oneYearFee: oneYearFee
+          oneYearFeeAPY: oneYearFeeAPY,
+          oneYearFee,
+          accountFee
         })
       }
       return memo
@@ -8690,7 +8703,9 @@ export function useVeryOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo
           pair: info[index].pair,
           quickPrice: 0,
           rate: info[index].rate,
-          oneYearFee: 0
+          oneYearFeeAPY: 0,
+          oneYearFee: 0,
+          accountFee: 0
         })
       }
       return memo
@@ -8814,7 +8829,9 @@ export function useOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           pair: info[index].pair,
           quickPrice: 0,
           rate: info[index].rate,
-          oneYearFee: 0
+          oneYearFeeAPY: 0,
+          oneYearFee: 0,
+          accountFee: 0
         })
       }
       return memo

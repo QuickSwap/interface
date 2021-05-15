@@ -96,11 +96,11 @@ export default function Earn() {
     totalFee = stakingInfos?.reduce((sum, current, currentIndex)=>{
       if(currentIndex === 1)
         //@ts-ignore
-        return sum.oneDayFee + current.oneDayFee;
+        return sum.oneYearFee + current.oneYearFee;
 
       else
         //@ts-ignore
-        return sum + (current.oneDayFee ? current.oneDayFee : 0);
+        return sum + (current.oneYearFee ? current.oneYearFee : 0);
     })
   }
   

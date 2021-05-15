@@ -129,11 +129,11 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
   //@ts-ignore
   rewards = stakingInfo?.rate * stakingInfo?.quickPrice;
 
-  if(stakingInfo?.oneYearFee && stakingInfo?.oneYearFee > 0) {
+  if(stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0) {
     //@ts-ignore
-    apyWithFee = ((1 + ((perMonthReturnInRewards + stakingInfo.oneYearFee / 12) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
+    apyWithFee = ((1 + ((perMonthReturnInRewards + stakingInfo.oneYearFeeAPY / 12) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
     //@ts-ignore
-    //apyWithFee = ((stakingInfo.oneYearFee) + perMonthReturnInRewards)/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
+    //apyWithFee = ((stakingInfo.oneYearFeeAPY) + perMonthReturnInRewards)/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
   }
 
   return (
@@ -221,6 +221,17 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
               {`${stakingInfo.rewardRate
                 ?.multiply(`${60 * 60 * 24}`)
                 ?.toSignificant(4, { groupSeparator: ',' })} QUICK / day`}
+            </TYPE.black>
+          </BottomSection>
+
+          <BottomSection showBackground={true} style={{paddingTop: "0px"}}>
+            <TYPE.black color={'white'} fontWeight={500}>
+              <span>Your fees</span>
+            </TYPE.black>
+
+            <TYPE.black style={{ textAlign: 'right' }} color={'white'} fontWeight={500}>
+              
+              {`$${stakingInfo.accountFee.toFixed(6)} / day`}
             </TYPE.black>
           </BottomSection>
         </>

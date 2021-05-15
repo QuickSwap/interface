@@ -23,6 +23,7 @@ const PairFields = `
     trackedReserveETH
     volumeUSD
     reserveUSD
+    totalSupply
   }
 `
 
@@ -58,6 +59,7 @@ export const PAIRS_HISTORICAL_BULK = (block, pairs) => {
       trackedReserveETH
       volumeUSD
       untrackedVolumeUSD
+      totalSupply
     }
   }
   `
