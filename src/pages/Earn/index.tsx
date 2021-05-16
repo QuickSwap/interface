@@ -96,11 +96,11 @@ export default function Earn() {
     totalFee = stakingInfos?.reduce((sum, current, currentIndex)=>{
       if(currentIndex === 1)
         //@ts-ignore
-        return sum.oneYearFee + current.oneYearFee;
+        return sum.oneDayFee + current.oneDayFee;
 
       else
         //@ts-ignore
-        return sum + (current.oneYearFee ? current.oneYearFee : 0);
+        return sum + (current.oneDayFee ? current.oneDayFee : 0);
     })
   }
   
@@ -200,9 +200,9 @@ export default function Earn() {
 
         {totalFee > 0 && (
           <RowBetween style={{marginTop: "10px"}}>
-          <TYPE.white> Total Fees</TYPE.white>
+          <TYPE.white> Fees (24hr)</TYPE.white>
           <TYPE.white>
-            ${totalFee.toFixed(0)} / day
+            ${totalFee.toFixed(0)}
           </TYPE.white>
         </RowBetween>
         )}

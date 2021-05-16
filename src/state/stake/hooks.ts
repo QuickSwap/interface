@@ -8274,7 +8274,7 @@ export interface StakingInfo {
 
   oneYearFeeAPY: Number
 
-  oneYearFee: Number
+  oneDayFee: Number
 
   accountFee: Number
   // calculates a hypothetical amount of token distributed to the active account per second.
@@ -8304,7 +8304,7 @@ export interface StakingInfo {
     return;
   }
   const current = await web3.eth.getBlockNumber();
-  const oneDayOldBlock = current - 85700;
+  const oneDayOldBlock = current - 87000;
   
   try {
     let current = await client.query({
@@ -8543,7 +8543,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
 
         const periodFinishMs = periodFinishState.result?.[0]?.mul(1000)?.toNumber()
         var oneYearFeeAPY = 0;
-        var oneYearFee = 0;
+        var oneDayFee = 0;
         var accountFee = 0;
         //@ts-ignore
         if(pairs !== undefined){
@@ -8554,10 +8554,10 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
             const totalSupply = web3.utils.toWei(pairs[info[index].pair]?.totalSupply, "ether");
             const ratio = Number(totalSupplyState.result?.[0].toString()) / Number(totalSupply);
             const myRatio = Number(balanceState?.result?.[0].toString()) / Number(totalSupplyState.result?.[0].toString());
-            oneYearFee = ( oneYearFeeAPY * 0.003) * ratio;
-            accountFee = oneYearFee * myRatio;
+            oneDayFee = ( oneYearFeeAPY * 0.003) * ratio;
+            accountFee = oneDayFee * myRatio;
             oneYearFeeAPY = ( oneYearFeeAPY * 0.003 * 365) / pairs[info[index].pair]?.reserveUSD
-            console.log(info[index].pair, oneYearFeeAPY);
+            //console.log(info[index].pair, oneYearFeeAPY);
           } 
         }
         
@@ -8579,7 +8579,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           quickPrice: quickPrice,
           rate: info[index].rate,
           oneYearFeeAPY: oneYearFeeAPY,
-          oneYearFee,
+          oneDayFee,
           accountFee
         })
       }
@@ -8704,7 +8704,7 @@ export function useVeryOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo
           quickPrice: 0,
           rate: info[index].rate,
           oneYearFeeAPY: 0,
-          oneYearFee: 0,
+          oneDayFee: 0,
           accountFee: 0
         })
       }
@@ -8830,7 +8830,7 @@ export function useOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           quickPrice: 0,
           rate: info[index].rate,
           oneYearFeeAPY: 0,
-          oneYearFee: 0,
+          oneDayFee: 0,
           accountFee: 0
         })
       }

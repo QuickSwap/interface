@@ -120,10 +120,10 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
   const perMonthReturnInRewards: any = (stakingInfo?.rate * stakingInfo?.quickPrice * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6));
   
 
-  let apy = 0;
+  //let apy = 0;
   let apyWithFee = 0;
   let rewards = 0;
-  apy = ((1 + ((perMonthReturnInRewards) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
+  //apy = ((1 + ((perMonthReturnInRewards) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
   //apy = perMonthReturnInRewards/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
 
   //@ts-ignore
@@ -183,6 +183,14 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
           <TYPE.white>{`${stakingInfo.totalRewardRate
             ?.toFixed(2, { groupSeparator: ',' }).replace(/[.,]00$/, "")} QUICK / day`}</TYPE.white>
         </RowBetween>
+
+        { 
+          apyWithFee > 0 && ( 
+          <RowBetween>
+          <TYPE.white> Fees (24hr) </TYPE.white>
+          <TYPE.white>{`$${stakingInfo?.oneDayFee.toFixed(0)}`}</TYPE.white>
+        </RowBetween>)
+        }
         
         { 
           apyWithFee > 0 && ( 
@@ -191,15 +199,15 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
           <TYPE.white>{`${apyWithFee.toFixed(2)}%`}</TYPE.white>
         </RowBetween>)
         }
-        <RowBetween>
+        {/**<RowBetween>
           <TYPE.white> Rewards APY </TYPE.white>
           <TYPE.white>{`${apy.toFixed(2)} %`}</TYPE.white>
-        </RowBetween>
+        </RowBetween>*/}
         
-        <RowBetween>
+        {/**<RowBetween>
           <TYPE.white> Status </TYPE.white>
           <TYPE.white>{!stakingInfo.ended ? 'Running':'Closed'}</TYPE.white>
-        </RowBetween>
+        </RowBetween>*/}
         {/**<RowBetween>
           <TYPE.white> APR </TYPE.white>
           <TYPE.white>{ap + "%"}</TYPE.white>
