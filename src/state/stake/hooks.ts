@@ -8304,7 +8304,7 @@ export interface StakingInfo {
     return;
   }
   const current = await web3.eth.getBlockNumber();
-  const oneDayOldBlock = current - 87000;
+  const oneDayOldBlock = current - 50000;
   
   try {
     let current = await client.query({
