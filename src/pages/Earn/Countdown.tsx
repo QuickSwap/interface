@@ -29,40 +29,21 @@ export function Countdown({ exactEnd }: { exactEnd?: Date }) {
   const timeUntilGenesis = begin - time
   const timeUntilEnd = end - time
 
-  let timeRemaining: number
   let message: string
   if (timeUntilGenesis >= 0) {
     message = 'Rewards begin in'
-    timeRemaining = timeUntilGenesis
   } else {
     const ongoing = timeUntilEnd >= 0
     if (ongoing) {
-      message = 'Next Rewards in '
-      timeRemaining = timeUntilEnd
+      message = 'Rewards running'
     } else {
-      message = 'Rewards have ended!'
-      timeRemaining = Infinity
+      message = 'Rewards running!'
     }
   }
-
-  const days = (timeRemaining - (timeRemaining % DAY)) / DAY
-  timeRemaining -= days * DAY
-  const hours = (timeRemaining - (timeRemaining % HOUR)) / HOUR
-  timeRemaining -= hours * HOUR
-  const minutes = (timeRemaining - (timeRemaining % MINUTE)) / MINUTE
-  timeRemaining -= minutes * MINUTE
-  const seconds = timeRemaining
 
   return (
     <TYPE.black fontWeight={400}>
       {message}{' '}
-      {Number.isFinite(timeRemaining) && (
-        <code>
-          {`${days}:${hours.toString().padStart(2, '0')}:${minutes
-            .toString()
-            .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`}
-        </code>
-      )}
     </TYPE.black>
   )
 }

@@ -323,6 +323,20 @@ const getTokenLogoURL = (address: string) => {
       uri = 'https://i.imgur.com/ncleoTN.png'
     }
 
+    if (address?.toLowerCase() === '0x05089C9EBFFa4F0AcA269e32056b1b36B37ED71b'.toLowerCase()) {
+      uri = 'https://i.imgur.com/REyP9yh.jpg'
+    }if (address?.toLowerCase() === '0xFbdd194376de19a88118e84E279b977f165d01b8'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/beefyfinance/beefy-app/prod/src/images/single-assets/BIFI.png'
+    }if (address?.toLowerCase() === '0x580A84C73811E1839F75d86d75d88cCa0c241fF4'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/0xlaozi/qidao/main/images/qi.png'
+    }if (address?.toLowerCase() === '0xa3Fa99A148fA48D14Ed51d610c367C61876997F1'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/0xlaozi/qidao/main/images/mimatic-red.png'
+    }if (address?.toLowerCase() === '0x8A953CfE442c5E8855cc6c61b1293FA648BAE472'.toLowerCase()) {
+      uri = 'https://polydoge.com/doge-webpage_files/doge.png'
+    }if (address?.toLowerCase() === '0xd6a5ab46ead26f49b03bbb1f9eb1ad5c1767974a'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/9651.png'
+    }
+
     if (!uri) {
       uri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
     }
