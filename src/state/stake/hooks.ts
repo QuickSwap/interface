@@ -130,7 +130,7 @@ export const STAKING_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 90,
-      pair: '0xdC9232E2Df177d7a12FdFf6EcBAb114E2231198D'
+      pair: '0xdc9232e2df177d7a12fdff6ecbab114e2231198d'
     },
     {
       tokens: [ETHER,USDC],
@@ -160,7 +160,7 @@ export const STAKING_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 65,
-      pair: '0x019ba0325f1988213D448b3472fA1cf8D07618d7'
+      pair: '0x019ba0325f1988213d448b3472fa1cf8d07618d7'
     },
     {
       tokens: [DAI,ETHER],
