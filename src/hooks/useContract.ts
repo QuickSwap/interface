@@ -29,7 +29,7 @@ const Web3HttpProvider = require('web3-providers-http');
 const rpcUrls = [
   "https://matic.slingshot.finance",
   "https://rpc-quickswap-do1-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
-  //"https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
+  "https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   "https://matic-mainnet.chainstacklabs.com",
   "https://rpc-mainnet.matic.network",
   "https://quick.slingshot.finance"
@@ -37,7 +37,7 @@ const rpcUrls = [
 ]
 
 var lastUsedUrl = -1;
-var maxUrls = 4
+var maxUrls = 5
 
 
 // returns null on errors
