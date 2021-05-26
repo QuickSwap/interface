@@ -362,7 +362,7 @@ export const STAKING_REWARDS_INFO: {
     ended: false,
     lp: '',
     name: '',
-    baseToken: MATIC,
+    baseToken: USDC,
     rate: 11,
     pair: '0x0df9e46c0eaedf41b9d4bbe2cea2af6e8181b033'
   },

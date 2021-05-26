@@ -32,13 +32,13 @@ const rpcUrls = [
   "https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://matic-mainnet.chainstacklabs.com",
-  "https://rpc-mainnet.matic.network",
+  //"https://rpc-mainnet.matic.network",
   "https://quick.slingshot.finance"
   
 ]
 
 var lastUsedUrl = -1;
-var maxUrls = 6
+var maxUrls = 5
 
 
 // returns null on errors
