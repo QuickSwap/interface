@@ -346,6 +346,9 @@ const getTokenLogoURL = (address: string) => {
     }if (address?.toLowerCase() === '0x7f426F6Dc648e50464a0392E60E1BB465a67E9cf'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/13751/small/autofarm_icon_200x200.png?1611494288'
     }
+    if (address?.toLowerCase() === '0x5B4CF2C120A9702225814E18543ee658c5f8631e'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12819/small/UniLend_Finance_logo_PNG.png?1602748658'
+    }
 
     if (!uri) {
       uri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
