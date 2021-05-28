@@ -106,7 +106,7 @@ function CurrencyRow({
 
   const removeToken = useRemoveUserAddedToken()
   const addToken = useAddUserToken()
-  const isMetamask = (ethereum && ethereum.isMetaMask && chainId === 137 && isOnSelectedList);
+  const isMetamask = (ethereum && ethereum.isMetaMask && Number(ethereum.chainId) === 137 && isOnSelectedList);
 
   
   const addTokenToMetamask = (tokenAddress:any, tokenSymbol:any, tokenDecimals:any, tokenImage:any) => {
