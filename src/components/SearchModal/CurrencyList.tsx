@@ -1,4 +1,4 @@
-import { Currency, CurrencyAmount, currencyEquals, ETHER, Token } from '@uniswap/sdk'
+import { CurrencyAmount, currencyEquals, ETHER, Token, Currency } from '@uniswap/sdk'
 import React, { CSSProperties, MutableRefObject, useCallback, useMemo } from 'react'
 import { FixedSizeList } from 'react-window'
 import { Text } from 'rebass'
@@ -16,8 +16,10 @@ import { MouseoverTooltip } from '../Tooltip'
 import { FadedSpan, MenuItem } from './styleds'
 import Loader from '../Loader'
 import { isTokenOnList } from '../../utils'
+import { PlusHelper } from '../QuestionHelper'
+import { getTokenLogoURL } from '../CurrencyLogo'
 
-function currencyKey(currency: Currency): string {
+function currencyKey(currency: Token): string {
   return currency instanceof Token ? currency.address : currency === ETHER ? 'ETHER' : ''
 }
 
@@ -51,7 +53,7 @@ const TagContainer = styled.div`
   justify-content: flex-end;
 `
 
-function TokenTags({ currency }: { currency: Currency }) {
+function TokenTags({ currency }: { currency: Token }) {
   if (!(currency instanceof WrappedTokenInfo)) {
     return <span />
   }
@@ -87,12 +89,14 @@ function CurrencyRow({
   otherSelected,
   style
 }: {
-  currency: Currency
+  currency: Token
   onSelect: () => void
   isSelected: boolean
   otherSelected: boolean
   style: CSSProperties
 }) {
+  const { ethereum } = window;
+
   const { account, chainId } = useActiveWeb3React()
   const key = currencyKey(currency)
   const selectedTokenList = useSelectedTokenList()
@@ -102,6 +106,37 @@ function CurrencyRow({
 
   const removeToken = useRemoveUserAddedToken()
   const addToken = useAddUserToken()
+  const isMetamask = (ethereum && ethereum.isMetaMask && chainId === 137 && isOnSelectedList);
+
+  
+  const addTokenToMetamask = (tokenAddress:any, tokenSymbol:any, tokenDecimals:any, tokenImage:any) => {
+    if(ethereum) {
+      // @ts-ignore
+      ethereum.request({
+        method: 'wallet_watchAsset',
+        params: {
+          type: 'ERC20', // Initially only supports ERC20, but eventually more!
+          options: {
+            address: tokenAddress, // The address that the token is at.
+            symbol: tokenSymbol, // A ticker symbol or shorthand, up to 5 chars.
+            decimals: tokenDecimals, // The number of decimals in the token
+            image: tokenImage, // A string url of the token logo
+          },
+        },
+      })
+      .then((result:any) => {
+      })
+      .catch((error:any) => {
+        if (error.code === 4001) {
+          // EIP-1193 userRejectedRequest error
+          console.log('We can encrypt anything without the key.');
+        } else {
+          console.error(error);
+        }
+      });
+    }
+    
+  }
 
   // only show add or remove buttons if not on selected list
   return (
@@ -113,10 +148,31 @@ function CurrencyRow({
       selected={otherSelected}
     >
       <CurrencyLogo currency={currency} size={'24px'} />
+     
       <Column>
         <Text title={currency.name} fontWeight={500}>
           {currency.symbol}
+          { isMetamask && currency !== ETHER && (
+              <LinkStyledButton
+              style={{cursor: 'pointer'}}
+              onClick={event => {
+                addTokenToMetamask(
+                  currency.address,
+                  currency.symbol,
+                  currency.decimals,
+                  getTokenLogoURL(currency.address),
+                )
+                event.stopPropagation()
+              }}
+              >
+              <PlusHelper  text="Add to metamask." />
+
+              </LinkStyledButton>
+          )
+          }
+          
         </Text>
+        
         <FadedSpan>
           {!isOnSelectedList && customAdded ? (
             <TYPE.main fontWeight={500}>
@@ -164,18 +220,18 @@ export default function CurrencyList({
   showETH
 }: {
   height: number
-  currencies: Currency[]
+  currencies: Token[]
   selectedCurrency?: Currency | null
-  onCurrencySelect: (currency: Currency) => void
+  onCurrencySelect: (currency: Token) => void
   otherCurrency?: Currency | null
   fixedListRef?: MutableRefObject<FixedSizeList | undefined>
   showETH: boolean
 }) {
-  const itemData = useMemo(() => (showETH ? [Currency.ETHER, ...currencies] : currencies), [currencies, showETH])
+  const itemData = useMemo(() => (showETH ? [Token.ETHER, ...currencies] : currencies), [currencies, showETH])
 
   const Row = useCallback(
     ({ data, index, style }) => {
-      const currency: Currency = data[index]
+      const currency: Token = data[index]
       const isSelected = Boolean(selectedCurrency && currencyEquals(selectedCurrency, currency))
       const otherSelected = Boolean(otherCurrency && currencyEquals(otherCurrency, currency))
       const handleSelect = () => onCurrencySelect(currency)
