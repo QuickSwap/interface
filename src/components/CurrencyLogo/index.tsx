@@ -346,6 +346,15 @@ export const getTokenLogoURL = (address: string) => {
     }if (address?.toLowerCase() === '0x7f426F6Dc648e50464a0392E60E1BB465a67E9cf'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/13751/small/autofarm_icon_200x200.png?1611494288'
     }
+    if (address?.toLowerCase() === '0xD86b5923F3AD7b585eD81B448170ae026c65ae9a'.toLowerCase()) {
+      uri = 'https://ironfi.s3.amazonaws.com/images/IRON.png'
+    }if (address?.toLowerCase() === '0xaAa5B9e6c589642f98a1cDA99B9D024B8407285A'.toLowerCase()) {
+      uri = 'https://ironfi.s3.amazonaws.com/images/TITAN.png'
+    }if (address?.toLowerCase() === '0xfd4959c06FbCc02250952DAEbf8e0Fb38cF9FD8C'.toLowerCase()) {
+      uri = 'https://pbs.twimg.com/profile_images/1366339230683652096/sit30Uuo_400x400.png'
+    }if (address?.toLowerCase() === '0x9aCeB6f749396d1930aBc9e263eFc449E5e82c13'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15761/small/xg1NFl0.png?1621825451'
+    }
     if (address?.toLowerCase() === '0x5B4CF2C120A9702225814E18543ee658c5f8631e'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/12819/small/UniLend_Finance_logo_PNG.png?1602748658'
     }

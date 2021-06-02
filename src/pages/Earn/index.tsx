@@ -111,7 +111,7 @@ export default function Earn() {
     flex-direction: column;
   `};
   `
-  var poolsToShow = pools;
+  var poolsToShow = stakingInfos;
 
   var totalRewards:any = 0;
   var totalFee:any = 0;
