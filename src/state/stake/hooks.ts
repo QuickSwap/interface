@@ -140,7 +140,7 @@ export const STAKING_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 75,
-      pair: '0xdC9232E2Df177d7a12FdFf6EcBAb114E2231198D'
+      pair: '0xdc9232e2df177d7a12fdff6ecbab114e2231198d'
     },
     {
       tokens: [ETHER,USDC],
