@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, {  RefObject, useState, useCallback, useRef } from 'react'
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
-import { STAKING_REWARDS_INFO, useStakingInfo, useOldStakingInfo, useLairInfo } from '../../state/stake/hooks'
+import { STAKING_REWARDS_INFO, useStakingInfo, useOldStakingInfo, useLairInfo, StakingInfo } from '../../state/stake/hooks'
 import { TYPE, ExternalLink} from '../../theme'
 import { isMobile } from 'react-device-detect'
 import PoolCard from '../../components/earn/PoolCard'
@@ -61,16 +61,49 @@ const StatContainer = styled.div`
   display: none;
 `};
 `
+export const SearchInput = styled.input`
+  position: relative;
+  display: flex;
+  padding: 16px;
+  align-items: center;
+  width: 100%;
+  white-space: nowrap;
+  background: none;
+  border: none;
+  outline: none;
+  border-radius: 20px;
+  color: ${({ theme }) => theme.text1};
+  border-style: solid;
+  border: 1px solid ${({ theme }) => theme.primary1};
+  -webkit-appearance: none;
+
+  font-size: 18px;
+
+  ::placeholder {
+    color: ${({ theme }) => theme.text3};
+  }
+  transition: border 100ms;
+  :focus {
+    border: 1px solid ${({ theme }) => theme.primary1};
+    outline: none;
+  }
+`
+
 
 export default function Earn() {
 
   // pagination
   const [page, setPage] = useState(1)
-  const maxPage = 8;
-  const ITEMS_PER_PAGE = 10;
+  const [searchQuery, setSearchQuery] = useState<string>('')
+  
+  const [searchedPools, setPools] = useState<StakingInfo[]>([]);
+  const [ empty, setEmpty ] = useState(true);
+  
+  
 
   const { chainId } = useActiveWeb3React()
   const stakingInfos = useStakingInfo()
+  const [pools] = useState<StakingInfo[]>(stakingInfos);
   const lairInfo = useLairInfo();
   const oldStakingInfos = useOldStakingInfo();
   const DataRow = styled(RowBetween)`
@@ -78,12 +111,14 @@ export default function Earn() {
     flex-direction: column;
   `};
   `
+  var poolsToShow = pools;
+
   var totalRewards:any = 0;
   var totalFee:any = 0;
   var totalRewardsUSD: any = 0;
 
-  if(stakingInfos.length>0) {
-    totalRewards = stakingInfos?.reduce((sum, current, currentIndex)=>{
+  if(pools.length > 0) {
+    totalRewards = pools?.reduce((sum, current, currentIndex)=>{
       if(currentIndex === 1)
         //@ts-ignore
         return sum.rate + current.rate;
@@ -93,7 +128,7 @@ export default function Earn() {
         return sum + current.rate
     })
 
-    totalFee = stakingInfos?.reduce((sum, current, currentIndex)=>{
+    totalFee = pools?.reduce((sum, current, currentIndex)=>{
       if(currentIndex === 1)
         //@ts-ignore
         return sum.oneDayFee + current.oneDayFee;
@@ -106,12 +141,59 @@ export default function Earn() {
   
   if(totalRewards > 0) {
     //@ts-ignore
-    totalRewardsUSD = stakingInfos[0].quickPrice * totalRewards;
+    totalRewardsUSD = pools[0].quickPrice * totalRewards;
   }
+  const inputRef = useRef<HTMLInputElement>()
+
+  if (!empty) {
+    poolsToShow = searchedPools;
+  }
+
+  //@ts-ignore
+  const maxPage = poolsToShow.length <= 10 ? 1 : Math.ceil(poolsToShow.length / 10);
+  const ITEMS_PER_PAGE = 10;
+
+  const handleInput = useCallback(event => {
+    const input = event.target.value
+    setSearchQuery(input)
+    if (!input || input.trim() === '') {
+      setPools([]);
+      setEmpty(true);
+      return;
+    }
+    var searchedPools:any[] = [];
+    for(var i = 0; i < pools.length; i++) {
+      if (
+        pools[i].tokens[0].name?.toLowerCase().includes(input.toLowerCase()) || 
+        pools[i].tokens[0].symbol?.toLowerCase().includes(input.toLowerCase()) ||
+        pools[i].tokens[1].name?.toLowerCase().includes(input.toLowerCase()) ||
+        pools[i].tokens[1].symbol?.toLowerCase().includes(input.toLowerCase())
+      )
+      {
+        searchedPools.push(pools[i]);
+      }
+    }
+    searchedPools?.sort((a,b) => {
+      if(Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
+        return 1;
+      }
+      if(!Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
+        return 1;
+      }
+      if(Boolean(a.stakedAmount.greaterThan('0')) && !Boolean(b.stakedAmount.greaterThan('0'))) {
+        return -1;
+      }
+      else {
+        return 1;
+      }
+    })
+    setPools(searchedPools);
+    setEmpty(false);
+  }, [])
 
   const stakingRewardsExist = Boolean(typeof chainId === 'number' && (STAKING_REWARDS_INFO[chainId]?.length ?? 0) > 0)
 
-  stakingInfos?.sort((a,b) => {
+  pools?.sort((a,b) => {
     if(Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
       return 1;
     }
@@ -125,6 +207,7 @@ export default function Earn() {
       return 1;
     }
   })
+
 
   return (
     <PageWrapper gap="lg" justify="center">
@@ -178,9 +261,16 @@ export default function Earn() {
       <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
         <DataRow style={{ alignItems: 'baseline' }}>
           <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Participating pools</TYPE.mediumHeader>
-          <Countdown exactEnd={stakingInfos?.[stakingInfos.length - 1]?.periodFinish} />
+          <Countdown exactEnd={pools?.[pools.length - 1]?.periodFinish} />
         </DataRow>
-        
+        <SearchInput
+          type="text"
+          id="pools-search-input"
+          placeholder='Search name or symbol'
+          value={searchQuery}
+          ref={inputRef as RefObject<HTMLInputElement>}
+          onChange={handleInput}
+        />
         <TopSection gap="md">
         <DataCard>
         <CardNoise />
@@ -221,14 +311,14 @@ export default function Earn() {
             })
           )}   
 
-          {stakingRewardsExist && stakingInfos?.length === 0 ? (
+          {stakingRewardsExist && poolsToShow?.length === 0 ? (
             <Loader style={{ margin: 'auto' }} />
           ) : !stakingRewardsExist ? (
             'No active rewards'
           ) : (
-            stakingInfos?.slice(
+            poolsToShow?.slice(
               page === 1 ? 0 : (page - 1) * ITEMS_PER_PAGE,
-              (page * ITEMS_PER_PAGE) < stakingInfos.length ? (page * ITEMS_PER_PAGE): stakingInfos.length  
+              (page * ITEMS_PER_PAGE) < poolsToShow.length ? (page * ITEMS_PER_PAGE): poolsToShow.length  
             ).map(stakingInfo => {
               // need to sort by added liquidity here
               return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} isOld={false}/>
