@@ -193,7 +193,7 @@ export default function Earn() {
 
   const stakingRewardsExist = Boolean(typeof chainId === 'number' && (STAKING_REWARDS_INFO[chainId]?.length ?? 0) > 0)
 
-  pools?.sort((a,b) => {
+  poolsToShow?.sort((a,b) => {
     if(Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
       return 1;
     }
