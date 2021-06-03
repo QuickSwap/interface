@@ -137,11 +137,14 @@ export default function Earn() {
         //@ts-ignore
         return sum + (current.oneDayFee ? current.oneDayFee : 0);
     })
+
+    totalFee = parseInt(totalFee.toFixed(0)).toLocaleString();
   }
   
   if(totalRewards > 0) {
     //@ts-ignore
     totalRewardsUSD = pools[0].quickPrice * totalRewards;
+    totalRewardsUSD = parseInt(totalRewardsUSD.toFixed(0)).toLocaleString();
   }
   const inputRef = useRef<HTMLInputElement>()
 
@@ -277,15 +280,15 @@ export default function Earn() {
         <RowBetween style={{marginTop: "10px"}}>
           <TYPE.white> Total Rewards</TYPE.white>
           <TYPE.white>
-            ${totalRewardsUSD.toFixed(0)} / day
+            ${totalRewardsUSD} / day
           </TYPE.white>
         </RowBetween>
 
-        {totalFee > 0 && (
+        {totalFee !== 0 && (
           <RowBetween style={{marginTop: "10px"}}>
           <TYPE.white> Fees (24hr)</TYPE.white>
           <TYPE.white>
-            ${totalFee.toFixed(0)}
+            ${totalFee}
           </TYPE.white>
         </RowBetween>
         )}

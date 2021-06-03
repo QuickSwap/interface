@@ -121,7 +121,7 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
   
 
   //let apy = 0;
-  let apyWithFee = 0;
+  let apyWithFee: any = 0;
   let rewards = 0;
   //apy = ((1 + ((perMonthReturnInRewards) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
   //apy = perMonthReturnInRewards/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
@@ -132,6 +132,12 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
   if(stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0) {
     //@ts-ignore
     apyWithFee = ((1 + ((perMonthReturnInRewards + stakingInfo.oneYearFeeAPY / 12) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
+    if(apyWithFee > 100000000) {
+      apyWithFee = ">100000000"
+    }
+    else {
+      apyWithFee = parseFloat(apyWithFee.toFixed(2)).toLocaleString()
+    }
     //@ts-ignore
     //apyWithFee = ((stakingInfo.oneYearFeeAPY) + perMonthReturnInRewards)/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
   }
@@ -175,8 +181,8 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
         </RowBetween>
         <RowBetween>
           <TYPE.white> Total Rewards </TYPE.white>
-          <TYPE.white>{`$${rewards.
-            toFixed(0)} / day`}</TYPE.white>
+          <TYPE.white>{`$${ parseInt(rewards.
+            toFixed(0)).toLocaleString()} / day`}</TYPE.white>
         </RowBetween>
         <RowBetween>
           <TYPE.white> Pool rate </TYPE.white>
@@ -185,18 +191,18 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
         </RowBetween>
 
         { 
-          apyWithFee > 0 && ( 
+          stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0 && ( 
           <RowBetween>
           <TYPE.white> Fees (24hr) </TYPE.white>
-          <TYPE.white>{`$${stakingInfo?.oneDayFee.toFixed(0)}`}</TYPE.white>
+          <TYPE.white>{`$${parseInt(stakingInfo?.oneDayFee.toFixed(0)).toLocaleString()}`}</TYPE.white>
         </RowBetween>)
         }
         
         { 
-          apyWithFee > 0 && ( 
+          stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0 && ( 
           <RowBetween>
           <TYPE.white> Rewards + Fee APY </TYPE.white>
-          <TYPE.white>{`${apyWithFee.toFixed(2)}%`}</TYPE.white>
+          <TYPE.white>{`${apyWithFee}%`}</TYPE.white>
         </RowBetween>)
         }
         {/**<RowBetween>

@@ -359,6 +359,12 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/12819/small/UniLend_Finance_logo_PNG.png?1602748658'
     }
 
+    if (address?.toLowerCase() === '0xB9638272aD6998708de56BBC0A290a1dE534a578'.toLowerCase()) {
+      uri = 'https://i.imgur.com/2Tocoq5.png'
+    }if (address?.toLowerCase() === '0xB9638272aD6998708de56BBC0A290a1dE534a578'.toLowerCase()) {
+      uri = 'https://cdn.rupeeto.com/images/rupeeto-symbol.jpeg'
+    }
+
     if (!uri) {
       uri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
     }

@@ -90,7 +90,8 @@ import {
   QI,
   
   EMPTY,
-  IQ
+  IQ,
+  TITAN
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -151,6 +152,16 @@ export const STAKING_REWARDS_INFO: {
       baseToken: USDC,
       rate: 74,
       pair: '0x853ee4b2a13f8a742d64c8f088be7ba2131f670d'
+    },
+    {
+      tokens: [TITAN,ETHER],
+      stakingRewardAddress: '0x2dF6A6b1B7aA23a842948a81714a2279e603e32f',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 65,
+      pair: '0xa28ade2f27b9554b01964fdce97ed643301411d9'
     },
     {
       tokens: [MATIC,QUICK],
