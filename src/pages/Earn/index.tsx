@@ -1,4 +1,4 @@
-import React, {  RefObject, useState, useCallback, useRef } from 'react'
+import React, {  RefObject, useState, useCallback, useRef, useEffect } from 'react'
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
 import { STAKING_REWARDS_INFO, useStakingInfo, useOldStakingInfo, useLairInfo, StakingInfo } from '../../state/stake/hooks'
@@ -99,7 +99,9 @@ export default function Earn() {
   const [searchedPools, setPools] = useState<StakingInfo[]>([]);
   const [ empty, setEmpty ] = useState(true);
   
-  
+  const[totalRewards, setTotalRewards] = useState<any>(0);
+  const[totalFee, setTotalFee] = useState<any>(0);
+  const[totalRewardsUSD, setTotalRewardsUSD] = useState<any>(0);
 
   const { chainId } = useActiveWeb3React()
   const stakingInfos = useStakingInfo()
@@ -113,39 +115,47 @@ export default function Earn() {
   `
   var poolsToShow = stakingInfos;
 
-  var totalRewards:any = 0;
-  var totalFee:any = 0;
-  var totalRewardsUSD: any = 0;
+  useEffect(() => {
 
-  if(pools.length > 0) {
-    totalRewards = pools?.reduce((sum, current, currentIndex)=>{
-      if(currentIndex === 1)
-        //@ts-ignore
-        return sum.rate + current.rate;
+    if(stakingInfos.length > 0) {
 
-      else
-        //@ts-ignore
-        return sum + current.rate
-    })
-
-    totalFee = pools?.reduce((sum, current, currentIndex)=>{
-      if(currentIndex === 1)
-        //@ts-ignore
-        return sum.oneDayFee + current.oneDayFee;
-
-      else
-        //@ts-ignore
-        return sum + (current.oneDayFee ? current.oneDayFee : 0);
-    })
-
-    totalFee = parseInt(totalFee.toFixed(0)).toLocaleString();
-  }
+     var aTotalRewards:any = stakingInfos?.reduce((sum, current, currentIndex)=>{
+        if(currentIndex === 1)
+          //@ts-ignore
+          return sum.rate + current.rate;
   
-  if(totalRewards > 0) {
-    //@ts-ignore
-    totalRewardsUSD = pools[0].quickPrice * totalRewards;
-    totalRewardsUSD = parseInt(totalRewardsUSD.toFixed(0)).toLocaleString();
-  }
+        else
+          //@ts-ignore
+          return sum + current.rate
+      })
+
+      setTotalRewards(aTotalRewards);
+  
+      var atotalFee: any = stakingInfos?.reduce((sum, current, currentIndex)=>{
+        if(currentIndex === 1)
+          //@ts-ignore
+          return sum.oneDayFee + current.oneDayFee;
+  
+        else
+          //@ts-ignore
+          return sum + (current.oneDayFee ? current.oneDayFee : 0);
+      })
+  
+      atotalFee = parseInt(atotalFee.toFixed(0)).toLocaleString();
+      setTotalFee(atotalFee)
+      if(totalRewards > 0) {
+        //@ts-ignore
+        var atotalRewardsUSD: any = stakingInfos[0].quickPrice * totalRewards;
+        atotalRewardsUSD = parseInt(atotalRewardsUSD.toFixed(0)).toLocaleString();
+        setTotalRewardsUSD(atotalRewardsUSD);
+      }
+    }
+    
+    
+    },[stakingInfos]
+  )
+
+  
   const inputRef = useRef<HTMLInputElement>()
 
   if (!empty) {
