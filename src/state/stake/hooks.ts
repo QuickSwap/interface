@@ -361,7 +361,7 @@ export const STAKING_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 10,
-      pair: '0x6e7a5FAFcec6BB1e78bAE2A1F0B612012BF14827'
+      pair: '0x6e7a5fafcec6bb1e78bae2a1f0b612012bf14827'
     },
     {
       tokens: [PAUTO,ETHER],
