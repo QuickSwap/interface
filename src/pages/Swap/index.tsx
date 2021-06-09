@@ -267,7 +267,7 @@ export default function Swap() {
             "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png"
           ],
           "blockExplorerUrls" :[
-            "https://explorer-mainnet.maticvigil.com/"
+            "https://polygonscan.com/"
           ],
           "nativeCurrency": {
             "name": "Matic Token",
