@@ -365,6 +365,16 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://cdn.rupeeto.com/images/rupeeto-symbol.jpeg'
     }
 
+    if (address?.toLowerCase() === '0x874e178A2f3f3F9d34db862453Cd756E7eAb0381'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15871/small/GFI-Icon.png?1622178588'
+    }if (address?.toLowerCase() === '0x2e2DDe47952b9c7deFDE7424d00dD2341AD927Ca'.toLowerCase()) {
+      uri = 'https://i.imgur.com/66lM7Rx.png'
+    }if (address?.toLowerCase() === '0xAcD7B3D9c10e97d0efA418903C0c7669E702E4C0'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14541/small/eleven_finance_logo.png?1616895791'
+    }if (address?.toLowerCase() === '0x172370d5Cd63279eFa6d502DAB29171933a610AF'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12124/small/Curve.png?1597369484'
+    }
+
     if (!uri) {
       uri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
     }
