@@ -30,7 +30,7 @@ const rpcUrls = [
   //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://rpc-quickswap-do1-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   "https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
-  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://matic-mainnet.chainstacklabs.com"
   //"https://rpc-mainnet.matic.network",
   //"https://quick.slingshot.finance"
@@ -38,7 +38,7 @@ const rpcUrls = [
 ]
 
 var lastUsedUrl = -1;
-var maxUrls = 3
+var maxUrls = 2
 
 
 // returns null on errors
