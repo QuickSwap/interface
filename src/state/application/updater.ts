@@ -15,6 +15,7 @@ export default function Updater(): null {
     chainId,
     blockNumber: null
   })
+  const [block, setBlock] = useState(0);
 
   const blockNumberCallback = useCallback(
     (blockNumber: number) => {
@@ -50,7 +51,11 @@ export default function Updater(): null {
 
   useEffect(() => {
     if (!debouncedState.chainId || !debouncedState.blockNumber || !windowVisible) return
-    dispatch(updateBlockNumber({ chainId: debouncedState.chainId, blockNumber: debouncedState.blockNumber }))
+    if (debouncedState.blockNumber - block > 17){
+      dispatch(updateBlockNumber({ chainId: debouncedState.chainId, blockNumber: debouncedState.blockNumber }))
+      setBlock(debouncedState.blockNumber);
+    }
+    
   }, [windowVisible, dispatch, debouncedState.blockNumber, debouncedState.chainId])
 
   return null
