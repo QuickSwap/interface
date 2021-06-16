@@ -375,6 +375,24 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/12124/small/Curve.png?1597369484'
     }
 
+    if (address?.toLowerCase() === '0x7e9928aFe96FefB820b85B4CE6597B8F660Fe4F4'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
+    }if (address?.toLowerCase() === '0xAF24765F631C8830B5528B57002241eE7eef1C14'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15952/small/IOI.jpg?1622514420'
+    }if (address?.toLowerCase() === '0x0E50BEA95Fe001A370A4F1C220C49AEdCB982DeC'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14238/small/ethernity_logo.png?1615189750'
+    }if (address?.toLowerCase() === '0xaECeBfcF604AD245Eaf0D5BD68459C3a7A6399c2'.toLowerCase()) {
+      uri = 'https://rampdefi.com/assets/RAMP_LOGO_V4_256.png'
+    }if (address?.toLowerCase() === '0xfC40a4F89b410a1b855b5e205064a38fC29F5eb5'.toLowerCase()) {
+      uri = 'https://rampdefi.com/assets/rUSD-Logo-200.png'
+    }if (address?.toLowerCase() === '0x42dbBd5ae373FEA2FC320F62d44C058522Bb3758'.toLowerCase()) {
+      uri = 'https://media.discordapp.net/attachments/846293892785242143/852874003928449054/mem_gold_with_white_5.png'
+    }if (address?.toLowerCase() === '0x87ff96aba480f1813aF5c780387d8De7cf7D8261'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/9576/small/BUSD.png?1568947766'
+    }if (address?.toLowerCase() === '0xff88434E29d1E2333aD6baa08D358b436196da6b'.toLowerCase()) {
+      uri = 'https://i.imgur.com/Jo6QWz7.png'
+    }
+
     if (!uri) {
       uri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
     }

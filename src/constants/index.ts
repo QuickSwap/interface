@@ -126,6 +126,15 @@ export const CHUM  = new Token(ChainId.MATIC, '0x2e2DDe47952b9c7deFDE7424d00dD23
 export const ELE  = new Token(ChainId.MATIC, '0xAcD7B3D9c10e97d0efA418903C0c7669E702E4C0', 18, 'ELE', 'Eleven.finance')
 export const CRV  = new Token(ChainId.MATIC, '0x172370d5Cd63279eFa6d502DAB29171933a610AF', 18, 'CRV', 'CRV')
 
+export const PBNB  = new Token(ChainId.MATIC, '0x7e9928aFe96FefB820b85B4CE6597B8F660Fe4F4', 18, 'PBNB', 'Orbit Bridge Polygon Binance Coin')
+export const IOI  = new Token(ChainId.MATIC, '0xAF24765F631C8830B5528B57002241eE7eef1C14', 6, 'IOI', 'IOI Token')
+export const ERN  = new Token(ChainId.MATIC, '0x0E50BEA95Fe001A370A4F1C220C49AEdCB982DeC', 18, 'ERN', 'Ethernity Chain')
+export const RAMP  = new Token(ChainId.MATIC, '0xaECeBfcF604AD245Eaf0D5BD68459C3a7A6399c2', 18, 'RAMP', 'RAMP')
+export const RUSD  = new Token(ChainId.MATIC, '0xfC40a4F89b410a1b855b5e205064a38fC29F5eb5', 18, 'rUSD', 'rUSD')
+export const MEM  = new Token(ChainId.MATIC, '0x42dbBd5ae373FEA2FC320F62d44C058522Bb3758', 18, 'MEM', 'Memecoin')
+export const WBUSD  = new Token(ChainId.MATIC, '0x87ff96aba480f1813aF5c780387d8De7cf7D8261', 18, 'WBUSD', 'Wrapped BUSD')
+export const BORING  = new Token(ChainId.MATIC, '0xff88434E29d1E2333aD6baa08D358b436196da6b', 18, 'BORING', 'BoringDAO')
+
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
 export const PROPOSAL_LENGTH_IN_DAYS = 7
@@ -173,7 +182,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], DAI, USDC, USDT, GHST, QUICK, ETHER, UNITOKEN, IGG, WBTC, OM, MAUSDC, SWG, MADAI, DG, EMON, SX, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT, MONA,WISE,CC10,MOCEAN, ZUZ, BTU, WOLF, AGA, AGAr, TEL, NFTP, GFARM2,AAVE,FSN,ANY,PLOT,OPU, KRILL, FISH,BIFI, QI, MI, POLYDOGE, CTSI, DEGEN, GAME, SENT, ELET,MOON,ADDY,QuickChart,PAUTO, UFT,IRON,TITAN,ZEE,FFF,IQ,INRP, GFI, CHUM, ELE, CRV]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], DAI, USDC, USDT, GHST, QUICK, ETHER, UNITOKEN, IGG, WBTC, OM, MAUSDC, SWG, MADAI, DG, EMON, SX, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT, MONA,WISE,CC10,MOCEAN, ZUZ, BTU, WOLF, AGA, AGAr, TEL, NFTP, GFARM2,AAVE,FSN,ANY,PLOT,OPU, KRILL, FISH,BIFI, QI, MI, POLYDOGE, CTSI, DEGEN, GAME, SENT, ELET,MOON,ADDY,QuickChart,PAUTO, UFT,IRON,TITAN,ZEE,FFF,IQ,INRP, GFI, CHUM, ELE, CRV, PBNB, IOI, ERN, RAMP, RUSD, MEM, WBUSD, BORING]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -301,4 +310,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.0.64/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.0.67/build/quickswap-default.tokenlist.json'
