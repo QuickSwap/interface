@@ -298,6 +298,31 @@ const StyledMenu = styled.div`
   border-radius: 12px;
 `
 
+const MenuFlyout = styled.span`
+  min-width: 20.125rem;
+  background-color: ${({ theme }) => theme.bg2};
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
+    0px 24px 32px rgba(0, 0, 0, 0.01);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+  position: absolute;
+  top: 4rem;
+  right: 0rem;
+  z-index: 100;
+
+  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
+    min-width: 18.125rem;
+    right: -46px;
+  `};
+
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+    min-width: 18.125rem;
+    top: -22rem;
+  `};
+`
+
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
   
   [ChainId.MUMBAI]: 'Mumbai',
@@ -348,9 +373,12 @@ export default function Header() {
     new RampInstantSDK({
       hostAppName: 'QuickSwap',
       hostLogoUrl: 'https://quickswap.exchange/static/media/QuickSwap_logo.420e2e01.png',
+      swapAsset: 'MATIC,MATIC_ETH,MATIC_DAI,MATIC_USDC',
       userAddress: account,
       url: 'https://widget-instant.ramp.network/',
-      variant: 'auto'
+      variant: 'auto',
+      hostApiKey: '7jahgzjq6sfnt9m33xv5sx2wm7ywuj7ob5tjkqnq'
+      
     }).show()
   }
 
