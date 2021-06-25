@@ -290,38 +290,24 @@ const StyledLinkStyledButton = styled(LinkStyledButton).attrs({
 const StyledMenuContainer = styled.div`
   padding-top: 10px;
   position: absolute;
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+    min-width: 18.125rem;
+    right: 0;
+  `};
 `
 const StyledMenu = styled.div`
-  padding: 16px 12px;
-  background: white;
-  border: 1px solid gray;
-  border-radius: 12px;
-`
-
-const MenuFlyout = styled.span`
   min-width: 20.125rem;
+  padding: 12px 0;
+  width: 100%;
   background-color: ${({ theme }) => theme.bg2};
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
     0px 24px 32px rgba(0, 0, 0, 0.01);
   border-radius: 12px;
   display: flex;
   flex-direction: column;
-  font-size: 1rem;
-  position: absolute;
-  top: 4rem;
-  right: 0rem;
   z-index: 100;
-
-  ${({ theme }) => theme.mediaWidth.upToExtraSmall`
-    min-width: 18.125rem;
-    right: -46px;
-  `};
-
-  ${({ theme }) => theme.mediaWidth.upToMedium`
-    min-width: 18.125rem;
-    top: -22rem;
-  `};
 `
+
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
   
@@ -470,13 +456,13 @@ export default function Header() {
             Charts {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
 
-          {account && <div style={{ position: 'relative' }} onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
+          {account && <div style={{ position: 'relative' }} onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link`} onClick={() => {setWidgetMenuOpen(true)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
             Buy
           </StyledLinkStyledButton>
           {widgetMenuOpen && (
             <StyledMenuContainer>
               <StyledMenu>
-                <StyledLinkStyledButton style={{ marginBottom: 8 }} onClick={()=>{initiateTransak(account)}}>Transak</StyledLinkStyledButton>
+                <StyledLinkStyledButton style={{ marginBottom: 12 }} onClick={()=>{initiateTransak(account)}}>Transak</StyledLinkStyledButton>
                 <StyledLinkStyledButton onClick={()=>{initiateRAMP(account)}}>RAMP</StyledLinkStyledButton>
               </StyledMenu>
             </StyledMenuContainer>   
