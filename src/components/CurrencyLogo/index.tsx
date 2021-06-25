@@ -391,6 +391,8 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/9576/small/BUSD.png?1568947766'
     }if (address?.toLowerCase() === '0xff88434E29d1E2333aD6baa08D358b436196da6b'.toLowerCase()) {
       uri = 'https://i.imgur.com/Jo6QWz7.png'
+    }if (address?.toLowerCase() === '0x1B815d120B3eF02039Ee11dC2d33DE7aA4a8C603'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/wootrade_w.svg'
     }
 
     if (!uri) {

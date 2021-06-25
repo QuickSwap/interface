@@ -262,7 +262,7 @@ export default function Swap() {
         params: [{
           "chainId": "0x89",
           "chainName": "Matic Network",
-          "rpcUrls": ["https://rpc-mainnet.matic.quiknode.pro"],
+          "rpcUrls": ["https://rpc-mainnet.maticvigil.com"],
           "iconUrls": [
             "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png"
           ],
