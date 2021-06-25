@@ -6,6 +6,7 @@ import { darken } from 'polished'
 import { useTranslation } from 'react-i18next'
 import { isMobile, isAndroid, isIOS } from 'react-device-detect'
 import { useDispatch } from 'react-redux'
+import { RampInstantSDK } from '@ramp-network/ramp-instant-sdk'
 import { AppDispatch } from '../../state/index'
 
 // @ts-ignore
@@ -286,6 +287,16 @@ const StyledLinkStyledButton = styled(LinkStyledButton).attrs({
     color: ${({ theme }) => darken(0.1, theme.text1)};
   }
 `
+const StyledMenuContainer = styled.div`
+  padding-top: 10px;
+  position: absolute;
+`
+const StyledMenu = styled.div`
+  padding: 16px 12px;
+  background: white;
+  border: 1px solid gray;
+  border-radius: 12px;
+`
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
   
@@ -332,7 +343,19 @@ export default function Header() {
       transak.close();
     });
   }
-  
+
+  const initiateRAMP = () => {
+    new RampInstantSDK({
+      hostAppName: 'QuickSwap',
+      hostLogoUrl: 'https://quickswap.exchange/static/media/QuickSwap_logo.420e2e01.png',
+      swapAmount: '10000000000000000',
+      swapAsset: 'ETH',
+      userAddress: '0xe2E0256d6785d49eC7BadCD1D44aDBD3F6B0Ab58',
+      url: 'https://widget-instant.ramp.network/',
+      variant: 'auto'
+    }).show()
+  }
+
   const { account, chainId } = useActiveWeb3React()
 
   /**const ClaimMatic = async(address: string) => {
@@ -373,6 +396,7 @@ export default function Header() {
 
   const countUpValue = aggregateBalance?.toFixed(0) ?? '0'
   const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
+  const [widgetMenuOpen, setWidgetMenuOpen] = useState(false)
 
   return (
     <HeaderFrame>
@@ -420,9 +444,18 @@ export default function Header() {
             Charts {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
 
-          {account && <StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
+          {account && <div style={{ position: 'relative' }} onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
             Buy
-          </StyledLinkStyledButton>}
+          </StyledLinkStyledButton>
+          {widgetMenuOpen && (
+            <StyledMenuContainer>
+              <StyledMenu>
+                <StyledLinkStyledButton style={{ marginBottom: 8 }} onClick={()=>{initiateTransak(account)}}>Transak</StyledLinkStyledButton>
+                <StyledLinkStyledButton onClick={()=>{initiateRAMP()}}>RAMP</StyledLinkStyledButton>
+              </StyledMenu>
+            </StyledMenuContainer>   
+          )}
+          </div>}
          
           
           
