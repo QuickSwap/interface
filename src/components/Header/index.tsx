@@ -344,13 +344,11 @@ export default function Header() {
     });
   }
 
-  const initiateRAMP = () => {
+  const initiateRAMP = (account: any) => {
     new RampInstantSDK({
       hostAppName: 'QuickSwap',
       hostLogoUrl: 'https://quickswap.exchange/static/media/QuickSwap_logo.420e2e01.png',
-      swapAmount: '10000000000000000',
-      swapAsset: 'ETH',
-      userAddress: '0xe2E0256d6785d49eC7BadCD1D44aDBD3F6B0Ab58',
+      userAddress: account,
       url: 'https://widget-instant.ramp.network/',
       variant: 'auto'
     }).show()
@@ -451,7 +449,7 @@ export default function Header() {
             <StyledMenuContainer>
               <StyledMenu>
                 <StyledLinkStyledButton style={{ marginBottom: 8 }} onClick={()=>{initiateTransak(account)}}>Transak</StyledLinkStyledButton>
-                <StyledLinkStyledButton onClick={()=>{initiateRAMP()}}>RAMP</StyledLinkStyledButton>
+                <StyledLinkStyledButton onClick={()=>{initiateRAMP(account)}}>RAMP</StyledLinkStyledButton>
               </StyledMenu>
             </StyledMenuContainer>   
           )}
