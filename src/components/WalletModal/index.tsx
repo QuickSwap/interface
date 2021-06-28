@@ -15,6 +15,8 @@ import { ApplicationModal } from '../../state/application/actions'
 import { useModalOpen, useWalletModalToggle } from '../../state/application/hooks'
 import { ExternalLink } from '../../theme'
 import AccountDetails from '../AccountDetails'
+import { Arkane, ArkaneSubProviderOptions } from '@arkane-network/web3-arkane-provider'
+// import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
 
 import Modal from '../Modal'
 import Option from './Option'
@@ -218,7 +220,20 @@ export default function WalletModal({
           return (
             <Option
               onClick={() => {
-                option.connector !== connector && !option.href && tryActivation(option.connector)
+                if (option.name === 'Arkane') {
+                  const providerOptions: ArkaneSubProviderOptions = {
+                    clientId: 'QuickSwap',
+                    environment: 'staging',
+                    signMethod: 'POPUP',
+                    skipAuthentication: false
+                  }
+                  
+                  Arkane.createArkaneProviderEngine(providerOptions).then(provider => {
+                    // const arkaneconnect = new Web3Provider(provider as ExternalProvider)
+                  })
+                } else {
+                  option.connector !== connector && !option.href && tryActivation(option.connector)
+                }
               }}
               id={`connect-${key}`}
               key={key}
@@ -271,9 +286,22 @@ export default function WalletModal({
           <Option
             id={`connect-${key}`}
             onClick={() => {
-              option.connector === connector
-                ? setWalletView(WALLET_VIEWS.ACCOUNT)
-                : !option.href && tryActivation(option.connector)
+              if (option.name === 'Arkane') {
+                const providerOptions: ArkaneSubProviderOptions = {
+                  clientId: 'QuickSwap',
+                  environment: 'staging',
+                  signMethod: 'POPUP',
+                  skipAuthentication: false
+                }
+
+                Arkane.createArkaneProviderEngine(providerOptions).then(provider => {
+                  // const arkaneconnect = new Web3Provider(provider as ExternalProvider)
+                })
+              } else {
+                option.connector === connector
+                  ? setWalletView(WALLET_VIEWS.ACCOUNT)
+                  : !option.href && tryActivation(option.connector)
+              }
             }}
             key={key}
             active={option.connector === connector}

@@ -38,13 +38,6 @@ export const walletconnect = new WalletConnectConnector({
   pollingInterval: 15000
 })
 
-const providerOptions = {
-  clientId: 'clientId',
-  signMethod: 'POPUP'
-}
-
-export const arkaneconnect = (window as any).Arkane?.createArkaneProviderEngine(providerOptions)
-
 // mainnet only
 export const fortmatic = new FortmaticConnector({
   apiKey: FORMATIC_KEY ?? '',

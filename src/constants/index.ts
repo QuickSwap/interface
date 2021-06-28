@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token, WETH } from '@uniswap/sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
-import { arkaneconnect, injected, walletconnect } from '../connectors'
+import { injected, walletconnect } from '../connectors'
 
 export const ROUTER_ADDRESS = '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff'; //'0x6207A65a8bbc87dD02C3109D2c74a6bCE4af1C8c';//
 
@@ -249,7 +249,6 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     mobile: true
   },
   ARKANE: {
-    connector: arkaneconnect,
     name: 'Arkane',
     iconName: 'arkane.svg',
     description: 'Connect to Trust Wallet, Rainbow Wallet and more...',
