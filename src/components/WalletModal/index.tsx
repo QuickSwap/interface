@@ -16,7 +16,7 @@ import { useModalOpen, useWalletModalToggle } from '../../state/application/hook
 import { ExternalLink } from '../../theme'
 import AccountDetails from '../AccountDetails'
 import { Arkane, ArkaneSubProviderOptions } from '@arkane-network/web3-arkane-provider'
-// import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
+import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
 
 import Modal from '../Modal'
 import Option from './Option'
@@ -204,6 +204,8 @@ export default function WalletModal({
     })
   }, [toggleWalletModal])
 
+  const [arkaneconnect, setArkaneConnect] = useState<any>(null)
+
   // get wallets user can switch too, depending on device/browser
   function getOptions() {
     const isMetamask = window.ethereum && window.ethereum.isMetaMask
@@ -227,9 +229,10 @@ export default function WalletModal({
                     signMethod: 'POPUP',
                     skipAuthentication: false
                   }
-                  
+
                   Arkane.createArkaneProviderEngine(providerOptions).then(provider => {
-                    // const arkaneconnect = new Web3Provider(provider as ExternalProvider)
+                    const connect = new Web3Provider(provider as ExternalProvider)
+                    setArkaneConnect(connect);
                   })
                 } else {
                   option.connector !== connector && !option.href && tryActivation(option.connector)
@@ -295,7 +298,9 @@ export default function WalletModal({
                 }
 
                 Arkane.createArkaneProviderEngine(providerOptions).then(provider => {
-                  // const arkaneconnect = new Web3Provider(provider as ExternalProvider)
+                  const connect = new Web3Provider(provider as ExternalProvider)
+                  setArkaneConnect(connect)
+                  console.log(arkaneconnect)
                 })
               } else {
                 option.connector === connector
