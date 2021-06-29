@@ -17,6 +17,7 @@ import { ExternalLink } from '../../theme'
 import AccountDetails from '../AccountDetails'
 import { Arkane, ArkaneSubProviderOptions } from '@arkane-network/web3-arkane-provider'
 import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
+import { SecretType } from '@arkane-network/arkane-connect';
 
 import Modal from '../Modal'
 import Option from './Option'
@@ -224,8 +225,8 @@ export default function WalletModal({
               onClick={() => {
                 if (option.name === 'Arkane') {
                   const providerOptions: ArkaneSubProviderOptions = {
+                    secretType: SecretType.MATIC,
                     clientId: 'QuickSwap',
-                    environment: 'staging',
                     signMethod: 'POPUP',
                     skipAuthentication: false
                   }
@@ -291,8 +292,8 @@ export default function WalletModal({
             onClick={() => {
               if (option.name === 'Arkane') {
                 const providerOptions: ArkaneSubProviderOptions = {
+                  secretType: SecretType.MATIC,
                   clientId: 'QuickSwap',
-                  environment: 'staging',
                   signMethod: 'POPUP',
                   skipAuthentication: false
                 }
