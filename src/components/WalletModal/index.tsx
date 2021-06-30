@@ -12,13 +12,13 @@ import { OVERLAY_READY } from '../../connectors/Fortmatic'
 import { SUPPORTED_WALLETS } from '../../constants'
 import usePrevious from '../../hooks/usePrevious'
 import { ApplicationModal } from '../../state/application/actions'
-import { useModalOpen, useWalletModalToggle } from '../../state/application/hooks'
+import { useArkaneWallet, useModalOpen, useWalletModalToggle } from '../../state/application/hooks'
 import { ExternalLink } from '../../theme'
 import AccountDetails from '../AccountDetails'
 import { Arkane, ArkaneSubProviderOptions } from '@arkane-network/web3-arkane-provider'
 import { ExternalProvider, Web3Provider } from '@ethersproject/providers'
-import { SecretType } from '@arkane-network/arkane-connect';
-
+import { SecretType } from '@arkane-network/arkane-connect'
+import Web3 from 'web3'
 import Modal from '../Modal'
 import Option from './Option'
 import PendingView from './PendingView'
@@ -129,7 +129,7 @@ export default function WalletModal({
   ENSName?: string
 }) {
   // important that these are destructed from the account-specific web3-react context
-  const { active, account, connector, activate, error } = useWeb3React()
+  const { active, account, connector, activate, error, deactivate } = useWeb3React()
 
   const [walletView, setWalletView] = useState(WALLET_VIEWS.ACCOUNT)
 
@@ -160,6 +160,7 @@ export default function WalletModal({
   // close modal when a connection is successful
   const activePrevious = usePrevious(active)
   const connectorPrevious = usePrevious(connector)
+  const { arkaneWallet, setArkaneWallet } = useArkaneWallet()
   useEffect(() => {
     if (walletModalOpen && ((active && !activePrevious) || (connector && connector !== connectorPrevious && !error))) {
       setWalletView(WALLET_VIEWS.ACCOUNT)
@@ -205,8 +206,6 @@ export default function WalletModal({
     })
   }, [toggleWalletModal])
 
-  const [arkaneconnect, setArkaneConnect] = useState<any>(null)
-
   // get wallets user can switch too, depending on device/browser
   function getOptions() {
     const isMetamask = window.ethereum && window.ethereum.isMetaMask
@@ -233,7 +232,7 @@ export default function WalletModal({
 
                   Arkane.createArkaneProviderEngine(providerOptions).then(provider => {
                     const connect = new Web3Provider(provider as ExternalProvider)
-                    setArkaneConnect(connect);
+                    console.log(connect)
                   })
                 } else {
                   option.connector !== connector && !option.href && tryActivation(option.connector)
@@ -294,23 +293,30 @@ export default function WalletModal({
                 const providerOptions: ArkaneSubProviderOptions = {
                   secretType: SecretType.MATIC,
                   clientId: 'QuickSwap',
+                  environment: 'staging',
                   signMethod: 'POPUP',
                   skipAuthentication: false
                 }
+                deactivate()
 
-                Arkane.createArkaneProviderEngine(providerOptions).then(provider => {
-                  const connect = new Web3Provider(provider as ExternalProvider)
-                  setArkaneConnect(connect)
-                  console.log(arkaneconnect)
+                Arkane.createArkaneProviderEngine(providerOptions).then((provider:any) => {
+                  const web3 = new Web3(provider)
+                  console.log(provider)
+                  web3.eth.getAccounts().then(res => {
+                    setArkaneWallet(res[0])
+                    localStorage.setItem('arkaneWallet', res[0])
+                  })
                 })
               } else {
+                setArkaneWallet(null)
+                localStorage.removeItem('arkaneWallet')
                 option.connector === connector
                   ? setWalletView(WALLET_VIEWS.ACCOUNT)
                   : !option.href && tryActivation(option.connector)
               }
             }}
             key={key}
-            active={option.connector === connector}
+            active={arkaneWallet ? option.name === 'Arkane' : option.connector === connector}
             color={option.color}
             link={option.href}
             header={option.name}

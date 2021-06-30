@@ -13,7 +13,7 @@ import { fortmatic, injected, portis, walletconnect, walletlink } from '../../co
 import { NetworkContextName } from '../../constants'
 import useENSName from '../../hooks/useENSName'
 import { useHasSocks } from '../../hooks/useSocksBalance'
-import { useWalletModalToggle } from '../../state/application/hooks'
+import { useWalletModalToggle, useArkaneWallet } from '../../state/application/hooks'
 import { isTransactionRecent, useAllTransactions } from '../../state/transactions/hooks'
 import { TransactionDetails } from '../../state/transactions/reducer'
 import { shortenAddress } from '../../utils'
@@ -164,6 +164,7 @@ function StatusIcon({ connector }: { connector: AbstractConnector }) {
 function Web3StatusInner() {
   const { t } = useTranslation()
   const { account, connector, error } = useWeb3React()
+  const { arkaneWallet } = useArkaneWallet()
   const { ethereum } = window;
   const { ENSName } = useENSName(account ?? undefined)
 
@@ -216,7 +217,7 @@ function Web3StatusInner() {
     
   }
 
-  if (account) {
+  if (account || arkaneWallet) {
     return (
       <Web3StatusConnected id="web3-status-connected" onClick={toggleWalletModal} pending={hasPendingTransactions}>
         {hasPendingTransactions ? (
@@ -226,7 +227,7 @@ function Web3StatusInner() {
         ) : (
           <>
             {hasSocks ? SOCK : null}
-            <Text>{ENSName || shortenAddress(account)}</Text>
+            <Text>{ENSName || (account ? shortenAddress(account) : shortenAddress(arkaneWallet))}</Text>
           </>
         )}
         {!hasPendingTransactions && connector && <StatusIcon connector={connector} />}
