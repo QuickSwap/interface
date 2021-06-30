@@ -357,6 +357,9 @@ export default function Manage({
           </span>
           When you withdraw, the contract will automagically claim QUICK on your behalf!
         </TYPE.main>
+        <TYPE.main style={{ textAlign: 'center', marginTop: -12}} fontSize={14}>
+          * Incentivised rewards are not an endorsement and you are strongly encouraged to DYOR when providing liquidity.
+        </TYPE.main>
 
         {!showAddLiquidityButton && (
           <DataRow style={{ marginBottom: '1rem' }}>

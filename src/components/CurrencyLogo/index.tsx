@@ -395,6 +395,20 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/wootrade_w.svg'
     }
 
+    if (address?.toLowerCase() === '0x6Ccf12B480A99C54b23647c995f4525D544A7E72'.toLowerCase()) {
+      uri = 'https://starter.xyz/logo_poly_sym.png'
+    }if (address?.toLowerCase() === '0x26f6Cb841F9D4D72b68D7dCb6fDB5d6C832dD2A7'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/16074/small/polysafu.PNG?1622770619'
+    }if (address?.toLowerCase() === '0xb82A20B4522680951F11c94c54B8800c1C237693'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/10620.png'
+    }if (address?.toLowerCase() === '0xad5dc12E88C6534Eea8cFe2265851D9d4A1472AD'.toLowerCase()) {
+      uri = 'https://falconswap.com/assets/img/logo/logo.png'
+    }if (address?.toLowerCase() === '0xf7058856f405542cd660e8ce4751248F2d037f2B'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/YayoCorp/yayo-assets/master/avatar.png'
+    }if (address?.toLowerCase() === '0x2Ab4f9aC80F33071211729e45Cfc346C1f8446d5'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14326/small/cgg_logo.png?1615429976'
+    }
+
     if (!uri) {
       uri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
     }
