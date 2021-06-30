@@ -4,6 +4,7 @@ import styled, { ThemeContext } from 'styled-components'
 import { useActiveWeb3React } from '../../hooks'
 import { AppDispatch } from '../../state'
 import { clearAllTransactions } from '../../state/transactions/actions'
+import { useArkaneWallet } from '../../state/application/hooks'
 import { shortenAddress } from '../../utils'
 import { AutoRow } from '../Row'
 import Copy from './Copy'
@@ -226,6 +227,7 @@ export default function AccountDetails({
   openOptions
 }: AccountDetailsProps) {
   const { chainId, account, connector } = useActiveWeb3React()
+  const { arkaneWallet, setArkaneWallet } = useArkaneWallet()
   const theme = useContext(ThemeContext)
   const dispatch = useDispatch<AppDispatch>()
 
@@ -238,7 +240,7 @@ export default function AccountDetails({
           SUPPORTED_WALLETS[k].connector === connector && (connector !== injected || isMetaMask === (k === 'METAMASK'))
       )
       .map(k => SUPPORTED_WALLETS[k].name)[0]
-    return <WalletName>Connected with {name}</WalletName>
+    return <WalletName>Connected with {arkaneWallet ? 'Arkane' : name}</WalletName>
   }
 
   function getStatusIcon() {
@@ -306,7 +308,11 @@ export default function AccountDetails({
                     <WalletAction
                       style={{ fontSize: '.825rem', fontWeight: 400, marginRight: '8px' }}
                       onClick={() => {
-                        ;(connector as any).close()
+                        if (arkaneWallet) {
+                          setArkaneWallet(null)
+                        } else {
+                          ;(connector as any).close()
+                        }
                       }}
                     >
                       Disconnect
@@ -335,7 +341,7 @@ export default function AccountDetails({
                     <>
                       <div>
                         {getStatusIcon()}
-                        <p> {account && shortenAddress(account)}</p>
+                        <p> {arkaneWallet ? shortenAddress(arkaneWallet) : account && shortenAddress(account)}</p>
                       </div>
                     </>
                   )}
@@ -368,16 +374,16 @@ export default function AccountDetails({
                   <>
                     <AccountControl>
                       <div>
-                        {account && (
-                          <Copy toCopy={account}>
+                        {(account || arkaneWallet) && (
+                          <Copy toCopy={account || arkaneWallet}>
                             <span style={{ marginLeft: '4px' }}>Copy Address</span>
                           </Copy>
                         )}
-                        {chainId && account && (
+                        {chainId && (account || arkaneWallet) && (
                           <AddressLink
                             hasENS={!!ENSName}
                             isENS={false}
-                            href={getEtherscanLink(chainId, account, 'address')}
+                            href={getEtherscanLink(chainId, account || arkaneWallet, 'address')}
                           >
                             <LinkIcon size={16} />
                             <span style={{ marginLeft: '4px' }}>View on Block Explorer</span>
