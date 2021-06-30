@@ -305,6 +305,7 @@ export default function WalletModal({
                   web3.eth.getAccounts().then(res => {
                     setArkaneWallet(res[0])
                     localStorage.setItem('arkaneWallet', res[0])
+                    toggleWalletModal()
                   })
                 })
               } else {
