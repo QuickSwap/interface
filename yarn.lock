@@ -3674,6 +3674,13 @@
   resolved "https://registry.yarnpkg.com/@provide/nats.ws/-/nats.ws-1.0.6.tgz#0f4cd9fb892beebf0786b6a6451564dcccd60cb6"
   integrity sha512-gUn7rBuCCmQlPGDK9hee6Pp0NRRAr2tsBOHN6YIv30L/ytZ2VHiCo1BtbQgoBesaMu3qK3/+GBhmpr2dd+YcXA==
 
+"@ramp-network/ramp-instant-sdk@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@ramp-network/ramp-instant-sdk/-/ramp-instant-sdk-2.4.5.tgz#0b3e6dad413942544a98a48cdcf91dda4ae08c76"
+  integrity sha512-T0dIurHvaWi7X0Eg8nkvQAcMfJ4g7FIHoVpUevJh13BmCWaGZclduQUKfaDoG8QGnzPSgJol6TKn3RJTftD/Zg==
+  dependencies:
+    body-scroll-lock "^2.6.4"
+
 "@reach/alert@0.13.2":
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/@reach/alert/-/alert-0.13.2.tgz#71c4a848d51341f1d6d9eaae060975391c224870"
@@ -6639,6 +6646,11 @@ body-parser@1.19.0, body-parser@^1.16.0:
     qs "6.7.0"
     raw-body "2.4.0"
     type-is "~1.6.17"
+
+body-scroll-lock@^2.6.4:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/body-scroll-lock/-/body-scroll-lock-2.7.1.tgz#caf3f9c91773af1ffb684cd66ed9137b5b737014"
+  integrity sha512-hS53SQ8RhM0e4DsQ3PKz6Gr2O7Kpdh59TWU98GHjaQznL7y4dFycEPk7pFQAikqBaUSCArkc5E3pe7CWIt2fZA==
 
 bonjour@^3.5.0:
   version "3.5.0"

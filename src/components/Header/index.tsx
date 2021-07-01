@@ -6,6 +6,7 @@ import { darken } from 'polished'
 import { useTranslation } from 'react-i18next'
 import { isMobile, isAndroid, isIOS } from 'react-device-detect'
 import { useDispatch } from 'react-redux'
+import { RampInstantSDK } from '@ramp-network/ramp-instant-sdk'
 import { AppDispatch } from '../../state/index'
 
 // @ts-ignore
@@ -286,6 +287,27 @@ const StyledLinkStyledButton = styled(LinkStyledButton).attrs({
     color: ${({ theme }) => darken(0.1, theme.text1)};
   }
 `
+const StyledMenuContainer = styled.div`
+  padding-top: 10px;
+  position: absolute;
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+    min-width: 18.125rem;
+    right: 0;
+  `};
+`
+const StyledMenu = styled.div`
+  min-width: 20.125rem;
+  padding: 12px 0;
+  width: 100%;
+  background-color: ${({ theme }) => theme.bg2};
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
+    0px 24px 32px rgba(0, 0, 0, 0.01);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+`
+
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
   
@@ -332,7 +354,20 @@ export default function Header() {
       transak.close();
     });
   }
-  
+
+  const initiateRAMP = (account: any) => {
+    new RampInstantSDK({
+      hostAppName: 'QuickSwap',
+      hostLogoUrl: 'https://quickswap.exchange/static/media/QuickSwap_logo.420e2e01.png',
+      swapAsset: 'MATIC,MATIC_ETH,MATIC_DAI,MATIC_USDC',
+      userAddress: account,
+      url: 'https://widget-instant.ramp.network/',
+      variant: 'auto',
+      hostApiKey: '7jahgzjq6sfnt9m33xv5sx2wm7ywuj7ob5tjkqnq'
+      
+    }).show()
+  }
+
   const { account, chainId } = useActiveWeb3React()
 
   /**const ClaimMatic = async(address: string) => {
@@ -373,6 +408,7 @@ export default function Header() {
 
   const countUpValue = aggregateBalance?.toFixed(0) ?? '0'
   const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
+  const [widgetMenuOpen, setWidgetMenuOpen] = useState(false)
 
   return (
     <HeaderFrame>
@@ -420,9 +456,18 @@ export default function Header() {
             Charts {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
 
-          {account && <StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
+          {account && <div style={{ position: 'relative' }} onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link`} onClick={() => {setWidgetMenuOpen(true)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
             Buy
-          </StyledLinkStyledButton>}
+          </StyledLinkStyledButton>
+          {widgetMenuOpen && (
+            <StyledMenuContainer>
+              <StyledMenu>
+                <StyledLinkStyledButton style={{ marginBottom: 12 }} onClick={()=>{initiateTransak(account)}}>Transak</StyledLinkStyledButton>
+                <StyledLinkStyledButton onClick={()=>{initiateRAMP(account)}}>RAMP</StyledLinkStyledButton>
+              </StyledMenu>
+            </StyledMenuContainer>   
+          )}
+          </div>}
          
           
           
