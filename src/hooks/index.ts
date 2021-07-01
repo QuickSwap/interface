@@ -2,9 +2,9 @@ import { Web3Provider } from '@ethersproject/providers'
 import { ChainId } from '@uniswap/sdk'
 import { useWeb3React as useWeb3ReactCore } from '@web3-react/core'
 import { Web3ReactContextInterface } from '@web3-react/core/dist/types'
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { isMobile } from 'react-device-detect'
-import { injected } from '../connectors'
+import { injected, safeApp } from '../connectors'
 import { NetworkContextName } from '../constants'
 
 export function useActiveWeb3React(): Web3ReactContextInterface<Web3Provider> & { chainId?: ChainId } {
@@ -16,9 +16,9 @@ export function useActiveWeb3React(): Web3ReactContextInterface<Web3Provider> & 
 export function useEagerConnect() {
   const { activate, active } = useWeb3ReactCore() // specifically using useWeb3ReactCore because of what this hook does
   const [tried, setTried] = useState(false)
-
-  useEffect(() => {
-    injected.isAuthorized().then(isAuthorized => {
+  
+  const checkInjected = useCallback(() => {
+    return injected.isAuthorized().then(isAuthorized => {
       if (isAuthorized) {
         activate(injected, undefined, true).catch(() => {
           setTried(true)
@@ -33,7 +33,21 @@ export function useEagerConnect() {
         }
       }
     })
-  }, [activate]) // intentionally only running on mount (make sure it's only mounted once :))
+  }, [activate])
+
+  useEffect(() => {
+    Promise.race([
+      safeApp.getSafeInfo(),
+      new Promise((resolve) => setTimeout(resolve, 100))
+    ]).then(
+      (safe) => {
+        if (safe) activate(safeApp, undefined, true)
+        else checkInjected()
+      },
+      () => { checkInjected() }
+    )
+
+  }, [activate, checkInjected]) // intentionally only running on mount (make sure it's only mounted once :))
 
   // if the connection worked, wait until we get confirmation of that to flip the flag
   useEffect(() => {
