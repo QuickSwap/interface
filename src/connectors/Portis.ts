@@ -40,15 +40,16 @@ export class PortisConnector extends AbstractConnector {
 
   constructor({ dAppId, networks, config = {} }: PortisConnectorArguments) {
     const chainIds = networks.map((n): number => (typeof n === 'number' ? n : Number(n.chainId)))
-    invariant(
-      chainIds.every((c): boolean => !!chainIdToNetwork[c]),
-      `One or more unsupported networks ${networks}`
-    )
     super({ supportedChainIds: chainIds })
 
     this.dAppId = dAppId
     this.networks = networks
     this.config = config
+
+    invariant(
+      chainIds.every((c): boolean => !!chainIdToNetwork[c]),
+      `One or more unsupported networks ${this.networks}`
+    )
 
     this.handleOnLogout = this.handleOnLogout.bind(this)
     this.handleOnActiveWalletChanged = this.handleOnActiveWalletChanged.bind(this)
@@ -70,11 +71,7 @@ export class PortisConnector extends AbstractConnector {
   public async activate(): Promise<ConnectorUpdate> {
     if (!this.portis) {
       const Portis = await import('@portis/web3').then(m => m?.default ?? m)
-      this.portis = new Portis(
-        this.dAppId,
-        typeof this.networks[0] === 'number' ? chainIdToNetwork[this.networks[0]] : (this.networks[0] as any),
-        this.config
-      )
+      this.portis = new Portis(this.dAppId, this.config)
     }
 
     this.portis.onLogout(this.handleOnLogout)

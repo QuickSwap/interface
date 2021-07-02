@@ -47,7 +47,11 @@ export const fortmatic = new FortmaticConnector({
 // mainnet only
 export const portis = new PortisConnector({
   dAppId: PORTIS_ID ?? '',
-  networks: [137]
+  networks: [137],
+  config: {
+    nodeUrl: NETWORK_URL,
+    chainId: 137
+  }
 })
 
 // mainnet only
