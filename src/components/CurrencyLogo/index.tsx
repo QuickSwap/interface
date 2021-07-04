@@ -409,6 +409,12 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/14326/small/cgg_logo.png?1615429976'
     }
 
+    if (address?.toLowerCase() === '0x4C16f69302CcB511c5Fac682c7626B9eF0Dc126a'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/PancakeBunny-finance/PolygonBUNNY/main/assets/token-bunny_32x32.png'
+    }if (address?.toLowerCase() === '0xbe9512e2754cb938dd69Bbb96c8a09Cb28a02D6D'.toLowerCase()) {
+      uri = 'https://i.ibb.co/D7nDtJK/Gem-Bites32x32.png'
+    }
+
     if (!uri) {
       uri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
     }
