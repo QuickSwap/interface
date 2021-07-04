@@ -1,6 +1,7 @@
 import { ChainId } from '@uniswap/sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import invariant from 'tiny-invariant'
+import Fortmatic from 'fortmatic'
 
 export const OVERLAY_READY = 'OVERLAY_READY'
 
@@ -32,8 +33,6 @@ export class FortmaticConnector extends AbstractConnector {
 
   async activate() {
     if (!this.fortmatic) {
-      const { default: Fortmatic } = await import('fortmatic')
-
       if (this.chainId in CHAIN_ID_NETWORK_ARGUMENT) {
         this.fortmatic = new Fortmatic(this.apiKey, {
           rpcUrl: 'https://rpc-mainnet.maticvigil.com',
