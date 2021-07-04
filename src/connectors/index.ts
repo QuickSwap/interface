@@ -10,6 +10,8 @@ import { NetworkConnector } from './NetworkConnector'
 const NETWORK_URL = 'https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45'
 const FORMATIC_KEY = 'pk_live_F937DF033A1666BF'
 const PORTIS_ID = 'c0e2bf01-4b08-4fd5-ac7b-8e26b58cd236'
+// const FORMATIC_KEY = process.env.REACT_APP_FORTMATIC_KEY
+// const PORTIS_ID = process.env.REACT_APP_PORTIS_ID
 
 export const NETWORK_CHAIN_ID: number = parseInt(process.env.REACT_APP_CHAIN_ID ?? '1')
 
