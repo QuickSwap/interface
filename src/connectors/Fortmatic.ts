@@ -1,7 +1,6 @@
 import { ChainId } from '@uniswap/sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import invariant from 'tiny-invariant'
-import Fortmatic from 'fortmatic'
 
 export const OVERLAY_READY = 'OVERLAY_READY'
 
@@ -33,11 +32,10 @@ export class FortmaticConnector extends AbstractConnector {
 
   async activate() {
     if (!this.fortmatic) {
+      const { default: Fortmatic } = await import('fortmatic')
+
       if (this.chainId in CHAIN_ID_NETWORK_ARGUMENT) {
-        this.fortmatic = new Fortmatic(this.apiKey, {
-          rpcUrl: 'https://rpc-mainnet.maticvigil.com',
-          chainId: 137
-        })
+        this.fortmatic = new Fortmatic(this.apiKey)
       } else {
         throw new Error(`Unsupported network ID: ${this.chainId}`)
       }
@@ -47,7 +45,7 @@ export class FortmaticConnector extends AbstractConnector {
 
     const pollForOverlayReady = new Promise(resolve => {
       const interval = setInterval(() => {
-        if (provider.overlayReady) {
+        if (provider.overlay.overlayReady) {
           clearInterval(interval)
           this.emit(OVERLAY_READY)
           resolve()
