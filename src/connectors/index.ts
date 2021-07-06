@@ -1,7 +1,7 @@
 import { Web3Provider } from '@ethersproject/providers'
 import { InjectedConnector } from '@web3-react/injected-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
-import { WalletLinkConnector } from '@web3-react/walletlink-connector'
+import { WalletLinkConnector } from './WalletLink'
 import { PortisConnector } from './Portis'
 
 import { FortmaticConnector } from './Fortmatic'
@@ -61,5 +61,6 @@ export const walletlink = new WalletLinkConnector({
   url: NETWORK_URL,
   appName: 'Uniswap',
   appLogoUrl:
-    'https://mpng.pngfly.com/20181202/bex/kisspng-emoji-domain-unicorn-pin-badges-sticker-unicorn-tumblr-emoji-unicorn-iphoneemoji-5c046729264a77.5671679315437924251569.jpg'
+    'https://mpng.pngfly.com/20181202/bex/kisspng-emoji-domain-unicorn-pin-badges-sticker-unicorn-tumblr-emoji-unicorn-iphoneemoji-5c046729264a77.5671679315437924251569.jpg',
+  supportedChainIds: [137]
 })
