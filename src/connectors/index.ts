@@ -5,6 +5,7 @@ import { WalletLinkConnector } from '@web3-react/walletlink-connector'
 import { PortisConnector } from '@web3-react/portis-connector'
 
 import { FortmaticConnector } from './Fortmatic'
+import { ArkaneConnector } from './Arkane'
 import { NetworkConnector } from './NetworkConnector'
 
 const NETWORK_URL = 'https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45'
@@ -36,6 +37,12 @@ export const walletconnect = new WalletConnectConnector({
   bridge: 'https://bridge.walletconnect.org',
   qrcode: true,
   pollingInterval: 15000
+})
+
+// mainnet only
+export const arkaneconnect = new ArkaneConnector({
+  clientID: 'QuickSwap',
+  chainId: 137
 })
 
 // mainnet only
