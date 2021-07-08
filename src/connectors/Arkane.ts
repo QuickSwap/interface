@@ -4,6 +4,7 @@ import invariant from 'tiny-invariant'
 import { ChainId } from '@uniswap/sdk'
 import { Arkane } from '@arkane-network/web3-arkane-provider'
 import { ArkaneConnect, SecretType } from '@arkane-network/arkane-connect'
+import Web3 from 'web3'
 
 type ArkaneSupportedChains = Extract<ChainId, ChainId.MATIC | ChainId.MUMBAI>
 
@@ -43,9 +44,11 @@ export class ArkaneConnector extends AbstractConnector {
     if (!this.arkane) {
       this.arkane = new ArkaneConnect(this.clientID, { environment: 'staging' })
     }
-    const walletObj = await this.arkane.flows.getAccount(SecretType.MATIC)
 
-    return { provider: arkaneProvider, chainId: this.chainId, account: walletObj.wallets[0].address }
+    const web3 = new Web3(arkaneProvider as any)
+    const accounts = await web3.eth.getAccounts()
+
+    return { provider: arkaneProvider, chainId: this.chainId, account: accounts[0] }
   }
 
   public async getProvider(): Promise<any> {
@@ -60,7 +63,7 @@ export class ArkaneConnector extends AbstractConnector {
   }
 
   public async getChainId(): Promise<number | string> {
-    return this.arkane.provider.send('eth_chainId')
+    return this.chainId
   }
 
   public async getAccount(): Promise<null | string> {
