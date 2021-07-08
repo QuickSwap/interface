@@ -127,6 +127,7 @@
   "license": "GPL-3.0-or-later",
   "dependencies": {
     "@connext/vector-modal": "^0.1.50",
+    "@metamask/detect-provider": "^1.2.0",
     "@sentry/react": "^6.2.0",
     "@sentry/tracing": "^6.2.0",
     "@transak/transak-sdk": "^1.0.28",
