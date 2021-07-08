@@ -40,8 +40,17 @@ const rpcUrls = [
   
 ]
 
+const sRpcs = [
+  "https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R"
+]
+
 var lastUsedUrl = -1;
-var maxUrls = 4
+var maxUrls = 5
+
+var sLastUsedUrl = -1;
+const sMaxUrls = 0;
+const sThreshold = 40;
+var count = 0;
 
 
 // returns null on errors
@@ -50,11 +59,23 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
   var provider:any = undefined;
 
   if (chainId && MULTICALL_NETWORKS[chainId] === address) {
+    count = count + 1;
     var url;
-    if(lastUsedUrl === maxUrls) {
-      lastUsedUrl = -1;
+    if (count % sThreshold == 0) {
+      console.log(count);
+      if(sLastUsedUrl === sMaxUrls) {
+        sLastUsedUrl = -1;
+      }
+      url = sRpcs[++sLastUsedUrl];
     }
-    url = rpcUrls[++lastUsedUrl];
+    
+    else {
+      if(lastUsedUrl === maxUrls) {
+        lastUsedUrl = -1;
+      }
+      url = rpcUrls[++lastUsedUrl];
+    }
+    
 
     const web3Provider = new Web3HttpProvider(url);
     provider = new Web3Provider(web3Provider);
