@@ -230,6 +230,18 @@ export default function WalletModal({
               icon={require('../../assets/images/' + option.iconName)}
             />
           )
+        } else if (option.name === 'MetaMask') {
+          return (
+            <Option
+              id={`connect-${key}`}
+              key={key}
+              color={'#E8831D'}
+              header={'Install Metamask'}
+              subheader={null}
+              link={'https://metamask.io/'}
+              icon={MetamaskIcon}
+            />
+          )
         }
         return null
       }
