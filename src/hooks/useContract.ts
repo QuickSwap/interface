@@ -26,6 +26,9 @@ import { Web3Provider } from '@ethersproject/providers'
 import { abi as LairABI } from '../abis/DragonLair.json'; 
 const Web3HttpProvider = require('web3-providers-http');
 
+const providers = new Array();
+const sProviders = new Array();
+
 const rpcUrls = [
   //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
@@ -52,6 +55,16 @@ const sMaxUrls = 0;
 const sThreshold = 40;
 var count = 0;
 
+for (var i = 0; i < rpcUrls.length; i++) {
+  const web3Provider = new Web3HttpProvider(rpcUrls[i]);
+  providers.push(new Web3Provider(web3Provider));
+}
+
+for (var j = 0; j < sRpcs.length; j++) {
+  const web3Provider = new Web3HttpProvider(sRpcs[j]);
+  sProviders.push(new Web3Provider(web3Provider));
+}
+
 
 // returns null on errors
 function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
@@ -60,25 +73,22 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
 
   if (chainId && MULTICALL_NETWORKS[chainId] === address) {
     count = count + 1;
-    var url;
+    console.log(count)
     if (count % sThreshold == 0) {
       console.log(count);
       if(sLastUsedUrl === sMaxUrls) {
         sLastUsedUrl = -1;
       }
-      url = sRpcs[++sLastUsedUrl];
+
+      provider = sProviders[++sLastUsedUrl];
     }
     
     else {
       if(lastUsedUrl === maxUrls) {
         lastUsedUrl = -1;
       }
-      url = rpcUrls[++lastUsedUrl];
+      provider = providers[++lastUsedUrl];
     }
-    
-
-    const web3Provider = new Web3HttpProvider(url);
-    provider = new Web3Provider(web3Provider);
   }
   return useMemo(() => {
     if (!address || !ABI || !library) return null
