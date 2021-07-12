@@ -26,19 +26,44 @@ import { Web3Provider } from '@ethersproject/providers'
 import { abi as LairABI } from '../abis/DragonLair.json'; 
 const Web3HttpProvider = require('web3-providers-http');
 
+const providers = new Array();
+const sProviders = new Array();
+
 const rpcUrls = [
   //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
   "https://rpc-quickswap-do1-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
-  "https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
+  //"https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
-  "https://matic-mainnet.chainstacklabs.com"
+  "https://matic-mainnet.chainstacklabs.com",
+  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/"
   //"https://rpc-mainnet.matic.network",
   //"https://quick.slingshot.finance"
   
 ]
 
+const sRpcs = [
+  "https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R"
+]
+
 var lastUsedUrl = -1;
-var maxUrls = 3
+var maxUrls = 5
+
+var sLastUsedUrl = -1;
+const sMaxUrls = 0;
+const sThreshold = 40;
+var count = 0;
+
+for (var i = 0; i < rpcUrls.length; i++) {
+  const web3Provider = new Web3HttpProvider(rpcUrls[i]);
+  providers.push(new Web3Provider(web3Provider));
+}
+
+for (var j = 0; j < sRpcs.length; j++) {
+  const web3Provider = new Web3HttpProvider(sRpcs[j]);
+  sProviders.push(new Web3Provider(web3Provider));
+}
 
 
 // returns null on errors
@@ -47,14 +72,23 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
   var provider:any = undefined;
 
   if (chainId && MULTICALL_NETWORKS[chainId] === address) {
-    var url;
-    if(lastUsedUrl === maxUrls) {
-      lastUsedUrl = -1;
-    }
-    url = rpcUrls[++lastUsedUrl];
+    count = count + 1;
+    console.log(count)
+    if (count % sThreshold == 0) {
+      console.log(count);
+      if(sLastUsedUrl === sMaxUrls) {
+        sLastUsedUrl = -1;
+      }
 
-    const web3Provider = new Web3HttpProvider(url);
-    provider = new Web3Provider(web3Provider);
+      provider = sProviders[++sLastUsedUrl];
+    }
+    
+    else {
+      if(lastUsedUrl === maxUrls) {
+        lastUsedUrl = -1;
+      }
+      provider = providers[++lastUsedUrl];
+    }
   }
   return useMemo(() => {
     if (!address || !ABI || !library) return null
