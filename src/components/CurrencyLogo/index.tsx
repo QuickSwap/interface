@@ -415,6 +415,12 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://i.ibb.co/D7nDtJK/Gem-Bites32x32.png'
     }
 
+    if (address?.toLowerCase() === '0x546b4c391520E6652897c65153074088BFC0A909'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/8242/small/for.png?1606195375'
+    }if (address?.toLowerCase() === '0xcE829A89d4A55a63418bcC43F00145adef0eDB8E'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/13796/small/renDOGE.png?1611897869'
+    }
+
     if (!uri) {
       uri = `https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/${address}/logo.png`;
     }
