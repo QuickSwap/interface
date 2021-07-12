@@ -301,7 +301,7 @@ export const getTokenLogoURL = (address: string) => {
     }
 
     if (address?.toLowerCase() === '0xdF7837DE1F2Fa4631D716CF2502f8b230F1dcc32'.toLowerCase()) {
-      uri = 'https://pbs.twimg.com/profile_images/933388441475194881/57fOk40N_400x400.jpg'
+      uri = 'https://etherscan.io/token/images/telcoin_28.png'
     }
     if (address?.toLowerCase() === '0x7075cAB6bCCA06613e2d071bd918D1a0241379E2'.toLowerCase()) {
       uri = 'https://gains.farm/images/logo256.png'
