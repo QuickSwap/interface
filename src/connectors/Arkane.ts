@@ -35,14 +35,13 @@ export class ArkaneConnector extends AbstractConnector {
   public async activate(): Promise<ConnectorUpdate> {
     const options = {
       clientId: this.clientID,
-      environment: 'staging',
       secretType: SecretType.MATIC,
       signMethod: 'POPUP',
       skipAuthentication: false
     }
     const arkaneProvider = await Arkane.createArkaneProviderEngine(options)
     if (!this.arkane) {
-      this.arkane = new ArkaneConnect(this.clientID, { environment: 'staging' })
+      this.arkane = new ArkaneConnect(this.clientID)
     }
 
     const web3 = new Web3(arkaneProvider as any)
@@ -54,7 +53,6 @@ export class ArkaneConnector extends AbstractConnector {
   public async getProvider(): Promise<any> {
     const options = {
       clientId: this.clientID,
-      environment: 'staging',
       secretType: SecretType.MATIC,
       signMethod: 'POPUP',
       skipAuthentication: false
