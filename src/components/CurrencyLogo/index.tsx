@@ -360,9 +360,13 @@ export const getTokenLogoURL = (address: string) => {
     }
 
     if (address?.toLowerCase() === '0xB9638272aD6998708de56BBC0A290a1dE534a578'.toLowerCase()) {
-      uri = 'https://i.imgur.com/2Tocoq5.png'
-    }if (address?.toLowerCase() === '0xB9638272aD6998708de56BBC0A290a1dE534a578'.toLowerCase()) {
-      uri = 'https://cdn.rupeeto.com/images/rupeeto-symbol.jpeg'
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/IQ.png'
+    }
+
+    if (address?.toLowerCase() === '0x6DdB31002abC64e1479Fc439692F7eA061e78165'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/13629/small/COMBO_token_ol.png?1610701537'
+    }if (address?.toLowerCase() === '0xa2CA40DBe72028D3Ac78B5250a8CB8c404e7Fb8C'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15825/small/fear-logo-400-400.png?1625552865'
     }
 
     if (address?.toLowerCase() === '0x874e178A2f3f3F9d34db862453Cd756E7eAb0381'.toLowerCase()) {
@@ -373,6 +377,14 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/14541/small/eleven_finance_logo.png?1616895791'
     }if (address?.toLowerCase() === '0x172370d5Cd63279eFa6d502DAB29171933a610AF'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/12124/small/Curve.png?1597369484'
+    }
+
+    if (address?.toLowerCase() === '0xA16EbA3b7562FC92597579A80Fe53a92DCab7122'.toLowerCase()) {
+      uri = 'https://i.imgur.com/q0LZUrw.png'
+    }if (address?.toLowerCase() === '0x2628568509E87c4429fBb5c664Ed11391BE1BD29'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/renDGB.svg'
+    }if (address?.toLowerCase() === '0x41b3966B4FF7b427969ddf5da3627d6AEAE9a48E'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/200x200/2694.png'
     }
 
     if (address?.toLowerCase() === '0x7e9928aFe96FefB820b85B4CE6597B8F660Fe4F4'.toLowerCase()) {
