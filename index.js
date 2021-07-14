@@ -1,15 +1,18 @@
 const express = require("express");
 const path = require("path");
-
+const cors = require('cors')
 const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "build"), {
+   setHeaders: function(res, path) {
+     res.set("Access-Control-Allow-Origin", "*");
+     res.set("Access-Control-Allow-Headers", "X-Requested-With, content-type, Authorization");
+     res.set("Access-Control-Allow-Methods","GET");
+   }
+   }));
 
-app.get("*", (req, res) => {
-   res.sendFile(path.join(__dirname + "/build/index.html"));
-});
 
 app.listen(PORT, () => {
    console.log("Server Started on Port ", PORT);

@@ -131,6 +131,7 @@
     "@sentry/react": "^6.2.0",
     "@sentry/tracing": "^6.2.0",
     "@transak/transak-sdk": "^1.0.28",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "ipfs-deploy": "^8.0.1",
     "path": "^0.12.7",
