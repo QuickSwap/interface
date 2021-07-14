@@ -22,5 +22,6 @@
   "iconPath": "./logo_circle.png",
   "short_name": "QuickSwap",
   "start_url": ".",
-  "theme_color": "#ff007a"
+  "theme_color": "#ff007a",
+  "providedBy": {"name": "QuickSwap", "url": "https://quickswap.exchange"}
 }

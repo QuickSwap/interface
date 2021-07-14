@@ -43,7 +43,6 @@ class SafeAppProvider implements AsyncSendable {
   }
 
   async request(request: { method: string, params: any[] }): Promise<any> {
-    console.error(request.method, request.params)
     const params = request.params
     switch (request.method) {
       case 'net_version':
