@@ -9,8 +9,8 @@ import Web3 from 'web3'
 type ArkaneSupportedChains = Extract<ChainId, ChainId.MATIC | ChainId.MUMBAI>
 
 const CHAIN_ID_NETWORK_ARGUMENT: { readonly [chainId in ArkaneSupportedChains]: string | undefined } = {
-  [ChainId.MUMBAI]: undefined,
-  [ChainId.MATIC]: 'mumbai'
+  [ChainId.MUMBAI]: 'mumbai',
+  [ChainId.MATIC]: 'matic'
 }
 
 interface ArkaneConnectorArguments {
