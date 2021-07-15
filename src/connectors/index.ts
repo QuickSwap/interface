@@ -5,6 +5,7 @@ import { WalletLinkConnector } from './WalletLink'
 import { PortisConnector } from './Portis'
 
 import { FortmaticConnector } from './Fortmatic'
+import { ArkaneConnector } from './Arkane'
 import { NetworkConnector } from './NetworkConnector'
 import { SafeAppConnector } from './SafeApp'
 
@@ -41,6 +42,12 @@ export const walletconnect = new WalletConnectConnector({
   bridge: 'https://bridge.walletconnect.org',
   qrcode: true,
   pollingInterval: 15000
+})
+
+// mainnet only
+export const arkaneconnect = new ArkaneConnector({
+  clientID: 'QuickSwap',
+  chainId: 137
 })
 
 // mainnet only

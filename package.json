@@ -125,6 +125,7 @@
   },
   "license": "GPL-3.0-or-later",
   "dependencies": {
+    "@arkane-network/web3-arkane-provider": "^0.23.0",
     "@connext/vector-modal": "^0.1.50",
     "@gnosis.pm/safe-apps-sdk": "^4.0.0",
     "@sentry/react": "^6.2.0",
