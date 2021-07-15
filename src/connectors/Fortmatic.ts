@@ -35,7 +35,10 @@ export class FortmaticConnector extends AbstractConnector {
       const { default: Fortmatic } = await import('fortmatic')
 
       if (this.chainId in CHAIN_ID_NETWORK_ARGUMENT) {
-        this.fortmatic = new Fortmatic(this.apiKey)
+        this.fortmatic = new Fortmatic(this.apiKey, {
+          rpcUrl: 'https://rpc-mainnet.maticvigil.com/v1/0df9f3ce1a0a2ae7273814360d18ed041149d518',
+          chainId: 137
+        })
       } else {
         throw new Error(`Unsupported network ID: ${this.chainId}`)
       }
