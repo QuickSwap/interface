@@ -269,9 +269,9 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
   },
   ARKANE_CONNECT: {
     connector: arkaneconnect,
-    name: 'Arkane',
-    iconName: 'arkane.svg',
-    description: 'Connect to Arkane, Rainbow Wallet and more...',
+    name: 'Venly',
+    iconName: 'venly.svg',
+    description: 'Login using Venly hosted wallet.',
     href: null,
     color: '#4196FC',
   },
