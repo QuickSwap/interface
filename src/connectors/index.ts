@@ -7,11 +7,7 @@ import { PortisConnector } from './Portis'
 import { FortmaticConnector } from './Fortmatic'
 import { NetworkConnector } from './NetworkConnector'
 
-<<<<<<< HEAD
-const NETWORK_URL = 'https://rpc-quickswap-do1-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45'
-=======
 const NETWORK_URL = 'https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc'
->>>>>>> edbc4cd8f3cf70bfbd0f03e5f7c7d0cb6f7e1cdf
 // const FORMATIC_KEY = 'pk_live_F937DF033A1666BF'
 // const PORTIS_ID = 'c0e2bf01-4b08-4fd5-ac7b-8e26b58cd236'
 const FORMATIC_KEY = process.env.REACT_APP_FORTMATIC_KEY
@@ -24,11 +20,7 @@ if (typeof NETWORK_URL === 'undefined') {
 }
 
 export const network = new NetworkConnector({
-<<<<<<< HEAD
-  urls: { [Number("137")]: "https://rpc-quickswap-do1-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45" }
-=======
   urls: { [Number("137")]: "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc" }
->>>>>>> edbc4cd8f3cf70bfbd0f03e5f7c7d0cb6f7e1cdf
 })
 
 let networkLibrary: Web3Provider | undefined
