@@ -53,6 +53,7 @@ export const arkaneconnect = new ArkaneConnector({
 // mainnet only
 export const fortmatic = new FortmaticConnector({
   apiKey: FORMATIC_KEY ?? '',
+  rpcUrl: NETWORK_URL,
   chainId: 137
 })
 
