@@ -387,6 +387,10 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://s2.coinmarketcap.com/static/img/coins/200x200/2694.png'
     }
 
+    if (address?.toLowerCase() === '0x5FFD62D3C3eE2E81C00A7b9079FB248e7dF024A8'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6810e776880C02933D47DB1b9fc05908e5386b96/logo.png'
+    }
+
     if (address?.toLowerCase() === '0x7e9928aFe96FefB820b85B4CE6597B8F660Fe4F4'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
     }if (address?.toLowerCase() === '0xAF24765F631C8830B5528B57002241eE7eef1C14'.toLowerCase()) {

@@ -53,7 +53,7 @@ var maxUrls = 4
 
 var sLastUsedUrl = -1;
 const sMaxUrls = 0;
-const sThreshold = 19;
+const sThreshold = 10;
 var count = 0;
 
 for (var i = 0; i < rpcUrls.length; i++) {
