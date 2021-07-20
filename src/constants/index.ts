@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token, WETH } from '@uniswap/sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 import { isMobile } from 'react-device-detect'
-import { injected, walletconnect, metamask } from '../connectors'
+import { injected, walletconnect, walletlink, portis, arkaneconnect, safeApp } from '../connectors'
 
 export const ROUTER_ADDRESS = '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff'; //'0x6207A65a8bbc87dD02C3109D2c74a6bCE4af1C8c';//
 
@@ -149,6 +149,15 @@ export const GBTS  = new Token(ChainId.MATIC, '0xbe9512e2754cb938dd69Bbb96c8a09C
 export const FOR  = new Token(ChainId.MATIC, '0x546b4c391520E6652897c65153074088BFC0A909', 18, 'FOR', 'The Force Token')
 export const RDOGE  = new Token(ChainId.MATIC, '0xcE829A89d4A55a63418bcC43F00145adef0eDB8E', 8, 'renDOGE', 'renDOGE')
 
+export const COMBO  = new Token(ChainId.MATIC, '0x6DdB31002abC64e1479Fc439692F7eA061e78165', 18, 'COMBO', 'Furucombo')
+export const FEAR  = new Token(ChainId.MATIC, '0xa2CA40DBe72028D3Ac78B5250a8CB8c404e7Fb8C', 18, 'FEAR', 'Fear NFTs')
+
+export const MBTM  = new Token(ChainId.MATIC, '0xA16EbA3b7562FC92597579A80Fe53a92DCab7122', 8, 'mBTM', 'Bytom minted')
+export const RENDGB  = new Token(ChainId.MATIC, '0x2628568509E87c4429fBb5c664Ed11391BE1BD29', 8, 'renDGB', 'renDGB')
+export const NEXO  = new Token(ChainId.MATIC, '0x41b3966B4FF7b427969ddf5da3627d6AEAE9a48E', 18, 'NEXO', 'Nexo')
+
+export const GNO  = new Token(ChainId.MATIC, '0x5FFD62D3C3eE2E81C00A7b9079FB248e7dF024A8', 18, 'GNO', 'Gnosis Token')
+
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
 export const PROPOSAL_LENGTH_IN_DAYS = 7
@@ -196,7 +205,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], DAI, USDC, USDT, GHST, QUICK, ETHER, UNITOKEN, IGG, WBTC, OM, MAUSDC, SWG, MADAI, DG, EMON, SX, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT, MONA,WISE,CC10,MOCEAN, ZUZ, BTU, WOLF, AGA, AGAr, TEL, NFTP, GFARM2,AAVE,FSN,ANY,PLOT,OPU, KRILL, FISH,BIFI, QI, MI, POLYDOGE, CTSI, DEGEN, GAME, SENT, ELET,MOON,ADDY,QuickChart,PAUTO, UFT,IRON,TITAN,ZEE,FFF,IQ,INRP, GFI, CHUM, ELE, CRV, PBNB, IOI, ERN, RAMP, RUSD, MEM, WBUSD, BORING, WOO,START,SAFU,HONOR,FSW,YAYO,CGG,BUNNY,GBTS,FOR, RDOGE]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], DAI, USDC, USDT, GHST, QUICK, ETHER, UNITOKEN, IGG, WBTC, OM, MAUSDC, SWG, MADAI, DG, EMON, SX, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT, MONA,WISE,CC10,MOCEAN, ZUZ, BTU, WOLF, AGA, AGAr, TEL, NFTP, GFARM2,AAVE,FSN,ANY,PLOT,OPU, KRILL, FISH,BIFI, QI, MI, POLYDOGE, CTSI, DEGEN, GAME, SENT, ELET,MOON,ADDY,QuickChart,PAUTO, UFT,IRON,TITAN,ZEE,FFF,IQ,INRP, GFI, CHUM, ELE, CRV, PBNB, IOI, ERN, RAMP, RUSD, MEM, WBUSD, BORING, WOO,START,SAFU,HONOR,FSW,YAYO,CGG,BUNNY,GBTS,FOR, RDOGE, COMBO, FEAR,MBTM,RENDGB,NEXO,GNO]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -252,40 +261,22 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     color: '#E8831D',
     mobile: true
   },
-  WALLET_CONNECT: {
-    connector: walletconnect,
-    name: 'WalletConnect',
-    iconName: 'walletConnectIcon.svg',
-    description: 'Connect to Trust Wallet, Rainbow Wallet and more...',
+  SAFE_APP: {
+    connector: safeApp,
+    name: 'Gnosis Safe App',
+    iconName: 'gnosis_safe.png',
+    description: 'Login using gnosis safe app',
     href: null,
     color: '#4196FC',
     mobile: true
   },
-  /**WALLET_LINK: {
-    connector: walletlink,
-    name: 'Coinbase Wallet',
-    iconName: 'coinbaseWalletIcon.svg',
-    description: 'Use Coinbase Wallet app on mobile device',
+  ARKANE_CONNECT: {
+    connector: arkaneconnect,
+    name: 'Venly',
+    iconName: 'venly.svg',
+    description: 'Login using Venly hosted wallet.',
     href: null,
-    color: '#315CF5'
-  },
-  COINBASE_LINK: {
-    name: 'Open in Coinbase Wallet',
-    iconName: 'coinbaseWalletIcon.svg',
-    description: 'Open in Coinbase Wallet app.',
-    href: 'https://go.cb-w.com/mtUDhEZPy1',
-    color: '#315CF5',
-    mobile: true,
-    mobileOnly: true
-  },
-  FORTMATIC: {
-    connector: fortmatic,
-    name: 'Fortmatic',
-    iconName: 'fortmaticIcon.png',
-    description: 'Login using Fortmatic hosted wallet',
-    href: null,
-    color: '#6748FF',
-    mobile: true
+    color: '#4196FC',
   },
   Portis: {
     connector: portis,
@@ -295,7 +286,24 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     href: null,
     color: '#4A6C9B',
     mobile: true
-  }*/
+  },
+  WALLET_LINK: {
+    connector: walletlink,
+    name: 'Coinbase Wallet',
+    iconName: 'coinbaseWalletIcon.svg',
+    description: 'Use Coinbase Wallet app on mobile device',
+    href: null,
+    color: '#315CF5'
+  },
+  WALLET_CONNECT: {
+    connector: walletconnect,
+    name: 'WalletConnect',
+    iconName: 'walletConnectIcon.svg',
+    description: 'Connect to Trust Wallet, Rainbow Wallet and more...',
+    href: null,
+    color: '#4196FC',
+    mobile: true
+  }
 }
 
 export const NetworkContextName = 'NETWORK'
@@ -324,4 +332,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.0.73/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.0.78/build/quickswap-default.tokenlist.json'

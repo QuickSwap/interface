@@ -301,7 +301,7 @@ export const getTokenLogoURL = (address: string) => {
     }
 
     if (address?.toLowerCase() === '0xdF7837DE1F2Fa4631D716CF2502f8b230F1dcc32'.toLowerCase()) {
-      uri = 'https://pbs.twimg.com/profile_images/933388441475194881/57fOk40N_400x400.jpg'
+      uri = 'https://etherscan.io/token/images/telcoin_28.png'
     }
     if (address?.toLowerCase() === '0x7075cAB6bCCA06613e2d071bd918D1a0241379E2'.toLowerCase()) {
       uri = 'https://gains.farm/images/logo256.png'
@@ -360,9 +360,13 @@ export const getTokenLogoURL = (address: string) => {
     }
 
     if (address?.toLowerCase() === '0xB9638272aD6998708de56BBC0A290a1dE534a578'.toLowerCase()) {
-      uri = 'https://i.imgur.com/2Tocoq5.png'
-    }if (address?.toLowerCase() === '0xB9638272aD6998708de56BBC0A290a1dE534a578'.toLowerCase()) {
-      uri = 'https://cdn.rupeeto.com/images/rupeeto-symbol.jpeg'
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/IQ.png'
+    }
+
+    if (address?.toLowerCase() === '0x6DdB31002abC64e1479Fc439692F7eA061e78165'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/13629/small/COMBO_token_ol.png?1610701537'
+    }if (address?.toLowerCase() === '0xa2CA40DBe72028D3Ac78B5250a8CB8c404e7Fb8C'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15825/small/fear-logo-400-400.png?1625552865'
     }
 
     if (address?.toLowerCase() === '0x874e178A2f3f3F9d34db862453Cd756E7eAb0381'.toLowerCase()) {
@@ -373,6 +377,18 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/14541/small/eleven_finance_logo.png?1616895791'
     }if (address?.toLowerCase() === '0x172370d5Cd63279eFa6d502DAB29171933a610AF'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/12124/small/Curve.png?1597369484'
+    }
+
+    if (address?.toLowerCase() === '0xA16EbA3b7562FC92597579A80Fe53a92DCab7122'.toLowerCase()) {
+      uri = 'https://i.imgur.com/q0LZUrw.png'
+    }if (address?.toLowerCase() === '0x2628568509E87c4429fBb5c664Ed11391BE1BD29'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/renDGB.svg'
+    }if (address?.toLowerCase() === '0x41b3966B4FF7b427969ddf5da3627d6AEAE9a48E'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/200x200/2694.png'
+    }
+
+    if (address?.toLowerCase() === '0x5FFD62D3C3eE2E81C00A7b9079FB248e7dF024A8'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6810e776880C02933D47DB1b9fc05908e5386b96/logo.png'
     }
 
     if (address?.toLowerCase() === '0x7e9928aFe96FefB820b85B4CE6597B8F660Fe4F4'.toLowerCase()) {
