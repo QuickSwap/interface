@@ -19,6 +19,10 @@ import UserUpdater from './state/user/updater'
 import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from './theme'
 import getLibrary from './utils/getLibrary'
 
+import { GelatoProvider } from '@gelatonetwork/limit-orders-react'
+import { useActiveWeb3React } from './hooks'
+import { useWalletModalToggle } from './state/application/hooks'
+
 const Web3ProviderNetwork = createWeb3ReactRoot(NetworkContextName)
 
 if ('ethereum' in window) {
@@ -64,6 +68,25 @@ function Updaters() {
   )
 }
 
+function Gelato({ children }: { children?: React.ReactNode }) {
+  const { library, chainId, account } = useActiveWeb3React()
+  const toggleWalletModal = useWalletModalToggle()
+
+  return (
+    <GelatoProvider
+      library={library}
+      chainId={chainId}
+      account={account ?? undefined}
+      handler={'quickswap'}
+      toggleWalletModal={toggleWalletModal}
+      useDefaultTheme={false}
+    >
+      {children}
+    </GelatoProvider>
+  )
+}
+
+
 ReactDOM.render(
   <StrictMode>
     <FixedGlobalStyle />
@@ -74,7 +97,9 @@ ReactDOM.render(
           <ThemeProvider>
             <ThemedGlobalStyle />
             <HashRouter>
-              <App />
+              <Gelato>
+                <App />
+              </Gelato>
             </HashRouter>
           </ThemeProvider>
         </Provider>

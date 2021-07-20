@@ -24,6 +24,8 @@ import Manage from './Earn/Manage'
 import Pool from './Pool'
 import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
+import LimitOrder from './LimitOrder'
+
 import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
 import Swap from './Swap'
 import { OpenClaimAddressModalAndRedirectToSwap, RedirectPathToSwapOnly, RedirectToSwap } from './Swap/redirects'
@@ -112,6 +114,8 @@ export default function App() {
               <Route exact strict path="/dquick" component={ManageLair} />
               <Route exact strict path="/archive/:currencyIdA/:currencyIdB/:rewardsAddress" component={ManageOld} />
               <Route exact strict path="/vote/:id" component={VotePage} />
+              <Route exact strict path="/limit-order/:outputCurrency" component={RedirectToSwap} />
+              <Route exact strict path="/limit-order" component={LimitOrder} />
               <Route component={RedirectPathToSwapOnly} />
             </Switch>
           </Web3ReactManager>

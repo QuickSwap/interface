@@ -396,6 +396,9 @@ export default function Header() {
           <StyledNavLink id={`swap-nav-link`} to={'/swap'} style={{marginLeft: mobile?'12px':'12px', marginRight: mobile?'px':'12px'}}>
             {t('swap')}
           </StyledNavLink>
+          <StyledNavLink id={`limit-order-nav-link`} to={'/limit-order'} style={{marginLeft: mobile?'12px':'12px', marginRight: mobile?'px':'12px'}}>
+            {t('Limit Order')}
+          </StyledNavLink>
           <StyledNavLink
             id={`pool-nav-link`}
             to={'/pool'}
