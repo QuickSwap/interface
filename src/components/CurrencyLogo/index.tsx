@@ -391,6 +391,20 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6810e776880C02933D47DB1b9fc05908e5386b96/logo.png'
     }
 
+    if (address?.toLowerCase() === '0x28C388FB1F4fa9F9eB445f0579666849EE5eeb42'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12478/small/Bella.png?1602230054'
+    }if (address?.toLowerCase() === '0x7DfF46370e9eA5f0Bad3C4E29711aD50062EA7A4'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/4128/small/coinmarketcap-solana-200.png?1616489452'
+    }if (address?.toLowerCase() === '0x9aF3b7DC29D3C4B1A5731408B6A9656fA7aC3b72'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/16762/small/PUSD-purple-200.png?1624937879'
+    }if (address?.toLowerCase() === '0xAa9654BECca45B5BDFA5ac646c939C62b527D394'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17103/small/DINO.png?1626244014'
+    }if (address?.toLowerCase() === '0x348e62131fce2F4e0d5ead3Fe1719Bc039B380A9'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14770/small/1617088937196.png?1619414736'
+    }if (address?.toLowerCase() === '0x87f654c4b347230C60CAD8d7ea9cF0D7238bcc79'.toLowerCase()) {
+      uri = 'https://yamp.finance/img/yamp_logo.svg'
+    }
+
     if (address?.toLowerCase() === '0x7e9928aFe96FefB820b85B4CE6597B8F660Fe4F4'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
     }if (address?.toLowerCase() === '0xAF24765F631C8830B5528B57002241eE7eef1C14'.toLowerCase()) {
