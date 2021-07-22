@@ -38,7 +38,8 @@ const rpcUrls = [
   "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://matic-mainnet.chainstacklabs.com",
   "https://shy-black-meadow.matic.quiknode.pro/aa57c5692641e98d1002a9dfeea7eb6438aa7937/",
-  "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/"
+  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  "https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R"
   //"https://rpc-mainnet.matic.network",
   //"https://quick.slingshot.finance"
   
@@ -49,11 +50,11 @@ const sRpcs = [
 ]
 
 var lastUsedUrl = -1;
-var maxUrls = 6
+var maxUrls = 7
 
 var sLastUsedUrl = -1;
-const sMaxUrls = 0;
-const sThreshold = 10;
+const sMaxUrls = -1;
+const sThreshold = 0;
 var count = 0;
 
 for (var i = 0; i < rpcUrls.length; i++) {
@@ -74,7 +75,7 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
 
   if (chainId && MULTICALL_NETWORKS[chainId] === address) {
     count = count + 1;
-    if (count % sThreshold == 0) {
+    if (sThreshold > 0 && count % sThreshold == 0) {
       console.log(count);
       if(sLastUsedUrl === sMaxUrls) {
         sLastUsedUrl = -1;
