@@ -423,7 +423,10 @@ export default function Header() {
           {account && <StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
             Buy
           </StyledLinkStyledButton>}
-         
+
+          <StyledExternalLink id={`startido-nav-link`} href={'https://starter.xyz'} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
+            IDO
+          </StyledExternalLink>
           
           
         </HeaderLinks>
