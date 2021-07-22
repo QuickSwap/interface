@@ -425,7 +425,7 @@ export default function Header() {
           </StyledLinkStyledButton>}
 
           <StyledExternalLink id={`startido-nav-link`} href={'https://starter.xyz'} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
-            Quick/Start IDO
+            IDO
           </StyledExternalLink>
           
           
