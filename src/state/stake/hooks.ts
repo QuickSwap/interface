@@ -112,7 +112,8 @@ import {
   MBTM,
   NEXO,
   RENDGB,
-  SOL
+  SOL,
+  YAMP
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -372,6 +373,16 @@ export const STAKING_REWARDS_INFO: {
     baseToken: ETHER,
     rate: 6,
     pair: '0xeaa5e4620373d9ded4dcb9267f46fcfc6698c867'
+  },
+  {
+    tokens: [YAMP,USDC],
+    stakingRewardAddress: '0x1DdF6be5B3c6fe04e5161701e2753b28bBF85dc2',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: USDC,
+    rate: 5,
+    pair: '0x87d68f797623590e45982ad0f21228557207fdda'
   },
   {
     tokens: [UNITOKEN,QUICK],
