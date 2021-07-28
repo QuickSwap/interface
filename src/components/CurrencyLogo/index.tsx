@@ -389,6 +389,22 @@ export const getTokenLogoURL = (address: string) => {
 
     if (address?.toLowerCase() === '0x5FFD62D3C3eE2E81C00A7b9079FB248e7dF024A8'.toLowerCase()) {
       uri = 'https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x6810e776880C02933D47DB1b9fc05908e5386b96/logo.png'
+    }if (address?.toLowerCase() === '0x76e63a3E7Ba1e2E61D3DA86a87479f983dE89a7E'.toLowerCase()) {
+      uri = 'https://augury.finance/_nuxt/img/omen.b433161.png'
+    }if (address?.toLowerCase() === '0x13748d548D95D78a3c83fe3F32604B4796CFfa23'.toLowerCase()) {
+      uri = 'https://kogefarm.io/koge-logo-01.png'
+    }if (address?.toLowerCase() === '0x64aFDF9e28946419E325d801Fb3053d8B8FFdC23'.toLowerCase()) {
+      uri = 'https://i.imgur.com/tmPoZ1D.png'
+    }if (address?.toLowerCase() === '0x60bB3D364B765C497C8cE50AE0Ae3f0882c5bD05'.toLowerCase()) {
+      uri = 'https://polygon.impermax.finance/build/assets/icons/0x60bb3d364b765c497c8ce50ae0ae3f0882c5bd05.png'
+    }if (address?.toLowerCase() === '0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b'.toLowerCase()) {
+      uri = 'https://yamp.finance/img/yamp_logo.svg'
+    }if (address?.toLowerCase() === '0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8'.toLowerCase()) {
+      uri = 'https://i.imgur.com/VtDIzy7.png'
+    }if (address?.toLowerCase() === '0xD3b71117E6C1558c1553305b44988cd944e97300'.toLowerCase()) {
+      uri = 'https://i.imgur.com/cwfndaf.png'
+    }if (address?.toLowerCase() === '0x5f1657896B38c4761dbc5484473c7A7C845910b6'.toLowerCase()) {
+      uri = 'https://swamp.finance/static/frontend/img/symbols/pswamp.svg'
     }
 
     if (address?.toLowerCase() === '0x28C388FB1F4fa9F9eB445f0579666849EE5eeb42'.toLowerCase()) {
