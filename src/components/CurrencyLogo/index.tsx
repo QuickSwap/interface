@@ -398,7 +398,7 @@ export const getTokenLogoURL = (address: string) => {
     }if (address?.toLowerCase() === '0x60bB3D364B765C497C8cE50AE0Ae3f0882c5bD05'.toLowerCase()) {
       uri = 'https://polygon.impermax.finance/build/assets/icons/0x60bb3d364b765c497c8ce50ae0ae3f0882c5bd05.png'
     }if (address?.toLowerCase() === '0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b'.toLowerCase()) {
-      uri = 'https://yamp.finance/img/yamp_logo.svg'
+      uri = 'https://assets.coingecko.com/coins/images/12559/small/coin-round-red.png?1604021818'
     }if (address?.toLowerCase() === '0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8'.toLowerCase()) {
       uri = 'https://i.imgur.com/VtDIzy7.png'
     }if (address?.toLowerCase() === '0xD3b71117E6C1558c1553305b44988cd944e97300'.toLowerCase()) {

@@ -115,7 +115,7 @@ import {
   SOL,
   YAMP,
   AVAX,
-  GAURD,
+  GUARD,
   GBTS,
   HONOR,
   IMX,
@@ -322,7 +322,7 @@ export const STAKING_REWARDS_INFO: {
     pair: '0x160532d2536175d65c03b97b0630a9802c274dad'
   },
   {
-    tokens: [GAURD,USDC],
+    tokens: [GUARD,USDC],
     stakingRewardAddress: '0x8782772E35e262Ba7f481DDDb015424Fc1aABC62',
     ended: false,
     lp: '',
