@@ -170,7 +170,7 @@ export const KOGECOIN  = new Token(ChainId.MATIC, '0x13748d548D95D78a3c83fe3F326
 export const MEEB  = new Token(ChainId.MATIC, '0x64aFDF9e28946419E325d801Fb3053d8B8FFdC23', 18, 'MEEB', 'MeebMaster.com Token')
 export const IMX  = new Token(ChainId.MATIC, '0x60bB3D364B765C497C8cE50AE0Ae3f0882c5bD05', 18, 'IMX', 'Impermax')
 export const AVAX  = new Token(ChainId.MATIC, '0x2C89bbc92BD86F8075d1DEcc58C7F4E0107f286b', 18, 'AVAX', 'Avalanche Token')
-export const GUARD  = new Token(ChainId.MATIC, '0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8', 18, 'Gaurd', 'Helmet.insure on Polygon')
+export const GUARD  = new Token(ChainId.MATIC, '0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8', 18, 'Guard', 'Helmet.insure on Polygon')
 export const YEL  = new Token(ChainId.MATIC, '0xD3b71117E6C1558c1553305b44988cd944e97300', 18, 'YEL', 'YEL Token')
 export const PSWAMP = new Token(ChainId.MATIC, '0x5f1657896B38c4761dbc5484473c7A7C845910b6', 18, 'pSwamp', 'pSwampy')
 
