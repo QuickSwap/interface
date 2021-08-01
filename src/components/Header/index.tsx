@@ -424,7 +424,7 @@ export default function Header() {
             Buy
           </StyledLinkStyledButton>}
 
-          <StyledExternalLink id={`startido-nav-link`} href={'https://starter.xyz/#/pool/2'} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
+          <StyledExternalLink id={`startido-nav-link`} href={'https://idos.starter.xyz/quickstart'} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
             IDO {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
           
