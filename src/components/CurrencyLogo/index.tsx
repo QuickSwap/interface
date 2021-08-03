@@ -407,6 +407,14 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://swamp.finance/static/frontend/img/symbols/pswamp.svg'
     }
 
+    if (address?.toLowerCase() === '0x904371845Bc56dCbBcf0225ef84a669b2fD6bd0d'.toLowerCase()) {
+      uri = 'https://starter.xyz/Relay.png'
+    }if (address?.toLowerCase() === '0xFAD65Eb62a97fF5Ed91B23aFD039956aaCa6e93b'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/2822/small/huobi-token-logo.png?1547036992'
+    }if (address?.toLowerCase() === '0x5f1657896B38c4761dbc5484473c7A7C845910b6'.toLowerCase()) {
+      uri = '0x3BA4c387f786bFEE076A58914F5Bd38d668B42c3'
+    }
+
     if (address?.toLowerCase() === '0x28C388FB1F4fa9F9eB445f0579666849EE5eeb42'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/12478/small/Bella.png?1602230054'
     }if (address?.toLowerCase() === '0x7DfF46370e9eA5f0Bad3C4E29711aD50062EA7A4'.toLowerCase()) {

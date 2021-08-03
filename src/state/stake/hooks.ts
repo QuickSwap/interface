@@ -120,7 +120,8 @@ import {
   HONOR,
   IMX,
   PSWAMP,
-  KOGECOIN
+  KOGECOIN,
+  RELAY
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -301,6 +302,16 @@ export const STAKING_REWARDS_INFO: {
     rate: 12,
     pair: '0x10062ec62c0be26cc9e2f50a1cf784a89ded075f'
   },
+  {
+    tokens: [RELAY,QUICK],
+    stakingRewardAddress: '0xD7B606AC407652FdB4bf7A7f17987C24047631bA',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: QUICK,
+    rate: 10,
+    pair: '0x7ca8e540df6326005b72661e50f1350c84c0e55d'
+    },
   {
     tokens: [DAI,USDC],
     stakingRewardAddress: '0xEd8413eCEC87c3d4664975743c02DB3b574012a7',
