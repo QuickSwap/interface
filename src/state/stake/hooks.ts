@@ -121,7 +121,9 @@ import {
   IMX,
   PSWAMP,
   KOGECOIN,
-  RELAY
+  RELAY,
+  EZ,
+  POOL
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -152,857 +154,859 @@ export const STAKING_REWARDS_INFO: {
     pair: string
   }[]
 } = {
-  [ChainId.MATIC]: [{
-    tokens: [ETHER,USDC],
-    stakingRewardAddress: '0x4A73218eF2e820987c59F838906A82455F42D98b',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 70,
-    pair: '0x853ee4b2a13f8a742d64c8f088be7ba2131f670d'
-  },
-  {
-    tokens: [ETHER,MATIC],
-    stakingRewardAddress: '0x8FF56b5325446aAe6EfBf006a4C1D88e4935a914',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 69,
-    pair: '0xadbf1854e5883eb8aa7baf50705338739e558e5b'
-  },
-  {
-    tokens: [MATIC,QUICK],
-    stakingRewardAddress: '0x7Ca29F0DB5Db8b88B332Aa1d67a2e89DfeC85E7E',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 51,
-    pair: '0x019ba0325f1988213d448b3472fa1cf8d07618d7'
-  },
-  {
-    tokens: [ETHER,USDT],
-    stakingRewardAddress: '0xB26bfcD52D997211C13aE4C35E82ced65AF32A02',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 50,
-    pair: '0xf6422b997c7f54d1c6a6e103bcb1499eea0a7046'
-  },
-  {
-    tokens: [WBTC,ETHER],
-    stakingRewardAddress: '0x070D182EB7E9C3972664C959CE58C5fC6219A7ad',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 35,
-    pair: '0xdc9232e2df177d7a12fdff6ecbab114e2231198d'
-  },
-  {
-    tokens: [DAI,ETHER],
-    stakingRewardAddress: '0x785AaCd49c1Aa3ca573F2a32Bb90030A205b8147',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: DAI,
-    rate: 35,
-    pair: '0x4a35582a710e1f4b2030a3f826da20bfb6703c09'
-  },
-  {
-    tokens: [ETHER,QUICK],
-    stakingRewardAddress: '0xD1C762861AAe85dF2e586a668A793AAfF820932b',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 30,
-    pair: '0x1bd06b96dd42ada85fdd0795f3b4a79db914add5'
-  },
-  {
-    tokens: [AAVE,ETHER],
-    stakingRewardAddress: '0x573bb5CCC26222d8108EdaCFcC7F7cb9e388Af10',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 24,
-    pair: '0x90bc3e68ba8393a3bf2d79309365089975341a43'
-  },
-  {
-    tokens: [LINK,ETHER],
-    stakingRewardAddress: '0x97D69E23DF7BBB01F9eA78b5651cb6ad125D6d9a',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 23,
-    pair: '0x5ca6ca6c3709e1e6cfe74a50cf6b2b6ba2dadd67'
-  },
-  {
-    tokens: [USDC,QUICK],
-    stakingRewardAddress: '0x8cFad56Eb742BA8CAEA813e47779E9C38f27cA6E',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 20,
-    pair: '0x1f1e4c845183ef6d50e9609f16f6f9cae43bc9cb'
-  },
-  {
-    tokens: [USDC,USDT],
-    stakingRewardAddress: '0x251d9837a13F38F3Fe629ce2304fa00710176222',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 20,
-    pair: '0x2cf7252e74036d1da831d11089d326296e64a728'
-  },
-  {
-    tokens: [WBTC,USDC],
-    stakingRewardAddress: '0x8f2ac4EC8982bF1699a6EeD696e204FA2ccD5D91',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 17,
-    pair: '0xf6a637525402643b0654a54bead2cb9a83c8b498'
-  },
-  {
-    tokens: [UNITOKEN,ETHER],
-    stakingRewardAddress: '0x9Bb7C0A778676689E86602d905c4013221AcC7C6',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 15,
-    pair: '0xf7135272a5584eb116f5a77425118a8b4a2ddfdb'
-  },
-  {
-    tokens: [MATIC,USDC],
-    stakingRewardAddress: '0x6C6920aD61867B86580Ff4AfB517bEc7a499A7Bb',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 14,
-    pair: '0x6e7a5fafcec6bb1e78bae2a1f0b612012bf14827'
-  },
-  {
-    tokens: [NEXO,ETHER],
-    stakingRewardAddress: '0x5Ce139242C77fC31479E5329626fef736Ac8CeBE',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 12,
-    pair: '0x10062ec62c0be26cc9e2f50a1cf784a89ded075f'
-  },
-  {
-    tokens: [RELAY,QUICK],
-    stakingRewardAddress: '0xD7B606AC407652FdB4bf7A7f17987C24047631bA',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 10,
-    pair: '0x7ca8e540df6326005b72661e50f1350c84c0e55d'
+  [ChainId.MATIC]: [
+    {
+      tokens: [ETHER,USDC],
+      stakingRewardAddress: '0x4A73218eF2e820987c59F838906A82455F42D98b',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 61,
+      pair: '0x853ee4b2a13f8a742d64c8f088be7ba2131f670d'
     },
-  {
-    tokens: [DAI,USDC],
-    stakingRewardAddress: '0xEd8413eCEC87c3d4664975743c02DB3b574012a7',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 10,
-    pair: '0xf04adbf75cdfc5ed26eea4bbbb991db002036bdd'
-  },
-  {
-    tokens: [MI,USDC],
-    stakingRewardAddress: '0x1fdDd7F3A4c1f0e7494aa8B637B8003a64fdE21A',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 10,
-    pair: '0x160532d2536175d65c03b97b0630a9802c274dad'
-  },
-  {
-    tokens: [GUARD,USDC],
-    stakingRewardAddress: '0x8782772E35e262Ba7f481DDDb015424Fc1aABC62',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 10,
-    pair: '0xd2eeeedfcaf1457f7bc9cba28d5316f73bb83b49'
-  },
-  {
-    tokens: [RDOGE,ETHER],
-    stakingRewardAddress: '0xe2519a7b81Cf038C055ddD667A9c06A0790945f4',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 9,
-    pair: '0xab1403de66519b898b38028357b74df394a54a37'
-  },
-  {
-    tokens: [START,QUICK],
-    stakingRewardAddress: '0x77eB20d5eB77b6ba543734d903FE1259d551cbd3',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 9,
-    pair: '0x9e2b254c7d6ad24afb334a75ce21e216a9aa25fc'
-  },
-  {
-    tokens: [BUNNY,ETHER],
-    stakingRewardAddress: '0x9F37eF37818b3b81Cd8600d602DC5D8Df7B9e3E4',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 8,
-    pair: '0x62052b489cb5bc72a9dc8eeae4b24fd50639921a'
-  },
-  {
-    tokens: [PAUTO,ETHER],
-    stakingRewardAddress: '0xBDEb6D4eC1B90EdB9D09259B6B030A646D373116',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 5,
-    pair: '0x451cce13c6e013f463df6c156b7661b19df6541a'
-  },
-  {
-    tokens: [GHST,QUICK],
-    stakingRewardAddress: '0xa132faD61EDe08f1f288a35ff4c10dcD1cB9E107',
-    ended: false,
-    name: 'StkGHST-QUICK',
-    lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f',
-    baseToken: QUICK,
-    rate: 5,
-    pair: '0x9bCfD9B9a5Cbe2669AD30B0AD02693aFac0485f1'
-  },
-  {
-    tokens: [CEL,ETHER],
-    stakingRewardAddress: '0x8917692e0Bdb47AF1D36837805E141Ed79065dFC',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 5,
-    pair: '0xeaa5e4620373d9ded4dcb9267f46fcfc6698c867'
-  },
-  {
-    tokens: [QI,QUICK],
-    stakingRewardAddress: '0xad9E0d2FC293fD9a0f6c3C16c16A69d36B6D3b06',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 5,
-    pair: '0x25d56e2416f20de1efb1f18fd06dd12efec3d3d0'
-  },
-  {
-    tokens: [YAMP,USDC],
-    stakingRewardAddress: '0x1DdF6be5B3c6fe04e5161701e2753b28bBF85dc2',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 5,
-    pair: '0x87d68f797623590e45982ad0f21228557207fdda'
-  },
-  {
-    tokens: [YAMP,QUICK],
-    stakingRewardAddress: '0xF42405d54c8F443126Ac06A47b5023BbfC7a85D3',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 5,
-    pair: '0x66ff795535cf162d29f6b15ed546a3e148eff0fb'
-  },
-  {
-    tokens: [UNITOKEN,QUICK],
-    stakingRewardAddress: '0x72ed24d2b2D98D3c4b5297ce244f623B9357F798',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 4,
-    pair: '0x4b4c614b9219397c02296f6f4e2351259840b3c7'
-  },
-  {
-    tokens: [PAUTO,QUICK],
-    stakingRewardAddress: '0x6b9C78e419C3038dAC2DAb9dB2bfd5D9F1E05904',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 4,
-    pair: '0x3bb367f673d52d1a5f0812c4d8c9030e5876ad44'
-  },
-  {
-    tokens: [NEXO,QUICK],
-    stakingRewardAddress: '0xd36f382F44678a07eCF79E89dc13a63D5Ef08d3E',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 4,
-    pair: '0xaca37a3282078dbf41a6d0c6314c53d7f9ced6ec'
-  },
-  {
-    tokens: [WOO,ETHER],
-    stakingRewardAddress: '0xfA9A5abaC50B97c61addC7b317C813a006579aeA',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 4,
-    pair: '0x70294d7aa244bd342c536f9b502152564057162e'
-  },
-  {
-    tokens: [RENDGB,QUICK],
-    stakingRewardAddress: '0xE682EB8F4F93EdABe17C52FFf5AA663f80D9B428',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 4,
-    pair: '0x5cb85aa163b1b443f88a1f9124153e70f6586400'
-  },
-  {
-    tokens: [ADDY,ETHER],
-    stakingRewardAddress: '0xF6Bd4FE52efD9C3881eea1134193E4DB3c1d4801',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 4,
-    pair: '0xa5bf14bb945297447fe96f6cd1b31b40d31175cb'
-  },
-  {
-    tokens: [WOO,QUICK],
-    stakingRewardAddress: '0x1067112E5dB21aEC7eB144C5773f8aef8C85966a',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 3.5,
-    pair: '0x7622804ba94940a9efddd1546d12d8d0d6a16e53'
-  },
-  {
-    tokens: [RAMP,ETHER],
-    stakingRewardAddress: '0xBD5F8b3663F5ce456c9F53B26b0f6bC3EA22B6AA',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 3.5,
-    pair: '0xe55739e1feb9f9aed4ce34830a06ca6cc37494a0'
-  },
-  {
-    tokens: [BUNNY,QUICK],
-    stakingRewardAddress: '0xdaC489D994d12Be53388D4dB3cAC5135177390f0',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 3,
-    pair: '0x976b7b7fe4293111cacd946c422a64f24a223564'
-  },
-  {
-    tokens: [BIFI,ETHER],
-    stakingRewardAddress: '0xd79424b32E2Ef944AA9f4021d39D835fdd615B87',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 3,
-    pair: '0x8b80417d92571720949fc22404200ab8faf7775f'
-  },
-  {
-    tokens: [PBNB,QUICK],
-    stakingRewardAddress: '0xffA5b82d09DcaE32b9Ee96D3cD02C9391b63cdaB',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 2.5,
-    pair: '0x53e27dadf6473d062717be8807c453af212c7102'
-  },
-  {
-    tokens: [PBNB,USDC],
-    stakingRewardAddress: '0x64Ec5b01D6eD81C432eF8628541BB2Bf9380b337',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 2.5,
-    pair: '0xe55cb144e02cffb6fbd65d9a4bd62378998bc267'
-  },
-  {
-    tokens: [DAI,USDT],
-    stakingRewardAddress: '0x97Efe8470727FeE250D7158e6f8F63bb4327c8A2',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: DAI,
-    rate: 2.5,
-    pair: '0x59153f27eefe07e5ece4f9304ebba1da6f53ca88'
-  },
-  {
-    tokens: [RENDGB,ETHER],
-    stakingRewardAddress: '0xcFCa8D0fcEc1A3A30B6f9B963F1794C3B8f8E391',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 2.5,
-    pair: '0xbf453e64ee7f43513afdc801f6c0fab250fbcf09'
-  },
-  {
-    tokens: [ELE,MATIC],
-    stakingRewardAddress: '0x9318F6f64e61AfB7B51D51E61B5dD6C4E39E7dd9',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: MATIC,
-    rate: 2,
-    pair: '0xadcb09fd3346c72c98753e518397b336333cf227'
-  },
-  {
-    tokens: [SOL,MATIC],
-    stakingRewardAddress: '0x590226869C2A1334394392231Ed6de5F63C9dC98',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: MATIC,
-    rate: 2,
-    pair: '0x898386dd8756779a4ba4f1462891b92dd76b78ef'
-  },
-  {
-    tokens: [AVAX,MATIC],
-    stakingRewardAddress: '0x02e33E4713Cf231D4b7A9894DE3F075A16e19201',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: MATIC,
-    rate: 2,
-    pair: '0xeb477ae74774b697b5d515ef8ca09e24fee413b5'
-  },
-  {
-    tokens: [HONOR,USDC],
-    stakingRewardAddress: '0xBB21082fc478f2a5Bb5D6ca1367571c456739b5F',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 2,
-    pair: '0x46489f825f11d7473d20279699b108acaa246e73'
-  },
-  {
-    tokens: [IMX,ETHER],
-    stakingRewardAddress: '0x162e50560d701ddEa3187F0E4A637960B77D9616',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 2,
-    pair: '0x5f819f510ca9b1469e6a3ffe4ecd7f0c1126f8f5'
-  },
-  {
-    tokens: [KOGECOIN,MATIC],
-    stakingRewardAddress: '0xDEb9d9D209687EC73488A89b68fE84B2364a8d86',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: MATIC,
-    rate: 2,
-    pair: '0x3885503aef5e929fcb7035fbdca87239651c8154'
-  },
-  {
-    tokens: [GBTS,USDC],
-    stakingRewardAddress: '0xE692580F12A4228211B6a5b4b3A7470941A7Bdf8',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 2,
-    pair: '0xbb93f7e7295565553eb77aadd9c0f0c632069414'
-  },
-  {
-    tokens: [PSWAMP,MATIC],
-    stakingRewardAddress: '0x928Dc054085b84DeDf734A46e096141b382988C3',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: MATIC,
-    rate: 2,
-    pair: '0x1a477272f6030eab135cb3ba40646f3eb26b382a'
-  },
-  {
-    tokens: [RUSD,USDC],
-    stakingRewardAddress: '0x5C1186F784A4fEFd53Dc40c492b02dEEd97E7944',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 1.75,
-    pair: '0x5ef8747d1dc4839e92283794a10d448357973ac0'
-  },
-  {
-    tokens: [GHST,USDC],
-    stakingRewardAddress: '0xfDC02Dc768a587514b992b03Fb713F74061764a2',
-    ended: false,
-    name: 'stkGHST-USDC',
-    lp: '0x04439eC4ba8b09acfae0E9b5D75A82cC63b19f09',
-    baseToken: USDC,
-    rate: 1.75,
-    pair: '0x096c5ccb33cfc5732bcd1f3195c13dbefc4c82f4'
-  },
-  {
-    tokens: [QUICK,WISE],
-    stakingRewardAddress: '0x3CB338519AD8AE7cbaCb4A1035052BE6DA7e0b59',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 1.5,
-    pair: '0xda5a2d1c048e58e2d1e6b55d840c2e2294caeec4'
-  },
-  {
-    tokens: [BIFI,QUICK],
-    stakingRewardAddress: '0xA2B969faCA14AAdeb6a7672c941A228260a481a2',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 1.5,
-    pair: '0xc6a23bdd628c3b17fc0df270e6bf8e48511950e2'
-  },
-  {
-    tokens: [POLYDOGE,QUICK],
-    stakingRewardAddress: '0xDE571d6ee61a9Ce8358b9cF011452ff5290ACc21',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 1.5,
-    pair: '0xbedee6a7c572aa855a0c84d2f504311d482862f4'
-  },
-  {
-    tokens: [DG,ETHER],
-    stakingRewardAddress: '0x0C7395bc2b25603941a67e4DaF327362dB8f7D54',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 1.5,
-    pair: '0xb1ff609d3341fe5a822faae973b8c5a227d8889e'
-  },
-  {
-    tokens: [LINK,QUICK],
-    stakingRewardAddress: '0xfEc1E86786841FF699588DD1e88178AB2BB6DAbC',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 1.5,
-    pair: '0xdea8f0f1e6e98c6aee891601600e5fba294b5e36'
-  },
-  {
-    tokens: [FEAR,USDC],
-    stakingRewardAddress: '0x473F341f5aDfeCabf19B5a7299015ddFA0e1C091',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 1,
-    pair: '0x4e56843592da70ce073ad6599b3fb3ce3bf02f3b'
-  },
-  {
-    tokens: [UBT,ETHER],
-    stakingRewardAddress: '0x219670F92CC0e0ef1C16BDB0aE266F0472930906',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 1,
-    pair: '0xcc203f45a31ae086218170f6a9e9623fa1655486'
-  },
-  {
-    tokens: [MBTM,QUICK],
-    stakingRewardAddress: '0xb087b7a71fBb43EBabAcfabBdA368aA941eA1c9D',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 1,
-    pair: '0x5223b2f033dce7d9de567a260c915e37f7d300a7'
-  },
-  {
-    tokens: [MBTM,USDC],
-    stakingRewardAddress: '0x9c6604378bB8b9D3A7f0C4416d8Fe3203EB68979',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 1,
-    pair: '0x28763bdd88c43f902b026c7be5494f32cbdaad91'
-  },
-  {
-    tokens: [FOR,QUICK],
-    stakingRewardAddress: '0x6223cf24a0D7a8425DA45BBF072111a28c9ffeB0',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.75,
-    pair: '0xb7ff4eeab22f78425fa8dbecc64efa9d6c91db03'
-  },
-  {
-    tokens: [ETHER,WISE],
-    stakingRewardAddress: '0xb11856d3Aea0203e50B8520479C6332daBcF3f82',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 0.75,
-    pair: '0xdf8139e9bebecadecf48bec8c8064ccefb618e2b'
-  },
-  {
-    tokens: [FISH,QUICK],
-    stakingRewardAddress: '0x41D7f788D6c09fbed8594BccAcDf6E1879348409',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.75,
-    pair: '0x83e5f826f35fa4a884ef53ea1497fafae1bed1d0'
-  },
-  {
-    tokens: [ERN,MATIC],
-    stakingRewardAddress: '0xA8F8A46f5dD3F68D2B7B1b04Dd20526CebCE7E7A',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: MATIC,
-    rate: 0.75,
-    pair: '0x124de7e03b8ee7363974d5ca3b1868ddf3a23cd3'
-  },
-  {
-    tokens: [QUICK,CC10],
-    stakingRewardAddress: '0xab1d645fe5148322D4991fCB3bceF6848a5e8123',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.75,
-    pair: '0x42fd10ddc7628b82d80c3b2c286f3e79555fd7a1'
-  },
-  {
-    tokens: [ETHER,DEGEN],
-    stakingRewardAddress: '0x729970954a0c26cdBe765A93020efC787283dfcA',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 0.75,
-    pair: '0xfdbdb3a2bbdc7d9dc6203dcef9d53f1735135951'
-  },
-  {
-    tokens: [QUICK,DEFI5],
-    stakingRewardAddress: '0xDdB4E83F0977CAf315f5A4d71930FD72DA00d8d9',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.75,
-    pair: '0xa975ceeb05b379cf67fdfa63e7b2770f9f1d72c6'
-  },
-  {
-    tokens: [CC10,ETHER],
-    stakingRewardAddress: '0x7cc64850E4c65e753247A1Ed2c8DF63DCF7d002d',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 0.75,
-    pair: '0xbf646010b1ae86ad7fbb4cff5fd93c7019331cc9'
-  },
-  {
-    tokens: [ETHER,DEFI5],
-    stakingRewardAddress: '0xf563fAe71bDAcDD370098CeCff14dbe2c9518a6b',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 0.75,
-    pair: '0x654e651b658f784406125400cf648588cb9773e8'
-  },
-  {
-    tokens: [FFF,QUICK],
-    stakingRewardAddress: '0xB4A7e2FCf1FdC1481cbF24eE76e083d3c17F0859',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.75,
-    pair: '0x2648ec89875d944e38f55925df77d9cfe0b01edd'
-  },
-  {
-    tokens: [DEGEN,QUICK],
-    stakingRewardAddress: '0x65Bb31f4ad1D9958Cd808d4337eaaB6F40CFaD2e',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.75,
-    pair: '0x75a4917aee97bda48d3572f431e04003743da85e'
-  },
-  {
-    tokens: [FFF,ETHER],
-    stakingRewardAddress: '0xd4C325Fa5A95220b4dD4bFbe3da71F78dE0F5d15',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 0.75,
-    pair: '0x4935270aa19ba0b88fe99ea9feb10519feafa758'
-  },
-  {
-    tokens: [ADDY,QUICK],
-    stakingRewardAddress: '0x3Bf8602069d15a6F70Ede1887CB4a6576c492f7B',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.75,
-    pair: '0xc4a707353599436859af654f829b75e635fde289'
-  },
-  {
-    tokens: [UFT,QUICK],
-    stakingRewardAddress: '0x63F423B8fbCc810Ed8A0C2f4921E3946a83eBe9C',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.75,
-    pair: '0x6928f1577b3507de99490ca8c5acea6fc1d24a84'
-  },
-  {
-    tokens: [UFT,ETHER],
-    stakingRewardAddress: '0xd898A0223a1d3aBD18428065A45bE318784D8A91',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 0.65,
-    pair: '0xaef2b47b5e30661c3cc03b3e17fd8dcddc1f27b6'
-  },
-  {
-    tokens: [GAME,QUICK],
-    stakingRewardAddress: '0x8FC0a8dE57d15dF22238FCd165Cd5d6658ac4788',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.65,
-    pair: '0x6276969983510b3dfae28fe6b7b8e2a858f0c2bd'
-  },
-  {
-    tokens: [FISH,USDC],
-    stakingRewardAddress: '0xf92CF9141a0bE91918cF16804858ba5dEdd4760B',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 0.5,
-    pair: '0x0df9e46c0eaedf41b9d4bbe2cea2af6e8181b033'
-  },
-  {
-    tokens: [CGG,QUICK],
-    stakingRewardAddress: '0xcf813b2416e23aFC10D21e733EB10544b0f52825',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.5,
-    pair: '0xdf1d5afd6339ee4b02e2adc34ecbd6384e90cab2'
-  },
-  {
-    tokens: [VISION,ETHER],
-    stakingRewardAddress: '0x34D4257C4935673Fb5059f29602B9AAe9Dea0296',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 0.5,
-    pair: '0x47be4b1b6921a36591142e108b8c9e04bb55e015'
-  },
-  {
-    tokens: [SUPER,QUICK],
-    stakingRewardAddress: '0xe818cbeE29477e6C6915Df1e9757dd663f10106d',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.5,
-    pair: '0x4fa5e499eea684c2fee4b67e96271ee916c26155'
-  },
-  {
-    tokens: [HEX,QUICK],
-    stakingRewardAddress: '0x4E5317608D854104ffcC02F9741b52d1f07225Ac',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 0.35,
-    pair: '0xd6c1fe4e4dd9a949c05c9b6904c353b87e3cea3a'
-  },
-  {
-    tokens: [POLYDOGE,MATIC],
-    stakingRewardAddress: '0x774685013B4248c9f7ddE063cfBdA0a87269C0Cd',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: MATIC,
-    rate: 0.3,
-    pair: '0x264e6bc3f95633725658e4d9640f7f7d9100f6ac'
-  },
-  {
-    tokens: [SUPER,ETHER],
-    stakingRewardAddress: '0x214249a7bd9a6C10AdfF8fAd70749ebf8108494a',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 0.3,
-    pair: '0x0712323f8451cf7acc1141083baa60cc70dc32a8'
-  },
-  {
-    tokens: [SX,ETHER],
-    stakingRewardAddress: '0x225d8F0f5FB5D66cA7C0a27da85F462689c47C23',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 0.25,
-    pair: '0x3ff616172e87429a037e4b42843fb11bf0c945bb'
-  }
-]
+    {
+      tokens: [ETHER,MATIC],
+      stakingRewardAddress: '0x8FF56b5325446aAe6EfBf006a4C1D88e4935a914',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 60,
+      pair: '0xadbf1854e5883eb8aa7baf50705338739e558e5b'
+    },
+    {
+      tokens: [MATIC,QUICK],
+      stakingRewardAddress: '0x7Ca29F0DB5Db8b88B332Aa1d67a2e89DfeC85E7E',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 45,
+      pair: '0x019ba0325f1988213d448b3472fa1cf8d07618d7'
+    },
+    {
+      tokens: [ETHER,USDT],
+      stakingRewardAddress: '0xB26bfcD52D997211C13aE4C35E82ced65AF32A02',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 40,
+      pair: '0xf6422b997c7f54d1c6a6e103bcb1499eea0a7046'
+    },
+    {
+      tokens: [WBTC,ETHER],
+      stakingRewardAddress: '0x070D182EB7E9C3972664C959CE58C5fC6219A7ad',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 34,
+      pair: '0xdc9232e2df177d7a12fdff6ecbab114e2231198d'
+    },
+    {
+      tokens: [DAI,ETHER],
+      stakingRewardAddress: '0x785AaCd49c1Aa3ca573F2a32Bb90030A205b8147',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: DAI,
+      rate: 33,
+      pair: '0x4a35582a710e1f4b2030a3f826da20bfb6703c09'
+    },
+    {
+      tokens: [ETHER,QUICK],
+      stakingRewardAddress: '0xD1C762861AAe85dF2e586a668A793AAfF820932b',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 26,
+      pair: '0x1bd06b96dd42ada85fdd0795f3b4a79db914add5'
+    },
+    {
+      tokens: [AAVE,ETHER],
+      stakingRewardAddress: '0x573bb5CCC26222d8108EdaCFcC7F7cb9e388Af10',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 22,
+      pair: '0x90bc3e68ba8393a3bf2d79309365089975341a43'
+    },
+    {
+      tokens: [LINK,ETHER],
+      stakingRewardAddress: '0x97D69E23DF7BBB01F9eA78b5651cb6ad125D6d9a',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 21,
+      pair: '0x5ca6ca6c3709e1e6cfe74a50cf6b2b6ba2dadd67'
+    },
+    {
+      tokens: [USDC,QUICK],
+      stakingRewardAddress: '0x8cFad56Eb742BA8CAEA813e47779E9C38f27cA6E',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 17,
+      pair: '0x1f1e4c845183ef6d50e9609f16f6f9cae43bc9cb'
+    },
+    {
+      tokens: [USDC,USDT],
+      stakingRewardAddress: '0x251d9837a13F38F3Fe629ce2304fa00710176222',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 15,
+      pair: '0x2cf7252e74036d1da831d11089d326296e64a728'
+    },
+    {
+      tokens: [WBTC,USDC],
+      stakingRewardAddress: '0x8f2ac4EC8982bF1699a6EeD696e204FA2ccD5D91',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 15,
+      pair: '0xf6a637525402643b0654a54bead2cb9a83c8b498'
+    },
+    {
+      tokens: [UNITOKEN,ETHER],
+      stakingRewardAddress: '0x9Bb7C0A778676689E86602d905c4013221AcC7C6',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 14,
+      pair: '0xf7135272a5584eb116f5a77425118a8b4a2ddfdb'
+    },
+    {
+      tokens: [MATIC,USDC],
+      stakingRewardAddress: '0x6C6920aD61867B86580Ff4AfB517bEc7a499A7Bb',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 14,
+      pair: '0x6e7a5fafcec6bb1e78bae2a1f0b612012bf14827'
+    },
+    {
+      tokens: [NEXO,ETHER],
+      stakingRewardAddress: '0x5Ce139242C77fC31479E5329626fef736Ac8CeBE',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 12,
+      pair: '0x10062ec62c0be26cc9e2f50a1cf784a89ded075f'
+    },
+    {
+      tokens: [MI,USDC],
+      stakingRewardAddress: '0x1fdDd7F3A4c1f0e7494aa8B637B8003a64fdE21A',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 10,
+      pair: '0x160532d2536175d65c03b97b0630a9802c274dad'
+    },
+    {
+      tokens: [RELAY,QUICK],
+      stakingRewardAddress: '0xD7B606AC407652FdB4bf7A7f17987C24047631bA',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 10,
+      pair: '0x7ca8e540df6326005b72661e50f1350c84c0e55d'
+    },
+    {
+      tokens: [RDOGE,ETHER],
+      stakingRewardAddress: '0xe2519a7b81Cf038C055ddD667A9c06A0790945f4',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 9,
+      pair: '0xab1403de66519b898b38028357b74df394a54a37'
+    },
+    {
+      tokens: [DAI,USDC],
+      stakingRewardAddress: '0xEd8413eCEC87c3d4664975743c02DB3b574012a7',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 8,
+      pair: '0xf04adbf75cdfc5ed26eea4bbbb991db002036bdd'
+    },
+    {
+      tokens: [BUNNY,ETHER],
+      stakingRewardAddress: '0x9F37eF37818b3b81Cd8600d602DC5D8Df7B9e3E4',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 8,
+      pair: '0x62052b489cb5bc72a9dc8eeae4b24fd50639921a'
+    },
+    {
+      tokens: [START,QUICK],
+      stakingRewardAddress: '0x77eB20d5eB77b6ba543734d903FE1259d551cbd3',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 6,
+      pair: '0x9e2b254c7d6ad24afb334a75ce21e216a9aa25fc'
+    },
+    {
+      tokens: [CEL,ETHER],
+      stakingRewardAddress: '0x8917692e0Bdb47AF1D36837805E141Ed79065dFC',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 5,
+      pair: '0xeaa5e4620373d9ded4dcb9267f46fcfc6698c867'
+    },
+    {
+      tokens: [QI,QUICK],
+      stakingRewardAddress: '0xad9E0d2FC293fD9a0f6c3C16c16A69d36B6D3b06',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 5,
+      pair: '0x25d56e2416f20de1efb1f18fd06dd12efec3d3d0'
+    },
+    {
+      tokens: [YAMP,USDC],
+      stakingRewardAddress: '0x1DdF6be5B3c6fe04e5161701e2753b28bBF85dc2',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 5,
+      pair: '0x87d68f797623590e45982ad0f21228557207fdda'
+    },
+    {
+      tokens: [YAMP,QUICK],
+      stakingRewardAddress: '0xF42405d54c8F443126Ac06A47b5023BbfC7a85D3',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 5,
+      pair: '0x66ff795535cf162d29f6b15ed546a3e148eff0fb'
+    },
+    {
+      tokens: [PAUTO,ETHER],
+      stakingRewardAddress: '0xBDEb6D4eC1B90EdB9D09259B6B030A646D373116',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 4,
+      pair: '0x451cce13c6e013f463df6c156b7661b19df6541a'
+    },
+    {
+      tokens: [GHST,QUICK],
+      stakingRewardAddress: '0xa132faD61EDe08f1f288a35ff4c10dcD1cB9E107',
+      ended: false,
+      name: 'StkGHST-QUICK',
+      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f',
+      baseToken: QUICK,
+      rate: 4,
+      pair: '0x9bCfD9B9a5Cbe2669AD30B0AD02693aFac0485f1'
+    },
+    {
+      tokens: [ADDY,ETHER],
+      stakingRewardAddress: '0xF6Bd4FE52efD9C3881eea1134193E4DB3c1d4801',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 4,
+      pair: '0xa5bf14bb945297447fe96f6cd1b31b40d31175cb'
+    },
+    {
+      tokens: [GUARD,USDC],
+      stakingRewardAddress: '0x8782772E35e262Ba7f481DDDb015424Fc1aABC62',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 3,
+      pair: '0xd2eeeedfcaf1457f7bc9cba28d5316f73bb83b49'
+    },
+    {
+      tokens: [UNITOKEN,QUICK],
+      stakingRewardAddress: '0x72ed24d2b2D98D3c4b5297ce244f623B9357F798',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 3,
+      pair: '0x4b4c614b9219397c02296f6f4e2351259840b3c7'
+    },
+    {
+      tokens: [PAUTO,QUICK],
+      stakingRewardAddress: '0x6b9C78e419C3038dAC2DAb9dB2bfd5D9F1E05904',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 3,
+      pair: '0x3bb367f673d52d1a5f0812c4d8c9030e5876ad44'
+    },
+    {
+      tokens: [NEXO,QUICK],
+      stakingRewardAddress: '0xd36f382F44678a07eCF79E89dc13a63D5Ef08d3E',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 3,
+      pair: '0xaca37a3282078dbf41a6d0c6314c53d7f9ced6ec'
+    },
+    {
+      tokens: [WOO,ETHER],
+      stakingRewardAddress: '0xfA9A5abaC50B97c61addC7b317C813a006579aeA',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 2.5,
+      pair: '0x70294d7aa244bd342c536f9b502152564057162e'
+    },
+    {
+      tokens: [RAMP,ETHER],
+      stakingRewardAddress: '0xBD5F8b3663F5ce456c9F53B26b0f6bC3EA22B6AA',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 2.5,
+      pair: '0xe55739e1feb9f9aed4ce34830a06ca6cc37494a0'
+    },
+    {
+      tokens: [DAI,USDT],
+      stakingRewardAddress: '0x97Efe8470727FeE250D7158e6f8F63bb4327c8A2',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: DAI,
+      rate: 2.5,
+      pair: '0x59153f27eefe07e5ece4f9304ebba1da6f53ca88'
+    },
+    {
+      tokens: [RENDGB,ETHER],
+      stakingRewardAddress: '0xcFCa8D0fcEc1A3A30B6f9B963F1794C3B8f8E391',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 2.5,
+      pair: '0xbf453e64ee7f43513afdc801f6c0fab250fbcf09'
+    },
+    {
+      tokens: [RENDGB,QUICK],
+      stakingRewardAddress: '0xE682EB8F4F93EdABe17C52FFf5AA663f80D9B428',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 2,
+      pair: '0x5cb85aa163b1b443f88a1f9124153e70f6586400'
+    },
+    {
+      tokens: [WOO,QUICK],
+      stakingRewardAddress: '0x1067112E5dB21aEC7eB144C5773f8aef8C85966a',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 2,
+      pair: '0x7622804ba94940a9efddd1546d12d8d0d6a16e53'
+    },
+    {
+      tokens: [BUNNY,QUICK],
+      stakingRewardAddress: '0xdaC489D994d12Be53388D4dB3cAC5135177390f0',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 2,
+      pair: '0x976b7b7fe4293111cacd946c422a64f24a223564'
+    },
+    {
+      tokens: [BIFI,ETHER],
+      stakingRewardAddress: '0xd79424b32E2Ef944AA9f4021d39D835fdd615B87',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 2,
+      pair: '0x8b80417d92571720949fc22404200ab8faf7775f'
+    },
+    {
+      tokens: [PBNB,QUICK],
+      stakingRewardAddress: '0xffA5b82d09DcaE32b9Ee96D3cD02C9391b63cdaB',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 2,
+      pair: '0x53e27dadf6473d062717be8807c453af212c7102'
+    },
+    {
+      tokens: [PBNB,USDC],
+      stakingRewardAddress: '0x64Ec5b01D6eD81C432eF8628541BB2Bf9380b337',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 2,
+      pair: '0xe55cb144e02cffb6fbd65d9a4bd62378998bc267'
+    },
+    {
+      tokens: [SOL,MATIC],
+      stakingRewardAddress: '0x590226869C2A1334394392231Ed6de5F63C9dC98',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 2,
+      pair: '0x898386dd8756779a4ba4f1462891b92dd76b78ef'
+    },
+    {
+      tokens: [AVAX,MATIC],
+      stakingRewardAddress: '0x02e33E4713Cf231D4b7A9894DE3F075A16e19201',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 2,
+      pair: '0xeb477ae74774b697b5d515ef8ca09e24fee413b5'
+    },
+    {
+      tokens: [IMX,ETHER],
+      stakingRewardAddress: '0x162e50560d701ddEa3187F0E4A637960B77D9616',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 2,
+      pair: '0x5f819f510ca9b1469e6a3ffe4ecd7f0c1126f8f5'
+    },
+    {
+      tokens: [PSWAMP,MATIC],
+      stakingRewardAddress: '0x928Dc054085b84DeDf734A46e096141b382988C3',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 2,
+      pair: '0x1a477272f6030eab135cb3ba40646f3eb26b382a'
+    },
+    {
+      tokens: [IMX,QUICK],
+      stakingRewardAddress: '0xd7BA0FC827FD629f0a1fA8F189BD93Ea860AE051',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 2,
+      pair: '0x7e1cf35e362caea8c1a132ba4e4222080f26d8b0'
+    },
+    {
+      tokens: [POOL,ETHER],
+      stakingRewardAddress: '0x3868163FB27BC3b45F5E581d6920466B6515396F',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 2,
+      pair: '0x1585d301b58661bc0cb5a8eba24ecae7b4600470'
+    },
+    {
+      tokens: [EZ,QUICK],
+      stakingRewardAddress: '0x026C9182aE247675CCedfFE18b32Cf4fFf08B828',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 2,
+      pair: '0xf745a6358790f7a2ef5da0538b714cbbcc635c40'
+    },
+    {
+      tokens: [GHST,USDC],
+      stakingRewardAddress: '0xfDC02Dc768a587514b992b03Fb713F74061764a2',
+      ended: false,
+      name: 'stkGHST-USDC',
+      lp: '0x04439eC4ba8b09acfae0E9b5D75A82cC63b19f09',
+      baseToken: USDC,
+      rate: 1.75,
+      pair: '0x096c5ccb33cfc5732bcd1f3195c13dbefc4c82f4'
+    },
+    {
+      tokens: [ELE,MATIC],
+      stakingRewardAddress: '0x9318F6f64e61AfB7B51D51E61B5dD6C4E39E7dd9',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 1.5,
+      pair: '0xadcb09fd3346c72c98753e518397b336333cf227'
+    },
+    {
+      tokens: [HONOR,USDC],
+      stakingRewardAddress: '0xBB21082fc478f2a5Bb5D6ca1367571c456739b5F',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 1.5,
+      pair: '0x46489f825f11d7473d20279699b108acaa246e73'
+    },
+    {
+      tokens: [RUSD,USDC],
+      stakingRewardAddress: '0x5C1186F784A4fEFd53Dc40c492b02dEEd97E7944',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 1.5,
+      pair: '0x5ef8747d1dc4839e92283794a10d448357973ac0'
+    },
+    {
+      tokens: [BIFI,QUICK],
+      stakingRewardAddress: '0xA2B969faCA14AAdeb6a7672c941A228260a481a2',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 1.25,
+      pair: '0xc6a23bdd628c3b17fc0df270e6bf8e48511950e2'
+    },
+    {
+      tokens: [POLYDOGE,QUICK],
+      stakingRewardAddress: '0xDE571d6ee61a9Ce8358b9cF011452ff5290ACc21',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 1.25,
+      pair: '0xbedee6a7c572aa855a0c84d2f504311d482862f4'
+    },
+    {
+      tokens: [DG,ETHER],
+      stakingRewardAddress: '0x0C7395bc2b25603941a67e4DaF327362dB8f7D54',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 1.25,
+      pair: '0xb1ff609d3341fe5a822faae973b8c5a227d8889e'
+    },
+    {
+      tokens: [KOGECOIN,MATIC],
+      stakingRewardAddress: '0xDEb9d9D209687EC73488A89b68fE84B2364a8d86',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 1,
+      pair: '0x3885503aef5e929fcb7035fbdca87239651c8154'
+    },
+    {
+      tokens: [GBTS,USDC],
+      stakingRewardAddress: '0xE692580F12A4228211B6a5b4b3A7470941A7Bdf8',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 1,
+      pair: '0xbb93f7e7295565553eb77aadd9c0f0c632069414'
+    },
+    {
+      tokens: [QUICK,WISE],
+      stakingRewardAddress: '0x3CB338519AD8AE7cbaCb4A1035052BE6DA7e0b59',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 1,
+      pair: '0xda5a2d1c048e58e2d1e6b55d840c2e2294caeec4'
+    },
+    {
+      tokens: [LINK,QUICK],
+      stakingRewardAddress: '0xfEc1E86786841FF699588DD1e88178AB2BB6DAbC',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 1,
+      pair: '0xdea8f0f1e6e98c6aee891601600e5fba294b5e36'
+    },
+    {
+      tokens: [MBTM,USDC],
+      stakingRewardAddress: '0x9c6604378bB8b9D3A7f0C4416d8Fe3203EB68979',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 1,
+      pair: '0x28763bdd88c43f902b026c7be5494f32cbdaad91'
+    },
+    {
+      tokens: [EZ,USDC],
+      stakingRewardAddress: '0x670F566cA98C8A28D9cEc9B3a58ce18Bd4c14f0c',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 1,
+      pair: '0xb96fb16fefd59e51d4a76be6050df3e50c916451'
+    },
+    {
+      tokens: [UBT,ETHER],
+      stakingRewardAddress: '0x219670F92CC0e0ef1C16BDB0aE266F0472930906',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 0.75,
+      pair: '0xcc203f45a31ae086218170f6a9e9623fa1655486'
+    },
+    {
+      tokens: [UFT,QUICK],
+      stakingRewardAddress: '0x63F423B8fbCc810Ed8A0C2f4921E3946a83eBe9C',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.6,
+      pair: '0x6928f1577b3507de99490ca8c5acea6fc1d24a84'
+    },
+    {
+      tokens: [GAME,QUICK],
+      stakingRewardAddress: '0x8FC0a8dE57d15dF22238FCd165Cd5d6658ac4788',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.55,
+      pair: '0x6276969983510b3dfae28fe6b7b8e2a858f0c2bd'
+    },
+    {
+      tokens: [MBTM,QUICK],
+      stakingRewardAddress: '0xb087b7a71fBb43EBabAcfabBdA368aA941eA1c9D',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.5,
+      pair: '0x5223b2f033dce7d9de567a260c915e37f7d300a7'
+    },
+    {
+      tokens: [FOR,QUICK],
+      stakingRewardAddress: '0x6223cf24a0D7a8425DA45BBF072111a28c9ffeB0',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.5,
+      pair: '0xb7ff4eeab22f78425fa8dbecc64efa9d6c91db03'
+    },
+    {
+      tokens: [ETHER,WISE],
+      stakingRewardAddress: '0xb11856d3Aea0203e50B8520479C6332daBcF3f82',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 0.5,
+      pair: '0xdf8139e9bebecadecf48bec8c8064ccefb618e2b'
+    },
+    {
+      tokens: [ERN,MATIC],
+      stakingRewardAddress: '0xA8F8A46f5dD3F68D2B7B1b04Dd20526CebCE7E7A',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 0.5,
+      pair: '0x124de7e03b8ee7363974d5ca3b1868ddf3a23cd3'
+    },
+    {
+      tokens: [QUICK,CC10],
+      stakingRewardAddress: '0xab1d645fe5148322D4991fCB3bceF6848a5e8123',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.5,
+      pair: '0x42fd10ddc7628b82d80c3b2c286f3e79555fd7a1'
+    },
+    {
+      tokens: [ETHER,DEGEN],
+      stakingRewardAddress: '0x729970954a0c26cdBe765A93020efC787283dfcA',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 0.5,
+      pair: '0xfdbdb3a2bbdc7d9dc6203dcef9d53f1735135951'
+    },
+    {
+      tokens: [QUICK,DEFI5],
+      stakingRewardAddress: '0xDdB4E83F0977CAf315f5A4d71930FD72DA00d8d9',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.5,
+      pair: '0xa975ceeb05b379cf67fdfa63e7b2770f9f1d72c6'
+    },
+    {
+      tokens: [CC10,ETHER],
+      stakingRewardAddress: '0x7cc64850E4c65e753247A1Ed2c8DF63DCF7d002d',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 0.5,
+      pair: '0xbf646010b1ae86ad7fbb4cff5fd93c7019331cc9'
+    },
+    {
+      tokens: [ETHER,DEFI5],
+      stakingRewardAddress: '0xf563fAe71bDAcDD370098CeCff14dbe2c9518a6b',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 0.5,
+      pair: '0x654e651b658f784406125400cf648588cb9773e8'
+    },
+    {
+      tokens: [FFF,QUICK],
+      stakingRewardAddress: '0xB4A7e2FCf1FdC1481cbF24eE76e083d3c17F0859',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.5,
+      pair: '0x2648ec89875d944e38f55925df77d9cfe0b01edd'
+    },
+    {
+      tokens: [DEGEN,QUICK],
+      stakingRewardAddress: '0x65Bb31f4ad1D9958Cd808d4337eaaB6F40CFaD2e',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.5,
+      pair: '0x75a4917aee97bda48d3572f431e04003743da85e'
+    },
+    {
+      tokens: [FFF,ETHER],
+      stakingRewardAddress: '0xd4C325Fa5A95220b4dD4bFbe3da71F78dE0F5d15',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 0.5,
+      pair: '0x4935270aa19ba0b88fe99ea9feb10519feafa758'
+    },
+    {
+      tokens: [ADDY,QUICK],
+      stakingRewardAddress: '0x3Bf8602069d15a6F70Ede1887CB4a6576c492f7B',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.5,
+      pair: '0xc4a707353599436859af654f829b75e635fde289'
+    },
+    {
+      tokens: [UFT,ETHER],
+      stakingRewardAddress: '0xd898A0223a1d3aBD18428065A45bE318784D8A91',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 0.5,
+      pair: '0xaef2b47b5e30661c3cc03b3e17fd8dcddc1f27b6'
+    },
+    {
+      tokens: [VISION,ETHER],
+      stakingRewardAddress: '0x34D4257C4935673Fb5059f29602B9AAe9Dea0296',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 0.5,
+      pair: '0x47be4b1b6921a36591142e108b8c9e04bb55e015'
+    },
+    {
+      tokens: [SUPER,QUICK],
+      stakingRewardAddress: '0xe818cbeE29477e6C6915Df1e9757dd663f10106d',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.5,
+      pair: '0x4fa5e499eea684c2fee4b67e96271ee916c26155'
+    },
+    {
+      tokens: [SUPER,ETHER],
+      stakingRewardAddress: '0x214249a7bd9a6C10AdfF8fAd70749ebf8108494a',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 0.4,
+      pair: '0x0712323f8451cf7acc1141083baa60cc70dc32a8'
+    },
+    {
+      tokens: [FEAR,USDC],
+      stakingRewardAddress: '0x473F341f5aDfeCabf19B5a7299015ddFA0e1C091',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 0.3,
+      pair: '0x4e56843592da70ce073ad6599b3fb3ce3bf02f3b'
+    },
+    {
+      tokens: [CGG,QUICK],
+      stakingRewardAddress: '0xcf813b2416e23aFC10D21e733EB10544b0f52825',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.3,
+      pair: '0xdf1d5afd6339ee4b02e2adc34ecbd6384e90cab2'
+    },
+    {
+      tokens: [HEX,QUICK],
+      stakingRewardAddress: '0x4E5317608D854104ffcC02F9741b52d1f07225Ac',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.1,
+      pair: '0xd6c1fe4e4dd9a949c05c9b6904c353b87e3cea3a'
+    }
+  
+  ]
 }
 
 export const OLD_STAKING_REWARDS_INFO: {
@@ -1018,6 +1022,46 @@ export const OLD_STAKING_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      tokens: [FISH,QUICK],
+      stakingRewardAddress: '0x41D7f788D6c09fbed8594BccAcDf6E1879348409',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 0.75,
+      pair: '0x83e5f826f35fa4a884ef53ea1497fafae1bed1d0'
+    },
+    {
+      tokens: [FISH,USDC],
+      stakingRewardAddress: '0xf92CF9141a0bE91918cF16804858ba5dEdd4760B',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 0.5,
+      pair: '0x0df9e46c0eaedf41b9d4bbe2cea2af6e8181b033'
+    },
+    {
+      tokens: [POLYDOGE,MATIC],
+      stakingRewardAddress: '0x774685013B4248c9f7ddE063cfBdA0a87269C0Cd',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 0.3,
+      pair: '0x264e6bc3f95633725658e4d9640f7f7d9100f6ac'
+    },
+    {
+      tokens: [SX,ETHER],
+      stakingRewardAddress: '0x225d8F0f5FB5D66cA7C0a27da85F462689c47C23',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 0.25,
+      pair: '0x3ff616172e87429a037e4b42843fb11bf0c945bb'
+    },
     {
       tokens: [ELE,QUICK],
       stakingRewardAddress: '0xd00f210E67ef9c3F674e2D6A7A619602E888345d',
