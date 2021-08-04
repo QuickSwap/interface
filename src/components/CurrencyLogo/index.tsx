@@ -415,6 +415,18 @@ export const getTokenLogoURL = (address: string) => {
       uri = '0x3BA4c387f786bFEE076A58914F5Bd38d668B42c3'
     }
 
+    if (address?.toLowerCase() === '0xEe9801669C6138E84bD50dEB500827b776777d28'.toLowerCase()) {
+      uri = 'https://o3.network/assets/images/logo.png'
+    }if (address?.toLowerCase() === '0x598e49f01bEfeB1753737934a5b11fea9119C796'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/1883.png'
+    }if (address?.toLowerCase() === '0x34C1b299A74588D6Abdc1b85A53345A48428a521'.toLowerCase()) {
+      uri = 'https://etherscan.io/token/images/easyfi_32.png?v=2'
+    }if (address?.toLowerCase() === '0xcaF5191fc480F43e4DF80106c7695ECA56E48B18'.toLowerCase()) {
+      uri = 'https://dinox.io/images/asset_icon_dnx.png'
+    }if (address?.toLowerCase() === '0x25788a1a171ec66Da6502f9975a15B609fF54CF6'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14003/small/PoolTogether.png?1613585632'
+    }
+
     if (address?.toLowerCase() === '0x28C388FB1F4fa9F9eB445f0579666849EE5eeb42'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/12478/small/Bella.png?1602230054'
     }if (address?.toLowerCase() === '0x7DfF46370e9eA5f0Bad3C4E29711aD50062EA7A4'.toLowerCase()) {

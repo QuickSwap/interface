@@ -173,9 +173,13 @@ export const AVAX  = new Token(ChainId.MATIC, '0x2C89bbc92BD86F8075d1DEcc58C7F4E
 export const GUARD  = new Token(ChainId.MATIC, '0x948d2a81086A075b3130BAc19e4c6DEe1D2E3fE8', 18, 'Guard', 'Helmet.insure on Polygon')
 export const YEL  = new Token(ChainId.MATIC, '0xD3b71117E6C1558c1553305b44988cd944e97300', 18, 'YEL', 'YEL Token')
 export const PSWAMP = new Token(ChainId.MATIC, '0x5f1657896B38c4761dbc5484473c7A7C845910b6', 18, 'pSwamp', 'pSwampy')
-
-
 export const RELAY = new Token(ChainId.MATIC, '0x904371845Bc56dCbBcf0225ef84a669b2fD6bd0d', 18, 'RELAY', 'Relay Token')
+
+export const ADS = new Token(ChainId.MATIC, '0x598e49f01bEfeB1753737934a5b11fea9119C796', 11, 'ADS', 'Adshares')
+export const O3 = new Token(ChainId.MATIC, '0xEe9801669C6138E84bD50dEB500827b776777d28', 18, 'O3', 'O3 Swap Token')
+export const EZ = new Token(ChainId.MATIC, '0x34C1b299A74588D6Abdc1b85A53345A48428a521', 18, 'EZ', 'EASY V2')
+export const DNXC = new Token(ChainId.MATIC, '0xcaF5191fc480F43e4DF80106c7695ECA56E48B18', 18, 'DNXC', 'DinoX Coin')
+export const POOL = new Token(ChainId.MATIC, '0x25788a1a171ec66Da6502f9975a15B609fF54CF6', 18, 'POOL', 'PoolTogether')
 
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
@@ -224,7 +228,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], RELAY,DAI, USDC, USDT, GHST, QUICK, ETHER, UNITOKEN, IGG, WBTC, OM, MAUSDC, SWG, MADAI, DG, EMON, SX, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT, MONA,WISE,CC10,MOCEAN, ZUZ, BTU, WOLF, AGA, AGAr, TEL, NFTP, GFARM2,AAVE,FSN,ANY,PLOT,OPU, KRILL, FISH,BIFI, QI, MI, POLYDOGE, CTSI, DEGEN, GAME, SENT, ELET,MOON,ADDY,QuickChart,PAUTO, UFT,IRON,TITAN,ZEE,FFF,IQ, GFI, CHUM, ELE, CRV, PBNB, IOI, ERN, RAMP, RUSD, MEM, WBUSD, BORING, WOO,START,SAFU,HONOR,FSW,YAYO,CGG,BUNNY,GBTS,FOR, RDOGE, COMBO, FEAR,MBTM,RENDGB,NEXO,GNO,BEL,SOL,PUSD,DINO,PYR,YAMP,OMEN,KOGECOIN,MEEB,IMX,AVAX,YEL,PSWAMP,GUARD]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], RELAY,DAI, USDC, USDT, GHST, QUICK, ETHER, UNITOKEN, IGG, WBTC, OM, MAUSDC, SWG, MADAI, DG, EMON, SX, FRAX, FXS, MAWETH, MAAAVE, MALINK, MAUSDT, MATUSD, MAUNI, MAYFI, HEX, SWAP, ZUT, UBT, IFARM, VISION, PPDEX, LINK, CEL, ARIA20, CFI, DSLA, DRC,SUPER,XMARK,DEFI5,AZUKI,HH,MDEF, DMT, MONA,WISE,CC10,MOCEAN, ZUZ, BTU, WOLF, AGA, AGAr, TEL, NFTP, GFARM2,AAVE,FSN,ANY,PLOT,OPU, KRILL, FISH,BIFI, QI, MI, POLYDOGE, CTSI, DEGEN, GAME, SENT, ELET,MOON,ADDY,QuickChart,PAUTO, UFT,IRON,TITAN,ZEE,FFF,IQ, GFI, CHUM, ELE, CRV, PBNB, IOI, ERN, RAMP, RUSD, MEM, WBUSD, BORING, WOO,START,SAFU,HONOR,FSW,YAYO,CGG,BUNNY,GBTS,FOR, RDOGE, COMBO, FEAR,MBTM,RENDGB,NEXO,GNO,BEL,SOL,PUSD,DINO,PYR,YAMP,OMEN,KOGECOIN,MEEB,IMX,AVAX,YEL,PSWAMP,GUARD,ADS,O3,EZ,DNXC,POOL]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -350,4 +354,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.0.82/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.0.91/build/quickswap-default.tokenlist.json'
