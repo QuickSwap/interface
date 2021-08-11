@@ -8,7 +8,7 @@ export default function LimitOrder() {
       <GelatoLimitOrderPanel />
       <GelatoLimitOrdersHistoryPanel />
       <TYPE.main style={{ textAlign: 'center', marginTop: 20}} fontSize={16}>
-          Disclaimer: Limit orders are powered by Gelato, a third party service. Please use at your own risk.
+          Disclaimer: Limit orders are powered by Gelato, a third party service. Please use it at your own risk.
         </TYPE.main>
     </>
   )
