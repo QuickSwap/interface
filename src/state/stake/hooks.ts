@@ -126,8 +126,7 @@ import {
   POOL,
   ADS,
   HT,
-  MOD,
-  OOE
+  MOD
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -417,16 +416,6 @@ export const STAKING_REWARDS_INFO: {
     baseToken: QUICK,
     rate: 4,
     pair: '0x8b1fd78ad67c7da09b682c5392b65ca7caa101b9'
-  },
-  {
-    tokens: [OOE,USDC],
-    stakingRewardAddress: '0x0b9bA8B089bf5c3D668ADcC2123E2568fCC7f5cC',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 4,
-    pair: '0xafbb41c03ce4b0629963325eb4a100fa8d5c0043'
   },
   {
     tokens: [ADDY,ETHER],
