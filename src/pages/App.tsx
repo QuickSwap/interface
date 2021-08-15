@@ -19,6 +19,7 @@ import {
 } from './AddLiquidity/redirects'
 import Earn from './Earn'
 import Old from './Earn/Old';
+import Syrup from './Syrup';
 import ManageOld from './Earn/ManageOld';
 import Manage from './Earn/Manage'
 import Pool from './Pool'
@@ -98,6 +99,7 @@ export default function App() {
               <Route exact strict path="/pool" component={Pool} />
               <Route exact strict path="/quick" component={Earn} />
               <Route exact strict path="/archive" component={Old} />
+              <Route exact strict path="/syrup" component={Syrup} />
               <Route exact strict path="/vote" component={Vote} />
               <Route exact strict path="/create" component={RedirectToAddLiquidity} />
               <Route exact path="/add" component={AddLiquidity} />
