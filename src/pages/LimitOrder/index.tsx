@@ -7,8 +7,8 @@ export default function LimitOrder() {
     <>
       <GelatoLimitOrderPanel />
       <GelatoLimitOrdersHistoryPanel />
-      <TYPE.main style={{ textAlign: 'center', marginTop: 20}} fontSize={16}>
-          Disclaimer: Limit orders are powered by Gelato, a third party service. Please use it at your own risk.
+      <TYPE.main style={{ textAlign: 'center', marginTop: 20, maxWidth: 600}} fontSize={16}>
+      <p><b>* Disclaimer:</b> Limit Orders on QuickSwap are provided by Gelato, a 3rd party protocol and should be considered in beta. DYOR and use at your own risk. QuickSwap is not responsible in any capacity. More info can be found <a target="_blank" href="https://www.certik.org/projects/gelato">at</a></p>
         </TYPE.main>
     </>
   )
