@@ -9,6 +9,7 @@ type FormaticSupportedChains = Extract<ChainId, ChainId.MATIC | ChainId.MUMBAI>
 interface FortmaticConnectorArguments {
   apiKey: string
   chainId: number
+  rpcUrl: string
 }
 
 const CHAIN_ID_NETWORK_ARGUMENT: { readonly [chainId in FormaticSupportedChains]: string | undefined } = {
@@ -18,16 +19,18 @@ const CHAIN_ID_NETWORK_ARGUMENT: { readonly [chainId in FormaticSupportedChains]
 
 export class FortmaticConnector extends AbstractConnector {
   private readonly apiKey: string
+  private readonly rpcUrl: string
   private readonly chainId: number
 
   public fortmatic: any
 
-  constructor({ apiKey, chainId }: FortmaticConnectorArguments) {
+  constructor({ apiKey, chainId, rpcUrl }: FortmaticConnectorArguments) {
     invariant(Object.keys(CHAIN_ID_NETWORK_ARGUMENT).includes(chainId.toString()), `Unsupported chainId ${chainId}`)
     super({ supportedChainIds: [chainId] })
 
     this.apiKey = apiKey
     this.chainId = chainId
+    this.rpcUrl = rpcUrl
   }
 
   async activate() {
@@ -35,7 +38,10 @@ export class FortmaticConnector extends AbstractConnector {
       const { default: Fortmatic } = await import('fortmatic')
 
       if (this.chainId in CHAIN_ID_NETWORK_ARGUMENT) {
-        this.fortmatic = new Fortmatic(this.apiKey)
+        this.fortmatic = new Fortmatic(this.apiKey, {
+          rpcUrl: this.rpcUrl,
+          chainId: this.chainId
+        })
       } else {
         throw new Error(`Unsupported network ID: ${this.chainId}`)
       }
