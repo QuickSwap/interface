@@ -186,6 +186,7 @@ export const EGG = new Token(ChainId.MATIC, '0x245e5ddb65eFea6522Fa913229dF1f495
 export const CHICK = new Token(ChainId.MATIC, '0x9e725Cf7265D12fd5f59499AFf1258CA92CAc74d', 18, 'CHICK', 'loserchick')
 export const HT = new Token(ChainId.MATIC, '0xA731349fa468614c1698fc46ebf06Da6F380239e', 18, 'HT', 'Huobi Token')
 
+export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
 export const PROPOSAL_LENGTH_IN_DAYS = 7
