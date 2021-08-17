@@ -4,6 +4,7 @@ import { usePair } from '../../data/Reserves'
 
 import { client } from '../../apollo/client'
 import {
+  GLOBAL_DATA,
   PAIRS_BULK,
   PAIRS_HISTORICAL_BULK
 } from '../../apollo/queries'
@@ -136,7 +137,7 @@ import { tryParseAmount } from '../swap/hooks'
 import Web3 from 'web3';
 import { useLairContract, useQUICKContract } from '../../hooks/useContract'
 
-const web3 = new Web3("https://rpc-quickswap-do1-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45");
+const web3 = new Web3("https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R");
 
 export const STAKING_GENESIS = 1620842940;
 
@@ -169,6 +170,8 @@ export const SYRUP_REWARDS_INFO: {
     }
   ]
 }
+var oneDayVol:any = undefined;
+
 
 // TODO add staking rewards addresses here
 export const STAKING_REWARDS_INFO: {
@@ -9013,6 +9016,12 @@ export interface LairInfo {
   QUICKBalance: TokenAmount
 
   totalQuickBalance: TokenAmount
+
+  quickPrice: Number
+
+  dQuickTotalSupply: TokenAmount
+
+  oneDayVol: Number
 }
 
 export interface StakingInfo {
@@ -9094,6 +9103,10 @@ export interface SyrupInfo {
 
   dQUICKtoQUICK: TokenAmount
 
+  dQuickTotalSupply: TokenAmount
+
+  oneDayVol: Number
+
   // calculates a hypothetical amount of token distributed to the active account per second.
   getHypotheticalRewardRate: (
     stakedAmount: TokenAmount,
@@ -9136,6 +9149,7 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
   const earnedAmounts = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'earned', accountArg)
   const totalSupplies = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'totalSupply')
   const dQuickToQuick = useSingleCallResult(lair, 'dQUICKForQUICK', inputs);
+  const _dQuickTotalSupply = useSingleCallResult(lair, 'totalSupply', []);
 
   const periodFinishes = useMultipleContractSingleData(
     rewardsAddresses,
@@ -9151,6 +9165,13 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
     undefined,
     NEVER_RELOAD
   )
+
+  useEffect(() => {
+ 
+    getOneDayVolume().then((data)=>{
+      console.log(data);
+    })
+  }, [])
 
   return useMemo(() => {
     if (!chainId || !uni) return []
@@ -9236,7 +9257,9 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
           baseToken: info[index].baseToken,
           quickPrice: quickPrice,
           rate: info[index].rate,
-          dQUICKtoQUICK: new TokenAmount(QUICK, JSBI.BigInt(dQuickToQuick?.result?.[0] ?? 0))
+          dQUICKtoQUICK: new TokenAmount(QUICK, JSBI.BigInt(dQuickToQuick?.result?.[0] ?? 0)),
+          dQuickTotalSupply: new TokenAmount(DQUICK, JSBI.BigInt(_dQuickTotalSupply?.result?.[0] ?? 0)),
+          oneDayVol: oneDayVol
         })
       }
       return memo
@@ -9299,6 +9322,39 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
   }
 }
 
+const getOneDayVolume = async() => {
+  let data: any = {}
+  let oneDayData: any = {}
+
+  const current = await web3.eth.getBlockNumber();
+  const oneDayOldBlock = current - 44000;
+  
+  let result = await client.query({
+    query: GLOBAL_DATA(),
+    fetchPolicy: 'cache-first',
+  })
+  data = result.data.uniswapFactories[0]
+
+  // fetch the historical data
+  let oneDayResult = await client.query({
+    query: GLOBAL_DATA(oneDayOldBlock),
+    fetchPolicy: 'cache-first',
+  })
+  oneDayData = oneDayResult.data.uniswapFactories[0]
+
+  let oneDayVolumeUSD:any = 0;
+
+  if (data && oneDayData) {
+    oneDayVolumeUSD = get2DayPercentChange(
+      data.totalVolumeUSD,
+      oneDayData.totalVolumeUSD ? oneDayData.totalVolumeUSD : 0)
+    oneDayVol = oneDayVolumeUSD;
+  }
+
+  return oneDayVolumeUSD;
+
+}
+
 const convertArrayToObject = (array:any, key:any) => {
   const initialValue = {};
   return array.reduce((obj:any, item:any) => {
@@ -9342,15 +9398,27 @@ export function useLairInfo(): LairInfo {
 
   const lair = useLairContract()
   const quick = useQUICKContract();
+  const [, quickUsdcPair] = usePair(QUICK, USDC);
+  const quickPrice = Number(quickUsdcPair?.priceOf(QUICK)?.toSignificant(6))
 
   const dQuickToQuick = useSingleCallResult(lair, 'dQUICKForQUICK', inputs);
   const quickToDQuick = useSingleCallResult(lair, 'QUICKForDQUICK', inputs);
+
+  const _dQuickTotalSupply = useSingleCallResult(lair, 'totalSupply', []);
+
   const quickBalance = useSingleCallResult(lair, 'QUICKBalance', accountArg);
   const dQuickBalance = useSingleCallResult(lair, 'balanceOf', accountArg);
 
   accountArg = useMemo(() => [LAIR_ADDRESS ?? undefined], [LAIR_ADDRESS])
 
   const lairsQuickBalance = useSingleCallResult(quick, 'balanceOf', accountArg);
+
+  useEffect(() => {
+ 
+    getOneDayVolume().then((data)=>{
+      console.log(data);
+    })
+  }, [])
 
   return useMemo(() => {
     return (
@@ -9360,11 +9428,14 @@ export function useLairInfo(): LairInfo {
         QUICKtodQUICK: new TokenAmount(DQUICK, JSBI.BigInt(quickToDQuick?.result?.[0] ?? 0)),
         dQUICKBalance: new TokenAmount(DQUICK, JSBI.BigInt(dQuickBalance?.result?.[0] ?? 0)),
         QUICKBalance: new TokenAmount(QUICK, JSBI.BigInt(quickBalance?.result?.[0] ?? 0)),
-        totalQuickBalance: new TokenAmount(QUICK, JSBI.BigInt(lairsQuickBalance?.result?.[0] ?? 0))
+        totalQuickBalance: new TokenAmount(QUICK, JSBI.BigInt(lairsQuickBalance?.result?.[0] ?? 0)),
+        quickPrice,
+        dQuickTotalSupply: new TokenAmount(DQUICK, JSBI.BigInt(_dQuickTotalSupply?.result?.[0] ?? 0)),
+        oneDayVol: oneDayVol
       }
     )
     
-  }, [LAIR_ADDRESS, dQuickToQuick, quickToDQuick, quickBalance, dQuickBalance])
+  }, [LAIR_ADDRESS, dQuickToQuick, quickToDQuick, quickBalance, dQuickBalance, _dQuickTotalSupply, quickPrice])
 
 }
 

@@ -63,7 +63,7 @@ const TopSection = styled.div`
   `};
 `
 
-// const APR = styled.div`
+// const dQUICKAPR = styled.div`
 //   display: flex;
 //   justify-content: flex-end;
 // `
@@ -120,7 +120,7 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
   
   //let apy = 0;
   let rewards = 0;
-  //apy = ((1 + ((perMonthReturnInRewards) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
+  //apy = ((1 + ((perMonthReturnInRewards) * 12) / 12) ** 12 - 1) * 100 // compounding monthly dQUICKAPY
   //apy = perMonthReturnInRewards/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
 
   //@ts-ignore
@@ -128,7 +128,7 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
 
   /**if(syrupInfo?.oneYearFeeAPY && syrupInfo?.oneYearFeeAPY > 0) {
     //@ts-ignore
-    apyWithFee = ((1 + ((perMonthReturnInRewards + syrupInfo.oneYearFeeAPY / 12) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
+    apyWithFee = ((1 + ((perMonthReturnInRewards + syrupInfo.oneYearFeeAPY / 12) * 12) / 12) ** 12 - 1) * 100 // compounding monthly dQUICKAPY
     if(apyWithFee > 100000000) {
       apyWithFee = ">100000000"
     }
@@ -153,6 +153,22 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
   timeRemaining -= hours * HOUR
   const minutes = (timeRemaining - (timeRemaining % MINUTE)) / MINUTE
 
+  //@ts-ignore
+  const dQUICKAPR =(((syrupInfo.oneDayVol * 0.04 * 0.01) / syrupInfo.dQuickTotalSupply.toSignificant(6)) * 365) / (syrupInfo.dQUICKtoQUICK.toSignificant(6) * syrupInfo.quickPrice);
+  
+  let dQUICKAPY: any = dQUICKAPR ? Math.pow(1 + dQUICKAPR / 365, 365) - 1 : 0;
+
+  //@ts-ignore
+  dQUICKAPY = parseFloat(dQUICKAPY).toFixed(4) * 100
+  
+  let tokenAPR: any = 0;
+
+  if (valueOfTotalStakedAmountInUSDC > 0) {
+    
+    tokenAPR = (rewards / valueOfTotalStakedAmountInUSDC) * 365 * 100
+    tokenAPR = parseFloat(tokenAPR).toFixed(4);
+
+  }
 
   return (
     show ?
@@ -202,6 +218,14 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
             ?.toFixed(2, { groupSeparator: ',' }).replace(/[.,]00$/, "") + " "+ currency0.symbol}  / day`}</TYPE.white>
         </RowBetween>
         <RowBetween>
+          <TYPE.white> dQUICK APY(24h) </TYPE.white>
+          <TYPE.white>{dQUICKAPY} %</TYPE.white>
+        </RowBetween>
+        <RowBetween>
+          <TYPE.white> {currency0.symbol} APR </TYPE.white>
+          <TYPE.white>{tokenAPR} %</TYPE.white>
+        </RowBetween>
+        <RowBetween>
           <TYPE.white> Time remaining </TYPE.white>
           <TYPE.white>{Number.isFinite(timeRemaining) && (
             <code>
@@ -212,7 +236,7 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
           )}</TYPE.white>
         </RowBetween>
         {/**<RowBetween>
-          <TYPE.white> Rewards APY </TYPE.white>
+          <TYPE.white> Rewards dQUICKAPY </TYPE.white>
           <TYPE.white>{`${apy.toFixed(2)} %`}</TYPE.white>
         </RowBetween>*/}
         
@@ -221,7 +245,7 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
           <TYPE.white>{!syrupInfo.ended ? 'Running':'Closed'}</TYPE.white>
         </RowBetween>*/}
         {/**<RowBetween>
-          <TYPE.white> APR </TYPE.white>
+          <TYPE.white> dQUICKAPR </TYPE.white>
           <TYPE.white>{ap + "%"}</TYPE.white>
         </RowBetween>*/}
       </StatContainer>
