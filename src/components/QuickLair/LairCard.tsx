@@ -59,6 +59,13 @@ export default function LairCard({ lairInfo }: { lairInfo: LairInfo }) {
   const backgroundColor = useColor(QUICK)
   var show = true;
 
+  //@ts-ignore
+  const APR =(((lairInfo.oneDayVol * 0.04 * 0.01) / lairInfo.dQuickTotalSupply.toSignificant(6)) * 365) / (lairInfo.dQUICKtoQUICK.toSignificant(6) * lairInfo.quickPrice);
+  
+  let APY: any = APR ? Math.pow(1 + APR / 365, 365) - 1 : 0;
+
+  //@ts-ignore
+  APY = parseFloat(APY).toFixed(4) * 100
 
   return (
     show ?
@@ -90,6 +97,10 @@ export default function LairCard({ lairInfo }: { lairInfo: LairInfo }) {
           <TYPE.white> dQUICK Rate </TYPE.white>
           <TYPE.white>{`${lairInfo.QUICKtodQUICK
             ?.toFixed(4, { groupSeparator: ',' })} dQUICK / QUICK`}</TYPE.white>
+        </RowBetween>
+        <RowBetween>
+          <TYPE.white> APY(24h) </TYPE.white>
+          <TYPE.white>{APY} %</TYPE.white>
         </RowBetween>
         <RowBetween>
           <TYPE.white> QUICK Rate </TYPE.white>

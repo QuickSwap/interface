@@ -76,3 +76,21 @@ export const PAIR_DATA = (pairAddress, block) => {
     }`
   return gql(queryString)
 }
+
+export const GLOBAL_DATA = (block) => {
+  const queryString = ` query uniswapFactories {
+      uniswapFactories(
+       ${block ? `block: { number: ${block}}` : ``} 
+       where: { id: "0x5757371414417b8C6CAad45bAeF941aBc7d3Ab32" }) {
+        id
+        totalVolumeUSD
+        totalVolumeETH
+        untrackedVolumeUSD
+        totalLiquidityUSD
+        totalLiquidityETH
+        txCount
+        pairCount
+      }
+    }`
+  return gql(queryString)
+}

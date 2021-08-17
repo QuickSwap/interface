@@ -4,6 +4,7 @@ import { usePair } from '../../data/Reserves'
 
 import { client } from '../../apollo/client'
 import {
+  GLOBAL_DATA,
   PAIRS_BULK,
   PAIRS_HISTORICAL_BULK
 } from '../../apollo/queries'
@@ -142,6 +143,8 @@ export const STAKING_GENESIS = 1620842940;
 export const REWARDS_DURATION_DAYS = 7;
 
 var pairs:any = undefined;
+
+var oneDayVol:any = undefined;
 
 
 // TODO add staking rewards addresses here
@@ -8987,6 +8990,12 @@ export interface LairInfo {
   QUICKBalance: TokenAmount
 
   totalQuickBalance: TokenAmount
+
+  quickPrice: Number
+
+  dQuickTotalSupply: TokenAmount
+
+  oneDayVol: Number
 }
 
 export interface StakingInfo {
@@ -9103,6 +9112,39 @@ export interface StakingInfo {
   }
 }
 
+const getOneDayVolume = async() => {
+  let data: any = {}
+  let oneDayData: any = {}
+
+  const current = await web3.eth.getBlockNumber();
+  const oneDayOldBlock = current - 44000;
+  
+  let result = await client.query({
+    query: GLOBAL_DATA(),
+    fetchPolicy: 'cache-first',
+  })
+  data = result.data.uniswapFactories[0]
+
+  // fetch the historical data
+  let oneDayResult = await client.query({
+    query: GLOBAL_DATA(oneDayOldBlock),
+    fetchPolicy: 'cache-first',
+  })
+  oneDayData = oneDayResult.data.uniswapFactories[0]
+
+  let oneDayVolumeUSD:any = 0;
+
+  if (data && oneDayData) {
+    oneDayVolumeUSD = get2DayPercentChange(
+      data.totalVolumeUSD,
+      oneDayData.totalVolumeUSD ? oneDayData.totalVolumeUSD : 0)
+    oneDayVol = oneDayVolumeUSD;
+  }
+
+  return oneDayVolumeUSD;
+
+}
+
 const convertArrayToObject = (array:any, key:any) => {
   const initialValue = {};
   return array.reduce((obj:any, item:any) => {
@@ -9146,15 +9188,27 @@ export function useLairInfo(): LairInfo {
 
   const lair = useLairContract()
   const quick = useQUICKContract();
+  const [, quickUsdcPair] = usePair(QUICK, USDC);
+  const quickPrice = Number(quickUsdcPair?.priceOf(QUICK)?.toSignificant(6))
 
   const dQuickToQuick = useSingleCallResult(lair, 'dQUICKForQUICK', inputs);
   const quickToDQuick = useSingleCallResult(lair, 'QUICKForDQUICK', inputs);
+
+  const _dQuickTotalSupply = useSingleCallResult(lair, 'totalSupply', []);
+
   const quickBalance = useSingleCallResult(lair, 'QUICKBalance', accountArg);
   const dQuickBalance = useSingleCallResult(lair, 'balanceOf', accountArg);
 
   accountArg = useMemo(() => [LAIR_ADDRESS ?? undefined], [LAIR_ADDRESS])
 
   const lairsQuickBalance = useSingleCallResult(quick, 'balanceOf', accountArg);
+
+  useEffect(() => {
+ 
+    getOneDayVolume().then((data)=>{
+      console.log(data);
+    })
+  }, [])
 
   return useMemo(() => {
     return (
@@ -9164,11 +9218,14 @@ export function useLairInfo(): LairInfo {
         QUICKtodQUICK: new TokenAmount(DQUICK, JSBI.BigInt(quickToDQuick?.result?.[0] ?? 0)),
         dQUICKBalance: new TokenAmount(DQUICK, JSBI.BigInt(dQuickBalance?.result?.[0] ?? 0)),
         QUICKBalance: new TokenAmount(QUICK, JSBI.BigInt(quickBalance?.result?.[0] ?? 0)),
-        totalQuickBalance: new TokenAmount(QUICK, JSBI.BigInt(lairsQuickBalance?.result?.[0] ?? 0))
+        totalQuickBalance: new TokenAmount(QUICK, JSBI.BigInt(lairsQuickBalance?.result?.[0] ?? 0)),
+        quickPrice,
+        dQuickTotalSupply: new TokenAmount(DQUICK, JSBI.BigInt(_dQuickTotalSupply?.result?.[0] ?? 0)),
+        oneDayVol: oneDayVol
       }
     )
     
-  }, [LAIR_ADDRESS, dQuickToQuick, quickToDQuick, quickBalance, dQuickBalance])
+  }, [LAIR_ADDRESS, dQuickToQuick, quickToDQuick, quickBalance, dQuickBalance, _dQuickTotalSupply, quickPrice])
 
 }
 
