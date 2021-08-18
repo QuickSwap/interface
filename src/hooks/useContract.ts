@@ -31,15 +31,15 @@ const sProviders = new Array();
 
 const rpcUrls = [
   //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
-  "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
+  "https://shy-black-meadow.matic.quiknode.pro/aa57c5692641e98d1002a9dfeea7eb6438aa7937/",
+  "https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R",
   "https://rpc-quickswap-do1-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
   //"https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://matic-mainnet.chainstacklabs.com",
-  "https://shy-black-meadow.matic.quiknode.pro/aa57c5692641e98d1002a9dfeea7eb6438aa7937/",
-  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
-  "https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R"
+  "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
+  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf"
   //"https://rpc-mainnet.matic.network",
   //"https://quick.slingshot.finance"
   
@@ -70,10 +70,9 @@ for (var j = 0; j < sRpcs.length; j++) {
 
 // returns null on errors
 function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
-  var { library, account, chainId } = useActiveWeb3React()
+  var { account } = useActiveWeb3React()
   var provider:any = undefined;
-
-  if (chainId && MULTICALL_NETWORKS[chainId] === address) {
+  if (MULTICALL_NETWORKS[137] === address) {
     count = count + 1;
     if (sThreshold > 0 && count % sThreshold == 0) {
       console.log(count);
@@ -92,14 +91,14 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
     }
   }
   return useMemo(() => {
-    if (!address || !ABI || !library) return null
+    if (!address || !ABI ) return null
     try {
-      return getContract(address, ABI, provider !== undefined ? provider : library, withSignerIfPossible && account ? account : undefined)
+      return getContract(address, ABI, provider, withSignerIfPossible && account ? account : undefined)
     } catch (error) {
       console.error('Failed to get contract', error)
       return null
     }
-  }, [address, ABI, library, withSignerIfPossible, account])
+  }, [address, ABI, withSignerIfPossible, account])
 }
 
 export function useLairContract(): Contract | null {
@@ -128,8 +127,8 @@ export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: b
 }
 
 export function useWETHContract(withSignerIfPossible?: boolean): Contract | null {
-  const { chainId } = useActiveWeb3React()
-  return useContract(chainId ? WETH[chainId].address : undefined, WETH_ABI, withSignerIfPossible)
+  //const { chainId } = useActiveWeb3React()
+  return useContract(WETH[137].address, WETH_ABI, withSignerIfPossible)
 }
 
 export function useArgentWalletDetectorContract(): Contract | null {
@@ -167,8 +166,8 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 }
 
 export function useMulticallContract(): Contract | null {
-  const { chainId } = useActiveWeb3React()
-  return useContract(chainId && MULTICALL_NETWORKS[chainId], MULTICALL_ABI, false)
+  //const { chainId } = useActiveWeb3React()
+  return useContract(MULTICALL_NETWORKS[137], MULTICALL_ABI, false)
 }
 
 export function useMerkleDistributorContract(): Contract | null {

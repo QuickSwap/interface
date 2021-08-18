@@ -415,8 +415,14 @@ export const getTokenLogoURL = (address: string) => {
       uri = '0x3BA4c387f786bFEE076A58914F5Bd38d668B42c3'
     }
 
+    if (address?.toLowerCase() === '0x300211Def2a644b036A9bdd3e58159bb2074d388'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/iotexproject/iotex-token-metadata/master/images/io1nxetpma4de3wx6tqcgxdtj5wc64a24t64dc76s.png'
+    }if (address?.toLowerCase() === '0x70c006878a5A50Ed185ac4C87d837633923De296'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12373/small/REVV_TOKEN_Refined_2021_%281%29.png?1627652390'
+    }
+
     if (address?.toLowerCase() === '0xEe9801669C6138E84bD50dEB500827b776777d28'.toLowerCase()) {
-      uri = 'https://o3.network/assets/images/logo.png'
+      uri = 'https://assets.coingecko.com/coins/images/15460/small/o3.png?1620904316'
     }if (address?.toLowerCase() === '0x598e49f01bEfeB1753737934a5b11fea9119C796'.toLowerCase()) {
       uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/1883.png'
     }if (address?.toLowerCase() === '0x34C1b299A74588D6Abdc1b85A53345A48428a521'.toLowerCase()) {
