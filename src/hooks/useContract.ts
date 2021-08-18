@@ -70,9 +70,10 @@ for (var j = 0; j < sRpcs.length; j++) {
 
 // returns null on errors
 function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
-  var { account } = useActiveWeb3React()
+  var { library, account, chainId } = useActiveWeb3React()
   var provider:any = undefined;
-  if (MULTICALL_NETWORKS[137] === address) {
+
+  if (chainId && MULTICALL_NETWORKS[chainId] === address) {
     count = count + 1;
     if (sThreshold > 0 && count % sThreshold == 0) {
       console.log(count);
@@ -91,14 +92,14 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
     }
   }
   return useMemo(() => {
-    if (!address || !ABI ) return null
+    if (!address || !ABI || !library) return null
     try {
-      return getContract(address, ABI, provider, withSignerIfPossible && account ? account : undefined)
+      return getContract(address, ABI, provider !== undefined ? provider : library, withSignerIfPossible && account ? account : undefined)
     } catch (error) {
       console.error('Failed to get contract', error)
       return null
     }
-  }, [address, ABI, withSignerIfPossible, account])
+  }, [address, ABI, library, withSignerIfPossible, account])
 }
 
 export function useLairContract(): Contract | null {
@@ -127,8 +128,8 @@ export function useTokenContract(tokenAddress?: string, withSignerIfPossible?: b
 }
 
 export function useWETHContract(withSignerIfPossible?: boolean): Contract | null {
-  //const { chainId } = useActiveWeb3React()
-  return useContract(WETH[137].address, WETH_ABI, withSignerIfPossible)
+  const { chainId } = useActiveWeb3React()
+  return useContract(chainId ? WETH[chainId].address : undefined, WETH_ABI, withSignerIfPossible)
 }
 
 export function useArgentWalletDetectorContract(): Contract | null {
@@ -166,8 +167,8 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 }
 
 export function useMulticallContract(): Contract | null {
-  //const { chainId } = useActiveWeb3React()
-  return useContract(MULTICALL_NETWORKS[137], MULTICALL_ABI, false)
+  const { chainId } = useActiveWeb3React()
+  return useContract(chainId && MULTICALL_NETWORKS[chainId], MULTICALL_ABI, false)
 }
 
 export function useMerkleDistributorContract(): Contract | null {
