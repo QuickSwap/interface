@@ -99,7 +99,7 @@ export default function LairCard({ lairInfo }: { lairInfo: LairInfo }) {
             ?.toFixed(4, { groupSeparator: ',' })} dQUICK / QUICK`}</TYPE.white>
         </RowBetween>
         <RowBetween>
-          <TYPE.white> APY(24h) </TYPE.white>
+          <TYPE.white> APY </TYPE.white>
           <TYPE.white>{APY} %</TYPE.white>
         </RowBetween>
         <RowBetween>
