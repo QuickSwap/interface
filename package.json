@@ -6,7 +6,7 @@
   "devDependencies": {
     "@arkane-network/web3-arkane-provider": "^0.23.0",
     "@ethersproject/experimental": "^5.0.1",
-    "@gelatonetwork/limit-orders-react": "^1.0.10",
+    "@gelatonetwork/limit-orders-react": "^1.0.11",
     "@gnosis.pm/safe-apps-sdk": "^4.0.0",
     "@popperjs/core": "^2.4.4",
     "@reach/dialog": "^0.10.3",

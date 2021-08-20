@@ -2,11 +2,12 @@ import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, Pair } from '@uniswa
 import { useMemo, useEffect/** , useState */ } from 'react'
 import { usePair } from '../../data/Reserves'
 
-import { client } from '../../apollo/client'
+import { client, healthClient } from '../../apollo/client'
 import {
   GLOBAL_DATA,
   PAIRS_BULK,
-  PAIRS_HISTORICAL_BULK
+  PAIRS_HISTORICAL_BULK,
+  SUBGRAPH_HEALTH
 } from '../../apollo/queries'
 import { 
   UNI,
@@ -131,7 +132,8 @@ import {
   CIOTX,
   DNXC,
   EGG,
-  REVV
+  REVV,
+  CHICK
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -148,6 +150,120 @@ export const REWARDS_DURATION_DAYS = 7;
 
 var pairs:any = undefined;
 
+export const SYRUP_REWARDS_INFO: {
+  [chainId in ChainId]?: {
+    token: Token
+    stakingRewardAddress: string
+    ended: boolean
+    name: string
+    lp: string
+    baseToken: Token
+    rate: Number
+    ending: Number //DATE IN UNIX TIMESTAMP
+  }[]
+} = {
+  [ChainId.MATIC]: [{
+    token: START,
+    stakingRewardAddress: '0xBC00cF775D78b50925895A872Aa945B728dB0EBB',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: QUICK,
+    rate: 116.67,
+    ending: 1634680134
+  },
+  {
+    token: RELAY,
+    stakingRewardAddress: '0x747fC94E52ba06D870Cb793e11C98D7688b28887',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: QUICK,
+    rate: 500,
+    ending: 1634680134
+  },
+  {
+    token: DNXC,
+    stakingRewardAddress: '0x476231Ca1c748fd84e5c759a03F6FB0852fA110B',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: QUICK,
+    rate: 4800,
+    ending: 1634680134
+  },
+  {
+    token: REVV,
+    stakingRewardAddress: '0xBDeaCb01103C6459ED05c4836082b41143825F49',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: QUICK,
+    rate: 16816.67,
+    ending: 1634680134
+  },
+  {
+    token: YAMP,
+    stakingRewardAddress: '0x88A989A72fF3981cE02cE3CB5ec81A23C1058382',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: QUICK,
+    rate: 9333.33,
+    ending: 1634680134
+  },
+  {
+    token: FEAR,
+    stakingRewardAddress: '0x886d5186Be0255ed4b7DAcB4c493aF6f8cD1ed04',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: USDC,
+    rate: 1157,
+    ending: 1634680134
+  },
+  {
+    token: CHICK,
+    stakingRewardAddress: '0xBe35a3238bd6fdde7a7749CB8702d5f17217c1a5',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: USDC,
+    rate: 3333.33,
+    ending: 1634680134
+  },
+  {
+    token: ADS,
+    stakingRewardAddress: '0xC6b141B27c82d6DB104440edE21d4F8E046B6Aa2',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: USDC,
+    rate: 2150,
+    ending: 1634680134
+  },
+  {
+    token: CIOTX,
+    stakingRewardAddress: '0x54B1e1A8F2472230DB6092833249675Fc2E8DFe1',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: USDC,
+    rate: 16666.67,
+    ending: 1634680134
+  },
+  {
+    token: ADDY,
+    stakingRewardAddress: '0x3429f08D507EfBcA7B41BC0F99e9276918495F97',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: ETHER,
+    rate: 59.5,
+    ending: 1634680134
+  }
+]
+}
 var oneDayVol:any = undefined;
 
 
@@ -9149,18 +9265,202 @@ export interface StakingInfo {
   ) => TokenAmount
 }
 
-/**const getQUICKPrice  = async(setQuickPrice:any)=>{
-  let result = await client.query({
-    query: TOKEN_CHART,
-    variables: {
-      tokenAddr: '0x831753dd7087cac61ab5644b308642cc1c33dc13'
-    },
-    fetchPolicy: 'cache-first',
-  })
-  setQuickPrice(Number(result.data.tokenDayDatas[0].priceUSD));
-  return result.data.tokenDayDatas[0].priceUSD;
-}*/
+export interface SyrupInfo {
+  // the address of the reward contract
+  stakingRewardAddress: string
+  // the token involved in this staking
+  token: Token
+  // the amount of token currently staked, or undefined if no account
+  stakedAmount: TokenAmount
+  // the amount of reward token earned by the active account, or undefined if no account
+  earnedAmount: TokenAmount
+  // the total amount of token staked in the contract
+  totalStakedAmount: TokenAmount
+  // the amount of token distributed per second to all stakers, constant
+  totalRewardRate: TokenAmount
+  // the current amount of token distributed to the active account per second.
+  // equivalent to percent of total supply * reward rate
+  rewardRate: TokenAmount
+  // when the period ends
+  periodFinish: Number
 
+  ended: boolean
+
+  name: string
+
+  lp: string
+
+  baseToken: Token
+
+  quickPrice: Number
+
+  rate: Number
+
+  dQUICKtoQUICK: TokenAmount
+
+  dQuickTotalSupply: TokenAmount
+
+  oneDayVol: Number
+
+  // calculates a hypothetical amount of token distributed to the active account per second.
+  getHypotheticalRewardRate: (
+    stakedAmount: TokenAmount,
+    totalStakedAmount: TokenAmount,
+    totalRewardRate: TokenAmount
+  ) => TokenAmount
+}
+
+export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
+  const { chainId, account } = useActiveWeb3React()
+  //const [quickPrice,setQuickPrice] = useState(0);
+  const [, quickUsdcPair] = usePair(QUICK, USDC);
+  const quickPrice = Number(quickUsdcPair?.priceOf(QUICK)?.toSignificant(6))
+  const info = useMemo(
+    () =>
+      chainId
+        ? SYRUP_REWARDS_INFO[chainId]?.filter(stakingRewardInfo =>
+          tokenToFilterBy === undefined
+              ? true
+              : tokenToFilterBy === null
+              ? true
+              : tokenToFilterBy.equals(stakingRewardInfo.token) &&
+              tokenToFilterBy.equals(stakingRewardInfo.token)
+          ) ?? []
+        : [],
+    [chainId, tokenToFilterBy]
+  )
+
+  const uni = chainId ? UNI[chainId] : undefined
+
+  const rewardsAddresses = useMemo(() => info.map(({ stakingRewardAddress }) => stakingRewardAddress), [info])
+  
+  const accountArg = useMemo(() => [account ?? undefined], [account])
+  const lair = useLairContract()
+
+  const inputs = useMemo(() => ['1000000000000000000'], ['1000000000000000000'])
+   
+  // get all the info from the staking rewards contracts
+  const balances = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'balanceOf', accountArg)
+  const earnedAmounts = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'earned', accountArg)
+  const totalSupplies = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'totalSupply')
+  const dQuickToQuick = useSingleCallResult(lair, 'dQUICKForQUICK', inputs);
+  const _dQuickTotalSupply = useSingleCallResult(lair, 'totalSupply', []);
+
+  const periodFinishes = useMultipleContractSingleData(
+    rewardsAddresses,
+    STAKING_REWARDS_INTERFACE,
+    'periodFinish',
+    undefined,
+    NEVER_RELOAD
+  )
+  const rewardRates = useMultipleContractSingleData(
+    rewardsAddresses,
+    STAKING_REWARDS_INTERFACE,
+    'rewardRate',
+    undefined,
+    NEVER_RELOAD
+  )
+
+  useEffect(() => {
+ 
+    getOneDayVolume().then((data)=>{
+      console.log(data);
+    })
+  }, [])
+
+  return useMemo(() => {
+    if (!chainId || !uni) return []
+
+    return rewardsAddresses.reduce<SyrupInfo[]>((memo, rewardsAddress, index) => {
+      // these two are dependent on account
+      const balanceState = balances[index]
+      const earnedAmountState = earnedAmounts[index]
+
+      // these get fetched regardless of account
+      const totalSupplyState = totalSupplies[index]
+      const rewardRateState = rewardRates[index]
+      const periodFinishState = periodFinishes[index]
+
+      if (
+        // these may be undefined if not logged in
+        !dQuickToQuick?.loading &&
+        !balanceState?.loading &&
+        !earnedAmountState?.loading &&
+        // always need these
+        totalSupplyState &&
+        !totalSupplyState.loading &&
+        rewardRateState &&
+        !rewardRateState.loading &&
+        periodFinishState &&
+        !periodFinishState.loading
+      ) {
+        if (
+          dQuickToQuick?.error ||
+          balanceState?.error ||
+          earnedAmountState?.error ||
+          totalSupplyState.error ||
+          rewardRateState.error ||
+          periodFinishState.error
+        ) {
+          console.error('Failed to load syrup rewards info')
+          return memo
+        }
+        // get the LP token
+        const token = info[index].token
+
+        // check for account, if no account set to 0
+        const lp = info[index].lp;
+        // @ts-ignore
+        const rate = web3.utils.toWei(info[index].rate.toString());
+        const stakedAmount = new TokenAmount(lp && lp !== '' ? new Token(137, lp, 18, "SLP", "Staked LP") : DQUICK, JSBI.BigInt(balanceState?.result?.[0] ?? 0))
+        const totalStakedAmount = new TokenAmount(lp && lp !== '' ? new Token(137, lp, 18, "SLP", "Staked LP") : DQUICK, JSBI.BigInt(totalSupplyState.result?.[0]))
+        const totalRewardRate = new TokenAmount(token, JSBI.BigInt(rate))
+        //const pair = info[index].pair.toLowerCase();
+        //@ts-ignore
+        //const fees = (pairData && pairData[pair] ? pairData[pair].oneDayVolumeUSD * 0.0025: 0);
+        const totalRewardRate01 = new TokenAmount(uni, JSBI.BigInt(rewardRateState.result?.[0]))
+        const getHypotheticalRewardRate = (
+          stakedAmount: TokenAmount,
+          totalStakedAmount: TokenAmount,
+          totalRewardRate: TokenAmount
+        ): TokenAmount => {
+          return new TokenAmount(
+            uni,
+            JSBI.greaterThan(totalStakedAmount.raw, JSBI.BigInt(0))
+              ? JSBI.divide(JSBI.multiply(totalRewardRate01.raw, stakedAmount.raw), totalStakedAmount.raw)
+              : JSBI.BigInt(0)
+          )
+        }
+
+        const individualRewardRate = getHypotheticalRewardRate(stakedAmount, totalStakedAmount, totalRewardRate01)
+
+        const periodFinishMs = info[index].ending
+        
+        memo.push({
+          stakingRewardAddress: rewardsAddress,
+          token: info[index].token,
+          ended: info[index].ended,
+          name: info[index].name,
+          lp: info[index].lp,
+          periodFinish: periodFinishMs,
+          earnedAmount: new TokenAmount(uni, JSBI.BigInt(earnedAmountState?.result?.[0] ?? 0)),
+          rewardRate: individualRewardRate,
+          totalRewardRate: totalRewardRate,
+          stakedAmount: stakedAmount,
+          totalStakedAmount: totalStakedAmount,
+          getHypotheticalRewardRate,
+          baseToken: info[index].baseToken,
+          quickPrice: quickPrice,
+          rate: info[index].rate,
+          dQUICKtoQUICK: new TokenAmount(QUICK, JSBI.BigInt(dQuickToQuick?.result?.[0] ?? 0)),
+          dQuickTotalSupply: new TokenAmount(DQUICK, JSBI.BigInt(_dQuickTotalSupply?.result?.[0] ?? 0)),
+          oneDayVol: oneDayVol
+        })
+      }
+      return memo
+    }, [])
+  }, [balances, chainId, earnedAmounts, info, periodFinishes, rewardsAddresses, totalSupplies, uni, dQuickToQuick])
+}
 
  const getBulkPairData = async(pairList: any) => {
    //@ts-ignore
@@ -9220,20 +9520,24 @@ export interface StakingInfo {
 const getOneDayVolume = async() => {
   let data: any = {}
   let oneDayData: any = {}
-
-  const current = await web3.eth.getBlockNumber();
-  const oneDayOldBlock = current - 44000;
+  
+  let healthInfo = await healthClient
+  .query({
+    query: SUBGRAPH_HEALTH,
+  })
+  let current = Number(healthInfo.data.indexingStatusForCurrentVersion.chains[0].latestBlock.number)
+  const oneDayOldBlock = current - 45000;
   
   let result = await client.query({
-    query: GLOBAL_DATA(),
-    fetchPolicy: 'cache-first',
+    query: GLOBAL_DATA(current),
+    fetchPolicy: 'network-only',
   })
   data = result.data.uniswapFactories[0]
 
   // fetch the historical data
   let oneDayResult = await client.query({
     query: GLOBAL_DATA(oneDayOldBlock),
-    fetchPolicy: 'cache-first',
+    fetchPolicy: 'network-only',
   })
   oneDayData = oneDayResult.data.uniswapFactories[0]
 
@@ -9767,6 +10071,37 @@ export function useTotalUniEarned(): TokenAmount | undefined {
       ) ?? new TokenAmount(uni, '0')
     )
   }, [stakingInfos, uni])
+}
+
+export function useDerivedSyrupInfo(
+  typedValue: string,
+  stakingToken: Token,
+  userLiquidityUnstaked: TokenAmount | undefined
+): {
+  parsedAmount?: CurrencyAmount
+  error?: string
+} {
+  const { account } = useActiveWeb3React()
+
+  const parsedInput: CurrencyAmount | undefined = tryParseAmount(typedValue, stakingToken)
+
+  const parsedAmount =
+    parsedInput && userLiquidityUnstaked && JSBI.lessThanOrEqual(parsedInput.raw, userLiquidityUnstaked.raw)
+      ? parsedInput
+      : undefined
+
+  let error: string | undefined
+  if (!account) {
+    error = 'Connect Wallet'
+  }
+  if (!parsedAmount) {
+    error = error ?? 'Enter an amount'
+  }
+
+  return {
+    parsedAmount,
+    error
+  }
 }
 
 // based on typed value

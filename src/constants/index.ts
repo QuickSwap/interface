@@ -190,6 +190,7 @@ export const CIOTX = new Token(ChainId.MATIC, '0x300211Def2a644b036A9bdd3e58159b
 export const REVV = new Token(ChainId.MATIC, '0x70c006878a5A50Ed185ac4C87d837633923De296', 18, 'REVV', 'REVV')
 
 
+export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
 export const PROPOSAL_LENGTH_IN_DAYS = 7

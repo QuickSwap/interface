@@ -287,6 +287,27 @@ const StyledLinkStyledButton = styled(LinkStyledButton).attrs({
   }
 `
 
+const StyledMenuContainer = styled.div`
+  padding-top: 10px;
+  position: absolute;
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+    min-width: 18.125rem;
+    right: 0;
+  `};
+`
+const StyledMenu = styled.div`
+  min-width: 10.125rem;
+  padding: 12px 0;
+  width: 100%;
+  background-color: ${({ theme }) => theme.bg2};
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
+    0px 24px 32px rgba(0, 0, 0, 0.01);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+`
+
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
   
   [ChainId.MUMBAI]: 'Mumbai',
@@ -373,6 +394,9 @@ export default function Header() {
   const countUpValue = aggregateBalance?.toFixed(0) ?? '0'
   const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
 
+  const [widgetMenuOpen, setWidgetMenuOpen] = useState(false)
+
+
   return (
     <HeaderFrame>
       
@@ -412,9 +436,20 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledNavLink id={`stake-nav-link`} to={'/quick'} style={{marginLeft: mobile?'0px':'12px'}}>
-          Rewards
-          </StyledNavLink>
+          
+          <div style={{ position: 'relative' }} onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link`} onClick={() => {setWidgetMenuOpen(true)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
+            Farms
+          </StyledLinkStyledButton>
+          {widgetMenuOpen && (
+            <StyledMenuContainer>
+              <StyledMenu>
+                <StyledNavLink id={`stake-nav-link-LP`} to={'/quick'} >LP Mining</StyledNavLink>
+                <StyledNavLink id={`stake-nav-link-DS`} to={'/syrup'} style={{marginTop: 10}}>Dragon's Syrup</StyledNavLink>
+              </StyledMenu>
+            </StyledMenuContainer>   
+          )}
+          </div>
+
           {/*<StyledNavLink id={`stake-nav-link`} to={'/vote'}>*/}
             {/*Vote*/}
           {/*</StyledNavLink>*/}

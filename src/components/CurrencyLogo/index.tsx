@@ -459,6 +459,10 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/2822/small/huobi-token-logo.png?1547036992'
     }
 
+    if (address?.toLowerCase() === '0x16887befea6772175240a8b3aa797c460f80a08e'.toLowerCase()) {
+      uri = 'https://cloudstorage.openocean.finance/image/ooe_log.png'
+    }
+
     if (address?.toLowerCase() === '0x7e9928aFe96FefB820b85B4CE6597B8F660Fe4F4'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
     }if (address?.toLowerCase() === '0xAF24765F631C8830B5528B57002241eE7eef1C14'.toLowerCase()) {
