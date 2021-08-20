@@ -9418,7 +9418,7 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
         //const pair = info[index].pair.toLowerCase();
         //@ts-ignore
         //const fees = (pairData && pairData[pair] ? pairData[pair].oneDayVolumeUSD * 0.0025: 0);
-        const totalRewardRate01 = new TokenAmount(uni, JSBI.BigInt(rewardRateState.result?.[0]))
+        const totalRewardRate01 = new TokenAmount(token, JSBI.BigInt(rewardRateState.result?.[0]))
         const getHypotheticalRewardRate = (
           stakedAmount: TokenAmount,
           totalStakedAmount: TokenAmount,

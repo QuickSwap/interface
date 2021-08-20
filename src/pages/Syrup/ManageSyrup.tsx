@@ -170,7 +170,7 @@ export default function ManageSyrup({
       <DataRow style={{ gap: '24px' }}>
         <PoolData>
           <AutoColumn gap="sm">
-            <TYPE.body style={{ margin: 0 }}>Total deposits</TYPE.body>
+            <TYPE.body style={{ margin: 0 }}>dQUICK deposits</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
             {valueOfTotalStakedAmountInUSDC
                 ? `$${thousands_separators(valueOfTotalStakedAmountInUSDC)}`
@@ -182,9 +182,7 @@ export default function ManageSyrup({
           <AutoColumn gap="sm">
             <TYPE.body style={{ margin: 0 }}>Pool Rate</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
-              {syrupInfo?.totalRewardRate
-                ?.toFixed(2, { groupSeparator: ',' })?.replace(/[.,]00$/, "") ?? '-'}
-              {' ' + (currency?.symbol ? currency?.symbol: '')+' / day'}
+            {`${syrupInfo?.rate + " "+ currency?.symbol}  / day`}
             </TYPE.body>
           </AutoColumn>
         </PoolData>
