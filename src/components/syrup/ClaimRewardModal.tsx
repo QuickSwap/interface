@@ -82,7 +82,7 @@ export default function ClaimRewardModal({ isOpen, onDismiss, syrupInfo }: Staki
             </AutoColumn>
           )}
           <TYPE.subHeader style={{ textAlign: 'center' }}>
-            When you claim without withdrawing your liquidity remains in the mining pool.
+            When you claim without withdrawing your dQUICK remains in the syrup pool.
           </TYPE.subHeader>
           <ButtonError disabled={!!error} error={!!error && !!syrupInfo?.stakedAmount} onClick={onClaimReward}>
             {error ?? 'Claim'}

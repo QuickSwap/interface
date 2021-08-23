@@ -9425,7 +9425,7 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
           totalRewardRate: TokenAmount
         ): TokenAmount => {
           return new TokenAmount(
-            uni,
+            token,
             JSBI.greaterThan(totalStakedAmount.raw, JSBI.BigInt(0))
               ? JSBI.divide(JSBI.multiply(totalRewardRate01.raw, stakedAmount.raw), totalStakedAmount.raw)
               : JSBI.BigInt(0)
@@ -9443,7 +9443,7 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
           name: info[index].name,
           lp: info[index].lp,
           periodFinish: periodFinishMs,
-          earnedAmount: new TokenAmount(uni, JSBI.BigInt(earnedAmountState?.result?.[0] ?? 0)),
+          earnedAmount: new TokenAmount(token, JSBI.BigInt(earnedAmountState?.result?.[0] ?? 0)),
           rewardRate: individualRewardRate,
           totalRewardRate: totalRewardRate,
           stakedAmount: stakedAmount,
