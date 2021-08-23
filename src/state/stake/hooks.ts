@@ -141,6 +141,7 @@ import { NEVER_RELOAD, useMultipleContractSingleData, useSingleCallResult } from
 import { tryParseAmount } from '../swap/hooks'
 import Web3 from 'web3';
 import { useLairContract, useQUICKContract } from '../../hooks/useContract'
+import useUSDCPrice from '../../utils/useUSDCPrice'
 
 const web3 = new Web3("https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R");
 
@@ -9302,6 +9303,9 @@ export interface SyrupInfo {
 
   oneDayVol: Number
 
+  valueOfTotalStakedAmountInUSDC: Number
+  
+
   // calculates a hypothetical amount of token distributed to the active account per second.
   getHypotheticalRewardRate: (
     stakedAmount: TokenAmount,
@@ -9338,6 +9342,8 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
   const lair = useLairContract()
 
   const inputs = useMemo(() => ['1000000000000000000'], ['1000000000000000000'])
+  const USDPrice = useUSDCPrice(QUICK)
+
    
   // get all the info from the staking rewards contracts
   const balances = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'balanceOf', accountArg)
@@ -9435,7 +9441,10 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
         const individualRewardRate = getHypotheticalRewardRate(stakedAmount, totalStakedAmount, totalRewardRate01)
 
         const periodFinishMs = info[index].ending
-        
+        const dQUICKtoQUICK = new TokenAmount(QUICK, JSBI.BigInt(dQuickToQuick?.result?.[0] ?? 0))
+        //@ts-ignore
+        const valueOfTotalStakedAmountInUSDC = totalStakedAmount.toSignificant(6) * dQUICKtoQUICK.toSignificant(6) * USDPrice?.toSignificant(6)
+  
         memo.push({
           stakingRewardAddress: rewardsAddress,
           token: info[index].token,
@@ -9452,8 +9461,9 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
           baseToken: info[index].baseToken,
           quickPrice: quickPrice,
           rate: info[index].rate,
-          dQUICKtoQUICK: new TokenAmount(QUICK, JSBI.BigInt(dQuickToQuick?.result?.[0] ?? 0)),
+          dQUICKtoQUICK: dQUICKtoQUICK,
           dQuickTotalSupply: new TokenAmount(DQUICK, JSBI.BigInt(_dQuickTotalSupply?.result?.[0] ?? 0)),
+          valueOfTotalStakedAmountInUSDC: valueOfTotalStakedAmountInUSDC,
           oneDayVol: oneDayVol
         })
       }

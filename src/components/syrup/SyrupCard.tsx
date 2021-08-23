@@ -10,7 +10,6 @@ import { Break, CardNoise, CardBGImage } from './styled'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
 import { usePair } from '../../data/Reserves'
 import useUSDCPrice from '../../utils/useUSDCPrice'
-import {QUICK} from "../../constants/index";
 import { currencyId } from '../../utils/currencyId'
 import { ButtonPrimary } from '../Button'
 import { useState } from 'react'
@@ -104,32 +103,11 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
   const priceOfRewardTokenInUSD = price?.toSignificant(6) * USDPriceBaseToken?.toSignificant(6);
 
   var show = isStaking || !syrupInfo.ended;
-
-  const USDPrice = useUSDCPrice(QUICK)
-
-  //@ts-ignore
-  const valueOfTotalStakedAmountInUSDC = syrupInfo.totalStakedAmount.toSignificant(6) * syrupInfo.dQUICKtoQUICK.toSignificant(6) * USDPrice?.toSignificant(6)
   
-  //let apy = 0;
   let rewards = 0;
-  //apy = ((1 + ((perMonthReturnInRewards) * 12) / 12) ** 12 - 1) * 100 // compounding monthly dQUICKAPY
-  //apy = perMonthReturnInRewards/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
 
   //@ts-ignore
   rewards = syrupInfo?.rate * (priceOfRewardTokenInUSD ? priceOfRewardTokenInUSD : 0);
-
-  /**if(syrupInfo?.oneYearFeeAPY && syrupInfo?.oneYearFeeAPY > 0) {
-    //@ts-ignore
-    apyWithFee = ((1 + ((perMonthReturnInRewards + syrupInfo.oneYearFeeAPY / 12) * 12) / 12) ** 12 - 1) * 100 // compounding monthly dQUICKAPY
-    if(apyWithFee > 100000000) {
-      apyWithFee = ">100000000"
-    }
-    else {
-      apyWithFee = parseFloat(apyWithFee.toFixed(2)).toLocaleString()
-    }
-    //@ts-ignore
-    //apyWithFee = ((syrupInfo.oneYearFeeAPY) + perMonthReturnInRewards)/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
-  }*/
 
   const [time] = useState(() => Math.floor(Date.now() / 1000))
 
@@ -155,9 +133,10 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
   
   let tokenAPR: any = 0;
 
-  if (valueOfTotalStakedAmountInUSDC > 0) {
+  if (syrupInfo?.valueOfTotalStakedAmountInUSDC > 0) {
     
-    tokenAPR = (rewards / valueOfTotalStakedAmountInUSDC) * 365 * 100
+    //@ts-ignore
+    tokenAPR = (rewards / syrupInfo?.valueOfTotalStakedAmountInUSDC) * 365 * 100
     tokenAPR = parseFloat(tokenAPR).toFixed(3);
 
   }
@@ -194,8 +173,8 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
         <RowBetween>
           <TYPE.white> dQUICK Deposits</TYPE.white>
           <TYPE.white>
-            {valueOfTotalStakedAmountInUSDC
-              ? `$${thousands_separators(valueOfTotalStakedAmountInUSDC)}`
+            {syrupInfo?.valueOfTotalStakedAmountInUSDC
+              ? `$${thousands_separators(syrupInfo?.valueOfTotalStakedAmountInUSDC)}`
               : `${syrupInfo?.totalStakedAmount?.toSignificant(6, { groupSeparator: ',' }) ?? '-'} dQUICK`}
           </TYPE.white>
         </RowBetween>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
@@ -11,6 +11,13 @@ import { RowBetween } from '../../components/Row'
 import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/earn/styled'
 import Loader from '../../components/Loader'
 import { useActiveWeb3React } from '../../hooks'
+
+function thousands_separators(num:any)
+  {
+    var num_parts = num.toString().split(".");
+    num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return num_parts[0]
+  }
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -46,6 +53,19 @@ const Arrow = styled.div`
   :hover {
     cursor: pointer;
   }
+`
+
+const StatContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+  display: none;
+`};
 `
 
 export const SearchInput = styled.input`
@@ -88,6 +108,8 @@ export default function Syrup() {
 
   const { chainId } = useActiveWeb3React()
   const syrupInfos = useSyrupInfo();
+  const[totalDepositedUSD, setTotalDeposittedUSD] = useState<any>(0);
+
 
   const DataRow = styled(RowBetween)`
     ${({ theme }) => theme.mediaWidth.upToSmall`
@@ -157,6 +179,24 @@ export default function Syrup() {
     }
   })
 
+  useEffect(() => {
+
+    if(syrupInfos.length > 0) {
+
+     var aTotaldepositsUSD:any = syrupInfos?.reduce((sum, current, currentIndex)=>{
+        if(currentIndex === 1)
+          //@ts-ignore
+          return sum.valueOfTotalStakedAmountInUSDC + current.valueOfTotalStakedAmountInUSDC;
+  
+        else
+          //@ts-ignore
+          return sum + current.valueOfTotalStakedAmountInUSDC
+      })
+      setTotalDeposittedUSD(aTotaldepositsUSD)
+    }    
+    },[syrupInfos]
+  )
+
 
   return (
     <PageWrapper gap="lg" justify="center">
@@ -203,6 +243,19 @@ export default function Syrup() {
           ref={inputRef as RefObject<HTMLInputElement>}
           onChange={handleInput}
         />*/}
+        <TopSection gap="md">
+        <DataCard>
+        <CardNoise />
+        <StatContainer>
+        <RowBetween style={{marginTop: "10px"}}>
+          <TYPE.white> Total Deposits</TYPE.white>
+          <TYPE.white>
+            ${thousands_separators(totalDepositedUSD)}
+          </TYPE.white>
+        </RowBetween>
+      </StatContainer>
+          </DataCard>
+          </TopSection>
         <PoolSection>
 
 
