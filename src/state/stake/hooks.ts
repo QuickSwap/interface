@@ -163,7 +163,18 @@ export const SYRUP_REWARDS_INFO: {
     ending: Number //DATE IN UNIX TIMESTAMP
   }[]
 } = {
-  [ChainId.MATIC]: [{
+  [ChainId.MATIC]: [
+    {
+      token: TEL,
+      stakingRewardAddress: '0x346C9e501aDc38F1f325CC0c2D44C325283eEaF1',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 333333.33,
+      ending: 1634925319
+    },  
+    {
     token: START,
     stakingRewardAddress: '0xBC00cF775D78b50925895A872Aa945B728dB0EBB',
     ended: false,

@@ -128,8 +128,9 @@ export default function ManageSyrup({
   
   const backgroundColor = useColor(tokenA)
 
-  // get WETH value of staked LP tokens  
-  const countUpAmount = syrupInfo?.earnedAmount?.toFixed(6) ?? '0'
+  // get WETH value of staked LP tokens
+  const fixedPlaces = syrupInfo?.earnedAmount.token.decimals < 6 ? syrupInfo?.earnedAmount.token.decimals : 6
+  const countUpAmount = syrupInfo?.earnedAmount?.toFixed(fixedPlaces) ?? '0'
   const countUpAmountPrevious = usePrevious(countUpAmount) ?? '0'
   /**var stakedToken:any = 0;
   if(syrupInfo && syrupInfo.totalStakedAmount){
