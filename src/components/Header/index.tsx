@@ -291,13 +291,12 @@ const StyledMenuContainer = styled.div`
   padding-top: 10px;
   position: absolute;
   ${({ theme }) => theme.mediaWidth.upToMedium`
-    min-width: 18.125rem;
+    min-width: 10.125rem;
     right: 0;
   `};
 `
 const StyledMenu = styled.div`
   min-width: 10.125rem;
-  padding: 12px 0;
   width: 100%;
   background-color: ${({ theme }) => theme.bg2};
   box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.01), 0px 4px 8px rgba(0, 0, 0, 0.04), 0px 16px 24px rgba(0, 0, 0, 0.04),
@@ -416,16 +415,16 @@ export default function Header() {
           </UniIcon>
         </Title>
         <HeaderLinks>
-          <StyledNavLink id={`swap-nav-link`} to={'/swap'} style={{marginLeft: mobile?'12px':'12px', marginRight: mobile?'px':'12px'}}>
+          <StyledNavLink id={`swap-nav-link`} to={'/swap'} style={{marginLeft: mobile ? '0px':'12px', marginRight: mobile ? '0px':'12px'}}>
             {t('swap')}
           </StyledNavLink>
-          {!mobile && <StyledNavLink id={`limit-order-nav-link`} to={'/limit-order'} style={{marginLeft: mobile?'12px':'12px', marginRight: mobile?'px':'12px'}}>
+          {!mobile && <StyledNavLink id={`limit-order-nav-link`} to={'/limit-order'} style={{marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
             {t('Limit Order')}
           </StyledNavLink>}
           <StyledNavLink
             id={`pool-nav-link`}
             to={'/pool'}
-            style={{marginLeft: mobile?'0px':'12px'}}
+            style={{marginLeft: mobile ? '8px':'12px'}}
             isActive={(match, { pathname }) =>
               Boolean(match) ||
               pathname.startsWith('/add') ||
@@ -437,7 +436,7 @@ export default function Header() {
             {t('pool')}
           </StyledNavLink>
           
-          <div style={{ position: 'relative' }} onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link`} onClick={() => {setWidgetMenuOpen(true)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
+          <span onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link`} onClick={() => {setWidgetMenuOpen(!widgetMenuOpen)}} style={{margin: '0px', padding: '0px', marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
             Farms
           </StyledLinkStyledButton>
           {widgetMenuOpen && (
@@ -448,20 +447,20 @@ export default function Header() {
               </StyledMenu>
             </StyledMenuContainer>   
           )}
-          </div>
+          </span>
 
           {/*<StyledNavLink id={`stake-nav-link`} to={'/vote'}>*/}
             {/*Vote*/}
           {/*</StyledNavLink>*/}
-          <StyledExternalLink id={`stake-nav-link`} href={'https://info.quickswap.exchange'} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
+          <StyledExternalLink id={`stake-nav-link`} href={'https://info.quickswap.exchange'} style={{marginLeft: mobile?'8px':'12px', marginRight: mobile?'0px':'12px'}}>
             Charts {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
 
-          {account && <StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
+          {account && <StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
             Buy
           </StyledLinkStyledButton>}
 
-          <StyledExternalLink id={`startido-nav-link`} href={'https://idos.starter.xyz/quickstart'} style={{marginLeft: mobile?'12px':'12px', marginRight: mobile?'4px':'12px'}}>
+          <StyledExternalLink id={`startido-nav-link`} href={'https://idos.starter.xyz/quickstart'} style={{marginLeft: mobile?'4px':'12px', marginRight: mobile?'0px':'12px'}}>
             IDO {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
           
