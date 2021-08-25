@@ -180,6 +180,26 @@ export const SYRUP_REWARDS_INFO: {
       baseToken: USDC,
       rate: 333333.33,
       ending: 1634925319
+    },
+    {
+      token: XED,
+      stakingRewardAddress: '0xaD1862888d33F2EA8d4E5025e5fe01916f01b856',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 3030.3,
+      ending: 1635095958
+    },
+    {
+      token: OOE,
+      stakingRewardAddress: '0xa5ce7598af3F76c3A254CDDc62f914bBa9d8B7bd',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 2166.66,
+      ending: 1635095958
     },  
     {
     token: START,
