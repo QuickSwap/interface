@@ -180,11 +180,31 @@ export const SYRUP_REWARDS_INFO: {
       baseToken: USDC,
       rate: 333333.33,
       ending: 1634925319
+    },
+    {
+      token: XED,
+      stakingRewardAddress: '0xaD1862888d33F2EA8d4E5025e5fe01916f01b856',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 3030.3,
+      ending: 1635095958
+    },
+    {
+      token: OOE,
+      stakingRewardAddress: '0xa5ce7598af3F76c3A254CDDc62f914bBa9d8B7bd',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 2166.66,
+      ending: 1635095958
     },  
     {
     token: START,
     stakingRewardAddress: '0xBC00cF775D78b50925895A872Aa945B728dB0EBB',
-    ended: true,
+    ended: false,
     lp: '',
     name: '',
     baseToken: QUICK,
@@ -194,7 +214,7 @@ export const SYRUP_REWARDS_INFO: {
   {
     token: RELAY,
     stakingRewardAddress: '0x747fC94E52ba06D870Cb793e11C98D7688b28887',
-    ended: true,
+    ended: false,
     lp: '',
     name: '',
     baseToken: QUICK,
@@ -204,7 +224,7 @@ export const SYRUP_REWARDS_INFO: {
   {
     token: DNXC,
     stakingRewardAddress: '0x476231Ca1c748fd84e5c759a03F6FB0852fA110B',
-    ended: true,
+    ended: false,
     lp: '',
     name: '',
     baseToken: QUICK,
@@ -214,7 +234,7 @@ export const SYRUP_REWARDS_INFO: {
   {
     token: REVV,
     stakingRewardAddress: '0xBDeaCb01103C6459ED05c4836082b41143825F49',
-    ended: true,
+    ended: false,
     lp: '',
     name: '',
     baseToken: QUICK,
@@ -224,7 +244,7 @@ export const SYRUP_REWARDS_INFO: {
   {
     token: YAMP,
     stakingRewardAddress: '0x88A989A72fF3981cE02cE3CB5ec81A23C1058382',
-    ended: true,
+    ended: false,
     lp: '',
     name: '',
     baseToken: QUICK,
@@ -234,7 +254,7 @@ export const SYRUP_REWARDS_INFO: {
   {
     token: FEAR,
     stakingRewardAddress: '0x886d5186Be0255ed4b7DAcB4c493aF6f8cD1ed04',
-    ended: true,
+    ended: false,
     lp: '',
     name: '',
     baseToken: USDC,
@@ -244,7 +264,7 @@ export const SYRUP_REWARDS_INFO: {
   {
     token: CHICK,
     stakingRewardAddress: '0xBe35a3238bd6fdde7a7749CB8702d5f17217c1a5',
-    ended: true,
+    ended: false,
     lp: '',
     name: '',
     baseToken: USDC,
@@ -254,7 +274,7 @@ export const SYRUP_REWARDS_INFO: {
   {
     token: ADS,
     stakingRewardAddress: '0xC6b141B27c82d6DB104440edE21d4F8E046B6Aa2',
-    ended: true,
+    ended: false,
     lp: '',
     name: '',
     baseToken: USDC,
@@ -264,7 +284,7 @@ export const SYRUP_REWARDS_INFO: {
   {
     token: CIOTX,
     stakingRewardAddress: '0x54B1e1A8F2472230DB6092833249675Fc2E8DFe1',
-    ended: true,
+    ended: false,
     lp: '',
     name: '',
     baseToken: USDC,
@@ -274,7 +294,7 @@ export const SYRUP_REWARDS_INFO: {
   {
     token: ADDY,
     stakingRewardAddress: '0x3429f08D507EfBcA7B41BC0F99e9276918495F97',
-    ended: true,
+    ended: false,
     lp: '',
     name: '',
     baseToken: ETHER,
