@@ -421,6 +421,20 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/12373/small/REVV_TOKEN_Refined_2021_%281%29.png?1627652390'
     }
 
+    if (address?.toLowerCase() === '0xA55870278d6389ec5B524553D03C04F5677c061E'.toLowerCase()) {
+      uri = 'https://i.imgur.com/jykuRwK.png'
+    }if (address?.toLowerCase() === '0x2fe8733dcb25BFbbA79292294347415417510067'.toLowerCase()) {
+      uri = 'https://i.imgur.com/Kte7hVj.jpg'
+    }if (address?.toLowerCase() === '0x9d5565dA88e596730522CbC5a918d2A89dbC16d9'.toLowerCase()) {
+      uri = 'https://cloudstorage.openocean.finance/image/ooe_log.png'
+    }if (address?.toLowerCase() === '0x7E4c577ca35913af564ee2a24d882a4946Ec492B'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17393/small/ME_logo_200_200.png?1627526275'
+    }if (address?.toLowerCase() === '0x5fCB9de282Af6122ce3518CDe28B7089c9F97b26'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14926/small/logo_200x200.png?1626181831'
+    }if (address?.toLowerCase() === '0x855D4248672a1fCE482165e8DBE1207b94b1968a'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14101/small/Group-423.png?1614317472'
+    }
+
     if (address?.toLowerCase() === '0xEe9801669C6138E84bD50dEB500827b776777d28'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/15460/small/o3.png?1620904316'
     }if (address?.toLowerCase() === '0x598e49f01bEfeB1753737934a5b11fea9119C796'.toLowerCase()) {

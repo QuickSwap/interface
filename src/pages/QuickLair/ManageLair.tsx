@@ -107,10 +107,10 @@ export default function ManageLair() {
         </PoolData>
         <PoolData>
           <AutoColumn gap="sm">
-            <TYPE.body style={{ margin: 0 }}>dQUICK Rate</TYPE.body>
+            <TYPE.body style={{ margin: 0 }}>QUICK Rate</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
-            {`${lairInfo.QUICKtodQUICK
-            ?.toFixed(8, { groupSeparator: ',' })} dQUICK / QUICK`}
+            {`${lairInfo.dQUICKtoQUICK
+            ?.toFixed(8, { groupSeparator: ',' })} QUICK / dQUICK`}
             </TYPE.body>
           </AutoColumn>
         </PoolData>

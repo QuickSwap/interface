@@ -94,11 +94,6 @@ export default function LairCard({ lairInfo }: { lairInfo: LairInfo }) {
           </TYPE.white>
         </RowBetween>
         <RowBetween>
-          <TYPE.white> dQUICK Rate </TYPE.white>
-          <TYPE.white>{`${lairInfo.QUICKtodQUICK
-            ?.toFixed(4, { groupSeparator: ',' })} dQUICK / QUICK`}</TYPE.white>
-        </RowBetween>
-        <RowBetween>
           <TYPE.white> APY </TYPE.white>
           <TYPE.white>{APY} %</TYPE.white>
         </RowBetween>
