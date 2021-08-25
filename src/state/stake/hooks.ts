@@ -174,7 +174,7 @@ export const SYRUP_REWARDS_INFO: {
     {
       token: TEL,
       stakingRewardAddress: '0x346C9e501aDc38F1f325CC0c2D44C325283eEaF1',
-      ended: true,
+      ended: false,
       lp: '',
       name: '',
       baseToken: USDC,
