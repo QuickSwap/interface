@@ -182,6 +182,36 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1634925319
     },
     {
+      token: MONA,
+      stakingRewardAddress: '0xDa8805782Fa38f859b7D0001bedfE498faFca94a',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 1.52,
+      ending: 1635263542
+    },
+    {
+      token: MOONED,
+      stakingRewardAddress: '0xd66Df9f7Da33C90Ab21601349D5f44eCbB4a1e63',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 27333.33,
+      ending: 1635263542
+    },
+    {
+      token: DHV,
+      stakingRewardAddress: '0xAb226093369B3D45209D84fb891397d418CaEe68',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 555.55,
+      ending: 1635263542
+    },  
+    {
       token: XED,
       stakingRewardAddress: '0xaD1862888d33F2EA8d4E5025e5fe01916f01b856',
       ended: false,
