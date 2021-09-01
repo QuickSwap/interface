@@ -20,8 +20,13 @@ function thousands_separators(num:any)
   }
 
 const PageWrapper = styled(AutoColumn)`
-  max-width: 640px;
   width: 100%;
+  padding: 0 32px;
+  margin-top: -60px;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    margin-top: 0;
+    padding: 0 16px;
+  `}
 `
 
 const TopSection = styled(AutoColumn)`
@@ -30,12 +35,25 @@ const TopSection = styled(AutoColumn)`
 `
 
 const PoolSection = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  column-gap: 10px;
-  row-gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   width: 100%;
-  justify-self: center;
+  & > div {
+    width: calc(25% - 18px);
+    margin-bottom: 24px;
+    ${({ theme }) => theme.mediaWidth.upToLarge`
+      width: calc(33.33% - 12px);
+      margin-bottom: 18px;
+    `}
+    ${({ theme }) => theme.mediaWidth.upToMedium`
+      width: calc(50% - 12px);
+      margin-bottom: 24px;
+    `}
+    ${({ theme }) => theme.mediaWidth.upToSmall`
+      width: 100%;
+    `}
+  }
 `
 
 const PageButtons = styled.div`
@@ -96,6 +114,20 @@ export const SearchInput = styled.input`
   }
 `
 
+const TopWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+  & > div {
+    width: calc(50% - 12px);
+    margin-bottom: 20px;
+    ${({ theme }) => theme.mediaWidth.upToSmall`
+      width: 100%;
+    `}
+  }
+`
+
 
 export default function Syrup() {
 
@@ -124,7 +156,7 @@ export default function Syrup() {
 
   //@ts-ignore
   const maxPage = poolsToShow.length <= 10 ? 1 : Math.ceil(poolsToShow.length / 10);
-  const ITEMS_PER_PAGE = 11;
+  const ITEMS_PER_PAGE = 12;
 
   /**const handleInput = useCallback(event => {
     const input = event.target.value
@@ -200,65 +232,66 @@ export default function Syrup() {
 
   return (
     <PageWrapper gap="lg" justify="center">
-      <TopSection gap="md">
-        <DataCard>
-          <CardBGImage />
-          <CardNoise />
-          <CardSection>
-            <AutoColumn gap="md">
-              <RowBetween>
-                <TYPE.white fontWeight={600}>Dragon's Syrup</TYPE.white>
-              </RowBetween>
-              <RowBetween>
-                <TYPE.white fontSize={14}>
-                  Deposit your dQUICK tokens to earn more.
-                </TYPE.white>
-                
-              </RowBetween>{' '}
-              {/**<RowBetween>
-              <ExternalLink id={`old-pools-link`} href={'https://quickswap.exchange/#/archive'} style={{width: isMobile?'50%':'25%'}}>
-              
-                  <ButtonPrimary padding="8px" borderRadius="8px">
-                    Archived Pools
-                  </ButtonPrimary>
-                  </ExternalLink>
-              </RowBetween>*/}
-            </AutoColumn>
-          </CardSection>
-          <CardBGImage />
-          <CardNoise />
-        </DataCard>
-      </TopSection>
-
-
-      <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
-        <DataRow style={{ alignItems: 'baseline' }}>
-          <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Participating tokens</TYPE.mediumHeader>
-        </DataRow>
-        {/**<SearchInput
-          type="text"
-          id="pools-search-input"
-          placeholder='Search name or symbol'
-          value={searchQuery}
-          ref={inputRef as RefObject<HTMLInputElement>}
-          onChange={handleInput}
-        />*/}
+      <TopWrapper>
         <TopSection gap="md">
-        <DataCard>
-        <CardNoise />
-        <StatContainer>
-        <RowBetween style={{marginTop: "10px"}}>
-          <TYPE.white> Total Deposits</TYPE.white>
-          <TYPE.white>
-            ${thousands_separators(totalDepositedUSD)}
-          </TYPE.white>
-        </RowBetween>
-      </StatContainer>
+          <DataCard>
+            <CardBGImage />
+            <CardNoise />
+            <CardSection>
+              <AutoColumn gap="md">
+                <RowBetween>
+                  <TYPE.white fontWeight={600}>Dragon's Syrup</TYPE.white>
+                </RowBetween>
+                <RowBetween>
+                  <TYPE.white fontSize={14}>
+                    Deposit your dQUICK tokens to earn more.
+                  </TYPE.white>
+                  
+                </RowBetween>{' '}
+                {/**<RowBetween>
+                <ExternalLink id={`old-pools-link`} href={'https://quickswap.exchange/#/archive'} style={{width: isMobile?'50%':'25%'}}>
+                
+                    <ButtonPrimary padding="8px" borderRadius="8px">
+                      Archived Pools
+                    </ButtonPrimary>
+                    </ExternalLink>
+                </RowBetween>*/}
+              </AutoColumn>
+            </CardSection>
+            <CardBGImage />
+            <CardNoise />
           </DataCard>
+        </TopSection>
+        <div>
+          <DataRow style={{ alignItems: 'baseline' }}>
+            <TYPE.mediumHeader style={{ marginBottom: '0.5rem' }}>Participating tokens</TYPE.mediumHeader>
+          </DataRow>
+          {/**<SearchInput
+            type="text"
+            id="pools-search-input"
+            placeholder='Search name or symbol'
+            value={searchQuery}
+            ref={inputRef as RefObject<HTMLInputElement>}
+            onChange={handleInput}
+          />*/}
+          <TopSection gap="md">
+            <DataCard>
+              <CardNoise />
+              <StatContainer>
+                <RowBetween style={{marginTop: "10px"}}>
+                  <TYPE.white> Total Deposits</TYPE.white>
+                  <TYPE.white>
+                    ${thousands_separators(totalDepositedUSD)}
+                  </TYPE.white>
+                </RowBetween>
+              </StatContainer>
+            </DataCard>
           </TopSection>
+        </div>
+      </TopWrapper>
+
+      <AutoColumn gap="lg" style={{ width: '100%', marginTop: -20 }}>
         <PoolSection>
-
-
           {stakingRewardsExist && poolsToShow?.length === 0 ? (
             <Loader style={{ margin: 'auto' }} />
           ) : !stakingRewardsExist ? (
@@ -272,24 +305,24 @@ export default function Syrup() {
               return <SyrupCard key={syrupInfo.stakingRewardAddress} syrupInfo={syrupInfo} isOld={false}/>
             })
           )}
-          <PageButtons>
-        <div
-          onClick={(e) => {
-            setPage(page === 1 ? page : page - 1)
-          }}
-        >
-          <Arrow>←</Arrow>
-        </div>
-        <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
-        <div
-          onClick={(e) => {
-            setPage(page === maxPage ? page : page + 1)
-          }}
-        >
-          <Arrow>→</Arrow>
-        </div>
-      </PageButtons>
         </PoolSection>
+        <PageButtons>
+          <div
+            onClick={(e) => {
+              setPage(page === 1 ? page : page - 1)
+            }}
+          >
+            <Arrow>←</Arrow>
+          </div>
+          <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
+          <div
+            onClick={(e) => {
+              setPage(page === maxPage ? page : page + 1)
+            }}
+          >
+            <Arrow>→</Arrow>
+          </div>
+        </PageButtons>
       </AutoColumn>
     </PageWrapper>
   )
