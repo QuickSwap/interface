@@ -460,10 +460,8 @@ export const getTokenLogoURL = (address: string) => {
     }if (address?.toLowerCase() === '0x87f654c4b347230C60CAD8d7ea9cF0D7238bcc79'.toLowerCase()) {
       uri = 'https://yamp.finance/img/yamp_logo.svg'
     }
-
-    if (address?.toLowerCase() === '0xcBbF49E5065537843a7dcFDF8f49116B2DeB5a0f'.toLowerCase()) {
-      uri = 'https://cloudstorage.openocean.finance/image/ooe_log.png'
-    }if (address?.toLowerCase() === '0x8346Ab8d5EA7A9Db0209aEd2d1806AFA0E2c4C21'.toLowerCase()) {
+    
+    if (address?.toLowerCase() === '0x8346Ab8d5EA7A9Db0209aEd2d1806AFA0E2c4C21'.toLowerCase()) {
       uri = 'https://modefi.io/images/modefi256.png'
     }if (address?.toLowerCase() === '0x245e5ddb65eFea6522Fa913229dF1f4957fB2e21'.toLowerCase()) {
       uri = 'https://i.loli.net/2021/07/28/bGfpAaC6idUZVNP.png'
@@ -473,8 +471,28 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/2822/small/huobi-token-logo.png?1547036992'
     }
 
-    if (address?.toLowerCase() === '0x16887befea6772175240a8b3aa797c460f80a08e'.toLowerCase()) {
-      uri = 'https://cloudstorage.openocean.finance/image/ooe_log.png'
+    if (address?.toLowerCase() === '0x554f074d9cCda8F483d1812d4874cBebD682644E'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/13415/small/anrkey.jpg?1608311301'
+    }if (address?.toLowerCase() === '0x2B9E7ccDF0F4e5B24757c1E1a80e311E34Cb10c7'.toLowerCase()) {
+      uri = 'https://dimensiondev.github.io/Maskbook-VI/assets/Logo/MB--Logo--CombH-Circle--White.png'
+    }if (address?.toLowerCase() === '0x9C1C23E60B72Bc88a043bf64aFdb16A02540Ae8f'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/9443/small/RING.png?1615271827'
+    }if (address?.toLowerCase() === '0x032F85b8FbF8540a92B986d953e4C3A61C76d39E'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15054/small/tcp.PNG?1619579195'
+    }if (address?.toLowerCase() === '0x0B6afe834dab840335F87d99b45C2a4bd81A93c7'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17739/small/Polylauncher_-_200_x_200.png?1629121147'
+    }if (address?.toLowerCase() === '0xBa4c54Ea2d66b904C82847A7d2357d22B857E812'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/200x200/11292.png'
+    }if (address?.toLowerCase() === '0xC004e2318722EA2b15499D6375905d75Ee5390B8'.toLowerCase()) {
+      uri = 'https://i.imgur.com/KTS2F7I.png'
+    }if (address?.toLowerCase() === '0x692597b009d13C4049a947CAB2239b7d6517875F'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12681/small/UST.png?1601612407'
+    }if (address?.toLowerCase() === '0x24834BBEc7E39ef42f4a75EAF8E5B6486d3F0e57'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/8284/small/luna1557227471663.png?1567147072'
+    }if (address?.toLowerCase() === '0xdae89dA41a96956e9e70320Ac9c0dd077070D3a5'.toLowerCase()) {
+      uri = 'https://i.imgur.com/cH3LOBD.png'
+    }if (address?.toLowerCase() === '0x692AC1e363ae34b6B489148152b12e2785a3d8d6'.toLowerCase()) {
+      uri = 'https://polygonscan.com/token/images/polytrade_32.png'
     }
 
     if (address?.toLowerCase() === '0x7e9928aFe96FefB820b85B4CE6597B8F660Fe4F4'.toLowerCase()) {
