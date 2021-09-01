@@ -40,21 +40,36 @@ const PoolSection = styled.div`
 const NewPoolSection = styled.div `
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   width: 100%;
   & > div {
     width: calc(25% - 18px);
-    margin-bottom: 24px;
+    margin: 0 24px 24px 0;
+    &:nth-of-type(4n) {
+      margin: 0 0 24px 0;
+    }
     ${({ theme }) => theme.mediaWidth.upToLarge`
       width: calc(33.33% - 12px);
-      margin-bottom: 18px;
+      margin: 0 16px 18px 0;
+      &:nth-of-type(4n) {
+        margin: 0 16px 18px 0;
+      }
+      &:nth-of-type(3n) {
+        margin: 0 0 18px 0;
+      }
     `}
     ${({ theme }) => theme.mediaWidth.upToMedium`
       width: calc(50% - 12px);
-      margin-bottom: 24px;
+      margin: 0 24px 24px 0;
+      &:nth-of-type(4n), &:nth-of-type(3n) {
+        margin: 0 24px 24px 0;
+      }
+      &:nth-of-type(2n) {
+        margin: 0 0 24px 0;
+      }
     `}
     ${({ theme }) => theme.mediaWidth.upToSmall`
       width: 100%;
+      margin: 0 0 24px 0 !important;
     `}
   }
 `
