@@ -16,8 +16,8 @@ import { useActiveWeb3React } from '../../hooks'
 
 const PageWrapper = styled(AutoColumn)`
   width: 100%;
-  margin-top: -68px;
-  padding: 0 32px;
+  margin-top: -60px;
+  padding: 0 40px;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     margin-top: 0;
     padding: 0 16px;
@@ -43,8 +43,8 @@ const NewPoolSection = styled.div `
   justify-content: space-between;
   width: 100%;
   & > div {
-    width: calc(25% - 12px);
-    margin-bottom: 16px;
+    width: calc(25% - 18px);
+    margin-bottom: 24px;
     ${({ theme }) => theme.mediaWidth.upToLarge`
       width: calc(33.33% - 12px);
       margin-bottom: 18px;
