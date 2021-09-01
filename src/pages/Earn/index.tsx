@@ -15,12 +15,16 @@ import Loader from '../../components/Loader'
 import { useActiveWeb3React } from '../../hooks'
 
 const PageWrapper = styled(AutoColumn)`
-  max-width: 640px;
   width: 100%;
+  margin-top: -68px;
+  padding: 0 32px;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    margin-top: 0;
+    padding: 0 16px;
+  `}
 `
 
 const TopSection = styled(AutoColumn)`
-  max-width: 720px;
   width: 100%;
 `
 
@@ -31,6 +35,28 @@ const PoolSection = styled.div`
   row-gap: 15px;
   width: 100%;
   justify-self: center;
+`
+
+const NewPoolSection = styled.div `
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 100%;
+  & > div {
+    width: calc(25% - 12px);
+    margin-bottom: 16px;
+    ${({ theme }) => theme.mediaWidth.upToLarge`
+      width: calc(33.33% - 12px);
+      margin-bottom: 18px;
+    `}
+    ${({ theme }) => theme.mediaWidth.upToMedium`
+      width: calc(50% - 12px);
+      margin-bottom: 24px;
+    `}
+    ${({ theme }) => theme.mediaWidth.upToSmall`
+      width: 100%;
+    `}
+  }
 `
 
 const PageButtons = styled.div`
@@ -89,6 +115,19 @@ export const SearchInput = styled.input`
   }
 `
 
+const TopWrapper = styled.div`
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  & > div {
+    width: calc(50% - 12px);
+    margin-bottom: 20px;
+    ${({ theme }) => theme.mediaWidth.upToSmall`
+      width: 100%;
+    `}
+  }
+`
 
 export default function Earn() {
 
@@ -163,8 +202,8 @@ export default function Earn() {
   }
 
   //@ts-ignore
-  const maxPage = poolsToShow.length <= 10 ? 1 : Math.ceil(poolsToShow.length / 10);
-  const ITEMS_PER_PAGE = 10;
+  const maxPage = poolsToShow.length <= 10 ? 1 : Math.ceil(poolsToShow.length / 12);
+  const ITEMS_PER_PAGE = 12;
 
   const handleInput = useCallback(event => {
     const input = event.target.value
@@ -253,61 +292,63 @@ export default function Earn() {
           <CardNoise />
         </DataCard>
       </TopSection>
-      <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
-        <DataRow style={{ alignItems: 'baseline' }}>
-          <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Dragon's Lair</TYPE.mediumHeader>
-          
-        </DataRow>
+      <TopWrapper>
+        <AutoColumn gap="lg">
+          <DataRow style={{ alignItems: 'baseline' }}>
+            <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Dragon's Lair</TYPE.mediumHeader>     
+          </DataRow>
+          <PoolSection>
+            <LairCard lairInfo={lairInfo}/>
+          </PoolSection>
+        </AutoColumn>
+        <AutoColumn gap="lg">
+          <DataRow style={{ alignItems: 'baseline' }}>
+            <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Participating pools</TYPE.mediumHeader>
+            <Countdown exactEnd={pools?.[pools.length - 1]?.periodFinish} />
+          </DataRow>
+          <SearchInput
+            type="text"
+            id="pools-search-input"
+            placeholder='Search name or symbol'
+            value={searchQuery}
+            ref={inputRef as RefObject<HTMLInputElement>}
+            onChange={handleInput}
+          />
+          <TopSection gap="md">
+            <DataCard>
+              <CardNoise />
+              <StatContainer>
+                <RowBetween style={{marginTop: "10px"}}>
+                  <TYPE.white> Reward Rate</TYPE.white>
+                  <TYPE.white>
+                    {totalRewards.toFixed(0)} QUICK / day
+                  </TYPE.white>
+                </RowBetween>
+                <RowBetween style={{marginTop: "10px"}}>
+                  <TYPE.white> Total Rewards</TYPE.white>
+                  <TYPE.white>
+                    ${totalRewardsUSD} / day
+                  </TYPE.white>
+                </RowBetween>
 
-        <PoolSection>
-        <LairCard lairInfo={lairInfo}/>
-        </PoolSection>
-      </AutoColumn>
-
-      <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
-        <DataRow style={{ alignItems: 'baseline' }}>
-          <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Participating pools</TYPE.mediumHeader>
-          <Countdown exactEnd={pools?.[pools.length - 1]?.periodFinish} />
-        </DataRow>
-        <SearchInput
-          type="text"
-          id="pools-search-input"
-          placeholder='Search name or symbol'
-          value={searchQuery}
-          ref={inputRef as RefObject<HTMLInputElement>}
-          onChange={handleInput}
-        />
-        <TopSection gap="md">
-        <DataCard>
-        <CardNoise />
-        <StatContainer>
-        <RowBetween style={{marginTop: "10px"}}>
-          <TYPE.white> Reward Rate</TYPE.white>
-          <TYPE.white>
-            {totalRewards.toFixed(0)} QUICK / day
-          </TYPE.white>
-        </RowBetween>
-        <RowBetween style={{marginTop: "10px"}}>
-          <TYPE.white> Total Rewards</TYPE.white>
-          <TYPE.white>
-            ${totalRewardsUSD} / day
-          </TYPE.white>
-        </RowBetween>
-
-        {totalFee !== 0 && (
-          <RowBetween style={{marginTop: "10px"}}>
-          <TYPE.white> Fees (24hr)</TYPE.white>
-          <TYPE.white>
-            ${totalFee}
-          </TYPE.white>
-        </RowBetween>
-        )}
-      </StatContainer>
-          </DataCard>
+                {totalFee !== 0 && (
+                  <RowBetween style={{marginTop: "10px"}}>
+                  <TYPE.white> Fees (24hr)</TYPE.white>
+                  <TYPE.white>
+                    ${totalFee}
+                  </TYPE.white>
+                </RowBetween>
+                )}
+              </StatContainer>
+            </DataCard>
           </TopSection>
-        <PoolSection>
-        {stakingRewardsExist && oldStakingInfos?.length === 0 ? (
-            <div />
+        </AutoColumn>
+      </TopWrapper>
+
+      <AutoColumn gap="lg" style={{ width: '100%', marginTop: -20 }}>
+        <NewPoolSection>
+          {stakingRewardsExist && oldStakingInfos?.length === 0 ? (
+            <div style={{ width: '100%' }} />
           ) : !stakingRewardsExist ? (
             'No active rewards'
           ) : (
@@ -330,24 +371,24 @@ export default function Earn() {
               return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} isOld={false}/>
             })
           )}
-          <PageButtons>
-        <div
-          onClick={(e) => {
-            setPage(page === 1 ? page : page - 1)
-          }}
-        >
-          <Arrow>←</Arrow>
-        </div>
-        <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
-        <div
-          onClick={(e) => {
-            setPage(page === maxPage ? page : page + 1)
-          }}
-        >
-          <Arrow>→</Arrow>
-        </div>
-      </PageButtons>
-        </PoolSection>
+        </NewPoolSection>
+        <PageButtons>
+          <div
+            onClick={(e) => {
+              setPage(page === 1 ? page : page - 1)
+            }}
+          >
+            <Arrow>←</Arrow>
+          </div>
+          <TYPE.body>{'Page ' + page + ' of ' + maxPage}</TYPE.body>
+          <div
+            onClick={(e) => {
+              setPage(page === maxPage ? page : page + 1)
+            }}
+          >
+            <Arrow>→</Arrow>
+          </div>
+        </PageButtons>
       </AutoColumn>
     </PageWrapper>
   )
