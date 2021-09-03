@@ -2,7 +2,7 @@ import React, {  RefObject, useState, useCallback, useRef, useEffect } from 'rea
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
 import { STAKING_REWARDS_INFO, useStakingInfo, useOldStakingInfo, useLairInfo, StakingInfo } from '../../state/stake/hooks'
-import { TYPE, ExternalLink} from '../../theme'
+import { TYPE, ExternalLink } from '../../theme'
 import { isMobile } from 'react-device-detect'
 import PoolCard from '../../components/earn/PoolCard'
 import LairCard from '../../components/QuickLair/LairCard'
@@ -66,7 +66,7 @@ export const SearchInput = styled.input`
   display: flex;
   padding: 16px;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 228px);
   white-space: nowrap;
   background: none;
   border: none;
@@ -87,8 +87,42 @@ export const SearchInput = styled.input`
     border: 1px solid ${({ theme }) => theme.primary1};
     outline: none;
   }
+
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    width: 100%;
+  `};
 `
 
+const FilterWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`
+
+const FilterButtons = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  width: 220px;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    width: 100%;
+    margin-top: 8px;
+    height: 48px;
+  `};
+`
+
+const FilterItem = styled.div<{active: boolean}>`
+  width: 32%;
+  border: 1px solid ${({ theme }) => theme.primary1};
+  background: ${({ theme, active }) => active ? theme.primary1 : 'transparent'};
+  color: ${({ theme, active }) => active ? 'white' : 'black'};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 20px;
+  cursor: pointer;
+`
 
 export default function Earn() {
 
@@ -221,6 +255,8 @@ export default function Earn() {
     }
   })
 
+  const [filterIndex, setFilterIndex] = useState(-1)
+
 
   return (
     <PageWrapper gap="lg" justify="center">
@@ -269,14 +305,21 @@ export default function Earn() {
           <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Participating pools</TYPE.mediumHeader>
           <Countdown exactEnd={pools?.[pools.length - 1]?.periodFinish} />
         </DataRow>
-        <SearchInput
-          type="text"
-          id="pools-search-input"
-          placeholder='Search name or symbol'
-          value={searchQuery}
-          ref={inputRef as RefObject<HTMLInputElement>}
-          onChange={handleInput}
-        />
+        <FilterWrapper>
+          <SearchInput
+            type="text"
+            id="pools-search-input"
+            placeholder='Search name or symbol'
+            value={searchQuery}
+            ref={inputRef as RefObject<HTMLInputElement>}
+            onChange={handleInput}
+          />
+          <FilterButtons>
+            <FilterItem active={filterIndex === 0} onClick={() => filterIndex === 0 ? setFilterIndex(-1) : setFilterIndex(0)}>APY</FilterItem>
+            <FilterItem active={filterIndex === 1} onClick={() => filterIndex === 1 ? setFilterIndex(-1) : setFilterIndex(1)}>Deposit</FilterItem>
+            <FilterItem active={filterIndex === 2} onClick={() => filterIndex === 2 ? setFilterIndex(-1) : setFilterIndex(2)}>Pool Rate</FilterItem>
+          </FilterButtons>
+        </FilterWrapper>
         <TopSection gap="md">
         <DataCard>
         <CardNoise />

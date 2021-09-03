@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { RefObject, useRef, useEffect, useState, useCallback } from 'react'
 
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
@@ -73,7 +73,7 @@ export const SearchInput = styled.input`
   display: flex;
   padding: 16px;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 188px);
   white-space: nowrap;
   background: none;
   border: none;
@@ -94,6 +94,41 @@ export const SearchInput = styled.input`
     border: 1px solid ${({ theme }) => theme.primary1};
     outline: none;
   }
+
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    width: 100%;
+  `};
+`
+
+const FilterWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`
+
+const FilterButtons = styled.div`
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  min-width: 180px;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    width: 100%;
+    margin-top: 8px;
+    height: 48px;
+  `};
+`
+
+const FilterItem = styled.div<{active: boolean}>`
+  width: 48%;
+  border: 1px solid ${({ theme }) => theme.primary1};
+  background: ${({ theme, active }) => active ? theme.primary1 : 'transparent'};
+  color: ${({ theme, active }) => active ? 'white' : 'black'};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 20px;
+  cursor: pointer;
 `
 
 
@@ -101,9 +136,9 @@ export default function Syrup() {
 
   // pagination
   const [page, setPage] = useState(1)
-  //const [ setSearchQuery] = useState<string>('')
+  const [ searchQuery, setSearchQuery] = useState<string>('')
   
-  //const [searchedPools, setPools] = useState<SyrupInfo[]>([]);
+  // const [searchedPools, setPools] = useState<SyrupInfo[]>([]);
   //const [ empty, setEmpty ] = useState(true);
 
   const { chainId } = useActiveWeb3React()
@@ -126,41 +161,41 @@ export default function Syrup() {
   const maxPage = poolsToShow.length <= 10 ? 1 : Math.ceil(poolsToShow.length / 10);
   const ITEMS_PER_PAGE = 11;
 
-  /**const handleInput = useCallback(event => {
+  const handleInput = useCallback(event => {
     const input = event.target.value
     setSearchQuery(input)
-    if (!input || input.trim() === '') {
-      setPools([]);
-      setEmpty(true);
-      return;
-    }
-    var searchedPools:any[] = [];
-    for(var i = 0; i < pools.length; i++) {
-      if (
-        pools[i].token.name?.toLowerCase().includes(input.toLowerCase()) || 
-        pools[i].token.symbol?.toLowerCase().includes(input.toLowerCase())
-      )
-      {
-        searchedPools.push(pools[i]);
-      }
-    }
-    searchedPools?.sort((a,b) => {
-      if(Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
-        return 1;
-      }
-      if(!Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
-        return 1;
-      }
-      if(Boolean(a.stakedAmount.greaterThan('0')) && !Boolean(b.stakedAmount.greaterThan('0'))) {
-        return -1;
-      }
-      else {
-        return 1;
-      }
-    })
-    setPools(searchedPools);
-    setEmpty(false);
-  }, [])*/
+    // if (!input || input.trim() === '') {
+    //   setPools([]);
+    //   setEmpty(true);
+    //   return;
+    // }
+    // var searchedPools:any[] = [];
+    // for(var i = 0; i < pools.length; i++) {
+    //   if (
+    //     pools[i].token.name?.toLowerCase().includes(input.toLowerCase()) || 
+    //     pools[i].token.symbol?.toLowerCase().includes(input.toLowerCase())
+    //   )
+    //   {
+    //     searchedPools.push(pools[i]);
+    //   }
+    // }
+    // searchedPools?.sort((a,b) => {
+    //   if(Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
+    //     return 1;
+    //   }
+    //   if(!Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
+    //     return 1;
+    //   }
+    //   if(Boolean(a.stakedAmount.greaterThan('0')) && !Boolean(b.stakedAmount.greaterThan('0'))) {
+    //     return -1;
+    //   }
+    //   else {
+    //     return 1;
+    //   }
+    // })
+    // setPools(searchedPools);
+    // setEmpty(false);
+  }, [])
 
   const stakingRewardsExist = Boolean(typeof chainId === 'number' && (SYRUP_REWARDS_INFO[chainId]?.length ?? 0) > 0)
 
@@ -197,6 +232,9 @@ export default function Syrup() {
     },[syrupInfos]
   )
 
+  const inputRef = useRef<HTMLInputElement>()
+
+  const [filterIndex, setFilterIndex] = useState(-1)
 
   return (
     <PageWrapper gap="lg" justify="center">
@@ -235,14 +273,20 @@ export default function Syrup() {
         <DataRow style={{ alignItems: 'baseline' }}>
           <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Participating tokens</TYPE.mediumHeader>
         </DataRow>
-        {/**<SearchInput
-          type="text"
-          id="pools-search-input"
-          placeholder='Search name or symbol'
-          value={searchQuery}
-          ref={inputRef as RefObject<HTMLInputElement>}
-          onChange={handleInput}
-        />*/}
+        <FilterWrapper>
+          <SearchInput
+            type="text"
+            id="pools-search-input"
+            placeholder='Search name or symbol'
+            value={searchQuery}
+            ref={inputRef as RefObject<HTMLInputElement>}
+            onChange={handleInput}
+          />
+          <FilterButtons>
+            <FilterItem active={filterIndex === 0} onClick={() => filterIndex === 0 ? setFilterIndex(-1) : setFilterIndex(0)}>APY</FilterItem>
+            <FilterItem active={filterIndex === 1} onClick={() => filterIndex === 1 ? setFilterIndex(-1) : setFilterIndex(1)}>Deposit</FilterItem>
+          </FilterButtons>
+        </FilterWrapper>
         <TopSection gap="md">
         <DataCard>
         <CardNoise />
