@@ -285,7 +285,7 @@ export default function Syrup() {
           <FilterButtons>
             <FilterItem active={sortIndex === 0} onClick={() => sortIndex === 0 ? setSortIndex(-1) : setSortIndex(0)}>APY</FilterItem>
             <FilterItem active={sortIndex === 1} onClick={() => sortIndex === 1 ? setSortIndex(-1) : setSortIndex(1)}>Deposit</FilterItem>
-            <FilterItem active={sortIndex === 2} onClick={() => sortIndex === 1 ? setSortIndex(-1) : setSortIndex(2)}>Token Rewards</FilterItem>
+            <FilterItem active={sortIndex === 2} onClick={() => sortIndex === 2 ? setSortIndex(-1) : setSortIndex(2)}>Token Rewards</FilterItem>
           </FilterButtons>
         </FilterWrapper>
         <TopSection gap="md">
