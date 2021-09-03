@@ -31,7 +31,7 @@ export const getTokenLogoURL = (address: string) => {
     }
   
     if (address?.toLowerCase() === '0x831753dd7087cac61ab5644b308642cc1c33dc13') {
-      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-interface/master/public/favicon.jpeg'
+      uri = 'https://i.imgur.com/8G7QIrR.png'
     }
   
     if (address?.toLowerCase() === '0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6') {
@@ -203,7 +203,7 @@ export const getTokenLogoURL = (address: string) => {
     }
 
     if (address?.toLowerCase() === '0xf28164A485B0B2C90639E47b0f377b4a438a16B1'.toLowerCase()) {
-      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-interface/master/public/favicon.jpeg'
+      uri = 'https://i.imgur.com/8G7QIrR.png'
     }
 
     if (address?.toLowerCase() === '0xd85d1e945766fea5eda9103f918bd915fbca63e6'.toLowerCase()) {
