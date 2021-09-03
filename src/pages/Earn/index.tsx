@@ -255,7 +255,7 @@ export default function Earn() {
     }
   })
 
-  const [filterIndex, setFilterIndex] = useState(-1)
+  const [sortIndex, setSortIndex] = useState(-1)
 
 
   return (
@@ -315,9 +315,9 @@ export default function Earn() {
             onChange={handleInput}
           />
           <FilterButtons>
-            <FilterItem active={filterIndex === 0} onClick={() => filterIndex === 0 ? setFilterIndex(-1) : setFilterIndex(0)}>APY</FilterItem>
-            <FilterItem active={filterIndex === 1} onClick={() => filterIndex === 1 ? setFilterIndex(-1) : setFilterIndex(1)}>Deposit</FilterItem>
-            <FilterItem active={filterIndex === 2} onClick={() => filterIndex === 2 ? setFilterIndex(-1) : setFilterIndex(2)}>Pool Rate</FilterItem>
+            <FilterItem active={sortIndex === 0} onClick={() => sortIndex === 0 ? setSortIndex(-1) : setSortIndex(0)}>APY</FilterItem>
+            <FilterItem active={sortIndex === 1} onClick={() => sortIndex === 1 ? setSortIndex(-1) : setSortIndex(1)}>Deposit</FilterItem>
+            <FilterItem active={sortIndex === 2} onClick={() => sortIndex === 2 ? setSortIndex(-1) : setSortIndex(2)}>Pool Rate</FilterItem>
           </FilterButtons>
         </FilterWrapper>
         <TopSection gap="md">

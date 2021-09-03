@@ -73,7 +73,7 @@ export const SearchInput = styled.input`
   display: flex;
   padding: 16px;
   align-items: center;
-  width: calc(100% - 188px);
+  width: calc(100% - 248px);
   white-space: nowrap;
   background: none;
   border: none;
@@ -110,7 +110,7 @@ const FilterButtons = styled.div`
   display: flex;
   position: relative;
   justify-content: space-between;
-  min-width: 180px;
+  min-width: 240px;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     width: 100%;
     margin-top: 8px;
@@ -119,7 +119,7 @@ const FilterButtons = styled.div`
 `
 
 const FilterItem = styled.div<{active: boolean}>`
-  width: 48%;
+  width: 32%;
   border: 1px solid ${({ theme }) => theme.primary1};
   background: ${({ theme, active }) => active ? theme.primary1 : 'transparent'};
   color: ${({ theme, active }) => active ? 'white' : 'black'};
@@ -234,7 +234,7 @@ export default function Syrup() {
 
   const inputRef = useRef<HTMLInputElement>()
 
-  const [filterIndex, setFilterIndex] = useState(-1)
+  const [sortIndex, setSortIndex] = useState(-1)
 
   return (
     <PageWrapper gap="lg" justify="center">
@@ -283,8 +283,9 @@ export default function Syrup() {
             onChange={handleInput}
           />
           <FilterButtons>
-            <FilterItem active={filterIndex === 0} onClick={() => filterIndex === 0 ? setFilterIndex(-1) : setFilterIndex(0)}>APY</FilterItem>
-            <FilterItem active={filterIndex === 1} onClick={() => filterIndex === 1 ? setFilterIndex(-1) : setFilterIndex(1)}>Deposit</FilterItem>
+            <FilterItem active={sortIndex === 0} onClick={() => sortIndex === 0 ? setSortIndex(-1) : setSortIndex(0)}>APY</FilterItem>
+            <FilterItem active={sortIndex === 1} onClick={() => sortIndex === 1 ? setSortIndex(-1) : setSortIndex(1)}>Deposit</FilterItem>
+            <FilterItem active={sortIndex === 2} onClick={() => sortIndex === 1 ? setSortIndex(-1) : setSortIndex(2)}>Token Rewards</FilterItem>
           </FilterButtons>
         </FilterWrapper>
         <TopSection gap="md">
