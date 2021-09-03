@@ -38,7 +38,7 @@ async function getColorFromToken(token: Token): Promise<string | null> {
     }
   
     if (token.address?.toLowerCase() === '0x831753dd7087cac61ab5644b308642cc1c33dc13') {
-      path = 'https://raw.githubusercontent.com/sameepsi/quickswap-interface/master/public/favicon.jpeg'
+      path = 'https://i.imgur.com/8G7QIrR.png'
     }
   
     if (token.address?.toLowerCase() === '0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6') {

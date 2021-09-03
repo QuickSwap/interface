@@ -456,9 +456,9 @@ export default function Header() {
             Charts {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
 
-          {account && <StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
+          <StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
             Buy
-          </StyledLinkStyledButton>}
+          </StyledLinkStyledButton>
 
           <StyledExternalLink id={`startido-nav-link`} href={'https://idos.starter.xyz/quickstart'} style={{marginLeft: mobile?'4px':'12px', marginRight: mobile?'0px':'12px'}}>
             IDO {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}

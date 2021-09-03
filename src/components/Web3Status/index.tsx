@@ -188,7 +188,7 @@ function Web3StatusInner() {
         params: [{
           "chainId": "0x89",
           "chainName": "Matic Network",
-          "rpcUrls": ["https://rpc-mainnet.maticvigil.com"],
+          "rpcUrls": ["https://polygon-rpc.com/"],
           "iconUrls": [
             "https://raw.githubusercontent.com/trustwallet/assets/master/blockchains/ethereum/assets/0x7D1AfA7B718fb893dB30A3aBc0Cfc608AaCfeBB0/logo.png"
           ],
@@ -245,7 +245,7 @@ function Web3StatusInner() {
         }
         {
           error instanceof UnsupportedChainIdError && (ethereum && ethereum.isMetaMask) && <Web3StatusConnect id="connect-wallet" onClick={addMaticToMetamask} faded={!account}>
-          <Text>{t('Switch to Matic')}</Text>
+          <Text>{t('Switch to Polygon')}</Text>
         </Web3StatusConnect>
         }
       </div>

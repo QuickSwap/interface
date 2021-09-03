@@ -31,7 +31,7 @@ export const getTokenLogoURL = (address: string) => {
     }
   
     if (address?.toLowerCase() === '0x831753dd7087cac61ab5644b308642cc1c33dc13') {
-      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-interface/master/public/favicon.jpeg'
+      uri = 'https://i.imgur.com/8G7QIrR.png'
     }
   
     if (address?.toLowerCase() === '0x1bfd67037b42cf73acf2047067bd4f2c47d9bfd6') {
@@ -203,7 +203,7 @@ export const getTokenLogoURL = (address: string) => {
     }
 
     if (address?.toLowerCase() === '0xf28164A485B0B2C90639E47b0f377b4a438a16B1'.toLowerCase()) {
-      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-interface/master/public/favicon.jpeg'
+      uri = 'https://i.imgur.com/8G7QIrR.png'
     }
 
     if (address?.toLowerCase() === '0xd85d1e945766fea5eda9103f918bd915fbca63e6'.toLowerCase()) {
@@ -474,7 +474,7 @@ export const getTokenLogoURL = (address: string) => {
     if (address?.toLowerCase() === '0x554f074d9cCda8F483d1812d4874cBebD682644E'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/13415/small/anrkey.jpg?1608311301'
     }if (address?.toLowerCase() === '0x2B9E7ccDF0F4e5B24757c1E1a80e311E34Cb10c7'.toLowerCase()) {
-      uri = 'https://dimensiondev.github.io/Maskbook-VI/assets/Logo/MB--Logo--CombH-Circle--White.png'
+      uri = 'https://assets.coingecko.com/coins/images/14051/small/Mask_Network.jpg?1614050316'
     }if (address?.toLowerCase() === '0x9C1C23E60B72Bc88a043bf64aFdb16A02540Ae8f'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/9443/small/RING.png?1615271827'
     }if (address?.toLowerCase() === '0x032F85b8FbF8540a92B986d953e4C3A61C76d39E'.toLowerCase()) {
@@ -490,7 +490,7 @@ export const getTokenLogoURL = (address: string) => {
     }if (address?.toLowerCase() === '0x24834BBEc7E39ef42f4a75EAF8E5B6486d3F0e57'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/8284/small/luna1557227471663.png?1567147072'
     }if (address?.toLowerCase() === '0xdae89dA41a96956e9e70320Ac9c0dd077070D3a5'.toLowerCase()) {
-      uri = 'https://i.imgur.com/cH3LOBD.png'
+      uri = 'https://assets.coingecko.com/coins/images/12743/small/logo_%2898%29.png?1602630445'
     }if (address?.toLowerCase() === '0x692AC1e363ae34b6B489148152b12e2785a3d8d6'.toLowerCase()) {
       uri = 'https://polygonscan.com/token/images/polytrade_32.png'
     }
