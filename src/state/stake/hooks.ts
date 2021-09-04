@@ -186,7 +186,7 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 6666.67,
-      ending: 1635958912
+      ending: 1635960912
     },  
     {
       token: MASK,
