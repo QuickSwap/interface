@@ -287,7 +287,17 @@ export const SYRUP_REWARDS_INFO: {
       baseToken: QUICK,
       rate: 2166.66,
       ending: 1635095958
-    },  
+    },
+    {
+      token: TRADE,
+      stakingRewardAddress: '0x9f48eB6E139855ebc89de973ea91c7596583E6Bc',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 2458,
+      ending: 1636117833
+    },
     {
     token: START,
     stakingRewardAddress: '0xBC00cF775D78b50925895A872Aa945B728dB0EBB',
