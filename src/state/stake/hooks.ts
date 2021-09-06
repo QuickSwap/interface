@@ -179,6 +179,16 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: ANGEL,
+      stakingRewardAddress: '0x1D68F94a1c56ef1706cf2BB66F671E3830B3B0bA',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 6666.67,
+      ending: 1635960912
+    },  
+    {
       token: MASK,
       stakingRewardAddress: '0x15cB4132e4438F11fde5199aC6aE15881f1C1456',
       ended: false,
