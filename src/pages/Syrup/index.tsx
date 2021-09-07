@@ -124,7 +124,7 @@ export default function Syrup() {
 
   //@ts-ignore
   const maxPage = poolsToShow.length <= 10 ? 1 : Math.ceil(poolsToShow.length / 10);
-  const ITEMS_PER_PAGE = 11;
+  const ITEMS_PER_PAGE = 10;
 
   /**const handleInput = useCallback(event => {
     const input = event.target.value
