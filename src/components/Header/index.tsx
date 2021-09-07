@@ -398,7 +398,7 @@ export default function Header() {
 
   const [widgetMenuOpen, setWidgetMenuOpen] = useState(false)
   const [buyMenuOpen, setBuyMenuOpen] = useState(false)
-
+  const [showMoonPayWidget, setShowMoonPayWidget] = useState(false)
 
   return (
     <HeaderFrame>
@@ -406,6 +406,19 @@ export default function Header() {
       <ClaimModal />
       <Modal isOpen={showUniBalanceModal} onDismiss={() => setShowUniBalanceModal(false)}>
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
+      </Modal>
+      <Modal isOpen={showMoonPayWidget} onDismiss={() => setShowMoonPayWidget(false)}>
+        <div style={{ height: '100%', width: '100%', overflowY: 'auto'}}>
+          <iframe
+            allow="accelerometer; autoplay; camera; gyroscope; payment"
+            frameBorder="0"
+            height="600px"
+            src="https://buy-staging.moonpay.io?apiKey=pk_test_NTpw9tezMHigRvdX8Ouwut522zUeNVZL"
+            width="100%"
+          >
+            <p>Your browser does not support iframes.</p>
+          </iframe>
+        </div>
       </Modal>
       <HeaderRow>
         <Title href="." >
@@ -468,7 +481,7 @@ export default function Header() {
             <StyledMenuContainer>
               <StyledMenu>
                 <StyledLinkStyledButton onClick={()=>{initiateTransak(account)}}>Transak</StyledLinkStyledButton>
-                <StyledLinkStyledButton onClick={()=>{}}>MoonPay</StyledLinkStyledButton>
+                <StyledLinkStyledButton onClick={()=>{setShowMoonPayWidget(true)}}>MoonPay</StyledLinkStyledButton>
               </StyledMenu>
             </StyledMenuContainer>   
           )}
