@@ -189,6 +189,9 @@ export default function Earn() {
     },[stakingInfos]
   )
 
+  const [sortIndex, setSortIndex] = useState(-1)
+  const [sortByDesc, setSortbyDesc] = useState(false)
+  const sortItems = ['APY', 'Deposit', 'Pool Rate']
   
   const inputRef = useRef<HTMLInputElement>()
 
@@ -255,8 +258,51 @@ export default function Earn() {
     }
   })
 
-  const [sortIndex, setSortIndex] = useState(-1)
+  if (sortIndex > -1) {
+    console.log(sortByDesc)
+    // poolsToShow.sort((a, b) => {
+    //   //@ts-ignore
+    //   const USDPrice = useUSDCPrice(baseToken)
+    //   let valueOfTotalStakedAmountInBaseToken: TokenAmount | undefined
+    //   if (totalSupplyOfStakingToken && stakingTokenPair) {
+    //     // take the total amount of LP tokens staked, multiply by ETH value of all LP tokens, divide by all LP tokens
+    //     valueOfTotalStakedAmountInBaseToken = new TokenAmount(
+    //       baseToken,
+    //       JSBI.divide(
+    //         JSBI.multiply(
+    //           JSBI.multiply(stakingInfo.totalStakedAmount.raw, stakingTokenPair.reserveOf(baseToken).raw),
+    //           JSBI.BigInt(2) // this is b/c the value of LP shares are ~double the value of the WETH they entitle owner to
+    //         ),
+    //         totalSupplyOfStakingToken.raw
+    //       )
+    //     )
+    //   }
+    //   const valueOfTotalStakedAmountInUSDC = valueOfTotalStakedAmountInBaseToken && USDPrice?.quote(valueOfTotalStakedAmountInBaseToken)  
+    //   const perMonthReturnInRewards: any = (a.rate * a.quickPrice * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6))
+    //   //let apy = 0;
+    //   let apyWithFee: any = 0;
+    //   let rewards = 0;
+    //   //apy = ((1 + ((perMonthReturnInRewards) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
+    //   //apy = perMonthReturnInRewards/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
 
+    //   //@ts-ignore
+    //   rewards = stakingInfo?.rate * stakingInfo?.quickPrice;
+
+    //   if(stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0) {
+    //     //@ts-ignore
+    //     apyWithFee = ((1 + ((perMonthReturnInRewards + stakingInfo.oneYearFeeAPY / 12) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
+    //     if(apyWithFee > 100000000) {
+    //       apyWithFee = ">100000000"
+    //     }
+    //     else {
+    //       apyWithFee = parseFloat(apyWithFee.toFixed(2)).toLocaleString()
+    //     }
+    //     //@ts-ignore
+    //     //apyWithFee = ((stakingInfo.oneYearFeeAPY) + perMonthReturnInRewards)/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
+    //   }
+    //   return a.stakedAmount.greaterThan(b.stakedAmount) ? 1 : -1;
+    // })
+  }
 
   return (
     <PageWrapper gap="lg" justify="center">
@@ -315,9 +361,18 @@ export default function Earn() {
             onChange={handleInput}
           />
           <FilterButtons>
-            <FilterItem active={sortIndex === 0} onClick={() => sortIndex === 0 ? setSortIndex(-1) : setSortIndex(0)}>APY</FilterItem>
-            <FilterItem active={sortIndex === 1} onClick={() => sortIndex === 1 ? setSortIndex(-1) : setSortIndex(1)}>Deposit</FilterItem>
-            <FilterItem active={sortIndex === 2} onClick={() => sortIndex === 2 ? setSortIndex(-1) : setSortIndex(2)}>Pool Rate</FilterItem>
+            {
+              sortItems.map((item, ind) => (
+                <FilterItem active={sortIndex === ind} onClick={() => {
+                  if (sortIndex === ind) {
+                    setSortbyDesc(true)
+                  } else {
+                    setSortbyDesc(false)
+                    setSortIndex(ind)
+                  }
+                }}>{ item }</FilterItem>
+              ))
+            }
           </FilterButtons>
         </FilterWrapper>
         <TopSection gap="md">
