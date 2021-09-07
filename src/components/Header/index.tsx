@@ -305,6 +305,9 @@ const StyledMenu = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 100;
+  & > button {
+    margin: 6px;
+  }
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
@@ -394,6 +397,7 @@ export default function Header() {
   const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
 
   const [widgetMenuOpen, setWidgetMenuOpen] = useState(false)
+  const [buyMenuOpen, setBuyMenuOpen] = useState(false)
 
 
   return (
@@ -456,9 +460,19 @@ export default function Header() {
             Charts {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
 
-          <StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
-            Buy
-          </StyledLinkStyledButton>
+          <div style={{ position: 'relative' }} onMouseEnter={() => {setBuyMenuOpen(true)}} onMouseLeave={() => {setBuyMenuOpen(false)}}>
+            <StyledLinkStyledButton id={`stake-nav-link`} onClick={() => {setBuyMenuOpen(true)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
+              Buy
+            </StyledLinkStyledButton>
+          {buyMenuOpen && (
+            <StyledMenuContainer>
+              <StyledMenu>
+                <StyledLinkStyledButton onClick={()=>{initiateTransak(account)}}>Transak</StyledLinkStyledButton>
+                <StyledLinkStyledButton onClick={()=>{}}>MoonPay</StyledLinkStyledButton>
+              </StyledMenu>
+            </StyledMenuContainer>   
+          )}
+          </div>
 
           <StyledExternalLink id={`startido-nav-link`} href={'https://idos.starter.xyz/quickstart'} style={{marginLeft: mobile?'4px':'12px', marginRight: mobile?'0px':'12px'}}>
             IDO {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
