@@ -495,6 +495,26 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://polygonscan.com/token/images/polytrade_32.png'
     }
 
+    if (address?.toLowerCase() === '0xa6b37fC85d870711C56FbcB8afe2f8dB049AE774'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/809/small/v2logo-1.png?1624906282'
+    }if (address?.toLowerCase() === '0xDBf31dF14B66535aF65AaC99C32e9eA844e14501'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/11370/small/Bitcoin.jpg?1628072791'
+    }if (address?.toLowerCase() === '0x614389EaAE0A6821DC49062D56BDA3d9d45Fa2ff'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/4630/small/Orbs.jpg?1547039896'
+    }if (address?.toLowerCase() === '0xF239E69ce434c7Fb408b05a0Da416b14917d934e'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17641/small/QRE5xI0.png?1628741510'
+    }if (address?.toLowerCase() === '0x9a05D1FF699ea187Dc8523E333eD63503f0d82db'.toLowerCase()) {
+      uri = 'https://pbs.twimg.com/profile_images/1428328610444742660/4fa6uMzp_400x400.jpg'
+    }if (address?.toLowerCase() === '0xe95fD76CF16008c12FF3b3a937CB16Cd9Cc20284'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/16185/small/Pera.jpg?1623238387'
+    }if (address?.toLowerCase() === '0xdaB35042e63E93Cc8556c9bAE482E5415B5Ac4B1'.toLowerCase()) {
+      uri = 'https://www.hermesdefi.io/hermes-logo-1.png'
+    }if (address?.toLowerCase() === '0x03678f2c2c762DC63c2Bb738c3a837D366eDa560'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/6331/small/5fbb9e5b8f27d74dd8bcb912_xcash_coingecko_logo.png?1606133752'
+    }if (address?.toLowerCase() === '0x689f8e5913C158fFB5Ac5aeb83b3C875F5d20309'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18197/small/snk.png?1630979321'
+    }
+    
     if (address?.toLowerCase() === '0x7e9928aFe96FefB820b85B4CE6597B8F660Fe4F4'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
     }if (address?.toLowerCase() === '0xAF24765F631C8830B5528B57002241eE7eef1C14'.toLowerCase()) {
@@ -502,9 +522,9 @@ export const getTokenLogoURL = (address: string) => {
     }if (address?.toLowerCase() === '0x0E50BEA95Fe001A370A4F1C220C49AEdCB982DeC'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/14238/small/ethernity_logo.png?1615189750'
     }if (address?.toLowerCase() === '0xaECeBfcF604AD245Eaf0D5BD68459C3a7A6399c2'.toLowerCase()) {
-      uri = 'https://rampdefi.com/assets/RAMP_LOGO_V4_256.png'
+      uri = 'https://assets.coingecko.com/coins/images/12837/small/RAMP-Logo-v2-1000pxsq.png?1617952606'
     }if (address?.toLowerCase() === '0xfC40a4F89b410a1b855b5e205064a38fC29F5eb5'.toLowerCase()) {
-      uri = 'https://rampdefi.com/assets/rUSD-Logo-200.png'
+      uri = 'https://assets.coingecko.com/coins/images/16184/small/rUSD-Logo-200.png?1623231145'
     }if (address?.toLowerCase() === '0x42dbBd5ae373FEA2FC320F62d44C058522Bb3758'.toLowerCase()) {
       uri = 'https://media.discordapp.net/attachments/846293892785242143/852874003928449054/mem_gold_with_white_5.png'
     }if (address?.toLowerCase() === '0x87ff96aba480f1813aF5c780387d8De7cf7D8261'.toLowerCase()) {
