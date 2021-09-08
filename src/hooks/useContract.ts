@@ -33,7 +33,7 @@ const rpcUrls = [
   //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   //"https://shy-black-meadow.matic.quiknode.pro/aa57c5692641e98d1002a9dfeea7eb6438aa7937/",
   //"https://rpc.quickswap.exchange",
-  //"https://rpc.quickswap.exchange",
+  "https://rpc.quickswap.exchange",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
   "https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
@@ -59,7 +59,7 @@ const sRpcs = [
 ]
 
 var lastUsedUrl = -1;
-var maxUrls = 10
+var maxUrls = 11
 
 var sLastUsedUrl = -1;
 const sMaxUrls = -1;
