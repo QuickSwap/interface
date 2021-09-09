@@ -87,7 +87,8 @@ for (var j = 0; j < sRpcs.length; j++) {
 
 // returns null on errors
 function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
-  var { library, account, chainId } = useActiveWeb3React()
+  var { library, account } = useActiveWeb3React()
+  const chainId = ChainId.MATIC;
   var provider:any = undefined;
 
   if (chainId && MULTICALL_NETWORKS[chainId] === address) {
@@ -184,7 +185,7 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 }
 
 export function useMulticallContract(): Contract | null {
-  const { chainId } = useActiveWeb3React()
+  const chainId = ChainId.MATIC;
   return useContract(chainId && MULTICALL_NETWORKS[chainId], MULTICALL_ABI, false)
 }
 

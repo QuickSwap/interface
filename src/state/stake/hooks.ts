@@ -1564,7 +1564,23 @@ export const OLD_STAKING_REWARDS_INFO: {
       baseToken: ETHER,
       rate: 0.5,
       pair: '0x4935270aa19ba0b88fe99ea9feb10519feafa758'
-    },
+    }
+  ]
+}
+
+export const VERY_OLD_STAKING_REWARDS_INFO: {
+  [chainId in ChainId]?: {
+    tokens: [Token, Token]
+    stakingRewardAddress: string
+    ended: boolean
+    name: string
+    lp: string
+    baseToken: Token
+    rate: Number
+    pair: string
+  }[]
+} = {
+  [ChainId.MATIC]: [//TODO: MATIC
     {
       tokens: [PAUTO,ETHER],
       stakingRewardAddress: '0xBDEb6D4eC1B90EdB9D09259B6B030A646D373116',
@@ -1764,23 +1780,7 @@ export const OLD_STAKING_REWARDS_INFO: {
       baseToken: MATIC,
       rate: 0.3,
       pair: '0x264e6bc3f95633725658e4d9640f7f7d9100f6ac'
-    }
-  ]
-}
-
-export const VERY_OLD_STAKING_REWARDS_INFO: {
-  [chainId in ChainId]?: {
-    tokens: [Token, Token]
-    stakingRewardAddress: string
-    ended: boolean
-    name: string
-    lp: string
-    baseToken: Token
-    rate: Number
-    pair: string
-  }[]
-} = {
-  [ChainId.MATIC]: [//TODO: MATIC
+    },
     {
       tokens: [SX,ETHER],
       stakingRewardAddress: '0x225d8F0f5FB5D66cA7C0a27da85F462689c47C23',
