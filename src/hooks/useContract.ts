@@ -36,7 +36,7 @@ const rpcUrls = [
   "https://rpc.quickswap.exchange",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
   "https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R",
-  "https://rpc.quickswap.exchange",
+  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
   "https://rpc-quickswap-do1-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   //"https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
@@ -45,6 +45,7 @@ const rpcUrls = [
   "https://rpc.quickswap.exchange",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
   "https://matic-mainnet.chainstacklabs.com",
+  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://rpc.quickswap.exchange",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
   //"https://rpc.quickswap.exchange",
@@ -63,7 +64,7 @@ const sRpcs = [
 ]
 
 var lastUsedUrl = -1;
-var maxUrls = 15
+var maxUrls = 16
 
 var sLastUsedUrl = -1;
 const sMaxUrls = -1;
