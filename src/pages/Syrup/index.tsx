@@ -11,6 +11,9 @@ import { RowBetween } from '../../components/Row'
 import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/earn/styled'
 import Loader from '../../components/Loader'
 import { useActiveWeb3React } from '../../hooks'
+import { useUSDCPrices } from '../../utils/useUSDCPrice'
+import { usePairs } from '../../data/Reserves'
+import { unwrappedToken } from '../../utils/wrappedCurrency'
 
 function thousands_separators(num:any)
   {
@@ -161,6 +164,10 @@ export default function Syrup() {
   const maxPage = poolsToShow.length <= 10 ? 1 : Math.ceil(poolsToShow.length / 10);
   const ITEMS_PER_PAGE = 10;
 
+  const [sortIndex, setSortIndex] = useState(-1)
+  const [sortByDesc, setSortbyDesc] = useState(false)
+  const sortItems = ['APR', 'Deposit', 'Token Rewards']
+
   const handleInput = useCallback(event => {
     const input = event.target.value
     setSearchQuery(input)
@@ -214,6 +221,72 @@ export default function Syrup() {
     }
   })
 
+  const filteredPools = poolsToShow.filter(syrupInfo => {
+    const isStaking = Boolean(syrupInfo.stakedAmount.greaterThan('0'))
+    return isStaking || !syrupInfo.ended;
+  })
+
+  const baseTokens = filteredPools.map(syrupInfo => syrupInfo.baseToken)
+  const usdPrices = useUSDCPrices(baseTokens)
+  const tokenPairs = usePairs(filteredPools.map(syrupInfo => {
+    const token0 = syrupInfo.token;
+    const currency0 = unwrappedToken(token0)
+    const baseTokenCurrency = unwrappedToken(syrupInfo.baseToken);
+    return [ currency0, baseTokenCurrency ]
+  }))
+
+  const poolsWithData = filteredPools.map((syrupInfo, index) => {
+    const token0 = syrupInfo.token;
+    const [, stakingTokenPair] = tokenPairs[index];
+    const price = stakingTokenPair?.priceOf(token0);
+    const USDPriceBaseToken = usdPrices[index];
+    //@ts-ignore
+    const priceOfRewardTokenInUSD = price?.toSignificant(6) * USDPriceBaseToken?.toSignificant(6);
+    let rewards = 0;
+    //@ts-ignore
+    rewards = syrupInfo?.rate * (priceOfRewardTokenInUSD ? priceOfRewardTokenInUSD : 0);
+
+    let tokenAPR: any = 0;
+
+    if (syrupInfo?.valueOfTotalStakedAmountInUSDC > 0) {
+      
+      //@ts-ignore
+      tokenAPR = (rewards / syrupInfo?.valueOfTotalStakedAmountInUSDC) * 365 * 100
+      tokenAPR = parseFloat(tokenAPR).toFixed(3);
+
+    }
+
+    return { ...syrupInfo, APR: tokenAPR, depositValue: syrupInfo?.valueOfTotalStakedAmountInUSDC || syrupInfo?.totalStakedAmount?.toSignificant() }
+  })
+
+  let refinedPools = filteredPools
+
+  if (sortIndex === 0) {
+    refinedPools = poolsWithData.sort((a, b) => {
+      if (!sortByDesc) {
+        return Number(a.APR) > Number(b.APR) ? 1 : -1
+      } else {
+        return Number(a.APR) > Number(b.APR) ? -1 : 1
+      }
+    })
+  } else if (sortIndex === 1) {
+    refinedPools = poolsWithData.sort((a, b) => {
+      if (!sortByDesc) {
+        return Number(a.depositValue) > Number(b.depositValue) ? 1 : -1
+      } else {
+        return Number(a.depositValue) > Number(b.depositValue) ? -1 : 1
+      }
+    })
+  } else if (sortIndex === 2) {
+    refinedPools = poolsWithData.sort((a, b) => {
+      if (!sortByDesc) {
+        return Number(a.rate) > Number(b.rate) ? 1 : -1
+      } else {
+        return Number(a.rate) > Number(b.rate) ? -1 : 1
+      }
+    })
+  }
+
   useEffect(() => {
 
     if(syrupInfos.length > 0) {
@@ -233,8 +306,6 @@ export default function Syrup() {
   )
 
   const inputRef = useRef<HTMLInputElement>()
-
-  const [sortIndex, setSortIndex] = useState(-1)
 
   return (
     <PageWrapper gap="lg" justify="center">
@@ -283,9 +354,18 @@ export default function Syrup() {
             onChange={handleInput}
           />
           <FilterButtons>
-            <FilterItem active={sortIndex === 0} onClick={() => sortIndex === 0 ? setSortIndex(-1) : setSortIndex(0)}>APY</FilterItem>
-            <FilterItem active={sortIndex === 1} onClick={() => sortIndex === 1 ? setSortIndex(-1) : setSortIndex(1)}>Deposit</FilterItem>
-            <FilterItem active={sortIndex === 2} onClick={() => sortIndex === 2 ? setSortIndex(-1) : setSortIndex(2)}>Token Rewards</FilterItem>
+            {
+              sortItems.map((item, ind) => (
+                <FilterItem active={sortIndex === ind} onClick={() => {
+                  if (sortIndex === ind) {
+                    setSortbyDesc(!sortByDesc)
+                  } else {
+                    setSortbyDesc(false)
+                    setSortIndex(ind)
+                  }
+                }}>{ item }</FilterItem>
+              ))
+            }
           </FilterButtons>
         </FilterWrapper>
         <TopSection gap="md">
@@ -309,7 +389,7 @@ export default function Syrup() {
           ) : !stakingRewardsExist ? (
             'No active rewards'
           ) : (
-            poolsToShow?.slice(
+            refinedPools?.slice(
               page === 1 ? 0 : (page - 1) * ITEMS_PER_PAGE,
               (page * ITEMS_PER_PAGE) < poolsToShow.length ? (page * ITEMS_PER_PAGE): poolsToShow.length  
             ).map(syrupInfo => {
