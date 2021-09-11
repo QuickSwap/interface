@@ -136,8 +136,8 @@ export default function Earn() {
   const [page, setPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState<string>('')
   
-  const [searchedPools, setPools] = useState<StakingInfo[]>([]);
-  const [ empty, setEmpty ] = useState(true);
+  // const [searchedPools, setPools] = useState<StakingInfo[]>([]);
+  // const [ empty, setEmpty ] = useState(true);
   
   const[totalRewards, setTotalRewards] = useState<any>(0);
   const[totalFee, setTotalFee] = useState<any>(0);
@@ -153,7 +153,12 @@ export default function Earn() {
     flex-direction: column;
   `};
   `
-  var poolsToShow = stakingInfos;
+  var poolsToShow = stakingInfos.filter(stakingInfo => {
+    return stakingInfo.tokens[0].symbol?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      stakingInfo.tokens[0].name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      stakingInfo.tokens[1].symbol?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      stakingInfo.tokens[1].name?.toLowerCase().includes(searchQuery.toLowerCase())
+  });
 
   useEffect(() => {
 
@@ -201,9 +206,9 @@ export default function Earn() {
   
   const inputRef = useRef<HTMLInputElement>()
 
-  if (!empty) {
-    poolsToShow = searchedPools;
-  }
+  // if (!empty) {
+  //   poolsToShow = searchedPools;
+  // }
 
   //@ts-ignore
   const maxPage = poolsToShow.length <= 10 ? 1 : Math.ceil(poolsToShow.length / 10);
@@ -212,39 +217,39 @@ export default function Earn() {
   const handleInput = useCallback(event => {
     const input = event.target.value
     setSearchQuery(input)
-    if (!input || input.trim() === '') {
-      setPools([]);
-      setEmpty(true);
-      return;
-    }
-    var searchedPools:any[] = [];
-    for(var i = 0; i < pools.length; i++) {
-      if (
-        pools[i].tokens[0].name?.toLowerCase().includes(input.toLowerCase()) || 
-        pools[i].tokens[0].symbol?.toLowerCase().includes(input.toLowerCase()) ||
-        pools[i].tokens[1].name?.toLowerCase().includes(input.toLowerCase()) ||
-        pools[i].tokens[1].symbol?.toLowerCase().includes(input.toLowerCase())
-      )
-      {
-        searchedPools.push(pools[i]);
-      }
-    }
-    searchedPools?.sort((a,b) => {
-      if(Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
-        return 1;
-      }
-      if(!Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
-        return 1;
-      }
-      if(Boolean(a.stakedAmount.greaterThan('0')) && !Boolean(b.stakedAmount.greaterThan('0'))) {
-        return -1;
-      }
-      else {
-        return 1;
-      }
-    })
-    setPools(searchedPools);
-    setEmpty(false);
+    // if (!input || input.trim() === '') {
+    //   setPools([]);
+    //   setEmpty(true);
+    //   return;
+    // }
+    // var searchedPools:any[] = [];
+    // for(var i = 0; i < pools.length; i++) {
+    //   if (
+    //     pools[i].tokens[0].name?.toLowerCase().includes(input.toLowerCase()) || 
+    //     pools[i].tokens[0].symbol?.toLowerCase().includes(input.toLowerCase()) ||
+    //     pools[i].tokens[1].name?.toLowerCase().includes(input.toLowerCase()) ||
+    //     pools[i].tokens[1].symbol?.toLowerCase().includes(input.toLowerCase())
+    //   )
+    //   {
+    //     searchedPools.push(pools[i]);
+    //   }
+    // }
+    // searchedPools?.sort((a,b) => {
+    //   if(Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
+    //     return 1;
+    //   }
+    //   if(!Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
+    //     return 1;
+    //   }
+    //   if(Boolean(a.stakedAmount.greaterThan('0')) && !Boolean(b.stakedAmount.greaterThan('0'))) {
+    //     return -1;
+    //   }
+    //   else {
+    //     return 1;
+    //   }
+    // })
+    // setPools(searchedPools);
+    // setEmpty(false);
   }, [])
 
   const stakingRewardsExist = Boolean(typeof chainId === 'number' && (STAKING_REWARDS_INFO[chainId]?.length ?? 0) > 0)
