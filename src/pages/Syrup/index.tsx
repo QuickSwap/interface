@@ -154,7 +154,17 @@ export default function Syrup() {
     flex-direction: column;
   `};
   `
-  var poolsToShow = syrupInfos;
+  var poolsToShow = syrupInfos.filter(syrupInfo => {
+    if (syrupInfo.token.symbol && syrupInfo.token.name) {
+      return syrupInfo.token.symbol.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1 || syrupInfo.token.name.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
+    } else if (syrupInfo.token.symbol) {
+      return searchQuery === '' || syrupInfo.token.symbol.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
+    } else if (syrupInfo.token.name) {
+      return searchQuery === '' || syrupInfo.token.name.toLowerCase().indexOf(searchQuery.toLowerCase()) > -1
+    } else {
+      return searchQuery === ''
+    }
+  });
 
   /**if (!empty) {
     poolsToShow = searchedPools;
