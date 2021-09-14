@@ -183,6 +183,46 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: XCASH,
+      stakingRewardAddress: '0xe01e81c76253831602520582793991650225Bf81',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 27777777.78,
+      ending: 1639408820
+    },
+    {
+      token: GUARD,
+      stakingRewardAddress: '0x4D1677B68C33a0e4002c0B54e15E599F287185A4',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 3333.33,
+      ending: 1634224820
+    },
+    {
+      token: TCP,
+      stakingRewardAddress: '0x6d05D7aC6CC4b8A5552CF26cA04583c95e2F2b98',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 17475.7,
+      ending: 1636816820
+    },
+    {
+      token: MEEB,
+      stakingRewardAddress: '0x639F9394Ca689824ABE4e3d4D6acdB726f4a54F0',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 166.67,
+      ending: 1636816820
+    },  
+    {
       token: PLR,
       stakingRewardAddress: '0x6E0635d3a2c76b38B69aB8Ef3c1a970D9e3475Fc',
       ended: false,
