@@ -51,7 +51,7 @@ export default function Updater(): null {
 
   useEffect(() => {
     if (!debouncedState.chainId || !debouncedState.blockNumber || !windowVisible) return
-    if (debouncedState.blockNumber - block > 17){
+    if (debouncedState.blockNumber - block > 5){
       dispatch(updateBlockNumber({ chainId: debouncedState.chainId, blockNumber: debouncedState.blockNumber }))
       setBlock(debouncedState.blockNumber);
     }
