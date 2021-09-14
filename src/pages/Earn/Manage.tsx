@@ -115,7 +115,7 @@ export default function Manage({
       
   }, []);
 
-  if(stakingInfo.length == 0) {
+  if(stakingInfo.length === 0) {
     stakingInfo = undefined;
   }
 
