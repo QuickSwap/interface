@@ -56,7 +56,7 @@ export default function Updater(): null {
       setBlock(debouncedState.blockNumber);
     }
     
-  }, [windowVisible, dispatch, debouncedState.blockNumber, debouncedState.chainId])
+  }, [windowVisible, dispatch, debouncedState.blockNumber, debouncedState.chainId, block])
 
   return null
 }
