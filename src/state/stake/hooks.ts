@@ -9808,7 +9808,7 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
   const accountArg = useMemo(() => [account ?? undefined], [account])
   const lair = useLairContract()
 
-  const inputs = useMemo(() => ['1000000000000000000'], ['1000000000000000000'])
+  const inputs = ['1000000000000000000']
   const USDPrice = useUSDCPrice(QUICK)
 
    
@@ -9936,7 +9936,7 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
       }
       return memo
     }, [])
-  }, [balances, chainId, earnedAmounts, info, periodFinishes, rewardsAddresses, totalSupplies, uni, dQuickToQuick])
+  }, [balances, chainId, earnedAmounts, info, periodFinishes, rewardsAddresses, totalSupplies, uni, dQuickToQuick, USDPrice, _dQuickTotalSupply, quickPrice, rewardRates])
 }
 
  const getBulkPairData = async(pairList: any) => {
@@ -10053,7 +10053,7 @@ function parseData(data: any, oneDayData: any) {
     data?.volumeUSD,
     oneDayData?.volumeUSD ? oneDayData.volumeUSD : 0
   )
-  let returnData: any = new Object();
+  let returnData: any = {};
   returnData.id = data.id;
   returnData.token0 = data.token0;
   returnData.token1 = data.token1;
@@ -10070,7 +10070,7 @@ export function useLairInfo(): LairInfo {
 
   let accountArg = useMemo(() => [account ?? undefined], [account])
 
-  const inputs = useMemo(() => ['1000000000000000000'], ['1000000000000000000'])
+  const inputs = ['1000000000000000000']
 
   const lair = useLairContract()
   const quick = useQUICKContract();
@@ -10085,7 +10085,7 @@ export function useLairInfo(): LairInfo {
   const quickBalance = useSingleCallResult(lair, 'QUICKBalance', accountArg);
   const dQuickBalance = useSingleCallResult(lair, 'balanceOf', accountArg);
 
-  accountArg = useMemo(() => [LAIR_ADDRESS ?? undefined], [LAIR_ADDRESS])
+  accountArg = [LAIR_ADDRESS ?? undefined]
 
   const lairsQuickBalance = useSingleCallResult(quick, 'balanceOf', accountArg);
 
@@ -10111,7 +10111,7 @@ export function useLairInfo(): LairInfo {
       }
     )
     
-  }, [LAIR_ADDRESS, dQuickToQuick, quickToDQuick, quickBalance, dQuickBalance, _dQuickTotalSupply, quickPrice])
+  }, [dQuickToQuick, quickToDQuick, quickBalance, dQuickBalance, _dQuickTotalSupply, quickPrice, lairsQuickBalance])
 
 }
 
@@ -10278,7 +10278,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
       }
       return memo
     }, [])
-  }, [balances, chainId, earnedAmounts, info, periodFinishes, rewardsAddresses, totalSupplies, uni])
+  }, [balances, chainId, earnedAmounts, info, periodFinishes, rewardsAddresses, totalSupplies, uni, quickPrice, rewardRates])
 }
 
 // gets the staking info from the network for the active chain id
