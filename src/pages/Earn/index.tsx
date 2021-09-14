@@ -318,6 +318,8 @@ export default function Earn() {
     const USDPrice = usdPrices[index]
     const valueOfTotalStakedAmountInUSDC =
       valueOfTotalStakedAmountInBaseToken && USDPrice?.quote(valueOfTotalStakedAmountInBaseToken)
+    const depositValue1 = valueOfTotalStakedAmountInUSDC || valueOfTotalStakedAmountInBaseToken
+    const depositValue = depositValue1 ? Number(depositValue1.toSignificant()) : 0
     
     //@ts-ignore
     const perMonthReturnInRewards: any = (stakingInfo?.rate * stakingInfo?.quickPrice * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6));
@@ -327,16 +329,12 @@ export default function Earn() {
     if(stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0) {
       //@ts-ignore
       apyWithFee = ((1 + ((perMonthReturnInRewards + stakingInfo.oneYearFeeAPY / 12) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
-      if(apyWithFee > 100000000) {
-        apyWithFee = ">100000000"
-      }
-      else {
-        apyWithFee = parseFloat(apyWithFee.toFixed(2)).toLocaleString()
-      }
     }
 
-    return { ...stakingInfo, apyWithFee, depositValue: valueOfTotalStakedAmountInUSDC || valueOfTotalStakedAmountInBaseToken }
+    return { ...stakingInfo, apyWithFee, depositValue }
   })
+
+  console.log(poolsWithData)
 
   let refinedPools = filteredPools
 

@@ -262,7 +262,6 @@ export default function Syrup() {
       
       //@ts-ignore
       tokenAPR = (rewards / syrupInfo?.valueOfTotalStakedAmountInUSDC) * 365 * 100
-      tokenAPR = parseFloat(tokenAPR).toFixed(3);
 
     }
 
