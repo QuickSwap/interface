@@ -106,13 +106,11 @@ export const SearchInput = styled.input`
 const FilterWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
 `
 
 const FilterButtons = styled.div`
   display: flex;
   position: relative;
-  justify-content: space-between;
   min-width: 240px;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     width: 100%;
@@ -132,6 +130,7 @@ const FilterItem = styled.div<{active: boolean}>`
   text-align: center;
   border-radius: 20px;
   cursor: pointer;
+  margin-left: 35px;
 `
 
 
@@ -176,7 +175,7 @@ export default function Syrup() {
 
   const [sortIndex, setSortIndex] = useState(-1)
   const [sortByDesc, setSortbyDesc] = useState(false)
-  const sortItems = ['APR', 'Deposit']
+  const sortItems = ['APR', 'DEPOSIT']
 
   const handleInput = useCallback(event => {
     const input = event.target.value
