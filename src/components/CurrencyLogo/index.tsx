@@ -514,6 +514,22 @@ export const getTokenLogoURL = (address: string) => {
     }if (address?.toLowerCase() === '0x689f8e5913C158fFB5Ac5aeb83b3C875F5d20309'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/18197/small/snk.png?1630979321'
     }
+
+    if (address?.toLowerCase() === '0x5c4b7CCBF908E64F32e12c6650ec0C96d717f03F'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
+    }if (address?.toLowerCase() === '0x59E9261255644c411AfDd00bD89162d09D862e38'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14141/small/etha_logo200x200.png?1614646986'
+    }if (address?.toLowerCase() === '0x31042A4E66eDa0d12143ffc8cC1552D611dA4cbA'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/3164/small/mitx.png?1604888269'
+    }if (address?.toLowerCase() === '0x5668F6d40E15188045a1dE6295054103C13ffAc1'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17028/small/iconUSD.png?1626619046'
+    }if (address?.toLowerCase() === '0xB9f9e37c2CdbaFF928C3Da730b02F06fE09aE70E'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17015/small/iconZerogoki.png?1626618921'
+    }if (address?.toLowerCase() === '0x9C6BfEdc14b5C23E3900889436Edca7805170f01'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17675/small/phx_logo.png?1628832432'
+    }if (address?.toLowerCase() === '0x4e830F67Ec499E69930867f9017AEb5B3f629c73'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14421/small/img_circle_200x200.png?1617345151'
+    }
     
     if (address?.toLowerCase() === '0x7e9928aFe96FefB820b85B4CE6597B8F660Fe4F4'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
