@@ -108,7 +108,6 @@ const FilterWrapper = styled.div`
 const FilterButtons = styled.div`
   display: flex;
   position: relative;
-  justify-content: space-between;
   width: 220px;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     width: 100%;
@@ -128,6 +127,7 @@ const FilterItem = styled.div<{active: boolean}>`
   text-align: center;
   border-radius: 20px;
   cursor: pointer;
+  margin-left: 35px;
 `
 
 export default function Earn() {
@@ -202,7 +202,7 @@ export default function Earn() {
 
   const [sortIndex, setSortIndex] = useState(-1)
   const [sortByDesc, setSortbyDesc] = useState(false)
-  const sortItems = ['APY', 'Deposit', 'Pool Rate']
+  const sortItems = ['APY', 'Deposit']
   
   const inputRef = useRef<HTMLInputElement>()
 
@@ -427,7 +427,7 @@ export default function Earn() {
                   if (sortIndex === ind) {
                     setSortbyDesc(!sortByDesc)
                   } else {
-                    setSortbyDesc(false)
+                    setSortbyDesc(true)
                     setSortIndex(ind)
                   }
                 }}>{ item }</FilterItem>

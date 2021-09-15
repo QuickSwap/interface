@@ -1385,7 +1385,7 @@ export const STAKING_REWARDS_INFO: {
       stakingRewardAddress: '0xa132faD61EDe08f1f288a35ff4c10dcD1cB9E107',
       ended: false,
       name: 'StkGHST-QUICK',
-      lp: '0xA02d547512Bb90002807499F05495Fe9C4C3943f',
+      lp: '0xa02d547512bb90002807499f05495fe9c4c3943f',
       baseToken: QUICK,
       rate: 1,
       pair: '0x9bcfd9b9a5cbe2669ad30b0ad02693afac0485f1'
