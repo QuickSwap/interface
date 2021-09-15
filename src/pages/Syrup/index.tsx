@@ -176,7 +176,7 @@ export default function Syrup() {
 
   const [sortIndex, setSortIndex] = useState(-1)
   const [sortByDesc, setSortbyDesc] = useState(false)
-  const sortItems = ['APR', 'Deposit', 'Token Rewards']
+  const sortItems = ['APR', 'Deposit']
 
   const handleInput = useCallback(event => {
     const input = event.target.value
@@ -369,7 +369,7 @@ export default function Syrup() {
                   if (sortIndex === ind) {
                     setSortbyDesc(!sortByDesc)
                   } else {
-                    setSortbyDesc(false)
+                    setSortbyDesc(true)
                     setSortIndex(ind)
                   }
                 }}>{ item }</FilterItem>
