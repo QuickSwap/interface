@@ -169,7 +169,7 @@ import Web3 from 'web3';
 import { useLairContract, useQUICKContract } from '../../hooks/useContract'
 import useUSDCPrice from '../../utils/useUSDCPrice'
 
-const web3 = new Web3("https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/");
+const web3 = new Web3("https://rpc.quickswap.exchange");
 
 export const STAKING_GENESIS = 1620842940;
 

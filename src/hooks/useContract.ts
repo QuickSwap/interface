@@ -22,9 +22,9 @@ import { MULTICALL_ABI, MULTICALL_NETWORKS } from '../constants/multicall'
 import { V1_EXCHANGE_ABI, V1_FACTORY_ABI, V1_FACTORY_ADDRESSES } from '../constants/v1'
 import { getContract } from '../utils'
 import { useActiveWeb3React } from './index'
-import { Web3Provider } from '@ethersproject/providers'
+//import { Web3Provider } from '@ethersproject/providers'
 import { abi as LairABI } from '../abis/DragonLair.json'; 
-const Web3HttpProvider = require('web3-providers-http');
+/**const Web3HttpProvider = require('web3-providers-http');
 
 const providers: Web3Provider[] = [];
 const sProviders: Web3Provider[] = [];
@@ -63,7 +63,7 @@ const rpcUrls = [
 const sRpcs = [
   "https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R"
 ]
-
+*/
 /**var lastUsedUrl = -1;
 var maxUrls = 10
 
@@ -74,7 +74,7 @@ var count = 0;
 
 var localCount = 0;*/
 
-for (var i = 0; i < rpcUrls.length; i++) {
+/**for (var i = 0; i < rpcUrls.length; i++) {
   const web3Provider = new Web3HttpProvider(rpcUrls[i]);
   providers.push(new Web3Provider(web3Provider));
 }
@@ -82,7 +82,7 @@ for (var i = 0; i < rpcUrls.length; i++) {
 for (var j = 0; j < sRpcs.length; j++) {
   const web3Provider = new Web3HttpProvider(sRpcs[j]);
   sProviders.push(new Web3Provider(web3Provider));
-}
+}*/
 
 
 // returns null on errors
