@@ -36,20 +36,20 @@ const rpcUrls = [
   "https://rpc.quickswap.exchange",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
   //"https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R",
-  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
   //"https://rpc-quickswap-do1-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   //"https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   //"https://rpc.quickswap.exchange",
-  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://rpc.quickswap.exchange",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
   "https://matic-mainnet.chainstacklabs.com",
-  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://rpc.quickswap.exchange",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
   //"https://rpc.quickswap.exchange",
-  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   "https://rpc.quickswap.exchange",
   
   //"https://rpc-mainnet.matic.network",
@@ -64,15 +64,15 @@ const sRpcs = [
   "https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R"
 ]
 
-var lastUsedUrl = -1;
-var maxUrls = 14
+/**var lastUsedUrl = -1;
+var maxUrls = 10
 
 var sLastUsedUrl = -1;
 const sMaxUrls = -1;
 const sThreshold = 0;
 var count = 0;
 
-var localCount = 0;
+var localCount = 0;*/
 
 for (var i = 0; i < rpcUrls.length; i++) {
   const web3Provider = new Web3HttpProvider(rpcUrls[i]);
@@ -88,11 +88,11 @@ for (var j = 0; j < sRpcs.length; j++) {
 // returns null on errors
 function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
   var { library, account } = useActiveWeb3React()
-  const chainId = ChainId.MATIC;
+  //const chainId = ChainId.MATIC;
   var provider:any = undefined;
 
 
-  if (chainId && MULTICALL_NETWORKS[chainId] === address && localCount % 2 === 0) {
+  /**if (chainId && MULTICALL_NETWORKS[chainId] === address && localCount % 2 === 0) {
     count = count + 1;
     localCount++;
     if (sThreshold > 0 && count % sThreshold === 0) {
@@ -116,7 +116,7 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
   else {
     localCount++;
     provider = library;
-  }
+  }*/
   return useMemo(() => {
     if (!address || !ABI || !library) return null
     try {
