@@ -191,6 +191,16 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: POLYDOGE,
+      stakingRewardAddress: '0x0b32AC0A9b6bfdd0E24cd2f4d37d82F8d05B44d8',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 333333333333.33,
+      ending: 1634410234
+    },  
+    {
       token: XCASH,
       stakingRewardAddress: '0xe01e81c76253831602520582793991650225Bf81',
       ended: false,
