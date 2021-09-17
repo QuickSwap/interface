@@ -188,9 +188,9 @@ export default function Earn() {
   
       atotalFee = parseInt(atotalFee.toFixed(0)).toLocaleString();
       setTotalFee(atotalFee)
-      if(totalRewards > 0) {
+      if(aTotalRewards > 0) {
         //@ts-ignore
-        var atotalRewardsUSD: any = stakingInfos[0].quickPrice * totalRewards;
+        var atotalRewardsUSD: any = stakingInfos[0].quickPrice * aTotalRewards;
         atotalRewardsUSD = parseInt(atotalRewardsUSD.toFixed(0)).toLocaleString();
         setTotalRewardsUSD(atotalRewardsUSD);
       }
@@ -333,8 +333,6 @@ export default function Earn() {
 
     return { ...stakingInfo, apyWithFee, depositValue }
   })
-
-  console.log(poolsWithData)
 
   let refinedPools = filteredPools
 
