@@ -105,7 +105,7 @@ export const BIFI  = new Token(ChainId.MATIC, '0xFbdd194376de19a88118e84E279b977
 export const QI  = new Token(ChainId.MATIC, '0x580A84C73811E1839F75d86d75d88cCa0c241fF4', 18, 'QI', 'Qi Dao')
 export const MI  = new Token(ChainId.MATIC, '0xa3Fa99A148fA48D14Ed51d610c367C61876997F1', 18, 'MAI', 'miMATIC')
 export const POLYDOGE  = new Token(ChainId.MATIC, '0x8A953CfE442c5E8855cc6c61b1293FA648BAE472', 18, 'PolyDoge', 'PolyDoge')
-//export const EMON  = new Token(ChainId.MATIC, '0xd6a5ab46ead26f49b03bbb1f9eb1ad5c1767974a', 18, 'EMON', 'EthermonToken')
+export const EMON  = new Token(ChainId.MATIC, '0xd6a5ab46ead26f49b03bbb1f9eb1ad5c1767974a', 18, 'EMON', 'EthermonToken')
 
 //export const MOON  = new Token(ChainId.MATIC, '0xc56d17dD519e5eB43a19C9759b5D5372115220BD', 18, 'MOON', 'Polywolf')
 export const ADDY  = new Token(ChainId.MATIC, '0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539', 18, 'ADDY', 'Adamant')
@@ -122,7 +122,7 @@ export const FFF  = new Token(ChainId.MATIC, '0x9aCeB6f749396d1930aBc9e263eFc449
 
 
 //export const GFI  = new Token(ChainId.MATIC, '0x874e178A2f3f3F9d34db862453Cd756E7eAb0381', 18, 'GFI', 'Gravity Finance')
-//export const CHUM  = new Token(ChainId.MATIC, '0x2e2DDe47952b9c7deFDE7424d00dD2341AD927Ca', 18, 'CHUM', 'ChumHum')
+export const CHUM  = new Token(ChainId.MATIC, '0x2e2DDe47952b9c7deFDE7424d00dD2341AD927Ca', 18, 'CHUM', 'ChumHum')
 //export const ELE  = new Token(ChainId.MATIC, '0xAcD7B3D9c10e97d0efA418903C0c7669E702E4C0', 18, 'ELE', 'Eleven.finance')
 //export const CRV  = new Token(ChainId.MATIC, '0x172370d5Cd63279eFa6d502DAB29171933a610AF', 18, 'CRV', 'CRV')
 
