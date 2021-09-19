@@ -191,6 +191,36 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: OM,
+      stakingRewardAddress: '0x304cd598F973208888e959D7f808052Ab863A7eA',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 15833.33,
+      ending: 1637076798
+    },
+    {
+      token: ELET,
+      stakingRewardAddress: '0x18e23130973AA586652BB6d472f0eEf05a88fD3E',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 83333.33,
+      ending: 1637076798
+    },
+    {
+      token: ODDZ,
+      stakingRewardAddress: '0x8DBa41FD5aDD941825f96a33b58d3242db7b918f',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 4065.05,
+      ending: 1637076798
+    },
+    {
       token: POLYDOGE,
       stakingRewardAddress: '0x0b32AC0A9b6bfdd0E24cd2f4d37d82F8d05B44d8',
       ended: false,
