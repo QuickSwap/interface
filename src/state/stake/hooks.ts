@@ -86,11 +86,11 @@ import {
   //FISH,
   UFT,
   PAUTO,
-  //EMON,
+  EMON,
   FFF,
   MI,
   //ELE,
-  //CHUM,
+  CHUM,
   //GFI,
   QI,
   //BORING,
@@ -2091,7 +2091,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       baseToken: QUICK,
       rate: 0.3,
       pair: '0xeb275d1d930f157504cca7d7afce38360c7302b5'
-    },
+    },*/
     {
       tokens: [CHUM,QUICK],
       stakingRewardAddress: '0x51fE4871BD8BFb0d88243194761C361dA4803a2f',
@@ -2102,7 +2102,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       rate: 0.1,
       pair: '0x0a126ad4e9c446c6219519062932f624d82e075e'
     },
-    {
+    /**{
       tokens: [MATIC,MOCEAN],
       stakingRewardAddress: '0xEEc558404E179dEb5561fB043D8fd0567227FDE7',
       ended: true,
@@ -2273,7 +2273,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       rate: 0.4,
       pair: '0xba29f611473f3eccadb995d85a39b87677f620fe'
     },
-    /**{
+    {
       tokens: [EMON,QUICK],
       stakingRewardAddress: '0x6BcCF1f0825826964c2eCC2408B00659eb357b6D',
       ended: true,
@@ -2292,7 +2292,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       baseToken: MATIC,
       rate: 0.1,
       pair: '0xa408a751b6d05d1649c5bbd7c38842fb17ea1846'
-    },*/
+    },
   {
       tokens: [AGA,AGAr],
       stakingRewardAddress: '0x855b8dCA0Dfe3A1AC474f5A25792d4326580E06A',
