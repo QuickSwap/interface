@@ -109,7 +109,7 @@ export const EMON  = new Token(ChainId.MATIC, '0xd6a5ab46ead26f49b03bbb1f9eb1ad5
 
 //export const MOON  = new Token(ChainId.MATIC, '0xc56d17dD519e5eB43a19C9759b5D5372115220BD', 18, 'MOON', 'Polywolf')
 export const ADDY  = new Token(ChainId.MATIC, '0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539', 18, 'ADDY', 'Adamant')
-export const QuickChart  = new Token(ChainId.MATIC, '0x99dA82C5464C49962Cdda44fe30d352Bc5Da0580', 9, 'QuickChart', 'QuickChart')
+export const QuickChart  = new Token(ChainId.MATIC, '0x0Af77B096cbDF53B5c39c2fcff8F14C5E3a36356', 9, 'QuickChart', 'QuickChart')
 export const PAUTO  = new Token(ChainId.MATIC, '0x7f426F6Dc648e50464a0392E60E1BB465a67E9cf', 18, 'PAUTO', 'Orbit Bridge Polygon AUTOv2')
 export const UFT  = new Token(ChainId.MATIC, '0x5B4CF2C120A9702225814E18543ee658c5f8631e', 18, 'UFT', 'UniLend Finance Token')
 
@@ -225,6 +225,13 @@ export const ZUSD = new Token(ChainId.MATIC, '0x5668F6d40E15188045a1dE6295054103
 export const REI = new Token(ChainId.MATIC, '0xB9f9e37c2CdbaFF928C3Da730b02F06fE09aE70E', 18, 'REI', 'Zerogoki Token')
 export const PHX = new Token(ChainId.MATIC, '0x9C6BfEdc14b5C23E3900889436Edca7805170f01', 18, 'PHX', 'Phoenix Token')
 export const ODDZ = new Token(ChainId.MATIC, '0x4e830F67Ec499E69930867f9017AEb5B3f629c73', 18, 'ODDZ', 'OddzToken')
+
+
+export const D11 = new Token(ChainId.MATIC, '0xc58158c14D4757EF36Ce25e493758F2fcEEDec5D', 18, 'D11', 'DeFi11')
+export const PBR = new Token(ChainId.MATIC, '0x0D6ae2a429df13e44A07Cd2969E085e4833f64A0', 18, 'PBR', 'PolkaBridge')
+export const MVERSE = new Token(ChainId.MATIC, '0x0B313b4C589A3BD3350f625f2e94DC80AB50017E', 18, 'Mverse', 'MaticVerse')
+export const TECH = new Token(ChainId.MATIC, '0x6286A9e6f7e745A6D884561D88F94542d6715698', 18, 'TECH', 'Cryptomeda')
+export const GMEE = new Token(ChainId.MATIC, '0xcf32822ff397Ef82425153a9dcb726E5fF61DCA7', 18, 'GAMEE', 'GMEE')
 
 
 export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
@@ -399,4 +406,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.1.3/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.1.5/build/quickswap-default.tokenlist.json'

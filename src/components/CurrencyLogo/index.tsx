@@ -337,11 +337,23 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/9651.png'
     }
 
+    if (address?.toLowerCase() === '0xc58158c14D4757EF36Ce25e493758F2fcEEDec5D'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/11147.png'
+    }if (address?.toLowerCase() === '0x0D6ae2a429df13e44A07Cd2969E085e4833f64A0'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/13744/small/symbol-whitebg200x200.png?1611377553'
+    }if (address?.toLowerCase() === '0x0B313b4C589A3BD3350f625f2e94DC80AB50017E'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18403/small/A0782-F05-535-C-45-C8-BE4-F-FEBB4-B8-B5933.jpg?1631792934'
+    }if (address?.toLowerCase() === '0x6286A9e6f7e745A6D884561D88F94542d6715698'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17983/small/Profile_picture_white.jpg?1630149169'
+    }if (address?.toLowerCase() === '0xcf32822ff397Ef82425153a9dcb726E5fF61DCA7'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14716/small/gmee-200x200.png?1621827468'
+    }
+
     if (address?.toLowerCase() === '0xc56d17dD519e5eB43a19C9759b5D5372115220BD'.toLowerCase()) {
       uri = 'https://i.postimg.cc/CxvzF5bJ/moon-black.png'
     }if (address?.toLowerCase() === '0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539'.toLowerCase()) {
       uri = 'https://adamant.finance/img/adamant.png'
-    }if (address?.toLowerCase() === '0x99dA82C5464C49962Cdda44fe30d352Bc5Da0580'.toLowerCase()) {
+    }if (address?.toLowerCase() === '0x0Af77B096cbDF53B5c39c2fcff8F14C5E3a36356'.toLowerCase()) {
       uri = 'https://i.imgur.com/jv5A0eX.png'
     }if (address?.toLowerCase() === '0x7f426F6Dc648e50464a0392E60E1BB465a67E9cf'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/13751/small/autofarm_icon_200x200.png?1611494288'
