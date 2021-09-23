@@ -184,8 +184,7 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
         </RowBetween>
         <RowBetween>
           <TYPE.white> Token Rewards Value </TYPE.white>
-          <TYPE.white>{`$${ parseInt(rewards.
-            toFixed(0)).toLocaleString()} / day`}</TYPE.white>
+          <TYPE.white>{`$${ parseInt(rewards.toFixed(0)).toLocaleString()} / day`}</TYPE.white>
         </RowBetween>
         <RowBetween>
           <TYPE.white> {currency0.symbol} APR </TYPE.white>
