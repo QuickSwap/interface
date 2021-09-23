@@ -12,7 +12,7 @@ import { SafeAppConnector } from './SafeApp'
 
 const POLLING_INTERVAL = 12000
 
-const NETWORK_URL = 'https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc'
+const NETWORK_URL = 'https://rpc.quickswap.exchange'
 // const FORMATIC_KEY = 'pk_live_F937DF033A1666BF'
 // const PORTIS_ID = 'c0e2bf01-4b08-4fd5-ac7b-8e26b58cd236'
 const FORMATIC_KEY = process.env.REACT_APP_FORTMATIC_KEY
@@ -25,7 +25,7 @@ if (typeof NETWORK_URL === 'undefined') {
 }
 
 export const network = new NetworkConnector({
-  urls: { [Number("137")]: "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc" }
+  urls: { [Number("137")]: "https://rpc.quickswap.exchange" }
 })
 
 let networkLibrary: Web3Provider | undefined

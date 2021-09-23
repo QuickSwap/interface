@@ -181,8 +181,7 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
         </RowBetween>
         <RowBetween>
           <TYPE.white> Total Rewards </TYPE.white>
-          <TYPE.white>{`$${ parseInt(rewards.
-            toFixed(0)).toLocaleString()} / day`}</TYPE.white>
+          <TYPE.white>{`$${ parseInt(rewards.toFixed(0)).toLocaleString()} / day`}</TYPE.white>
         </RowBetween>
         <RowBetween>
           <TYPE.white> Pool rate </TYPE.white>

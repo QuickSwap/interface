@@ -110,7 +110,7 @@ export default function ManageSyrup({
       
   }, []);
 
-  if(syrupInfo.length == 0) {
+  if(syrupInfo.length === 0) {
     syrupInfo = undefined;
   }
 

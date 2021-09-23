@@ -337,11 +337,23 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/9651.png'
     }
 
+    if (address?.toLowerCase() === '0xc58158c14D4757EF36Ce25e493758F2fcEEDec5D'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/11147.png'
+    }if (address?.toLowerCase() === '0x0D6ae2a429df13e44A07Cd2969E085e4833f64A0'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/13744/small/symbol-whitebg200x200.png?1611377553'
+    }if (address?.toLowerCase() === '0x0B313b4C589A3BD3350f625f2e94DC80AB50017E'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18403/small/A0782-F05-535-C-45-C8-BE4-F-FEBB4-B8-B5933.jpg?1631792934'
+    }if (address?.toLowerCase() === '0x6286A9e6f7e745A6D884561D88F94542d6715698'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17983/small/Profile_picture_white.jpg?1630149169'
+    }if (address?.toLowerCase() === '0xcf32822ff397Ef82425153a9dcb726E5fF61DCA7'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14716/small/gmee-200x200.png?1621827468'
+    }
+
     if (address?.toLowerCase() === '0xc56d17dD519e5eB43a19C9759b5D5372115220BD'.toLowerCase()) {
       uri = 'https://i.postimg.cc/CxvzF5bJ/moon-black.png'
     }if (address?.toLowerCase() === '0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539'.toLowerCase()) {
       uri = 'https://adamant.finance/img/adamant.png'
-    }if (address?.toLowerCase() === '0x99dA82C5464C49962Cdda44fe30d352Bc5Da0580'.toLowerCase()) {
+    }if (address?.toLowerCase() === '0x0Af77B096cbDF53B5c39c2fcff8F14C5E3a36356'.toLowerCase()) {
       uri = 'https://i.imgur.com/jv5A0eX.png'
     }if (address?.toLowerCase() === '0x7f426F6Dc648e50464a0392E60E1BB465a67E9cf'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/13751/small/autofarm_icon_200x200.png?1611494288'
@@ -495,6 +507,42 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://polygonscan.com/token/images/polytrade_32.png'
     }
 
+    if (address?.toLowerCase() === '0xa6b37fC85d870711C56FbcB8afe2f8dB049AE774'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/809/small/v2logo-1.png?1624906282'
+    }if (address?.toLowerCase() === '0xDBf31dF14B66535aF65AaC99C32e9eA844e14501'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/11370/small/Bitcoin.jpg?1628072791'
+    }if (address?.toLowerCase() === '0x614389EaAE0A6821DC49062D56BDA3d9d45Fa2ff'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/4630/small/Orbs.jpg?1547039896'
+    }if (address?.toLowerCase() === '0xF239E69ce434c7Fb408b05a0Da416b14917d934e'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17641/small/QRE5xI0.png?1628741510'
+    }if (address?.toLowerCase() === '0x9a05D1FF699ea187Dc8523E333eD63503f0d82db'.toLowerCase()) {
+      uri = 'https://pbs.twimg.com/profile_images/1428328610444742660/4fa6uMzp_400x400.jpg'
+    }if (address?.toLowerCase() === '0xe95fD76CF16008c12FF3b3a937CB16Cd9Cc20284'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/16185/small/Pera.jpg?1623238387'
+    }if (address?.toLowerCase() === '0xdaB35042e63E93Cc8556c9bAE482E5415B5Ac4B1'.toLowerCase()) {
+      uri = 'https://www.hermesdefi.io/hermes-logo-1.png'
+    }if (address?.toLowerCase() === '0x03678f2c2c762DC63c2Bb738c3a837D366eDa560'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/6331/small/5fbb9e5b8f27d74dd8bcb912_xcash_coingecko_logo.png?1606133752'
+    }if (address?.toLowerCase() === '0x689f8e5913C158fFB5Ac5aeb83b3C875F5d20309'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18197/small/snk.png?1630979321'
+    }
+
+    if (address?.toLowerCase() === '0x5c4b7CCBF908E64F32e12c6650ec0C96d717f03F'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
+    }if (address?.toLowerCase() === '0x59E9261255644c411AfDd00bD89162d09D862e38'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14141/small/etha_logo200x200.png?1614646986'
+    }if (address?.toLowerCase() === '0x31042A4E66eDa0d12143ffc8cC1552D611dA4cbA'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/3164/small/mitx.png?1604888269'
+    }if (address?.toLowerCase() === '0x5668F6d40E15188045a1dE6295054103C13ffAc1'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17028/small/iconUSD.png?1626619046'
+    }if (address?.toLowerCase() === '0xB9f9e37c2CdbaFF928C3Da730b02F06fE09aE70E'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17015/small/iconZerogoki.png?1626618921'
+    }if (address?.toLowerCase() === '0x9C6BfEdc14b5C23E3900889436Edca7805170f01'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17675/small/phx_logo.png?1628832432'
+    }if (address?.toLowerCase() === '0x4e830F67Ec499E69930867f9017AEb5B3f629c73'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14421/small/img_circle_200x200.png?1617345151'
+    }
+    
     if (address?.toLowerCase() === '0x7e9928aFe96FefB820b85B4CE6597B8F660Fe4F4'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
     }if (address?.toLowerCase() === '0xAF24765F631C8830B5528B57002241eE7eef1C14'.toLowerCase()) {
@@ -502,9 +550,9 @@ export const getTokenLogoURL = (address: string) => {
     }if (address?.toLowerCase() === '0x0E50BEA95Fe001A370A4F1C220C49AEdCB982DeC'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/14238/small/ethernity_logo.png?1615189750'
     }if (address?.toLowerCase() === '0xaECeBfcF604AD245Eaf0D5BD68459C3a7A6399c2'.toLowerCase()) {
-      uri = 'https://rampdefi.com/assets/RAMP_LOGO_V4_256.png'
+      uri = 'https://assets.coingecko.com/coins/images/12837/small/RAMP-Logo-v2-1000pxsq.png?1617952606'
     }if (address?.toLowerCase() === '0xfC40a4F89b410a1b855b5e205064a38fC29F5eb5'.toLowerCase()) {
-      uri = 'https://rampdefi.com/assets/rUSD-Logo-200.png'
+      uri = 'https://assets.coingecko.com/coins/images/16184/small/rUSD-Logo-200.png?1623231145'
     }if (address?.toLowerCase() === '0x42dbBd5ae373FEA2FC320F62d44C058522Bb3758'.toLowerCase()) {
       uri = 'https://media.discordapp.net/attachments/846293892785242143/852874003928449054/mem_gold_with_white_5.png'
     }if (address?.toLowerCase() === '0x87ff96aba480f1813aF5c780387d8De7cf7D8261'.toLowerCase()) {

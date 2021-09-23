@@ -18,7 +18,7 @@ import {
 } from './actions'
 
 // chunk calls so we do not exceed the gas limit
-const CALL_CHUNK_SIZE = 500
+const CALL_CHUNK_SIZE = 1000
 
 /**
  * Fetches a chunk of calls, enforcing a minimum block number constraint
@@ -38,7 +38,7 @@ async function fetchChunk(
     console.debug('Failed to fetch chunk inside retry', error)
     throw error
   }
-  if (resultsBlockNumber.toNumber() < minBlockNumber) {
+  if (resultsBlockNumber.toNumber() + 100 < minBlockNumber) {
     console.debug(`Fetched results for old block number: ${resultsBlockNumber.toString()} vs. ${minBlockNumber}`)
     throw new RetryableError('Fetched for old block number')
   }

@@ -1,8 +1,9 @@
 import React, {  RefObject, useState, useCallback, useRef, useEffect } from 'react'
+import { JSBI , TokenAmount } from '@uniswap/sdk'
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
 import { STAKING_REWARDS_INFO, useStakingInfo, useOldStakingInfo, useLairInfo, StakingInfo } from '../../state/stake/hooks'
-import { TYPE, ExternalLink} from '../../theme'
+import { TYPE, ExternalLink } from '../../theme'
 import { isMobile } from 'react-device-detect'
 import PoolCard from '../../components/earn/PoolCard'
 import LairCard from '../../components/QuickLair/LairCard'
@@ -13,6 +14,11 @@ import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/
 import { Countdown } from './Countdown'
 import Loader from '../../components/Loader'
 import { useActiveWeb3React } from '../../hooks'
+import { useUSDCPrices } from '../../utils/useUSDCPrice'
+import { unwrappedToken } from '../../utils/wrappedCurrency'
+import { EMPTY } from '../../constants'
+import { usePairs } from '../../data/Reserves'
+import { useTotalSupplys } from '../../data/TotalSupply'
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -66,7 +72,7 @@ export const SearchInput = styled.input`
   display: flex;
   padding: 16px;
   align-items: center;
-  width: 100%;
+  width: calc(100% - 228px);
   white-space: nowrap;
   background: none;
   border: none;
@@ -87,8 +93,42 @@ export const SearchInput = styled.input`
     border: 1px solid ${({ theme }) => theme.primary1};
     outline: none;
   }
+
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    width: 100%;
+  `};
 `
 
+const FilterWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+`
+
+const FilterButtons = styled.div`
+  display: flex;
+  position: relative;
+  width: 220px;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    width: 100%;
+    margin-top: 8px;
+    height: 48px;
+  `};
+`
+
+const FilterItem = styled.div<{active: boolean}>`
+  width: 32%;
+  border: 1px solid ${({ theme }) => theme.primary1};
+  background: ${({ theme, active }) => active ? theme.primary1 : 'transparent'};
+  color: ${({ theme, active }) => active ? 'white' : 'black'};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 35px;
+`
 
 export default function Earn() {
 
@@ -96,8 +136,8 @@ export default function Earn() {
   const [page, setPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState<string>('')
   
-  const [searchedPools, setPools] = useState<StakingInfo[]>([]);
-  const [ empty, setEmpty ] = useState(true);
+  // const [searchedPools, setPools] = useState<StakingInfo[]>([]);
+  // const [ empty, setEmpty ] = useState(true);
   
   const[totalRewards, setTotalRewards] = useState<any>(0);
   const[totalFee, setTotalFee] = useState<any>(0);
@@ -113,7 +153,12 @@ export default function Earn() {
     flex-direction: column;
   `};
   `
-  var poolsToShow = stakingInfos;
+  var poolsToShow = stakingInfos.filter(stakingInfo => {
+    return stakingInfo.tokens[0].symbol?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      stakingInfo.tokens[0].name?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      stakingInfo.tokens[1].symbol?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      stakingInfo.tokens[1].name?.toLowerCase().includes(searchQuery.toLowerCase())
+  });
 
   useEffect(() => {
 
@@ -143,9 +188,9 @@ export default function Earn() {
   
       atotalFee = parseInt(atotalFee.toFixed(0)).toLocaleString();
       setTotalFee(atotalFee)
-      if(totalRewards > 0) {
+      if(aTotalRewards > 0) {
         //@ts-ignore
-        var atotalRewardsUSD: any = stakingInfos[0].quickPrice * totalRewards;
+        var atotalRewardsUSD: any = stakingInfos[0].quickPrice * aTotalRewards;
         atotalRewardsUSD = parseInt(atotalRewardsUSD.toFixed(0)).toLocaleString();
         setTotalRewardsUSD(atotalRewardsUSD);
       }
@@ -155,12 +200,15 @@ export default function Earn() {
     },[stakingInfos]
   )
 
+  const [sortIndex, setSortIndex] = useState(-1)
+  const [sortByDesc, setSortbyDesc] = useState(false)
+  const sortItems = ['APY', 'Deposit']
   
   const inputRef = useRef<HTMLInputElement>()
 
-  if (!empty) {
-    poolsToShow = searchedPools;
-  }
+  // if (!empty) {
+  //   poolsToShow = searchedPools;
+  // }
 
   //@ts-ignore
   const maxPage = poolsToShow.length <= 10 ? 1 : Math.ceil(poolsToShow.length / 10);
@@ -169,39 +217,39 @@ export default function Earn() {
   const handleInput = useCallback(event => {
     const input = event.target.value
     setSearchQuery(input)
-    if (!input || input.trim() === '') {
-      setPools([]);
-      setEmpty(true);
-      return;
-    }
-    var searchedPools:any[] = [];
-    for(var i = 0; i < pools.length; i++) {
-      if (
-        pools[i].tokens[0].name?.toLowerCase().includes(input.toLowerCase()) || 
-        pools[i].tokens[0].symbol?.toLowerCase().includes(input.toLowerCase()) ||
-        pools[i].tokens[1].name?.toLowerCase().includes(input.toLowerCase()) ||
-        pools[i].tokens[1].symbol?.toLowerCase().includes(input.toLowerCase())
-      )
-      {
-        searchedPools.push(pools[i]);
-      }
-    }
-    searchedPools?.sort((a,b) => {
-      if(Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
-        return 1;
-      }
-      if(!Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
-        return 1;
-      }
-      if(Boolean(a.stakedAmount.greaterThan('0')) && !Boolean(b.stakedAmount.greaterThan('0'))) {
-        return -1;
-      }
-      else {
-        return 1;
-      }
-    })
-    setPools(searchedPools);
-    setEmpty(false);
+    // if (!input || input.trim() === '') {
+    //   setPools([]);
+    //   setEmpty(true);
+    //   return;
+    // }
+    // var searchedPools:any[] = [];
+    // for(var i = 0; i < pools.length; i++) {
+    //   if (
+    //     pools[i].tokens[0].name?.toLowerCase().includes(input.toLowerCase()) || 
+    //     pools[i].tokens[0].symbol?.toLowerCase().includes(input.toLowerCase()) ||
+    //     pools[i].tokens[1].name?.toLowerCase().includes(input.toLowerCase()) ||
+    //     pools[i].tokens[1].symbol?.toLowerCase().includes(input.toLowerCase())
+    //   )
+    //   {
+    //     searchedPools.push(pools[i]);
+    //   }
+    // }
+    // searchedPools?.sort((a,b) => {
+    //   if(Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
+    //     return 1;
+    //   }
+    //   if(!Boolean(a.stakedAmount.greaterThan('0')) && Boolean(b.stakedAmount.greaterThan('0'))) {
+    //     return 1;
+    //   }
+    //   if(Boolean(a.stakedAmount.greaterThan('0')) && !Boolean(b.stakedAmount.greaterThan('0'))) {
+    //     return -1;
+    //   }
+    //   else {
+    //     return 1;
+    //   }
+    // })
+    // setPools(searchedPools);
+    // setEmpty(false);
   }, [])
 
   const stakingRewardsExist = Boolean(typeof chainId === 'number' && (STAKING_REWARDS_INFO[chainId]?.length ?? 0) > 0)
@@ -221,6 +269,98 @@ export default function Earn() {
     }
   })
 
+  const filteredPools = oldStakingInfos.concat(poolsToShow).filter(stakingInfo => {
+    const isStaking = Boolean(stakingInfo.stakedAmount.greaterThan('0'))
+    return isStaking || !stakingInfo.ended
+  })
+
+  const baseCurrencies = filteredPools.map(stakingInfo => {
+    const token0 = stakingInfo.tokens[0]
+    const baseTokenCurrency = unwrappedToken(stakingInfo.baseToken)
+    const empty = unwrappedToken(EMPTY)
+    return baseTokenCurrency === empty ? token0: stakingInfo.baseToken
+  })
+
+  const tokenPairs = usePairs(filteredPools.map(stakingInfo => stakingInfo.tokens))
+
+  const usdPrices = useUSDCPrices(baseCurrencies)
+
+  const totalSupplys = useTotalSupplys(filteredPools.map(stakingInfo => stakingInfo.stakedAmount.token))
+
+  const poolsWithData = filteredPools.map((stakingInfo, index) => {
+    const token0 = stakingInfo.tokens[0]
+
+    const baseTokenCurrency = unwrappedToken(stakingInfo.baseToken);
+    const empty = unwrappedToken(EMPTY);
+
+    const baseToken = baseTokenCurrency === empty ? token0: stakingInfo.baseToken;
+    
+    const totalSupplyOfStakingToken = totalSupplys[index]
+    const [, stakingTokenPair] = tokenPairs[index]
+
+    // let returnOverMonth: Percent = new Percent('0')
+    let valueOfTotalStakedAmountInBaseToken: TokenAmount | undefined
+    if (totalSupplyOfStakingToken && stakingTokenPair) {
+      // take the total amount of LP tokens staked, multiply by ETH value of all LP tokens, divide by all LP tokens
+      valueOfTotalStakedAmountInBaseToken = new TokenAmount(
+        baseToken,
+        JSBI.divide(
+          JSBI.multiply(
+            JSBI.multiply(stakingInfo.totalStakedAmount.raw, stakingTokenPair.reserveOf(baseToken).raw),
+            JSBI.BigInt(2) // this is b/c the value of LP shares are ~double the value of the WETH they entitle owner to
+          ),
+          totalSupplyOfStakingToken.raw
+        )
+      )
+    }
+
+    // get the USD value of staked WETH
+    const USDPrice = usdPrices[index]
+    const valueOfTotalStakedAmountInUSDC =
+      valueOfTotalStakedAmountInBaseToken && USDPrice?.quote(valueOfTotalStakedAmountInBaseToken)
+    const depositValue1 = valueOfTotalStakedAmountInUSDC || valueOfTotalStakedAmountInBaseToken
+    const depositValue = depositValue1 ? Number(depositValue1.toSignificant()) : 0
+    
+    //@ts-ignore
+    const perMonthReturnInRewards: any = (stakingInfo?.rate * stakingInfo?.quickPrice * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6));
+    
+    let apyWithFee: any = 0;
+
+    if(stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0) {
+      //@ts-ignore
+      apyWithFee = ((1 + ((perMonthReturnInRewards + stakingInfo.oneYearFeeAPY / 12) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
+    }
+
+    return { ...stakingInfo, apyWithFee, depositValue }
+  })
+
+  let refinedPools = filteredPools
+
+  if (sortIndex === 0) {
+    refinedPools = poolsWithData.sort((a, b) => {
+      if (!sortByDesc) {
+        return Number(a.apyWithFee) > Number(b.apyWithFee) ? 1 : -1
+      } else {
+        return Number(a.apyWithFee) > Number(b.apyWithFee) ? -1 : 1
+      }
+    })
+  } else if (sortIndex === 1) {
+    refinedPools = poolsWithData.sort((a, b) => {
+      if (!sortByDesc) {
+        return Number(a.depositValue) > Number(b.depositValue) ? 1 : -1
+      } else {
+        return Number(a.depositValue) > Number(b.depositValue) ? -1 : 1
+      }
+    })
+  } else if (sortIndex === 2) {
+    refinedPools = poolsWithData.sort((a, b) => {
+      if (!sortByDesc) {
+        return Number(a.totalRewardRate) > Number(b.totalRewardRate) ? 1 : -1
+      } else {
+        return Number(a.totalRewardRate) > Number(b.totalRewardRate) ? -1 : 1
+      }
+    })
+  }
 
   return (
     <PageWrapper gap="lg" justify="center">
@@ -269,14 +409,30 @@ export default function Earn() {
           <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Participating pools</TYPE.mediumHeader>
           <Countdown exactEnd={pools?.[pools.length - 1]?.periodFinish} />
         </DataRow>
-        <SearchInput
-          type="text"
-          id="pools-search-input"
-          placeholder='Search name or symbol'
-          value={searchQuery}
-          ref={inputRef as RefObject<HTMLInputElement>}
-          onChange={handleInput}
-        />
+        <FilterWrapper>
+          <SearchInput
+            type="text"
+            id="pools-search-input"
+            placeholder='Search name or symbol'
+            value={searchQuery}
+            ref={inputRef as RefObject<HTMLInputElement>}
+            onChange={handleInput}
+          />
+          <FilterButtons>
+            {
+              sortItems.map((item, ind) => (
+                <FilterItem active={sortIndex === ind} onClick={() => {
+                  if (sortIndex === ind) {
+                    setSortbyDesc(!sortByDesc)
+                  } else {
+                    setSortbyDesc(true)
+                    setSortIndex(ind)
+                  }
+                }}>{ item }</FilterItem>
+              ))
+            }
+          </FilterButtons>
+        </FilterWrapper>
         <TopSection gap="md">
         <DataCard>
         <CardNoise />
@@ -306,7 +462,7 @@ export default function Earn() {
           </DataCard>
           </TopSection>
         <PoolSection>
-        {stakingRewardsExist && oldStakingInfos?.length === 0 ? (
+        {/* {stakingRewardsExist && oldStakingInfos?.length === 0 ? (
             <div />
           ) : !stakingRewardsExist ? (
             'No active rewards'
@@ -315,14 +471,14 @@ export default function Earn() {
               // need to sort by added liquidity here
               return <PoolCard key={stakingInfo.stakingRewardAddress} stakingInfo={stakingInfo} isOld={false}/>
             })
-          )}   
+          )}    */}
 
-          {stakingRewardsExist && poolsToShow?.length === 0 ? (
+          {stakingRewardsExist && refinedPools?.length === 0 ? (
             <Loader style={{ margin: 'auto' }} />
           ) : !stakingRewardsExist ? (
             'No active rewards'
           ) : (
-            poolsToShow?.slice(
+            refinedPools?.slice(
               page === 1 ? 0 : (page - 1) * ITEMS_PER_PAGE,
               (page * ITEMS_PER_PAGE) < poolsToShow.length ? (page * ITEMS_PER_PAGE): poolsToShow.length  
             ).map(stakingInfo => {

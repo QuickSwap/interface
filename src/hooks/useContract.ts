@@ -22,30 +22,39 @@ import { MULTICALL_ABI, MULTICALL_NETWORKS } from '../constants/multicall'
 import { V1_EXCHANGE_ABI, V1_FACTORY_ABI, V1_FACTORY_ADDRESSES } from '../constants/v1'
 import { getContract } from '../utils'
 import { useActiveWeb3React } from './index'
-import { Web3Provider } from '@ethersproject/providers'
+//import { Web3Provider } from '@ethersproject/providers'
 import { abi as LairABI } from '../abis/DragonLair.json'; 
-const Web3HttpProvider = require('web3-providers-http');
+/**const Web3HttpProvider = require('web3-providers-http');
 
-const providers = new Array();
-const sProviders = new Array();
+const providers: Web3Provider[] = [];
+const sProviders: Web3Provider[] = [];
 
 const rpcUrls = [
   //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
   //"https://shy-black-meadow.matic.quiknode.pro/aa57c5692641e98d1002a9dfeea7eb6438aa7937/",
-  //"http://65.21.232.117:80",
-  //"http://65.21.232.117:80",
-  "https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R",
+  //"https://rpc.quickswap.exchange",
+  "https://rpc.quickswap.exchange",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
-  "https://rpc-quickswap-do1-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
+  //"https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R",
+  //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
+  //"https://rpc-quickswap-do1-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
   //"https://rpc-quickswap-mainnet.maticvigil.com/v1/f11d33ea6df187c24fe994283187a4bedb086d45",
-  //"http://65.21.232.117:80",
-  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
-  "https://matic-mainnet.chainstacklabs.com",
+  //"https://rpc.quickswap.exchange",
+  //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  "https://rpc.quickswap.exchange",
   "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
-  //"http://65.21.232.117:80",
-  "https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  "https://matic-mainnet.chainstacklabs.com",
+  //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  "https://rpc.quickswap.exchange",
+  "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
+  //"https://rpc.quickswap.exchange",
+  //"https://nd-995-891-194.p2pify.com/58d3a2349fd1d7d909ee1a51d76cfdbf",
+  "https://rpc.quickswap.exchange",
   
-  "https://rpc-mainnet.matic.network"
+  //"https://rpc-mainnet.matic.network",
+  "https://matic-mainnet--jsonrpc.datahub.figment.io/apikey/73088fa3ab15c735a4efb389a05ebdfc/",
+  "https://rpc.quickswap.exchange",
   //"https://rpc-mainnet.matic.network",
   //"https://quick.slingshot.finance"
   
@@ -54,16 +63,18 @@ const rpcUrls = [
 const sRpcs = [
   "https://polygon-mainnet.g.alchemy.com/v2/jcLAFnx-j2TVrDjgVOGD8zUybSUL222R"
 ]
-
-var lastUsedUrl = -1;
-var maxUrls = 7
+*/
+/**var lastUsedUrl = -1;
+var maxUrls = 10
 
 var sLastUsedUrl = -1;
 const sMaxUrls = -1;
 const sThreshold = 0;
 var count = 0;
 
-for (var i = 0; i < rpcUrls.length; i++) {
+var localCount = 0;*/
+
+/**for (var i = 0; i < rpcUrls.length; i++) {
   const web3Provider = new Web3HttpProvider(rpcUrls[i]);
   providers.push(new Web3Provider(web3Provider));
 }
@@ -71,17 +82,20 @@ for (var i = 0; i < rpcUrls.length; i++) {
 for (var j = 0; j < sRpcs.length; j++) {
   const web3Provider = new Web3HttpProvider(sRpcs[j]);
   sProviders.push(new Web3Provider(web3Provider));
-}
+}*/
 
 
 // returns null on errors
 function useContract(address: string | undefined, ABI: any, withSignerIfPossible = true): Contract | null {
-  var { library, account, chainId } = useActiveWeb3React()
+  var { library, account } = useActiveWeb3React()
+  //const chainId = ChainId.MATIC;
   var provider:any = undefined;
 
-  if (chainId && MULTICALL_NETWORKS[chainId] === address) {
+
+  /**if (chainId && MULTICALL_NETWORKS[chainId] === address && localCount % 2 === 0) {
     count = count + 1;
-    if (sThreshold > 0 && count % sThreshold == 0) {
+    localCount++;
+    if (sThreshold > 0 && count % sThreshold === 0) {
       console.log(count);
       if(sLastUsedUrl === sMaxUrls) {
         sLastUsedUrl = -1;
@@ -96,7 +110,13 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
       }
       provider = providers[++lastUsedUrl];
     }
+
   }
+
+  else {
+    localCount++;
+    provider = library;
+  }*/
   return useMemo(() => {
     if (!address || !ABI || !library) return null
     try {
@@ -105,7 +125,7 @@ function useContract(address: string | undefined, ABI: any, withSignerIfPossible
       console.error('Failed to get contract', error)
       return null
     }
-  }, [address, ABI, library, withSignerIfPossible, account])
+  }, [address, ABI, library, withSignerIfPossible, account, provider])
 }
 
 export function useLairContract(): Contract | null {
@@ -173,7 +193,7 @@ export function usePairContract(pairAddress?: string, withSignerIfPossible?: boo
 }
 
 export function useMulticallContract(): Contract | null {
-  const { chainId } = useActiveWeb3React()
+  const chainId = ChainId.MATIC;
   return useContract(chainId && MULTICALL_NETWORKS[chainId], MULTICALL_ABI, false)
 }
 
