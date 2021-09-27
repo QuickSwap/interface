@@ -1,4 +1,6 @@
 import { ChainId, CurrencyAmount, JSBI, Token, TokenAmount, Pair } from '@uniswap/sdk'
+import { useSelector } from 'react-redux'
+import { AppState } from '../index'
 import { useMemo, useEffect/** , useState */ } from 'react'
 import { usePair } from '../../data/Reserves'
 
@@ -10356,6 +10358,10 @@ export function useLairInfo(): LairInfo {
 
 }
 
+export function useStakingInfos(): StakingInfo[] {
+  return useSelector((state: AppState) => state.stake.stakingInfo)
+}
+
 // gets the staking info from the network for the active chain id
 export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const { chainId, account } = useActiveWeb3React()
@@ -10379,7 +10385,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
 
   const uni = chainId ? UNI[chainId] : undefined
 
-  const rewardsAddresses = useMemo(() => info.map(({ stakingRewardAddress }) => stakingRewardAddress), [info])
+  const rewardsAddresses: string[] = useMemo(() => info.map(({ stakingRewardAddress }) => stakingRewardAddress), [info])
   const pairAddresses = useMemo(() => info.map(({ pair }) => pair), [info])
   
   useEffect(() => {

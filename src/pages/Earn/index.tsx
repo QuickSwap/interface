@@ -2,7 +2,7 @@ import React, {  RefObject, useState, useCallback, useRef, useEffect } from 'rea
 import { JSBI , TokenAmount } from '@uniswap/sdk'
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
-import { STAKING_REWARDS_INFO, useStakingInfo, useOldStakingInfo, useLairInfo, StakingInfo } from '../../state/stake/hooks'
+import { STAKING_REWARDS_INFO, useStakingInfos, useOldStakingInfo, useLairInfo, StakingInfo } from '../../state/stake/hooks'
 import { TYPE, ExternalLink } from '../../theme'
 import { isMobile } from 'react-device-detect'
 import PoolCard from '../../components/earn/PoolCard'
@@ -144,7 +144,7 @@ export default function Earn() {
   const[totalRewardsUSD, setTotalRewardsUSD] = useState<any>(0);
 
   const { chainId } = useActiveWeb3React()
-  const stakingInfos = useStakingInfo()
+  const stakingInfos = useStakingInfos()
   const [pools] = useState<StakingInfo[]>(stakingInfos);
   const lairInfo = useLairInfo();
   const oldStakingInfos = useOldStakingInfo();

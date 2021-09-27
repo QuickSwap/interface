@@ -13,6 +13,7 @@ import swap from './swap/reducer'
 import mint from './mint/reducer'
 import lists from './lists/reducer'
 import burn from './burn/reducer'
+import stake from './stake/reducer'
 import multicall from './multicall/reducer'
 
 const PERSISTED_KEYS: string[] = ['user', 'transactions', 'lists', ...GELATO_PERSISTED_KEYS]
@@ -26,6 +27,7 @@ const store = configureStore({
     mint,
     burn,
     multicall,
+    stake,
     lists,
     ...gelatoReducers,
   },
