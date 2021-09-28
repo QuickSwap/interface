@@ -16,6 +16,11 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
+//Remove these 2 after testing
+export const TOKENA = new Token(ChainId.MATIC, '0xc447b32A05819d82B06BF95f9bb878F6ae9c7eCc', 0, 'TokenA', 'TokenA')
+export const TOKENB = new Token(ChainId.MATIC, '0x0000000000000000000000000000000000000000', 0, 'TokenB', 'TokenA')
+
+
 export const EMPTY = new Token(ChainId.MATIC, '0x0000000000000000000000000000000000000000', 0, 'EMPTY', 'EMPTY')
 export const DAI = new Token(ChainId.MATIC, '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063', 18, 'DAI', 'Dai Stablecoin')
 export const USDC = new Token(ChainId.MATIC, '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174', 6, 'USDC', 'USDC')
