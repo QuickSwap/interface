@@ -200,7 +200,8 @@ export default function Updater(): null {
         return cancel
       })
     }
-  }, [chainId, multicallContract, dispatch, serializedOutdatedCallKeys, latestBlockNumber])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [chainId, latestBlockNumber])
 
   return null
 }
