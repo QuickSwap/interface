@@ -194,6 +194,26 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: PHX,
+      stakingRewardAddress: '0xcE4c95014Bd54B1D3ff30dbb585009aDf7358b0b',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 12000,
+      ending: 1638027392
+    },
+    {
+      token: REI,
+      stakingRewardAddress: '0xc9097837c52f0e9785539BD2d265df7fA890cb1A',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 5127.75,
+      ending: 1638027392
+    },
+    {
       token: MITX,
       stakingRewardAddress: '0xBBD9146D2A687C0df7e6201D7b8cc4cebc5DF976',
       ended: false,
