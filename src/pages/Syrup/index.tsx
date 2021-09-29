@@ -2,7 +2,7 @@ import React, { RefObject, useRef, useEffect, useState, useCallback } from 'reac
 
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
-import { SYRUP_REWARDS_INFO, useSyrupInfo } from '../../state/stake/hooks'
+import { SYRUP_REWARDS_INFO, useSyrupInfos } from '../../state/stake/hooks'
 import { TYPE/*, ExternalLink*/} from '../../theme'
 //import { isMobile } from 'react-device-detect'
 import SyrupCard from '../../components/syrup/SyrupCard'
@@ -144,7 +144,7 @@ export default function Syrup() {
   //const [ empty, setEmpty ] = useState(true);
 
   const { chainId } = useActiveWeb3React()
-  const syrupInfos = useSyrupInfo();
+  const syrupInfos = useSyrupInfos();
   const[totalDepositedUSD, setTotalDeposittedUSD] = useState<any>(0);
 
 

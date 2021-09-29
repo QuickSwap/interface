@@ -10394,6 +10394,10 @@ export function useOldStakingInfos(): StakingInfo[] {
   return useSelector((state: AppState) => state.stake.oldStakingInfo)
 }
 
+export function useSyrupInfos(): SyrupInfo[] {
+  return useSelector((state: AppState) => state.stake.syrupInfo)
+}
+
 // gets the staking info from the network for the active chain id
 export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const { chainId, account } = useActiveWeb3React()
