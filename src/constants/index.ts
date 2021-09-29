@@ -233,6 +233,12 @@ export const MVERSE = new Token(ChainId.MATIC, '0x0B313b4C589A3BD3350f625f2e94DC
 export const TECH = new Token(ChainId.MATIC, '0x6286A9e6f7e745A6D884561D88F94542d6715698', 18, 'TECH', 'Cryptomeda')
 export const GMEE = new Token(ChainId.MATIC, '0xcf32822ff397Ef82425153a9dcb726E5fF61DCA7', 18, 'GAMEE', 'GMEE')
 
+export const YFDAI = new Token(ChainId.MATIC, '0x7E7fF932FAb08A0af569f93Ce65e7b8b23698Ad8', 18, 'Yf-DAI', 'YfDAI.finance')
+export const MOT = new Token(ChainId.MATIC, '0x2db0Db271a10661e7090b6758350E18F6798a49D', 18, 'MOT', 'Mobius Token')
+export const NSDX = new Token(ChainId.MATIC, '0xE8d17b127BA8b9899a160D9a07b69bCa8E08bfc6', 18, 'NSDX', 'NASDEX Token')
+export const EROWAN = new Token(ChainId.MATIC, '0xa7051C5a22d963b81D71C2BA64D46a877fBc1821', 18, 'EROWAN', 'SifChain (erowan)')
+export const ATOM = new Token(ChainId.MATIC, '0xac51C4c48Dc3116487eD4BC16542e27B5694Da1b', 18, 'ATOM', 'Cosmos')
+
 
 export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -406,4 +412,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.1.5/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.1.6/build/quickswap-default.tokenlist.json'

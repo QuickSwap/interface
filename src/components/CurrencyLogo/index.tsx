@@ -349,6 +349,18 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/14716/small/gmee-200x200.png?1621827468'
     }
 
+    if (address?.toLowerCase() === '0x7E7fF932FAb08A0af569f93Ce65e7b8b23698Ad8'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12385/small/1619048513068.png?1622193581'
+    }if (address?.toLowerCase() === '0x2db0Db271a10661e7090b6758350E18F6798a49D'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18144/small/11322.png?1630668459'
+    }if (address?.toLowerCase() === '0xE8d17b127BA8b9899a160D9a07b69bCa8E08bfc6'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18634/small/nadex.PNG?1632727863'
+    }if (address?.toLowerCase() === '0xa7051C5a22d963b81D71C2BA64D46a877fBc1821'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14044/small/EROWAN.png?1614656300'
+    }if (address?.toLowerCase() === '0xac51C4c48Dc3116487eD4BC16542e27B5694Da1b'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/1481/small/cosmos_hub.png?1555657960'
+    }
+
     if (address?.toLowerCase() === '0xc56d17dD519e5eB43a19C9759b5D5372115220BD'.toLowerCase()) {
       uri = 'https://i.postimg.cc/CxvzF5bJ/moon-black.png'
     }if (address?.toLowerCase() === '0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539'.toLowerCase()) {
