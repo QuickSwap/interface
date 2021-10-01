@@ -413,7 +413,7 @@ export default function Header() {
             allow="accelerometer; autoplay; camera; gyroscope; payment"
             frameBorder="0"
             height="600px"
-            src="https://buy-staging.moonpay.io?apiKey=pk_test_NTpw9tezMHigRvdX8Ouwut522zUeNVZL"
+            src="https://buy.moonpay.com?apiKey=pk_live_72EGoobLnlgc8WB7AaxyiWu2S43dj8eY"
             width="100%"
           >
             <p>Your browser does not support iframes.</p>
