@@ -196,6 +196,16 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: PBR,
+      stakingRewardAddress: '0xa751f7B39F6c111d10e2C603bE2a12bd5F70Fc83',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDT,
+      rate: 3333.33,
+      ending: 1638280789
+    },
+    {
       token: PHX,
       stakingRewardAddress: '0xcE4c95014Bd54B1D3ff30dbb585009aDf7358b0b',
       ended: false,
