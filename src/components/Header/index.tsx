@@ -410,6 +410,7 @@ export default function Header() {
       <Modal isOpen={showMoonPayWidget} onDismiss={() => setShowMoonPayWidget(false)}>
         <div style={{ height: '100%', width: '100%', overflowY: 'auto'}}>
           <iframe
+            title="moonpay"
             allow="accelerometer; autoplay; camera; gyroscope; payment"
             frameBorder="0"
             height="600px"
