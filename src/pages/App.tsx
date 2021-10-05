@@ -18,6 +18,7 @@ import {
   RedirectToAddLiquidity
 } from './AddLiquidity/redirects'
 import Earn from './Earn'
+import Dual from './DualEarn'
 import Old from './Earn/Old';
 import Syrup from './Syrup';
 import ManageOld from './Earn/ManageOld';
@@ -35,6 +36,8 @@ import Vote from './Vote'
 import VotePage from './Vote/VotePage'
 import ManageLair from './QuickLair/ManageLair'
 import Manage from './Earn/Manage'
+import ManageDual from './DualEarn/Manage';
+
 
 const AppWrapper = styled.div`
   display: flex;
@@ -101,6 +104,7 @@ export default function App() {
               <Route exact strict path="/find" component={PoolFinder} />
               <Route exact strict path="/pool" component={Pool} />
               <Route exact strict path="/quick" component={Earn} />
+              <Route exact strict path="/dual" component={Dual} />
               <Route exact strict path="/archive" component={Old} />
               <Route exact strict path="/syrup" component={Syrup} />
               <Route exact strict path="/vote" component={Vote} />
@@ -114,6 +118,7 @@ export default function App() {
               <Route exact strict path="/remove/:tokens" component={RedirectOldRemoveLiquidityPathStructure} />
               <Route exact strict path="/remove/:currencyIdA/:currencyIdB" component={RemoveLiquidity} />
               <Route exact strict path="/quick/:currencyIdA/:currencyIdB/:rewardsAddress" component={Manage} />
+              <Route exact strict path="/dual/:currencyIdA/:currencyIdB/:rewardsAddress" component={ManageDual} />
               <Route exact strict path="/syrup/:currencyIdA/:rewardsAddress" component={ManageSyrup} />
               <Route exact strict path="/dquick" component={ManageLair} />
               <Route exact strict path="/archive/:currencyIdA/:currencyIdB/:rewardsAddress" component={ManageOld} />

@@ -17,8 +17,8 @@ type ChainTokenList = {
 }
 
 //Remove these 2 after testing
-export const TOKENA = new Token(ChainId.MATIC, '0xc447b32A05819d82B06BF95f9bb878F6ae9c7eCc', 0, 'TokenA', 'TokenA')
-export const TOKENB = new Token(ChainId.MATIC, '0x0000000000000000000000000000000000000000', 0, 'TokenB', 'TokenA')
+export const TOKENA = new Token(ChainId.MATIC, '0xd46422d62c1d3b6b6934727be2f8aad4162a88dc', 18, 'TokenA', 'TokenA')
+export const TOKENB = new Token(ChainId.MATIC, '0xc447b32a05819d82b06bf95f9bb878f6ae9c7ecc', 18, 'TokenB', 'TokenA')
 
 
 export const EMPTY = new Token(ChainId.MATIC, '0x0000000000000000000000000000000000000000', 0, 'EMPTY', 'EMPTY')

@@ -3,6 +3,8 @@ import { abi as GOVERNANCE_ABI } from '@uniswap/governance/build/GovernorAlpha.j
 import { abi as UNI_ABI } from '@uniswap/governance/build/Uni.json'
 import { abi as STAKING_REWARDS_ABI } from '@uniswap/liquidity-staker/build/StakingRewards.json'
 import { abi as MERKLE_DISTRIBUTOR_ABI } from '@uniswap/merkle-distributor/build/MerkleDistributor.json'
+import { STAKING_DUAL_REWARDS_INTERFACE } from '../constants/abis/staking-rewards'
+
 import { ChainId, WETH } from '@uniswap/sdk'
 import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 import { useMemo } from 'react'
@@ -214,6 +216,11 @@ export function useUniContract(): Contract | null {
 export function useStakingContract(stakingAddress?: string, withSignerIfPossible?: boolean): Contract | null {
   return useContract(stakingAddress, STAKING_REWARDS_ABI, withSignerIfPossible)
 }
+
+export function useDualRewardsStakingContract(stakingAddress?: string, withSignerIfPossible?: boolean): Contract | null {
+  return useContract(stakingAddress, STAKING_DUAL_REWARDS_INTERFACE, withSignerIfPossible)
+}
+
 
 export function useSocksController(): Contract | null {
   const { chainId } = useActiveWeb3React()

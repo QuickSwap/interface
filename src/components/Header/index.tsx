@@ -443,6 +443,7 @@ export default function Header() {
             <StyledMenuContainer>
               <StyledMenu>
                 <StyledNavLink id={`stake-nav-link-LP`} to={'/quick'} >LP Mining</StyledNavLink>
+                <StyledNavLink id={`stake-nav-link-LP`} to={'/dual'} style={{marginTop: 10}}>Dual Mining</StyledNavLink>
                 <StyledNavLink id={`stake-nav-link-DS`} to={'/syrup'} style={{marginTop: 10}}>Dragon's Syrup</StyledNavLink>
               </StyledMenu>
             </StyledMenuContainer>   
