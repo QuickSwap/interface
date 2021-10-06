@@ -82,17 +82,30 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
               <TYPE.body>Deposited liquidity:</TYPE.body>
             </AutoColumn>
           )}
-          {stakingInfo?.earnedAmount && (
+          {!stakingInfo?.ended && stakingInfo?.earnedAmount && (
             <AutoColumn justify="center" gap="md">
               <TYPE.body fontWeight={600} fontSize={36}>
                 {<FormattedCurrencyAmount currencyAmount={stakingInfo?.earnedAmount} />}
               </TYPE.body>
-              <TYPE.body>Unclaimed QUICK</TYPE.body>
+              <TYPE.body>Unclaimed dQUICK</TYPE.body>
             </AutoColumn>
           )}
-          <TYPE.subHeader style={{ textAlign: 'center' }}>
-            When you withdraw, your QUICK is claimed and your liquidity is removed from the mining pool.
-          </TYPE.subHeader>
+
+          {stakingInfo?.ended && stakingInfo?.earnedAmount && (
+            <AutoColumn justify="center" gap="md">
+              <TYPE.body fontWeight={600} fontSize={36}>
+                {<FormattedCurrencyAmount currencyAmount={stakingInfo?.earnedAmount} />}
+              </TYPE.body>
+              <TYPE.body>Unclaimed QUICK/dQUICK</TYPE.body>
+            </AutoColumn>
+          )}
+
+          {stakingInfo?.ended && <TYPE.subHeader style={{ textAlign: 'center' }}>
+            When you withdraw, your QUICK/dQUICK is claimed and your liquidity is removed from the mining pool.
+          </TYPE.subHeader>}
+          {!stakingInfo?.ended && <TYPE.subHeader style={{ textAlign: 'center' }}>
+            When you withdraw, your dQUICK is claimed and your liquidity is removed from the mining pool.
+          </TYPE.subHeader>}
           <ButtonError disabled={!!error} error={!!error && !!stakingInfo?.stakedAmount} onClick={onWithdraw}>
             {error ?? 'Withdraw & Claim'}
           </ButtonError>
@@ -102,7 +115,8 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
         <LoadingView onDismiss={wrappedOndismiss}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.body fontSize={20}>Withdrawing {stakingInfo?.stakedAmount?.toSignificant(4)} QUICK-V2</TYPE.body>
-            <TYPE.body fontSize={20}>Claiming {stakingInfo?.earnedAmount?.toSignificant(4)} QUICK</TYPE.body>
+            {stakingInfo?.ended && <TYPE.body fontSize={20}>Claiming {stakingInfo?.earnedAmount?.toSignificant(4)} QUICK/dQUICK</TYPE.body>}
+            {!stakingInfo?.ended && <TYPE.body fontSize={20}>Claiming {stakingInfo?.earnedAmount?.toSignificant(4)} dQUICK</TYPE.body>}
           </AutoColumn>
         </LoadingView>
       )}
@@ -111,7 +125,8 @@ export default function UnstakingModal({ isOpen, onDismiss, stakingInfo }: Staki
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>Transaction Submitted</TYPE.largeHeader>
             <TYPE.body fontSize={20}>Withdrew QUICK-V2!</TYPE.body>
-            <TYPE.body fontSize={20}>Claimed QUICK!</TYPE.body>
+            {!stakingInfo?.ended &&<TYPE.body fontSize={20}>Claimed dQUICK!</TYPE.body>}
+            {stakingInfo?.ended &&<TYPE.body fontSize={20}>Claimed QUICK/dQUICK!</TYPE.body>}
           </AutoColumn>
         </SubmittedView>
       )}

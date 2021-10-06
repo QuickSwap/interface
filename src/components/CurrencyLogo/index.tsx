@@ -361,6 +361,16 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/1481/small/cosmos_hub.png?1555657960'
     }
 
+    if (address?.toLowerCase() === '0x09211Dc67f9fe98Fb7bBB91Be0ef05f4a12FA2b2'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14186/small/WATCH1.png?1614825718'
+    }if (address?.toLowerCase() === '0xa25610a77077390A75aD9072A084c5FbC7d43A0d'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18632/small/DdcZZeP_%282%29.png?1632716316'
+    }if (address?.toLowerCase() === '0x4455eF8B4B4A007a93DaA12DE63a47EEAC700D9D'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18441/small/Coin_Forest_Knight_200x200.png?1632480031'
+    }if (address?.toLowerCase() === '0x596eBE76e2DB4470966ea395B0d063aC6197A8C5'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/trustwallet/assets/b8086dbc7040582d1412effe7a951914d4a96eef/blockchains/ethereum/assets/0x8A9C67fee641579dEbA04928c4BC45F66e26343A/logo.png'
+    }
+
     if (address?.toLowerCase() === '0xc56d17dD519e5eB43a19C9759b5D5372115220BD'.toLowerCase()) {
       uri = 'https://i.postimg.cc/CxvzF5bJ/moon-black.png'
     }if (address?.toLowerCase() === '0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539'.toLowerCase()) {
