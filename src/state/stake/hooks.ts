@@ -171,7 +171,7 @@ import {
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
-import { NEVER_RELOAD, useMultipleContractSingleData, useSingleCallResult } from '../multicall/hooks'
+import { NEVER_RELOAD, useMultipleContractSingleData, useSingleCallResult, useSingleContractMultipleData } from '../multicall/hooks'
 import { tryParseAmount } from '../swap/hooks'
 import Web3 from 'web3';
 import { useLairContract, useQUICKContract } from '../../hooks/useContract'
@@ -11071,6 +11071,7 @@ export interface StakingInfo {
   oneDayFee: Number
 
   accountFee: Number
+  dQuickToQuick: Number
   // calculates a hypothetical amount of token distributed to the active account per second.
   getHypotheticalRewardRate: (
     stakedAmount: TokenAmount,
@@ -11493,12 +11494,15 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
     })
   }, [pairAddresses])
 
+  const lair = useLairContract()
+  const args = useMemo(() => info.map(({ rate }) => [web3.utils.toWei(rate.toString(), "ether")]), [info])
   const accountArg = useMemo(() => [account ?? undefined], [account])
    
   // get all the info from the staking rewards contracts
   const balances = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'balanceOf', accountArg)
   const earnedAmounts = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'earned', accountArg)
   const totalSupplies = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'totalSupply')
+  const dQuickToQuicks = useSingleContractMultipleData(lair, 'dQUICKForQUICK', args);
 
   const periodFinishes = useMultipleContractSingleData(
     rewardsAddresses,
@@ -11521,6 +11525,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
     return rewardsAddresses.reduce<StakingInfo[]>((memo, rewardsAddress, index) => {
       // these two are dependent on account
       const balanceState = balances[index]
+      const dQuickToQuickState = dQuickToQuicks[index];
       const earnedAmountState = earnedAmounts[index]
 
       // these get fetched regardless of account
@@ -11530,6 +11535,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
 
       if (
         // these may be undefined if not logged in
+        !dQuickToQuickState?.loading &&
         !balanceState?.loading &&
         !earnedAmountState?.loading &&
         // always need these
@@ -11541,6 +11547,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
         !periodFinishState.loading
       ) {
         if (
+          dQuickToQuickState?.error ||
           balanceState?.error ||
           earnedAmountState?.error ||
           totalSupplyState.error ||
@@ -11584,6 +11591,9 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
         var oneYearFeeAPY = 0;
         var oneDayFee = 0;
         var accountFee = 0;
+        var dQuickToQuick:any = dQuickToQuickState?.result?.[0] ?? 0 
+
+        dQuickToQuick = web3.utils.fromWei(dQuickToQuick.toString(), 'ether');
         //@ts-ignore
         if(pairs !== undefined){
           //@ts-ignore
@@ -11619,7 +11629,8 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           rate: info[index].rate,
           oneYearFeeAPY: oneYearFeeAPY,
           oneDayFee,
-          accountFee
+          accountFee,
+          dQuickToQuick: dQuickToQuick
         })
       }
       return memo
@@ -11744,7 +11755,8 @@ export function useVeryOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo
           rate: info[index].rate,
           oneYearFeeAPY: 0,
           oneDayFee: 0,
-          accountFee: 0
+          accountFee: 0,
+          dQuickToQuick: 0
         })
       }
       return memo
@@ -11870,7 +11882,8 @@ export function useOldStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
           rate: info[index].rate,
           oneYearFeeAPY: 0,
           oneDayFee: 0,
-          accountFee: 0
+          accountFee: 0,
+          dQuickToQuick: 0
         })
       }
       return memo

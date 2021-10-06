@@ -117,7 +117,7 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
     valueOfTotalStakedAmountInBaseToken && USDPrice?.quote(valueOfTotalStakedAmountInBaseToken)
   
   //@ts-ignore
-  const perMonthReturnInRewards: any = (stakingInfo?.rate * stakingInfo?.quickPrice * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6));
+  const perMonthReturnInRewards: any = (stakingInfo?.dQuickToQuick * stakingInfo?.quickPrice * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6));
   
 
   //let apy = 0;
@@ -127,7 +127,7 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
   //apy = perMonthReturnInRewards/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
 
   //@ts-ignore
-  rewards = stakingInfo?.rate * stakingInfo?.quickPrice;
+  rewards = stakingInfo?.dQuickToQuick * stakingInfo?.quickPrice;
 
   if(stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0) {
     //@ts-ignore
