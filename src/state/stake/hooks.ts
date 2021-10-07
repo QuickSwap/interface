@@ -167,7 +167,8 @@ import {
   GMEE,
   KNIGHT,
   MCASH,
-  WATCH
+  WATCH,
+  COMBO
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -198,6 +199,26 @@ export const SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: COMBO,
+      stakingRewardAddress: '0xFAcba3A45354f27442406Df293D9C68FD8f0A8b1',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 8484.44,
+      ending: 1641401056
+    },
+    {
+      token: GMEE,
+      stakingRewardAddress: '0xA0532E8c435437fE2473b84467ea79ab200f594c',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 15555.56,
+      ending: 1641401056
+    },  
     {
       token: PBR,
       stakingRewardAddress: '0xa751f7B39F6c111d10e2C603bE2a12bd5F70Fc83',
