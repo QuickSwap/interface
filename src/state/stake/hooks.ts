@@ -178,7 +178,7 @@ import Web3 from 'web3';
 import { useLairContract, useQUICKContract } from '../../hooks/useContract'
 import useUSDCPrice from '../../utils/useUSDCPrice'
 
-const web3 = new Web3("https://rpc.quickswap.exchange");
+const web3 = new Web3("https://polygon-rpc.com/");
 
 export const STAKING_GENESIS = 1620842940;
 
