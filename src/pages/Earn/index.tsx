@@ -375,7 +375,7 @@ export default function Earn() {
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                  Deposit your Liquidity Provider tokens to receive QUICK, the Quickswap protocol governance token.
+                  Deposit your Liquidity Provider tokens to receive dQUICK.
                 </TYPE.white>
                 
               </RowBetween>{' '}
@@ -440,7 +440,7 @@ export default function Earn() {
         <RowBetween style={{marginTop: "10px"}}>
           <TYPE.white> Reward Rate</TYPE.white>
           <TYPE.white>
-            {totalRewards.toFixed(0)} QUICK / day
+            {totalRewards.toFixed(0)} dQUICK / day
           </TYPE.white>
         </RowBetween>
         <RowBetween style={{marginTop: "10px"}}>

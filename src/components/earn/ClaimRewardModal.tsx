@@ -46,7 +46,7 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
         .getReward({ gasLimit: 350000 })
         .then((response: TransactionResponse) => {
           addTransaction(response, {
-            summary: `Claim accumulated QUICK rewards`
+            summary: `Claim accumulated rewards`
           })
           setHash(response.hash)
         })
@@ -73,12 +73,20 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
             <TYPE.mediumHeader>Claim</TYPE.mediumHeader>
             <CloseIcon onClick={wrappedOnDismiss} />
           </RowBetween>
-          {stakingInfo?.earnedAmount && (
+          { !stakingInfo?.earnedAmount && stakingInfo?.earnedAmount && (
             <AutoColumn justify="center" gap="md">
               <TYPE.body fontWeight={600} fontSize={36}>
                 {stakingInfo?.earnedAmount?.toSignificant(6)}
               </TYPE.body>
-              <TYPE.body>Unclaimed QUICK</TYPE.body>
+              <TYPE.body>Unclaimed dQUICK</TYPE.body>
+            </AutoColumn>
+          )}
+          { stakingInfo?.earnedAmount && stakingInfo?.earnedAmount && (
+            <AutoColumn justify="center" gap="md">
+              <TYPE.body fontWeight={600} fontSize={36}>
+                {stakingInfo?.earnedAmount?.toSignificant(6)}
+              </TYPE.body>
+              <TYPE.body>Unclaimed QUICK/dQUICK</TYPE.body>
             </AutoColumn>
           )}
           <TYPE.subHeader style={{ textAlign: 'center' }}>
@@ -92,7 +100,8 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
       {attempting && !hash && (
         <LoadingView onDismiss={wrappedOnDismiss}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.body fontSize={20}>Claiming {stakingInfo?.earnedAmount?.toSignificant(6)} QUICK</TYPE.body>
+            { !stakingInfo?.ended && <TYPE.body fontSize={20}>Claiming {stakingInfo?.earnedAmount?.toSignificant(6)} dQUICK</TYPE.body>}
+            { stakingInfo?.ended && <TYPE.body fontSize={20}>Claiming {stakingInfo?.earnedAmount?.toSignificant(6)} QUICK/dQUICK</TYPE.body>}
           </AutoColumn>
         </LoadingView>
       )}
@@ -100,7 +109,8 @@ export default function ClaimRewardModal({ isOpen, onDismiss, stakingInfo }: Sta
         <SubmittedView onDismiss={wrappedOnDismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>Transaction Submitted</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>Claimed QUICK!</TYPE.body>
+            { !stakingInfo?.ended && <TYPE.body fontSize={20}>Claimed dQUICK!</TYPE.body>}
+            { stakingInfo?.ended && <TYPE.body fontSize={20}>Claimed QUICK/dQUICK!</TYPE.body>}
           </AutoColumn>
         </SubmittedView>
       )}
