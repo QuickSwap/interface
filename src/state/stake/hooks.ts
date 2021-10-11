@@ -200,6 +200,16 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: MATIC,
+      stakingRewardAddress: '0xd6Ce4f3D692C1c6684fb449993414C5c9E5D0073',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 2783.33,
+      ending: 1639155366
+    },
+    {
       token: COMBO,
       stakingRewardAddress: '0xFAcba3A45354f27442406Df293D9C68FD8f0A8b1',
       ended: false,
