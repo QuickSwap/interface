@@ -1697,7 +1697,7 @@ export const OLD_STAKING_REWARDS_INFO: {
     {
       tokens: [ETHER,MATIC],
       stakingRewardAddress: '0x4b678cA360c5f53a2B0590e53079140F302A9DcD',
-      ended: false,
+      ended: true,
       lp: '',
       name: '',
       baseToken: ETHER,
@@ -1707,7 +1707,7 @@ export const OLD_STAKING_REWARDS_INFO: {
     {
       tokens: [MATIC,QUICK],
       stakingRewardAddress: '0xdD8758eBB792C9aed3517e9E28ce03C090564DA0',
-      ended: false,
+      ended: true,
       lp: '',
       name: '',
       baseToken: QUICK,
@@ -1717,7 +1717,7 @@ export const OLD_STAKING_REWARDS_INFO: {
     {
       tokens: [MATIC,USDC],
       stakingRewardAddress: '0x9854e01432b348194e025DF773e6412892cBc900',
-      ended: false,
+      ended: true,
       lp: '',
       name: '',
       baseToken: USDC,
@@ -1727,7 +1727,7 @@ export const OLD_STAKING_REWARDS_INFO: {
     {
       tokens: [MATIC,USDT],
       stakingRewardAddress: '0xE1F991f93997085472469B2fA72Fd5454469Fa94',
-      ended: false,
+      ended: true,
       lp: '',
       name: '',
       baseToken: USDT,
