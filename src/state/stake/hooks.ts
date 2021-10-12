@@ -161,8 +161,8 @@ import {
   REI,
   ZUSD,
   PBR,
-  TOKENA,
-  TOKENB,
+  //TOKENA,
+  //TOKENB,
   ATOM,
   D11,
   EROWAN,
@@ -623,18 +623,57 @@ export const STAKING_DUAL_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
-      tokens: [USDT,USDC],
-      stakingRewardAddress: '0x14e6DCE087b37ccDE76ff86Dd9e84C542C42f955',
+      tokens: [MATIC,ETHER],
+      stakingRewardAddress: '0x3c1f53fed2238176419F8f897aEc8791C499e3c8',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rewardTokenA: DQUICK,
+      rewardTokenB: MATIC,
+      rateA: 30.537,
+      rateB: 3000,
+      pair: '0xadbf1854e5883eb8aa7baf50705338739e558e5b'
+    },
+    {
+      tokens: [MATIC,USDC],
+      stakingRewardAddress: '0x14977e7E263FF79c4c3159F497D9551fbE769625',
       ended: false,
       lp: '',
       name: '',
       baseToken: USDC,
-      rewardTokenA: TOKENA,
-      rewardTokenB: TOKENB,
-      rateA: 10,
-      rateB: 20,
-      pair: '0x2cf7252e74036d1da831d11089d326296e64a728'
+      rewardTokenA: DQUICK,
+      rewardTokenB: MATIC,
+      rateA: 11.745,
+      rateB: 3000,
+      pair: '0x6e7a5fafcec6bb1e78bae2a1f0b612012bf14827'
     },
+    {
+      tokens: [MATIC,USDT],
+      stakingRewardAddress: '0xc0eb5d1316b835F4B584B59f922d9c87cA5053E5',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDT,
+      rewardTokenA: DQUICK,
+      rewardTokenB: MATIC,
+      rateA: 5.481,
+      rateB: 2500,
+      pair: '0x604229c960e5cacf2aaeac8be68ac07ba9df81c3'
+    },
+    {
+      tokens: [MATIC,QUICK],
+      stakingRewardAddress: '0xd26E16f5a9dfb9Fe32dB7F6386402B8AAe1a5dd7',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rewardTokenA: DQUICK,
+      rewardTokenB: MATIC,
+      rateA: 11.745,
+      rateB: 1500,
+      pair: '0x019ba0325f1988213d448b3472fa1cf8d07618d7'
+    }
   ]
 }
 // TODO add staking rewards addresses here

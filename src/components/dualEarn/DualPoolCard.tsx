@@ -194,7 +194,7 @@ export default function DualPoolCard({ stakingInfo, isOld }: { stakingInfo: Dual
         <RowBetween>
           <TYPE.white> {rewardTokenB?.symbol} rate </TYPE.white>
           <TYPE.white>{`${stakingInfo.totalRewardRateB
-            ?.toFixed(2, { groupSeparator: ',' }).replace(/[.,]00$/, "") + " " + rewardTokenA?.symbol} / day`}</TYPE.white>
+            ?.toFixed(2, { groupSeparator: ',' }).replace(/[.,]00$/, "") + " " + rewardTokenB?.symbol} / day`}</TYPE.white>
         </RowBetween>
 
         { 
