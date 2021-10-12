@@ -188,6 +188,8 @@ export const REWARDS_DURATION_DAYS = 7;
 
 var pairs:any = undefined;
 
+var dualPairs:any = undefined;
+
 export const SYRUP_REWARDS_INFO: {
   [chainId in ChainId]?: {
     token: Token
@@ -11497,6 +11499,61 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
   }
 }
 
+const getDualBulkPairData = async(pairList: any) => {
+  //@ts-ignore
+ if(dualPairs !== undefined) {
+   return;
+ }
+ const current = await web3.eth.getBlockNumber();
+ const oneDayOldBlock = current - 44000;
+ 
+ try {
+   let current = await client.query({
+     query: PAIRS_BULK(pairList),
+     variables: {
+       allPairs: pairList,
+     },
+     fetchPolicy: 'cache-first',
+   })
+
+   let [oneDayResult] = await Promise.all(
+     [oneDayOldBlock].map(async (block) => {
+       let result = client.query({
+         query: PAIRS_HISTORICAL_BULK(block, pairList),
+         fetchPolicy: 'cache-first',
+       })
+       return result
+     })
+   )
+
+   let oneDayData = oneDayResult?.data?.pairs.reduce((obj:any, cur:any, i:any) => {
+     return { ...obj, [cur.id]: cur }
+   }, {});
+
+   let pairData = await Promise.all(
+     current &&
+       current.data.pairs.map(async (pair:any) => {
+         let data = pair
+         let oneDayHistory = oneDayData?.[pair.id]
+         
+         data = parseData(data, oneDayHistory)
+         return data
+       })
+   )
+   
+   const object = convertArrayToObject(pairData, 'id');
+   if (Object.keys(object).length > 0){
+    dualPairs = object;
+     return object;
+   }
+   return object
+
+ } catch (e) {
+   console.log(e)
+   return;
+ }
+}
+
 const getOneDayVolume = async() => {
   let data: any = {}
   let oneDayData: any = {}
@@ -11599,7 +11656,7 @@ export function useDualStakingInfo(pairToFilterBy?: Pair | null): DualStakingInf
   
   useEffect(() => {
  
-    getBulkPairData(pairAddresses).then((data)=>{
+    getDualBulkPairData(pairAddresses).then((data)=>{
     })
   }, [pairAddresses])
 
@@ -11715,17 +11772,17 @@ export function useDualStakingInfo(pairToFilterBy?: Pair | null): DualStakingInf
         var oneDayFee = 0;
         var accountFee = 0;
         //@ts-ignore
-        if(pairs !== undefined){
+        if(dualPairs !== undefined){
           //@ts-ignore
-          oneYearFeeAPY = pairs[info[index].pair]?.oneDayVolumeUSD;
+          oneYearFeeAPY = dualPairs[info[index].pair]?.oneDayVolumeUSD;
           
           if(oneYearFeeAPY) {
-            const totalSupply = web3.utils.toWei(pairs[info[index].pair]?.totalSupply, "ether");
+            const totalSupply = web3.utils.toWei(dualPairs[info[index].pair]?.totalSupply, "ether");
             const ratio = Number(totalSupplyState.result?.[0].toString()) / Number(totalSupply);
             const myRatio = Number(balanceState?.result?.[0].toString()) / Number(totalSupplyState.result?.[0].toString());
             oneDayFee = ( oneYearFeeAPY * 0.003) * ratio;
             accountFee = oneDayFee * myRatio;
-            oneYearFeeAPY = ( oneYearFeeAPY * 0.003 * 365) / pairs[info[index].pair]?.reserveUSD
+            oneYearFeeAPY = ( oneYearFeeAPY * 0.003 * 365) / dualPairs[info[index].pair]?.reserveUSD
             //console.log(info[index].pair, oneYearFeeAPY);
           } 
         }
