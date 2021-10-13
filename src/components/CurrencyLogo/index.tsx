@@ -549,6 +549,22 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/18197/small/snk.png?1630979321'
     }
 
+    if (address?.toLowerCase() === '0x229b1b6C23ff8953D663C4cBB519717e323a0a84'.toLowerCase()) {
+      uri = 'https://pbs.twimg.com/profile_images/1443182135410634754/l1wH-p3b_400x400.jpg'
+    }if (address?.toLowerCase() === '0xa8fcEe762642f156b5D757b6FabC36E06b6d4A1A'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14379/small/uaLoLU8c_400x400_%281%29.png?1627873106'
+    }if (address?.toLowerCase() === '0xb3b9c016AD1E9f7EFdAE451b04EF696e05658b32'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14582/small/512_Light.png?1617149658'
+    }if (address?.toLowerCase() === '0x3dc6052a693E4a2fc28Eb2Ea12fe0CfD3BD221D1'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/5135/small/IRIS.png?1557999365'
+    }if (address?.toLowerCase() === '0xf14fbC6B30e2c4BC05A1D4fbE34bf9f14313309D'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12785/small/akash-logo.png?1615447676'
+    }if (address?.toLowerCase() === '0x3C720206bFaCB2d16fA3ac0ed87D2048Dbc401Fc'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12330/small/e353ZVj.png?1599112996'
+    }if (address?.toLowerCase() === '0xEc482De9569a5EA3Dd9779039b79e53F15791fDE'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/16733/small/REGEN.png?1624861317'
+    }
+
     if (address?.toLowerCase() === '0x5c4b7CCBF908E64F32e12c6650ec0C96d717f03F'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
     }if (address?.toLowerCase() === '0x59E9261255644c411AfDd00bD89162d09D862e38'.toLowerCase()) {

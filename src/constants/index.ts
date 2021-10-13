@@ -219,7 +219,7 @@ export const ORBS = new Token(ChainId.MATIC, '0x614389EaAE0A6821DC49062D56BDA3d9
 export const SHI3LD = new Token(ChainId.MATIC, '0xF239E69ce434c7Fb408b05a0Da416b14917d934e', 18, 'SHI3LD', 'PolyShield')
 export const BABYQUICK = new Token(ChainId.MATIC, '0x9a05D1FF699ea187Dc8523E333eD63503f0d82db', 18, 'BABYQUICK', 'BABYQUICK')
 export const PERA = new Token(ChainId.MATIC, '0xe95fD76CF16008c12FF3b3a937CB16Cd9Cc20284', 18, 'PERA', 'PERA')
-export const IRIS = new Token(ChainId.MATIC, '0xdaB35042e63E93Cc8556c9bAE482E5415B5Ac4B1', 18, 'IRIS', 'Iris')
+//export const IRIS = new Token(ChainId.MATIC, '0xdaB35042e63E93Cc8556c9bAE482E5415B5Ac4B1', 18, 'IRIS', 'Iris')
 export const XCASH = new Token(ChainId.MATIC, '0x03678f2c2c762DC63c2Bb738c3a837D366eDa560', 18, 'XCASH', 'X-Cash')
 export const SNK = new Token(ChainId.MATIC, '0x689f8e5913C158fFB5Ac5aeb83b3C875F5d20309', 18, 'SNK', 'Snook')
 
@@ -249,6 +249,13 @@ export const MCASH = new Token(ChainId.MATIC, '0xa25610a77077390A75aD9072A084c5F
 export const KNIGHT = new Token(ChainId.MATIC, '0x4455eF8B4B4A007a93DaA12DE63a47EEAC700D9D', 18, 'KNIGHT', 'Forest Knight')
 export const JRT = new Token(ChainId.MATIC, '0x596eBE76e2DB4470966ea395B0d063aC6197A8C5', 18, 'JRT', 'Jarvis Reward Token')
 
+export const BLOK = new Token(ChainId.MATIC, '0x229b1b6C23ff8953D663C4cBB519717e323a0a84', 18, 'BLOK', 'BLOK')
+export const ALN = new Token(ChainId.MATIC, '0xa8fcEe762642f156b5D757b6FabC36E06b6d4A1A', 18, 'ALN', 'Aluna')
+export const XPRT = new Token(ChainId.MATIC, '0xb3b9c016AD1E9f7EFdAE451b04EF696e05658b32', 6, 'XPRT', 'Persistence')
+export const IRIS = new Token(ChainId.MATIC, '0x3dc6052a693E4a2fc28Eb2Ea12fe0CfD3BD221D1', 6, 'IRIS', 'IRISnet')
+export const AKT = new Token(ChainId.MATIC, '0xf14fbC6B30e2c4BC05A1D4fbE34bf9f14313309D', 6, 'AKT', 'Akash Network')
+export const UCO = new Token(ChainId.MATIC, '0x3C720206bFaCB2d16fA3ac0ed87D2048Dbc401Fc', 18, 'UCO', 'UnirisToken')
+export const REGEN = new Token(ChainId.MATIC, '0xEc482De9569a5EA3Dd9779039b79e53F15791fDE', 6, 'REGEN', 'Regen Network')
 
 export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -278,7 +285,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, USDT, QUICK, ETHER, WBTC, DAI, MAUSDC, MI]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, USDT, QUICK, ETHER, WBTC, DAI, MAUSDC, MI, EROWAN]
 }
 
 /**
@@ -422,4 +429,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.1.9/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.1.10/build/quickswap-default.tokenlist.json'
