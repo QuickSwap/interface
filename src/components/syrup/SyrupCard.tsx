@@ -162,14 +162,66 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
         ) : (
           <StyledInternalLink to={`/syrup/${currencyId(currency0)}/${syrupInfo.stakingRewardAddress}`} style={{ width: '100%' }}>
             <ButtonPrimary padding="8px" borderRadius="8px">
-              {isStaking ? 'Manage' : 'Deposit'}
+              {syrupInfo.ended ? 'Withdraw' : isStaking ? 'Manage' : 'Deposit'}
             </ButtonPrimary>
           </StyledInternalLink>
         ) }
         
       </TopSection>
+      {!syrupInfo?.ended && (
+          <StatContainer>
+          <RowBetween>
+            <TYPE.white> dQUICK Deposits</TYPE.white>
+            <TYPE.white>
+              {syrupInfo?.valueOfTotalStakedAmountInUSDC
+                ? `$${thousands_separators(syrupInfo?.valueOfTotalStakedAmountInUSDC)}`
+                : `${syrupInfo?.totalStakedAmount?.toSignificant(6, { groupSeparator: ',' }) ?? '-'} dQUICK`}
+            </TYPE.white>
+          </RowBetween>
+          <RowBetween>
+            <TYPE.white> Token Rewards </TYPE.white>
+            <TYPE.white>{`${syrupInfo?.rate + " "+ currency0.symbol}  / day`}</TYPE.white>
+          </RowBetween>
+          <RowBetween>
+            <TYPE.white> Token Rewards Value </TYPE.white>
+            <TYPE.white>{`$${ parseInt(rewards.toFixed(0)).toLocaleString()} / day`}</TYPE.white>
+          </RowBetween>
+          <RowBetween>
+            <TYPE.white> {currency0.symbol} APR </TYPE.white>
+            <TYPE.white>{tokenAPR} %</TYPE.white>
+          </RowBetween>
+          <RowBetween>
+            <TYPE.white> dQUICK APY </TYPE.white>
+            <TYPE.white>{dQUICKAPY} %</TYPE.white>
+          </RowBetween>
+          <RowBetween>
+            <TYPE.white> Time remaining </TYPE.white>
+            <TYPE.white>{Number.isFinite(timeRemaining) && (
+              <code>
+                {`${days}:${hours.toString().padStart(2, '0')}:${minutes
+                  .toString()
+                  .padStart(2, '0')}`}
+              </code>
+            )}</TYPE.white>
+          </RowBetween>
+          {/**<RowBetween>
+            <TYPE.white> Rewards dQUICKAPY </TYPE.white>
+            <TYPE.white>{`${apy.toFixed(2)} %`}</TYPE.white>
+          </RowBetween>*/}
+          
+          {/**<RowBetween>
+            <TYPE.white> Status </TYPE.white>
+            <TYPE.white>{!syrupInfo.ended ? 'Running':'Closed'}</TYPE.white>
+          </RowBetween>*/}
+          {/**<RowBetween>
+            <TYPE.white> dQUICKAPR </TYPE.white>
+            <TYPE.white>{ap + "%"}</TYPE.white>
+          </RowBetween>*/}
+        </StatContainer>
+      )}
 
-      <StatContainer>
+      {syrupInfo?.ended && (
+        <StatContainer>
         <RowBetween>
           <TYPE.white> dQUICK Deposits</TYPE.white>
           <TYPE.white>
@@ -179,45 +231,12 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
           </TYPE.white>
         </RowBetween>
         <RowBetween>
-          <TYPE.white> Token Rewards </TYPE.white>
-          <TYPE.white>{`${syrupInfo?.rate + " "+ currency0.symbol}  / day`}</TYPE.white>
-        </RowBetween>
-        <RowBetween>
-          <TYPE.white> Token Rewards Value </TYPE.white>
-          <TYPE.white>{`$${ parseInt(rewards.toFixed(0)).toLocaleString()} / day`}</TYPE.white>
-        </RowBetween>
-        <RowBetween>
-          <TYPE.white> {currency0.symbol} APR </TYPE.white>
-          <TYPE.white>{tokenAPR} %</TYPE.white>
-        </RowBetween>
-        <RowBetween>
-          <TYPE.white> dQUICK APY </TYPE.white>
-          <TYPE.white>{dQUICKAPY} %</TYPE.white>
-        </RowBetween>
-        <RowBetween>
-          <TYPE.white> Time remaining </TYPE.white>
-          <TYPE.white>{Number.isFinite(timeRemaining) && (
-            <code>
-              {`${days}:${hours.toString().padStart(2, '0')}:${minutes
-                .toString()
-                .padStart(2, '0')}`}
-            </code>
-          )}</TYPE.white>
-        </RowBetween>
-        {/**<RowBetween>
-          <TYPE.white> Rewards dQUICKAPY </TYPE.white>
-          <TYPE.white>{`${apy.toFixed(2)} %`}</TYPE.white>
-        </RowBetween>*/}
-        
-        {/**<RowBetween>
           <TYPE.white> Status </TYPE.white>
-          <TYPE.white>{!syrupInfo.ended ? 'Running':'Closed'}</TYPE.white>
-        </RowBetween>*/}
-        {/**<RowBetween>
-          <TYPE.white> dQUICKAPR </TYPE.white>
-          <TYPE.white>{ap + "%"}</TYPE.white>
-        </RowBetween>*/}
+          <TYPE.white>Rewards ended</TYPE.white>
+        </RowBetween>
       </StatContainer>
+      )}
+      
 
       {isStaking && !syrupInfo.ended && (
         <>

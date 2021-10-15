@@ -339,16 +339,6 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1639408820
     },
     {
-      token: GUARD,
-      stakingRewardAddress: '0x4D1677B68C33a0e4002c0B54e15E599F287185A4',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 3333.33,
-      ending: 1634224820
-    },
-    {
       token: TCP,
       stakingRewardAddress: '0x6d05D7aC6CC4b8A5552CF26cA04583c95e2F2b98',
       ended: false,
@@ -448,16 +438,6 @@ export const SYRUP_REWARDS_INFO: {
       baseToken: ETHER,
       rate: 874.49,
       ending: 1635700624
-    },
-    {
-      token: WOW,
-      stakingRewardAddress: '0xb13dCB81D1f0b42aA682c0Fb5A5262D89bc509aC',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 196.67,
-      ending: 1633108624
     },
     {
       token: MONA,
@@ -621,6 +601,43 @@ export const SYRUP_REWARDS_INFO: {
   }
 ]
 }
+
+export const OLD_SYRUP_REWARDS_INFO: {
+  [chainId in ChainId]?: {
+    token: Token
+    stakingRewardAddress: string
+    ended: boolean
+    name: string
+    lp: string
+    baseToken: Token
+    rate: Number
+    ending: Number //DATE IN UNIX TIMESTAMP
+  }[]
+} = {
+  [ChainId.MATIC]: [
+    {
+      token: GUARD,
+      stakingRewardAddress: '0x4D1677B68C33a0e4002c0B54e15E599F287185A4',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 3333.33,
+      ending: 1634224820
+    },
+    {
+      token: WOW,
+      stakingRewardAddress: '0xb13dCB81D1f0b42aA682c0Fb5A5262D89bc509aC',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 196.67,
+      ending: 1633108624
+    }
+]
+}
+
 var oneDayVol:any = undefined;
 
 export const STAKING_DUAL_REWARDS_INFO: {
@@ -11518,6 +11535,150 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
       return memo
     }, [])
   }, [balances, chainId, earnedAmounts, info, periodFinishes, rewardsAddresses, totalSupplies, uni, dQuickToQuick, USDPrice, _dQuickTotalSupply, quickPrice, rewardRates])
+}
+
+export function useOldSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
+  const { chainId, account } = useActiveWeb3React()
+  //const [quickPrice,setQuickPrice] = useState(0);
+  const [, quickUsdcPair] = usePair(QUICK, USDC);
+  const quickPrice = Number(quickUsdcPair?.priceOf(QUICK)?.toSignificant(6))
+  const info = useMemo(
+    () =>
+      chainId
+        ? OLD_SYRUP_REWARDS_INFO[chainId]?.filter(stakingRewardInfo =>
+          tokenToFilterBy === undefined
+              ? true
+              : tokenToFilterBy === null
+              ? true
+              : tokenToFilterBy.equals(stakingRewardInfo.token) &&
+              tokenToFilterBy.equals(stakingRewardInfo.token)
+          ) ?? []
+        : [],
+    [chainId, tokenToFilterBy]
+  )
+
+  const uni = chainId ? UNI[chainId] : undefined
+
+  const rewardsAddresses = useMemo(() => info.map(({ stakingRewardAddress }) => stakingRewardAddress), [info])
+  
+  const accountArg = useMemo(() => [account ?? undefined], [account])
+
+  const USDPrice = useUSDCPrice(QUICK)
+   
+  // get all the info from the staking rewards contracts
+  const balances = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'balanceOf', accountArg)
+  const earnedAmounts = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'earned', accountArg)
+  const totalSupplies = useMultipleContractSingleData(rewardsAddresses, STAKING_REWARDS_INTERFACE, 'totalSupply')
+
+  const periodFinishes = useMultipleContractSingleData(
+    rewardsAddresses,
+    STAKING_REWARDS_INTERFACE,
+    'periodFinish',
+    undefined,
+    NEVER_RELOAD
+  )
+  const rewardRates = useMultipleContractSingleData(
+    rewardsAddresses,
+    STAKING_REWARDS_INTERFACE,
+    'rewardRate',
+    undefined,
+    NEVER_RELOAD
+  )
+
+  return useMemo(() => {
+    if (!chainId || !uni) return []
+
+    return rewardsAddresses.reduce<SyrupInfo[]>((memo, rewardsAddress, index) => {
+      // these two are dependent on account
+      const balanceState = balances[index]
+      const earnedAmountState = earnedAmounts[index]
+
+      // these get fetched regardless of account
+      const totalSupplyState = totalSupplies[index]
+      const rewardRateState = rewardRates[index]
+      const periodFinishState = periodFinishes[index]
+
+      if (
+        // these may be undefined if not logged in
+        !balanceState?.loading &&
+        !earnedAmountState?.loading &&
+        // always need these
+        totalSupplyState &&
+        !totalSupplyState.loading &&
+        rewardRateState &&
+        !rewardRateState.loading &&
+        periodFinishState &&
+        !periodFinishState.loading
+      ) {
+        if (
+          balanceState?.error ||
+          earnedAmountState?.error ||
+          totalSupplyState.error ||
+          rewardRateState.error ||
+          periodFinishState.error
+        ) {
+          console.error('Failed to load syrup rewards info')
+          return memo
+        }
+        // get the LP token
+        const token = info[index].token
+
+        // check for account, if no account set to 0
+        const lp = info[index].lp;
+        // @ts-ignore
+        const rate = web3.utils.toWei(info[index].rate.toString());
+        const stakedAmount = new TokenAmount(lp && lp !== '' ? new Token(137, lp, 18, "SLP", "Staked LP") : DQUICK, JSBI.BigInt(balanceState?.result?.[0] ?? 0))
+        const totalStakedAmount = new TokenAmount(lp && lp !== '' ? new Token(137, lp, 18, "SLP", "Staked LP") : DQUICK, JSBI.BigInt(totalSupplyState.result?.[0]))
+        const totalRewardRate = new TokenAmount(token, JSBI.BigInt(rate))
+        //const pair = info[index].pair.toLowerCase();
+        //@ts-ignore
+        //const fees = (pairData && pairData[pair] ? pairData[pair].oneDayVolumeUSD * 0.0025: 0);
+        const totalRewardRate01 = new TokenAmount(token, JSBI.BigInt(rewardRateState.result?.[0]))
+        const getHypotheticalRewardRate = (
+          stakedAmount: TokenAmount,
+          totalStakedAmount: TokenAmount,
+          totalRewardRate: TokenAmount
+        ): TokenAmount => {
+          return new TokenAmount(
+            token,
+            JSBI.greaterThan(totalStakedAmount.raw, JSBI.BigInt(0))
+              ? JSBI.divide(JSBI.multiply(totalRewardRate01.raw, stakedAmount.raw), totalStakedAmount.raw)
+              : JSBI.BigInt(0)
+          )
+        }
+
+        const individualRewardRate = getHypotheticalRewardRate(stakedAmount, totalStakedAmount, totalRewardRate01)
+
+        const periodFinishMs = info[index].ending
+        const dQUICKtoQUICK = new TokenAmount(QUICK, JSBI.BigInt(0))
+        //@ts-ignore
+        const valueOfTotalStakedAmountInUSDC = totalStakedAmount.toSignificant(6) * dQUICKtoQUICK.toSignificant(6) * USDPrice?.toSignificant(6)
+  
+        memo.push({
+          stakingRewardAddress: rewardsAddress,
+          token: info[index].token,
+          ended: info[index].ended,
+          name: info[index].name,
+          lp: info[index].lp,
+          periodFinish: periodFinishMs,
+          earnedAmount: new TokenAmount(token, JSBI.BigInt(earnedAmountState?.result?.[0] ?? 0)),
+          rewardRate: individualRewardRate,
+          totalRewardRate: totalRewardRate,
+          stakedAmount: stakedAmount,
+          totalStakedAmount: totalStakedAmount,
+          getHypotheticalRewardRate,
+          baseToken: info[index].baseToken,
+          quickPrice: quickPrice,
+          rate: 0,
+          dQUICKtoQUICK: dQUICKtoQUICK,
+          dQuickTotalSupply: new TokenAmount(DQUICK, JSBI.BigInt(0)),
+          valueOfTotalStakedAmountInUSDC: valueOfTotalStakedAmountInUSDC,
+          oneDayVol: 0
+        })
+      }
+      return memo
+    }, [])
+  }, [balances, chainId, earnedAmounts, info, periodFinishes, rewardsAddresses, totalSupplies, uni, USDPrice, quickPrice, rewardRates])
 }
 
  const getBulkPairData = async(pairList: any) => {
