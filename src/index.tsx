@@ -11,6 +11,7 @@ import { NetworkContextName } from './constants'
 import './i18n'
 import App from './pages/App'
 import store from './state'
+import ListsUpdater from './state/lists/updater'
 import ApplicationUpdater from './state/application/updater'
 import MulticallUpdater from './state/multicall/updater'
 import TransactionUpdater from './state/transactions/updater'
@@ -58,6 +59,7 @@ window.addEventListener('error', error => {
 function Updaters() {
   return (
     <>
+      <ListsUpdater />
       <UserUpdater />
       <ApplicationUpdater />
       <TransactionUpdater />

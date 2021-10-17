@@ -148,6 +148,7 @@ export function CurrencySearch({
   let selectedListInfo = useSelectedListInfo()
 
   if (selectedListInfo.current === null) {
+    console.log(DEFAULT_TOKEN_LIST_URL);
     dispatch(selectList(DEFAULT_TOKEN_LIST_URL))
   }
   selectedListInfo = useSelectedListInfo()
