@@ -2,7 +2,7 @@ import React, { RefObject, useRef, useEffect, useState, useCallback } from 'reac
 
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
-import { SYRUP_REWARDS_INFO, useOldSyrupInfo, useSyrupInfo } from '../../state/stake/hooks'
+import { SYRUP_REWARDS_INFO, useOldSyrupInfo, useSyrupInfos } from '../../state/stake/hooks'
 import { TYPE/*, ExternalLink*/} from '../../theme'
 //import { isMobile } from 'react-device-detect'
 import SyrupCard from '../../components/syrup/SyrupCard'
@@ -14,6 +14,8 @@ import { useActiveWeb3React } from '../../hooks'
 import { useUSDCPrices } from '../../utils/useUSDCPrice'
 import { usePairs } from '../../data/Reserves'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
+
+import SyrupUpdater from '../../state/stake/syrupUpdater'
 
 function thousands_separators(num:any)
   {
@@ -144,7 +146,7 @@ export default function Syrup() {
   //const [ empty, setEmpty ] = useState(true);
 
   const { chainId } = useActiveWeb3React()
-  const syrupInfos = useSyrupInfo();
+  const syrupInfos = useSyrupInfos();
   const oldSyrupInfos = useOldSyrupInfo();
   
   const[totalDepositedUSD, setTotalDeposittedUSD] = useState<any>(0);
@@ -319,6 +321,7 @@ export default function Syrup() {
 
   return (
     <PageWrapper gap="lg" justify="center">
+      <SyrupUpdater />
       <TopSection gap="md">
         <DataCard>
           <CardBGImage />

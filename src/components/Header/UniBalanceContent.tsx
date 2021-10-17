@@ -8,9 +8,8 @@ import { useTotalSupply } from '../../data/TotalSupply'
 import { useActiveWeb3React } from '../../hooks'
 //import { useMerkleDistributorContract } from '../../hooks/useContract'
 //import useCurrentBlockTimestamp from '../../hooks/useCurrentBlockTimestamp'
-import { useTotalUniEarned } from '../../state/stake/hooks'
 import { useAggregateUniBalance, useTokenBalance } from '../../state/wallet/hooks'
-import { /**ExternalLink,*/ StyledInternalLink, TYPE, UniTokenAnimated } from '../../theme'
+import { /**ExternalLink,*/ TYPE, UniTokenAnimated } from '../../theme'
 //import { computeUniCirculation } from '../../utils/computeUniCirculation'
 //import useUSDCPrice from '../../utils/useUSDCPrice'
 import { AutoColumn } from '../Column'
@@ -46,7 +45,6 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
 
   const total = useAggregateUniBalance()
   const uniBalance: TokenAmount | undefined = useTokenBalance(account ?? undefined, uni)
-  const uniToClaim: TokenAmount | undefined = useTotalUniEarned()
 
   const totalSupply: TokenAmount | undefined = useTotalSupply(uni)
   //const uniPrice = useUSDCPrice(uni)
@@ -86,17 +84,7 @@ export default function UniBalanceContent({ setShowUniBalanceModal }: { setShowU
                   <TYPE.white color="white">Balance:</TYPE.white>
                   <TYPE.white color="white">{uniBalance?.toFixed(2, { groupSeparator: ',' })}</TYPE.white>
                 </RowBetween>
-                <RowBetween>
-                  <TYPE.white color="white">Unclaimed:</TYPE.white>
-                  <TYPE.white color="white">
-                    {uniToClaim?.toFixed(4, { groupSeparator: ',' })}{' '}
-                    {uniToClaim && uniToClaim.greaterThan('0') && (
-                      <StyledInternalLink onClick={() => setShowUniBalanceModal(false)} to="/quick">
-                        (claim)
-                      </StyledInternalLink>
-                    )}
-                  </TYPE.white>
-                </RowBetween>
+                
               </AutoColumn>
             </CardSection>
             <Break />

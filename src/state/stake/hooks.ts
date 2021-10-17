@@ -184,6 +184,8 @@ import { tryParseAmount } from '../swap/hooks'
 import Web3 from 'web3';
 import { useLairContract, useQUICKContract } from '../../hooks/useContract'
 import useUSDCPrice from '../../utils/useUSDCPrice'
+import { useSelector } from 'react-redux'
+import { AppState } from '..'
 
 const web3 = new Web3("https://polygon-rpc.com/");
 
@@ -12106,6 +12108,14 @@ export function useLairInfo(): LairInfo {
     
   }, [dQuickToQuick, quickToDQuick, quickBalance, dQuickBalance, _dQuickTotalSupply, quickPrice, lairsQuickBalance])
 
+}
+
+export function useStakingInfos(): StakingInfo[] {
+  return useSelector((state: AppState) => state.stake.stakingInfo)
+}
+
+export function useSyrupInfos(): SyrupInfo[] {
+  return useSelector((state: AppState) => state.stake.syrupInfo)
 }
 
 // gets the staking info from the network for the active chain id

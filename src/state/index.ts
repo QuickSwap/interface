@@ -14,6 +14,7 @@ import mint from './mint/reducer'
 import lists from './lists/reducer'
 import burn from './burn/reducer'
 import multicall from './multicall/reducer'
+import stake from './stake/reducer'
 
 const PERSISTED_KEYS: string[] = ['user', 'transactions', 'lists', ...GELATO_PERSISTED_KEYS]
 
@@ -26,10 +27,11 @@ const store = configureStore({
     mint,
     burn,
     multicall,
+    stake,
     lists,
     ...gelatoReducers,
   },
-  middleware: [...getDefaultMiddleware({ thunk: false }), save({ states: PERSISTED_KEYS })],
+  middleware: [...getDefaultMiddleware({serializableCheck: false, thunk: false }), save({ states: PERSISTED_KEYS })],
   preloadedState: load({ states: PERSISTED_KEYS })
 })
 
