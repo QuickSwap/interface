@@ -16,6 +16,6 @@ export default function SyrupUpdater(): null {
       return;
     dispatch(updateSyrupInfo(syrupInfos));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [blockNumber, syrupInfos])
+  }, [blockNumber])
   return null
 }

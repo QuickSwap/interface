@@ -16,6 +16,6 @@ export default function Updater(): null {
       return;
     dispatch(updateStakingInfo(stakingInfos));
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [blockNumber, stakingInfos])
+  }, [blockNumber])
   return null
 }

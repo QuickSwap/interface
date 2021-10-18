@@ -90,7 +90,7 @@ export function useTransactionFinalizer(): (
         transactionHash
       )
     },
-    [dispatch, chainId, account]
+    [dispatch, chainId, account, addPopup]
   )
 }
 
