@@ -17,6 +17,7 @@ import Loader from '../Loader'
 import { isTokenOnList } from '../../utils'
 import { PlusHelper } from '../QuestionHelper'
 import { getTokenLogoURL } from '../CurrencyLogo'
+import { useCurrencyBalance } from '../../state/wallet/hooks'
 
 function currencyKey(currency: Token): string {
   return currency instanceof Token ? currency.address : currency === ETHER ? 'ETHER' : ''
@@ -83,14 +84,12 @@ function TokenTags({ currency }: { currency: Token }) {
 
 function CurrencyRow({
   currency,
-  balance,
   onSelect,
   isSelected,
   otherSelected,
   style
 }: {
   currency: Token
-  balance: CurrencyAmount | undefined
   onSelect: () => void
   isSelected: boolean
   otherSelected: boolean
@@ -107,8 +106,8 @@ function CurrencyRow({
   const removeToken = useRemoveUserAddedToken()
   const addToken = useAddUserToken()
   const isMetamask = (ethereum && ethereum.isMetaMask && Number(ethereum.chainId) === 137 && isOnSelectedList);
+  const currencyBalance = useCurrencyBalance(account || undefined, currency);
 
-  
   const addTokenToMetamask = (tokenAddress:any, tokenSymbol:any, tokenDecimals:any, tokenImage:any) => {
     if(ethereum) {
       // @ts-ignore
@@ -204,7 +203,7 @@ function CurrencyRow({
       </Column>
       <TokenTags currency={currency} />
       <RowFixed style={{ justifySelf: 'flex-end' }}>
-        {balance ? <Balance balance={balance} /> : account ? <Loader /> : null}
+        {currencyBalance ? <Balance balance={currencyBalance} /> : account ? <Loader /> : null}
       </RowFixed>
     </MenuItem>
   )
@@ -214,7 +213,6 @@ function CurrencyRow({
 export default function CurrencyList({
   height,
   currencies,
-  balances,
   selectedCurrency,
   onCurrencySelect,
   otherCurrency,
@@ -223,7 +221,6 @@ export default function CurrencyList({
 }: {
   height: number
   currencies: Token[]
-  balances: (CurrencyAmount | undefined)[]
   selectedCurrency?: Currency | null
   onCurrencySelect: (currency: Token) => void
   otherCurrency?: Currency | null
@@ -235,7 +232,6 @@ export default function CurrencyList({
   const Row = useCallback(
     ({ data, index, style }) => {
       const currency: Token = data[index]
-      const balance: CurrencyAmount | undefined = balances[index]
       const isSelected = Boolean(selectedCurrency && currencyEquals(selectedCurrency, currency))
       const otherSelected = Boolean(otherCurrency && currencyEquals(otherCurrency, currency))
       const handleSelect = () => onCurrencySelect(currency)
@@ -243,14 +239,13 @@ export default function CurrencyList({
         <CurrencyRow
           style={style}
           currency={currency}
-          balance={balance}
           isSelected={isSelected}
           onSelect={handleSelect}
           otherSelected={otherSelected}
         />
       )
     },
-    [onCurrencySelect, otherCurrency, selectedCurrency, balances]
+    [onCurrencySelect, otherCurrency, selectedCurrency]
   )
 
   const itemKey = useCallback((index: number, data: any) => currencyKey(data[index]), [])

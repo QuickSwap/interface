@@ -18,7 +18,7 @@ export enum ApprovalState {
   APPROVED
 }
 
-const approvals = new Object();
+const approvals = {};
 
 // returns a variable indicating the state of the approval and a function which approves if necessary or early returns
 export function useApproveCallback(
@@ -44,7 +44,7 @@ export function useApproveCallback(
         ? ApprovalState.PENDING
         : ApprovalState.NOT_APPROVED
       : ApprovalState.APPROVED
-  }, [amountToApprove, currentAllowance, pendingApproval, spender])
+  }, [amountToApprove, currentAllowance, pendingApproval, spender, token])
 
   const tokenContract = useTokenContract(token?.address)
   const addTransaction = useTransactionAdder()
