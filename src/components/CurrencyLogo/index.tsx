@@ -565,6 +565,18 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/16733/small/REGEN.png?1624861317'
     }
 
+    if (address?.toLowerCase() === '0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12465/small/defi_pulse_index_set.png?1600051053'
+    }if (address?.toLowerCase() === '0xB85517b87BF64942adf3A0B9E4c71E4Bc5Caa4e5'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016'
+    }if (address?.toLowerCase() === '0xE0339c80fFDE91F3e20494Df88d4206D86024cdF'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14962/small/6GxcPRo3_400x400.jpg?1619157413'
+    }if (address?.toLowerCase() === '0x6f8a06447Ff6FcF75d803135a7de15CE88C1d4ec'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/11939/small/shiba.png?1622619446'
+    }if (address?.toLowerCase() === '0xa062fc09cA6bdeb2f6E3b77E1d4e09C42C964742'.toLowerCase()) {
+      uri = 'https://i.imgur.com/rb4P2E3.jpg'
+    }
+
     if (address?.toLowerCase() === '0x5c4b7CCBF908E64F32e12c6650ec0C96d717f03F'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
     }if (address?.toLowerCase() === '0x59E9261255644c411AfDd00bD89162d09D862e38'.toLowerCase()) {

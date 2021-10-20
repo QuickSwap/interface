@@ -257,6 +257,13 @@ export const AKT = new Token(ChainId.MATIC, '0xf14fbC6B30e2c4BC05A1D4fbE34bf9f14
 export const UCO = new Token(ChainId.MATIC, '0x3C720206bFaCB2d16fA3ac0ed87D2048Dbc401Fc', 18, 'UCO', 'UnirisToken')
 export const REGEN = new Token(ChainId.MATIC, '0xEc482De9569a5EA3Dd9779039b79e53F15791fDE', 6, 'REGEN', 'Regen Network')
 
+export const DPI = new Token(ChainId.MATIC, '0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369', 18, 'DPI', 'DefiPulse Index')
+export const FTM = new Token(ChainId.MATIC, '0xB85517b87BF64942adf3A0B9E4c71E4Bc5Caa4e5', 18, 'FTM', 'Fantom Token')
+export const ELON = new Token(ChainId.MATIC, '0xE0339c80fFDE91F3e20494Df88d4206D86024cdF', 18, 'ELON', 'Dogelon')
+export const SHIB = new Token(ChainId.MATIC, '0x6f8a06447Ff6FcF75d803135a7de15CE88C1d4ec', 18, 'SHIB', 'SHIBA INU')
+export const DES = new Token(ChainId.MATIC, '0xa062fc09cA6bdeb2f6E3b77E1d4e09C42C964742', 18, 'DES', 'DeSpace Protocol')
+
+
 export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
@@ -429,4 +436,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.0/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.1/build/quickswap-default.tokenlist.json'
