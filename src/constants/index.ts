@@ -122,7 +122,7 @@ export const IRON  = new Token(ChainId.MATIC, '0xD86b5923F3AD7b585eD81B448170ae0
 export const TITAN  = new Token(ChainId.MATIC, '0xaAa5B9e6c589642f98a1cDA99B9D024B8407285A', 18, 'TITAN', 'IRON Titanium Token')
 //export const ZEE  = new Token(ChainId.MATIC, '0xfd4959c06FbCc02250952DAEbf8e0Fb38cF9FD8C', 18, 'ZEE', 'ZeroSwapToken')
 export const FFF  = new Token(ChainId.MATIC, '0x9aCeB6f749396d1930aBc9e263eFc449E5e82c13', 18, 'FFF', 'Future of Finance Fund')
-//export const IQ  = new Token(ChainId.MATIC, '0xB9638272aD6998708de56BBC0A290a1dE534a578', 18, 'IQ', 'Everipedia IQ')
+export const IQ  = new Token(ChainId.MATIC, '0xB9638272aD6998708de56BBC0A290a1dE534a578', 18, 'IQ', 'Everipedia IQ')
 //export const INRP  = new Token(ChainId.MATIC, '0xde485931674F4EdD3Ed3bf22e86E7d3C7D5347a1', 18, 'INRP', 'Rupeeto')
 
 

@@ -395,6 +395,8 @@ export default function Header() {
 
   const [widgetMenuOpen, setWidgetMenuOpen] = useState(false)
 
+  const[bridgeMenuOpen, setBridgeMenuOpen] = useState(false)
+
 
   return (
     <HeaderFrame>
@@ -436,7 +438,7 @@ export default function Header() {
             {t('pool')}
           </StyledNavLink>
           
-          <span onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link`} onClick={() => {setWidgetMenuOpen(!widgetMenuOpen)}} style={{margin: '0px', padding: '0px', marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
+          <span onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link-00`} onClick={() => {setWidgetMenuOpen(!widgetMenuOpen)}} style={{margin: '0px', padding: '0px', marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
             Farms
           </StyledLinkStyledButton>
           {widgetMenuOpen && (
@@ -453,15 +455,15 @@ export default function Header() {
           {/*<StyledNavLink id={`stake-nav-link`} to={'/vote'}>*/}
             {/*Vote*/}
           {/*</StyledNavLink>*/}
-          <StyledExternalLink id={`stake-nav-link`} href={'https://info.quickswap.exchange'} style={{marginLeft: mobile?'8px':'12px', marginRight: mobile?'0px':'12px'}}>
+          <StyledExternalLink id={`stake-nav-link-01`} href={'https://info.quickswap.exchange'} style={{marginLeft: mobile?'8px':'12px', marginRight: mobile?'0px':'12px'}}>
             Charts {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
 
-          <StyledLinkStyledButton id={`stake-nav-link`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
+          <StyledLinkStyledButton id={`stake-nav-link-02`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
             Buy
           </StyledLinkStyledButton>
 
-          <StyledExternalLink id={`startido-nav-link`} href={'https://idos.starter.xyz/quickstart'} style={{marginLeft: mobile?'4px':'12px', marginRight: mobile?'0px':'12px'}}>
+          <StyledExternalLink id={`startido-nav-link-03`} href={'https://idos.starter.xyz/quickstart'} style={{marginLeft: mobile?'4px':'12px', marginRight: mobile?'0px':'12px'}}>
             IDO {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
           
@@ -477,9 +479,19 @@ export default function Header() {
             )}
           </HideSmall>
           <HideSmall>
-            <StyledExternalLink id={`stake-nav-link`} href={'https://wallet.matic.network/'} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
-                Bridge Assets {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
-              </StyledExternalLink>
+          <span style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}} onMouseEnter={() => {setBridgeMenuOpen(true)}} onMouseLeave={() => {setBridgeMenuOpen(false)}}><StyledLinkStyledButton id={`bridge-nav-link`} onClick={() => {setBridgeMenuOpen(!widgetMenuOpen)}} style={{margin: '0px', padding: '0px', marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
+            Bridge
+          </StyledLinkStyledButton>
+          {bridgeMenuOpen && (
+            <StyledMenuContainer>
+              <StyledMenu>
+                <StyledExternalLink id={`bridge-nav-link-pos`} href={'https://wallet.polygon.technology/'} >Matic PoS</StyledExternalLink>
+                <StyledExternalLink id={`bridge-nav-link-relay`} href={'https://app.relaychain.com/#/transfer'} style={{marginTop: 10}}>Relay</StyledExternalLink>
+                <StyledExternalLink id={`bridge-nav-link-sol`} href={'https://app.allbridge.io/bridge?from=SOL&to=POL&asset=APYS'} style={{marginTop: 10}}>Sol</StyledExternalLink>
+              </StyledMenu>
+            </StyledMenuContainer>   
+          )}
+          </span>
           </HideSmall>
           {availableClaim && !showClaimPopup && (
             <UNIWrapper onClick={toggleClaimModal}>
