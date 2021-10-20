@@ -539,107 +539,7 @@ export const SYRUP_REWARDS_INFO: {
       baseToken: MATIC,
       rate: 2458,
       ending: 1636117833
-    },
-    {
-    token: START,
-    stakingRewardAddress: '0xBC00cF775D78b50925895A872Aa945B728dB0EBB',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 116.67,
-    ending: 1634680134
-  },
-  {
-    token: RELAY,
-    stakingRewardAddress: '0x747fC94E52ba06D870Cb793e11C98D7688b28887',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 500,
-    ending: 1634680134
-  },
-  {
-    token: DNXC,
-    stakingRewardAddress: '0x476231Ca1c748fd84e5c759a03F6FB0852fA110B',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 4800,
-    ending: 1634680134
-  },
-  {
-    token: REVV,
-    stakingRewardAddress: '0xBDeaCb01103C6459ED05c4836082b41143825F49',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 16816.67,
-    ending: 1634680134
-  },
-  {
-    token: YAMP,
-    stakingRewardAddress: '0x88A989A72fF3981cE02cE3CB5ec81A23C1058382',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: QUICK,
-    rate: 9333.33,
-    ending: 1634680134
-  },
-  {
-    token: FEAR,
-    stakingRewardAddress: '0x886d5186Be0255ed4b7DAcB4c493aF6f8cD1ed04',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 1157,
-    ending: 1634680134
-  },
-  {
-    token: CHICK,
-    stakingRewardAddress: '0xBe35a3238bd6fdde7a7749CB8702d5f17217c1a5',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 3333.33,
-    ending: 1634680134
-  },
-  {
-    token: ADS,
-    stakingRewardAddress: '0xC6b141B27c82d6DB104440edE21d4F8E046B6Aa2',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 2150,
-    ending: 1634680134
-  },
-  {
-    token: CIOTX,
-    stakingRewardAddress: '0x54B1e1A8F2472230DB6092833249675Fc2E8DFe1',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: USDC,
-    rate: 16666.67,
-    ending: 1634680134
-  },
-  {
-    token: ADDY,
-    stakingRewardAddress: '0x3429f08D507EfBcA7B41BC0F99e9276918495F97',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: ETHER,
-    rate: 59.5,
-    ending: 1634680134
-  }
+    }
 ]
 }
 
@@ -656,6 +556,106 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: START,
+      stakingRewardAddress: '0xBC00cF775D78b50925895A872Aa945B728dB0EBB',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 116.67,
+      ending: 1634680134
+    },
+    {
+      token: RELAY,
+      stakingRewardAddress: '0x747fC94E52ba06D870Cb793e11C98D7688b28887',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 500,
+      ending: 1634680134
+    },
+    {
+      token: DNXC,
+      stakingRewardAddress: '0x476231Ca1c748fd84e5c759a03F6FB0852fA110B',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 4800,
+      ending: 1634680134
+    },
+    {
+      token: REVV,
+      stakingRewardAddress: '0xBDeaCb01103C6459ED05c4836082b41143825F49',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 16816.67,
+      ending: 1634680134
+    },
+    {
+      token: YAMP,
+      stakingRewardAddress: '0x88A989A72fF3981cE02cE3CB5ec81A23C1058382',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 9333.33,
+      ending: 1634680134
+    },
+    {
+      token: FEAR,
+      stakingRewardAddress: '0x886d5186Be0255ed4b7DAcB4c493aF6f8cD1ed04',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 1157,
+      ending: 1634680134
+    },
+    {
+      token: CHICK,
+      stakingRewardAddress: '0xBe35a3238bd6fdde7a7749CB8702d5f17217c1a5',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 3333.33,
+      ending: 1634680134
+    },
+    {
+      token: ADS,
+      stakingRewardAddress: '0xC6b141B27c82d6DB104440edE21d4F8E046B6Aa2',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 2150,
+      ending: 1634680134
+    },
+    {
+      token: CIOTX,
+      stakingRewardAddress: '0x54B1e1A8F2472230DB6092833249675Fc2E8DFe1',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 16666.67,
+      ending: 1634680134
+    },
+    {
+      token: ADDY,
+      stakingRewardAddress: '0x3429f08D507EfBcA7B41BC0F99e9276918495F97',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 59.5,
+      ending: 1634680134
+    },
     {
       token: POLYDOGE,
       stakingRewardAddress: '0x0b32AC0A9b6bfdd0E24cd2f4d37d82F8d05B44d8',
@@ -1810,7 +1810,23 @@ export const OLD_STAKING_REWARDS_INFO: {
     pair: string
   }[]
 } = {
-  [ChainId.MATIC]: [
+  [ChainId.MATIC]: []
+}
+
+export const VERY_OLD_STAKING_REWARDS_INFO: {
+  [chainId in ChainId]?: {
+    tokens: [Token, Token]
+    stakingRewardAddress: string
+    ended: boolean
+    name: string
+    lp: string
+    baseToken: Token
+    rate: Number
+    pair: string
+  }[]
+} = {
+  [ChainId.MATIC]: [//TODO: MATIC
+
     {
       tokens: [EGG,QUICK],
       stakingRewardAddress: '0x8D79CA210442f67FB21951E6Ec16c974c6B4d278',
@@ -2910,24 +2926,9 @@ export const OLD_STAKING_REWARDS_INFO: {
       baseToken: ETHER,
       rate: 0.5,
       pair: '0x70294d7aa244bd342c536f9b502152564057162e'
-    }
-  ]
-}
+    },
 
-export const VERY_OLD_STAKING_REWARDS_INFO: {
-  [chainId in ChainId]?: {
-    tokens: [Token, Token]
-    stakingRewardAddress: string
-    ended: boolean
-    name: string
-    lp: string
-    baseToken: Token
-    rate: Number
-    pair: string
-  }[]
-} = {
-  [ChainId.MATIC]: [//TODO: MATIC
-
+    //QUICK
     {
       tokens: [WOO,QUICK],
       stakingRewardAddress: '0x1067112E5dB21aEC7eB144C5773f8aef8C85966a',
