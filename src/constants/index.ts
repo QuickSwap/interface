@@ -262,6 +262,7 @@ export const FTM = new Token(ChainId.MATIC, '0xB85517b87BF64942adf3A0B9E4c71E4Bc
 export const ELON = new Token(ChainId.MATIC, '0xE0339c80fFDE91F3e20494Df88d4206D86024cdF', 18, 'ELON', 'Dogelon')
 export const SHIB = new Token(ChainId.MATIC, '0x6f8a06447Ff6FcF75d803135a7de15CE88C1d4ec', 18, 'SHIB', 'SHIBA INU')
 export const DES = new Token(ChainId.MATIC, '0xa062fc09cA6bdeb2f6E3b77E1d4e09C42C964742', 18, 'DES', 'DeSpace Protocol')
+export const SNE = new Token(ChainId.MATIC, '0x32934CB16DA43fd661116468c1B225Fc26CF9A8c', 18, 'SNE', 'StrongNodeEdge Token')
 
 
 export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
@@ -436,4 +437,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.1/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.2/build/quickswap-default.tokenlist.json'

@@ -576,6 +576,9 @@ export const getTokenLogoURL = (address: string) => {
     }if (address?.toLowerCase() === '0xa062fc09cA6bdeb2f6E3b77E1d4e09C42C964742'.toLowerCase()) {
       uri = 'https://i.imgur.com/rb4P2E3.jpg'
     }
+    if (address?.toLowerCase() === '0x32934CB16DA43fd661116468c1B225Fc26CF9A8c'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/12258.png'
+    }
 
     if (address?.toLowerCase() === '0x5c4b7CCBF908E64F32e12c6650ec0C96d717f03F'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
