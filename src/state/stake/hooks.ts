@@ -377,16 +377,6 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1637513623
     },
     {
-      token: HONOR,
-      stakingRewardAddress: '0x1EFcD619455419ebE566eDFe0D46DC57139f052F',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 75757.57,
-      ending: 1634921623
-    },
-    {
       token: OM,
       stakingRewardAddress: '0x304cd598F973208888e959D7f808052Ab863A7eA',
       ended: false,
@@ -494,7 +484,7 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 333333.33,
-      ending: 1634925319
+      ending: 1640200125
     },
     {
       token: SWAP,
@@ -592,6 +582,16 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: HONOR,
+      stakingRewardAddress: '0x1EFcD619455419ebE566eDFe0D46DC57139f052F',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 75757.57,
+      ending: 1634921623
+    },
     {
       token: START,
       stakingRewardAddress: '0xBC00cF775D78b50925895A872Aa945B728dB0EBB',
