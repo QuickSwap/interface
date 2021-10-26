@@ -146,7 +146,7 @@ export const START  = new Token(ChainId.MATIC, '0x6Ccf12B480A99C54b23647c995f452
 export const HONOR  = new Token(ChainId.MATIC, '0xb82A20B4522680951F11c94c54B8800c1C237693', 18, 'HONOR', 'HONOR')
 //export const FSW  = new Token(ChainId.MATIC, '0xad5dc12E88C6534Eea8cFe2265851D9d4A1472AD', 18, 'FSW', 'FalconSwap Token')
 export const YAYO  = new Token(ChainId.MATIC, '0xf7058856f405542cd660e8ce4751248F2d037f2B', 4, 'YAYO', 'YAYO Coin')
-//export const CGG  = new Token(ChainId.MATIC, '0x2Ab4f9aC80F33071211729e45Cfc346C1f8446d5', 18, 'CGG', 'ChainGuardians Governance Token')
+export const CGG  = new Token(ChainId.MATIC, '0x2Ab4f9aC80F33071211729e45Cfc346C1f8446d5', 18, 'CGG', 'ChainGuardians Governance Token')
 
 export const BUNNY  = new Token(ChainId.MATIC, '0x4C16f69302CcB511c5Fac682c7626B9eF0Dc126a', 18, 'polyBUNNY', 'Polygon BUNNY Token')
 export const GBTS  = new Token(ChainId.MATIC, '0xbe9512e2754cb938dd69Bbb96c8a09Cb28a02D6D', 18, 'GBTS', 'GemBites')

@@ -106,7 +106,7 @@ import {
   WOO,
   QuickChart,
   START,
-  //CGG,
+  CGG,
   BUNNY,
   FOR,
   RDOGE,
@@ -3414,7 +3414,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       rate: 0.3,
       pair: '0xaef2b47b5e30661c3cc03b3e17fd8dcddc1f27b6'
     },
-    /**{
+    {
       tokens: [CGG,QUICK],
       stakingRewardAddress: '0xcf813b2416e23aFC10D21e733EB10544b0f52825',
       ended: true,
@@ -3423,7 +3423,7 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       baseToken: QUICK,
       rate: 0.1,
       pair: '0xdf1d5afd6339ee4b02e2adc34ecbd6384e90cab2'
-    },*/
+    },
     {
       tokens: [NEXO,QUICK],
       stakingRewardAddress: '0xd36f382F44678a07eCF79E89dc13a63D5Ef08d3E',
