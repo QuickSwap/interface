@@ -264,6 +264,11 @@ export const SHIB = new Token(ChainId.MATIC, '0x6f8a06447Ff6FcF75d803135a7de15CE
 export const DES = new Token(ChainId.MATIC, '0xa062fc09cA6bdeb2f6E3b77E1d4e09C42C964742', 18, 'DES', 'DeSpace Protocol')
 export const SNE = new Token(ChainId.MATIC, '0x32934CB16DA43fd661116468c1B225Fc26CF9A8c', 18, 'SNE', 'StrongNodeEdge Token')
 
+export const ICE = new Token(ChainId.MATIC, '0xc6C855AD634dCDAd23e64DA71Ba85b8C51E5aD7c', 18, 'ICE', 'Decentral Games ICE')
+export const UFI = new Token(ChainId.MATIC, '0x3c205C8B3e02421Da82064646788c82f7bd753B9', 18, 'UFI', 'PureFi Token')
+export const TETU = new Token(ChainId.MATIC, '0x255707B70BF90aa112006E1b07B9AeA6De021424', 18, 'TETU', 'TETU Reward Token')
+export const GNS = new Token(ChainId.MATIC, '0xE5417Af564e4bFDA1c483642db72007871397896', 18, 'GNS', 'Gains Network')
+export const SCA = new Token(ChainId.MATIC, '0x11a819Beb0AA3327E39f52F90d65Cc9bCA499F33', 18, 'SCA', 'ScaleSwapToken')
 
 export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -437,4 +442,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.2/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.3/build/quickswap-default.tokenlist.json'

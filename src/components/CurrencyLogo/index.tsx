@@ -565,6 +565,18 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/16733/small/REGEN.png?1624861317'
     }
 
+    if (address?.toLowerCase() === '0xc6C855AD634dCDAd23e64DA71Ba85b8C51E5aD7c'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18110/small/ice-poker.png?1630500966'
+    }if (address?.toLowerCase() === '0x3c205C8B3e02421Da82064646788c82f7bd753B9'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17341/small/purefi.PNG?1627362147'
+    }if (address?.toLowerCase() === '0x255707B70BF90aa112006E1b07B9AeA6De021424'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17882/small/gradient_icon_926.png?1629707907'
+    }if (address?.toLowerCase() === '0xE5417Af564e4bFDA1c483642db72007871397896'.toLowerCase()) {
+      uri = 'https://gains.trade/images/logo.png'
+    }if (address?.toLowerCase() === '0x11a819Beb0AA3327E39f52F90d65Cc9bCA499F33'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/16360/small/thumbnail_1170823958_vertical_logo_lateral_radiance.png?1623810516'
+    }
+
     if (address?.toLowerCase() === '0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/12465/small/defi_pulse_index_set.png?1600051053'
     }if (address?.toLowerCase() === '0xB85517b87BF64942adf3A0B9E4c71E4Bc5Caa4e5'.toLowerCase()) {
