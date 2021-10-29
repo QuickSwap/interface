@@ -17,7 +17,6 @@ import Loader from '../Loader'
 import { isTokenOnList } from '../../utils'
 import { PlusHelper } from '../QuestionHelper'
 import { getTokenLogoURL } from '../CurrencyLogo'
-import { useCurrencyBalance } from '../../state/wallet/hooks'
 
 function currencyKey(currency: Token): string {
   return currency instanceof Token ? currency.address : currency === ETHER ? 'ETHER' : ''
@@ -87,13 +86,15 @@ function CurrencyRow({
   onSelect,
   isSelected,
   otherSelected,
-  style
+  style,
+  balance
 }: {
   currency: Token
   onSelect: () => void
   isSelected: boolean
   otherSelected: boolean
   style: CSSProperties
+  balance: CurrencyAmount | undefined
 }) {
   const { ethereum } = window;
 
@@ -106,7 +107,8 @@ function CurrencyRow({
   const removeToken = useRemoveUserAddedToken()
   const addToken = useAddUserToken()
   const isMetamask = (ethereum && ethereum.isMetaMask && Number(ethereum.chainId) === 137 && isOnSelectedList);
-  const currencyBalance = useCurrencyBalance(account || undefined, currency);
+  // const currencyBalance = useCurrencyBalance(account || undefined, currency);
+  const currencyBalance = balance;
 
   const addTokenToMetamask = (tokenAddress:any, tokenSymbol:any, tokenDecimals:any, tokenImage:any) => {
     if(ethereum) {
@@ -217,7 +219,8 @@ export default function CurrencyList({
   onCurrencySelect,
   otherCurrency,
   fixedListRef,
-  showETH
+  showETH,
+  balances
 }: {
   height: number
   currencies: Token[]
@@ -226,6 +229,7 @@ export default function CurrencyList({
   otherCurrency?: Currency | null
   fixedListRef?: MutableRefObject<FixedSizeList | undefined>
   showETH: boolean
+  balances: (CurrencyAmount | undefined)[]
 }) {
   const itemData = useMemo(() => (showETH ? [Token.ETHER, ...currencies] : currencies), [currencies, showETH])
   
@@ -234,6 +238,7 @@ export default function CurrencyList({
       const currency: Token = data[index]
       const isSelected = Boolean(selectedCurrency && currencyEquals(selectedCurrency, currency))
       const otherSelected = Boolean(otherCurrency && currencyEquals(otherCurrency, currency))
+      const balance = balances[index]
       const handleSelect = () => onCurrencySelect(currency)
       return (
         <CurrencyRow
@@ -242,10 +247,11 @@ export default function CurrencyList({
           isSelected={isSelected}
           onSelect={handleSelect}
           otherSelected={otherSelected}
+          balance={balance}
         />
       )
     },
-    [onCurrencySelect, otherCurrency, selectedCurrency]
+    [onCurrencySelect, otherCurrency, selectedCurrency, balances]
   )
 
   const itemKey = useCallback((index: number, data: any) => currencyKey(data[index]), [])
