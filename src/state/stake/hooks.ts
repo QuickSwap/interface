@@ -491,26 +491,6 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1640200125
     },
     {
-      token: SWAP,
-      stakingRewardAddress: '0xf2717feF528DF66450511F869517086c26452De7',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 3133.33,
-      ending: 1635700624
-    },
-    {
-      token: BUNNY,
-      stakingRewardAddress: '0x12388Ea2585cf0F69Fea6A09763A6a3B0fB30257',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 874.49,
-      ending: 1635700624
-    },   
-    {
       token: TRADE,
       stakingRewardAddress: '0x9f48eB6E139855ebc89de973ea91c7596583E6Bc',
       ended: false,
@@ -536,6 +516,26 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: SWAP,
+      stakingRewardAddress: '0xf2717feF528DF66450511F869517086c26452De7',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 3133.33,
+      ending: 1635700624
+    },
+    {
+      token: BUNNY,
+      stakingRewardAddress: '0x12388Ea2585cf0F69Fea6A09763A6a3B0fB30257',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 874.49,
+      ending: 1635700624
+    },
     {
       token: MONA,
       stakingRewardAddress: '0xDa8805782Fa38f859b7D0001bedfE498faFca94a',
