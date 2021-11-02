@@ -221,6 +221,16 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: ELON,
+      stakingRewardAddress: '0x0D0dD9b1f34101AF5Def323725a2e8a0C2Ba91Fc',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 4878682189.7,
+      ending: 1643651726
+    },
+    {
       token: DES,
       stakingRewardAddress: '0xe436235f6062Eb689Ce81e5f434A005818F7d6f0',
       ended: false,
@@ -471,16 +481,6 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1635960912
     },  
     {
-      token: MASK,
-      stakingRewardAddress: '0x15cB4132e4438F11fde5199aC6aE15881f1C1456',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 641.03,
-      ending: 1635858286
-    },
-    {
       token: TEL,
       stakingRewardAddress: '0x346C9e501aDc38F1f325CC0c2D44C325283eEaF1',
       ended: false,
@@ -516,6 +516,16 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: MASK,
+      stakingRewardAddress: '0x15cB4132e4438F11fde5199aC6aE15881f1C1456',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 641.03,
+      ending: 1635858286
+    },
     {
       token: SWAP,
       stakingRewardAddress: '0xf2717feF528DF66450511F869517086c26452De7',

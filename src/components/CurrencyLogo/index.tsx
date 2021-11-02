@@ -628,8 +628,30 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/wootrade_w.svg'
     }
 
+    if (address?.toLowerCase() === '0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17438/small/derace-logo-black-coingecko.png?1627656907'
+    }
+    if (address?.toLowerCase() === '0x709A4B6217584188DDb93c82f5d716D969accE1C'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17161/small/Goji_Hanu_Logo_200x200.png?1627127472'
+    }
+    if (address?.toLowerCase() === '0x22e3f02f86Bc8eA0D73718A2AE8851854e62adc5'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17359/small/Logo_black_%282%29.png?1634095075'
+    }
+    if (address?.toLowerCase() === '0x3f6b3595ecF70735D3f48D69b09C4E4506DB3F47'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19584/small/game_station.PNG?1635471603'
+    }
+    if (address?.toLowerCase() === '0x3eB177A6693eC81d1E170136f8AD02fffBE172a7'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19413/small/automatic.PNG?1635212504'
+    }
+    if (address?.toLowerCase() === '0x3B1A0c9252ee7403093fF55b4a5886d49a3d837a'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18798/small/Moneda.png?1633474110'
+    }
+    if (address?.toLowerCase() === '0x3C1BB39bb696B443a1D80BB2b3a3d950Ba9DEE87'.toLowerCase()) {
+      uri = 'https://i.imgur.com/BDibHLm.png'
+    }
+
     if (address?.toLowerCase() === '0x6Ccf12B480A99C54b23647c995f4525D544A7E72'.toLowerCase()) {
-      uri = 'https://starter.xyz/logo_poly_sym.png'
+      uri = 'https://assets.coingecko.com/coins/images/14301/small/logo_poly_sym.png?1624893386'
     }if (address?.toLowerCase() === '0x26f6Cb841F9D4D72b68D7dCb6fDB5d6C832dD2A7'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/16074/small/polysafu.PNG?1622770619'
     }if (address?.toLowerCase() === '0xb82A20B4522680951F11c94c54B8800c1C237693'.toLowerCase()) {
