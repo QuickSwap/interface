@@ -9,7 +9,7 @@ import { SyrupInfo } from '../../state/stake/hooks'
 import { useStakingContract } from '../../hooks/useContract'
 import { SubmittedView, LoadingView } from '../ModalViews'
 import { TransactionResponse } from '@ethersproject/providers'
-import { useTransactionAdder } from '../../state/transactions/hooks'
+import { useTransactionAdder, useTransactionFinalizer } from '../../state/transactions/hooks'
 import FormattedCurrencyAmount from '../FormattedCurrencyAmount'
 import { useActiveWeb3React } from '../../hooks'
 
@@ -29,6 +29,8 @@ export default function UnstakingModal({ isOpen, onDismiss, syrupInfo }: Staking
 
   // monitor call to help UI loading state
   const addTransaction = useTransactionAdder()
+  const finalizedTransaction = useTransactionFinalizer()
+  
   const [hash, setHash] = useState<string | undefined>()
   const [attempting, setAttempting] = useState(false)
 
@@ -45,11 +47,15 @@ export default function UnstakingModal({ isOpen, onDismiss, syrupInfo }: Staking
       setAttempting(true)
       await stakingContract
         .exit({ gasLimit: 300000 })
-        .then((response: TransactionResponse) => {
+        .then(async(response: TransactionResponse) => {
           addTransaction(response, {
             summary: `Withdraw deposited liquidity`
           })
           setHash(response.hash)
+          const receipt = await response.wait();
+          finalizedTransaction(receipt,{
+            summary: `Withdraw deposited dQUICK`
+          })
         })
         .catch((error: any) => {
           setAttempting(false)

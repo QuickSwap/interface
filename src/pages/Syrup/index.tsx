@@ -2,7 +2,7 @@ import React, { RefObject, useRef, useEffect, useState, useCallback } from 'reac
 
 import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
-import { SYRUP_REWARDS_INFO, useSyrupInfo } from '../../state/stake/hooks'
+import { SYRUP_REWARDS_INFO, useOldSyrupInfo, useSyrupInfo } from '../../state/stake/hooks'
 import { TYPE/*, ExternalLink*/} from '../../theme'
 //import { isMobile } from 'react-device-detect'
 import SyrupCard from '../../components/syrup/SyrupCard'
@@ -14,6 +14,8 @@ import { useActiveWeb3React } from '../../hooks'
 import { useUSDCPrices } from '../../utils/useUSDCPrice'
 import { usePairs } from '../../data/Reserves'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
+
+//import SyrupUpdater from '../../state/stake/syrupUpdater'
 
 function thousands_separators(num:any)
   {
@@ -145,6 +147,8 @@ export default function Syrup() {
 
   const { chainId } = useActiveWeb3React()
   const syrupInfos = useSyrupInfo();
+  const oldSyrupInfos = useOldSyrupInfo();
+  
   const[totalDepositedUSD, setTotalDeposittedUSD] = useState<any>(0);
 
 
@@ -230,7 +234,7 @@ export default function Syrup() {
     }
   })
 
-  const filteredPools = poolsToShow.filter(syrupInfo => {
+  const filteredPools = oldSyrupInfos.concat(poolsToShow).filter(syrupInfo => {
     const isStaking = Boolean(syrupInfo.stakedAmount.greaterThan('0'))
     return isStaking || !syrupInfo.ended;
   })
@@ -317,6 +321,7 @@ export default function Syrup() {
 
   return (
     <PageWrapper gap="lg" justify="center">
+      {/**<SyrupUpdater />*/}
       <TopSection gap="md">
         <DataCard>
           <CardBGImage />

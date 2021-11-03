@@ -349,6 +349,28 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/14716/small/gmee-200x200.png?1621827468'
     }
 
+    if (address?.toLowerCase() === '0x7E7fF932FAb08A0af569f93Ce65e7b8b23698Ad8'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12385/small/1619048513068.png?1622193581'
+    }if (address?.toLowerCase() === '0x2db0Db271a10661e7090b6758350E18F6798a49D'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18144/small/11322.png?1630668459'
+    }if (address?.toLowerCase() === '0xE8d17b127BA8b9899a160D9a07b69bCa8E08bfc6'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18634/small/nadex.PNG?1632727863'
+    }if (address?.toLowerCase() === '0xa7051C5a22d963b81D71C2BA64D46a877fBc1821'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14044/small/EROWAN.png?1614656300'
+    }if (address?.toLowerCase() === '0xac51C4c48Dc3116487eD4BC16542e27B5694Da1b'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/1481/small/cosmos_hub.png?1555657960'
+    }
+
+    if (address?.toLowerCase() === '0x09211Dc67f9fe98Fb7bBB91Be0ef05f4a12FA2b2'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14186/small/WATCH1.png?1614825718'
+    }if (address?.toLowerCase() === '0xa25610a77077390A75aD9072A084c5FbC7d43A0d'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18632/small/DdcZZeP_%282%29.png?1632716316'
+    }if (address?.toLowerCase() === '0x4455eF8B4B4A007a93DaA12DE63a47EEAC700D9D'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18441/small/Coin_Forest_Knight_200x200.png?1632480031'
+    }if (address?.toLowerCase() === '0x596eBE76e2DB4470966ea395B0d063aC6197A8C5'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/trustwallet/assets/b8086dbc7040582d1412effe7a951914d4a96eef/blockchains/ethereum/assets/0x8A9C67fee641579dEbA04928c4BC45F66e26343A/logo.png'
+    }
+
     if (address?.toLowerCase() === '0xc56d17dD519e5eB43a19C9759b5D5372115220BD'.toLowerCase()) {
       uri = 'https://i.postimg.cc/CxvzF5bJ/moon-black.png'
     }if (address?.toLowerCase() === '0xc3FdbadC7c795EF1D6Ba111e06fF8F16A20Ea539'.toLowerCase()) {
@@ -527,6 +549,49 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/18197/small/snk.png?1630979321'
     }
 
+    if (address?.toLowerCase() === '0x229b1b6C23ff8953D663C4cBB519717e323a0a84'.toLowerCase()) {
+      uri = 'https://pbs.twimg.com/profile_images/1443182135410634754/l1wH-p3b_400x400.jpg'
+    }if (address?.toLowerCase() === '0xa8fcEe762642f156b5D757b6FabC36E06b6d4A1A'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14379/small/uaLoLU8c_400x400_%281%29.png?1627873106'
+    }if (address?.toLowerCase() === '0xb3b9c016AD1E9f7EFdAE451b04EF696e05658b32'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14582/small/512_Light.png?1617149658'
+    }if (address?.toLowerCase() === '0x3dc6052a693E4a2fc28Eb2Ea12fe0CfD3BD221D1'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/5135/small/IRIS.png?1557999365'
+    }if (address?.toLowerCase() === '0xf14fbC6B30e2c4BC05A1D4fbE34bf9f14313309D'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12785/small/akash-logo.png?1615447676'
+    }if (address?.toLowerCase() === '0x3C720206bFaCB2d16fA3ac0ed87D2048Dbc401Fc'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12330/small/e353ZVj.png?1599112996'
+    }if (address?.toLowerCase() === '0xEc482De9569a5EA3Dd9779039b79e53F15791fDE'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/16733/small/REGEN.png?1624861317'
+    }
+
+    if (address?.toLowerCase() === '0xc6C855AD634dCDAd23e64DA71Ba85b8C51E5aD7c'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18110/small/ice-poker.png?1630500966'
+    }if (address?.toLowerCase() === '0x3c205C8B3e02421Da82064646788c82f7bd753B9'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17341/small/purefi.PNG?1627362147'
+    }if (address?.toLowerCase() === '0x255707B70BF90aa112006E1b07B9AeA6De021424'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17882/small/gradient_icon_926.png?1629707907'
+    }if (address?.toLowerCase() === '0xE5417Af564e4bFDA1c483642db72007871397896'.toLowerCase()) {
+      uri = 'https://gains.trade/images/logo.png'
+    }if (address?.toLowerCase() === '0x11a819Beb0AA3327E39f52F90d65Cc9bCA499F33'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/16360/small/thumbnail_1170823958_vertical_logo_lateral_radiance.png?1623810516'
+    }
+
+    if (address?.toLowerCase() === '0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12465/small/defi_pulse_index_set.png?1600051053'
+    }if (address?.toLowerCase() === '0xB85517b87BF64942adf3A0B9E4c71E4Bc5Caa4e5'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/4001/small/Fantom.png?1558015016'
+    }if (address?.toLowerCase() === '0xE0339c80fFDE91F3e20494Df88d4206D86024cdF'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14962/small/6GxcPRo3_400x400.jpg?1619157413'
+    }if (address?.toLowerCase() === '0x6f8a06447Ff6FcF75d803135a7de15CE88C1d4ec'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/11939/small/shiba.png?1622619446'
+    }if (address?.toLowerCase() === '0xa062fc09cA6bdeb2f6E3b77E1d4e09C42C964742'.toLowerCase()) {
+      uri = 'https://i.imgur.com/rb4P2E3.jpg'
+    }
+    if (address?.toLowerCase() === '0x32934CB16DA43fd661116468c1B225Fc26CF9A8c'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/12258.png'
+    }
+
     if (address?.toLowerCase() === '0x5c4b7CCBF908E64F32e12c6650ec0C96d717f03F'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/825/small/binance-coin-logo.png?1547034615'
     }if (address?.toLowerCase() === '0x59E9261255644c411AfDd00bD89162d09D862e38'.toLowerCase()) {
@@ -563,8 +628,30 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/wootrade_w.svg'
     }
 
+    if (address?.toLowerCase() === '0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17438/small/derace-logo-black-coingecko.png?1627656907'
+    }
+    if (address?.toLowerCase() === '0x709A4B6217584188DDb93c82f5d716D969accE1C'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17161/small/Goji_Hanu_Logo_200x200.png?1627127472'
+    }
+    if (address?.toLowerCase() === '0x22e3f02f86Bc8eA0D73718A2AE8851854e62adc5'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17359/small/Logo_black_%282%29.png?1634095075'
+    }
+    if (address?.toLowerCase() === '0x3f6b3595ecF70735D3f48D69b09C4E4506DB3F47'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19584/small/game_station.PNG?1635471603'
+    }
+    if (address?.toLowerCase() === '0x3eB177A6693eC81d1E170136f8AD02fffBE172a7'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19413/small/automatic.PNG?1635212504'
+    }
+    if (address?.toLowerCase() === '0x3B1A0c9252ee7403093fF55b4a5886d49a3d837a'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18798/small/Moneda.png?1633474110'
+    }
+    if (address?.toLowerCase() === '0x3C1BB39bb696B443a1D80BB2b3a3d950Ba9DEE87'.toLowerCase()) {
+      uri = 'https://i.imgur.com/BDibHLm.png'
+    }
+
     if (address?.toLowerCase() === '0x6Ccf12B480A99C54b23647c995f4525D544A7E72'.toLowerCase()) {
-      uri = 'https://starter.xyz/logo_poly_sym.png'
+      uri = 'https://assets.coingecko.com/coins/images/14301/small/logo_poly_sym.png?1624893386'
     }if (address?.toLowerCase() === '0x26f6Cb841F9D4D72b68D7dCb6fDB5d6C832dD2A7'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/16074/small/polysafu.PNG?1622770619'
     }if (address?.toLowerCase() === '0xb82A20B4522680951F11c94c54B8800c1C237693'.toLowerCase()) {

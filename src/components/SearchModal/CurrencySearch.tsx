@@ -27,6 +27,7 @@ import SortButton from './SortButton'
 import { useTokenComparator } from './sorting'
 import { PaddedColumn, SearchInput, Separator } from './styleds'
 import AutoSizer from 'react-virtualized-auto-sizer'
+import { useCurrencyBalances } from '../../state/wallet/hooks'
 
 interface CurrencySearchProps {
   isOpen: boolean
@@ -48,7 +49,7 @@ export function CurrencySearch({
   onChangeList
 }: CurrencySearchProps) {
   const { t } = useTranslation()
-  const { chainId } = useActiveWeb3React()
+  const { account, chainId } = useActiveWeb3React()
   const theme = useContext(ThemeContext)
   const dispatch = useDispatch<AppDispatch>()
 
@@ -101,6 +102,8 @@ export function CurrencySearch({
     ]
   }, [filteredTokens, searchQuery, searchToken, tokenComparator])
 
+  const balances = useCurrencyBalances(account || undefined, showETH ? [ Token.ETHER, ...filteredSortedTokens ] : filteredSortedTokens)
+
   const handleCurrencySelect = useCallback(
     (currency: Currency) => {
       onCurrencySelect(currency)
@@ -145,6 +148,7 @@ export function CurrencySearch({
   let selectedListInfo = useSelectedListInfo()
 
   if (selectedListInfo.current === null) {
+    console.log(DEFAULT_TOKEN_LIST_URL);
     dispatch(selectList(DEFAULT_TOKEN_LIST_URL))
   }
   selectedListInfo = useSelectedListInfo()
@@ -193,6 +197,7 @@ export function CurrencySearch({
               otherCurrency={otherSelectedCurrency}
               selectedCurrency={selectedCurrency}
               fixedListRef={fixedList}
+              balances={balances}
             />
           )}
         </AutoSizer>

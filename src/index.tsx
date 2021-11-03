@@ -11,12 +11,11 @@ import { NetworkContextName } from './constants'
 import './i18n'
 import App from './pages/App'
 import store from './state'
-import ApplicationUpdater from './state/application/updater'
 import ListsUpdater from './state/lists/updater'
+import ApplicationUpdater from './state/application/updater'
 import MulticallUpdater from './state/multicall/updater'
 import TransactionUpdater from './state/transactions/updater'
 import UserUpdater from './state/user/updater'
-import StakeUpdater from './state/stake/updater'
 import ThemeProvider, { FixedGlobalStyle, ThemedGlobalStyle } from './theme'
 import getLibrary from './utils/getLibrary'
 
@@ -65,7 +64,6 @@ function Updaters() {
       <ApplicationUpdater />
       <TransactionUpdater />
       <MulticallUpdater />
-      <StakeUpdater />
     </>
   )
 }

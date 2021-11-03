@@ -11,7 +11,7 @@ import { RowBetween } from '../../components/Row'
 import { CardSection, DataCard, CardNoise, CardBGImage } from '../../components/syrup/styled'
 import { ButtonPrimary, ButtonEmpty } from '../../components/Button'
 import StakingModal from '../../components/syrup/StakingModal'
-import { useSyrupInfo } from '../../state/stake/hooks'
+import { useSyrupInfo, useOldSyrupInfo } from '../../state/stake/hooks'
 import UnstakingModal from '../../components/syrup/UnstakingModal'
 import ClaimRewardModal from '../../components/syrup/ClaimRewardModal'
 import { useTokenBalance } from '../../state/wallet/hooks'
@@ -98,8 +98,10 @@ export default function ManageSyrup({
   const currency = useCurrency(currencyIdA)
   const tokenA = wrappedCurrency(currency ?? undefined, chainId)
 
-  const syrupInfos = useSyrupInfo(tokenA)
-  
+  const newSyrupInfos = useSyrupInfo(tokenA)
+  const oldSyrupInfos = useOldSyrupInfo(tokenA);
+  const syrupInfos = oldSyrupInfos.concat(newSyrupInfos);
+
   let syrupInfo = syrupInfos?.reduce<any>((memo, staking) => {
       if(staking.stakingRewardAddress.toLowerCase() === rewardsAddress.toLowerCase()) {
           return staking;
@@ -179,17 +181,17 @@ export default function ManageSyrup({
             </TYPE.body>
           </AutoColumn>
         </PoolData>
-        <PoolData>
+        {!syrupInfo?.ended && (<PoolData>
           <AutoColumn gap="sm">
             <TYPE.body style={{ margin: 0 }}>Pool Rate</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
             {`${syrupInfo?.rate + " "+ currency?.symbol}  / day`}
             </TYPE.body>
           </AutoColumn>
-        </PoolData>
+        </PoolData>)}
       </DataRow>
 
-      {showAddLiquidityButton && (
+      {!syrupInfo?.ended && showAddLiquidityButton && (
         <VoteCard>
           <CardBGImage />
           <CardNoise />
@@ -249,7 +251,7 @@ export default function ManageSyrup({
               </AutoColumn>
             </CardSection>
           </StyledDataCard>
-          <StyledBottomCard dim={syrupInfo?.stakedAmount?.equalTo(JSBI.BigInt(0))}>
+          {!syrupInfo?.ended && <StyledBottomCard dim={syrupInfo?.stakedAmount?.equalTo(JSBI.BigInt(0))}>
             <CardBGImage desaturate />
             <CardNoise />
             <AutoColumn gap="sm">
@@ -293,7 +295,7 @@ export default function ManageSyrup({
               }
               </RowBetween>
             </AutoColumn>
-          </StyledBottomCard>
+          </StyledBottomCard>}
         </BottomSection>
         <TYPE.main style={{ textAlign: 'center' }} fontSize={14}>
           <span role="img" aria-label="wizard-icon" style={{ marginRight: '8px' }}>
@@ -327,7 +329,7 @@ export default function ManageSyrup({
             )}
           </DataRow>
         )}
-        {!userLiquidityUnstaked ? null : userLiquidityUnstaked.equalTo('0') ? null : (
+        { !userLiquidityUnstaked ? null : userLiquidityUnstaked.equalTo('0') ? null : (
           <TYPE.main>{userLiquidityUnstaked.toSignificant(6)} {syrupInfo?.name  !== '' ? syrupInfo?.name : 'dQUICK'} tokens available</TYPE.main>
         )}
       </PositionInfo>

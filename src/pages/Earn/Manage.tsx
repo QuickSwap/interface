@@ -218,19 +218,19 @@ export default function Manage({
             </TYPE.body>
           </AutoColumn>
         </PoolData>
-        <PoolData>
+        {!stakingInfo?.ended && <PoolData>
           <AutoColumn gap="sm">
             <TYPE.body style={{ margin: 0 }}>Pool Rate</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
               {stakingInfo?.totalRewardRate
                 ?.toFixed(2, { groupSeparator: ',' })?.replace(/[.,]00$/, "") ?? '-'}
-              {' QUICK / day'}
+              {' dQUICK / day'}
             </TYPE.body>
           </AutoColumn>
-        </PoolData>
+        </PoolData>}
       </DataRow>
 
-      {showAddLiquidityButton && (
+      { !stakingInfo?.ended && showAddLiquidityButton && (
         <VoteCard>
           <CardBGImage />
           <CardNoise />
@@ -305,13 +305,13 @@ export default function Manage({
               </AutoColumn>
             </CardSection>
           </StyledDataCard>
-          <StyledBottomCard dim={stakingInfo?.stakedAmount?.equalTo(JSBI.BigInt(0))}>
+          { !stakingInfo?.ended && <StyledBottomCard dim={stakingInfo?.stakedAmount?.equalTo(JSBI.BigInt(0))}>
             <CardBGImage desaturate />
             <CardNoise />
             <AutoColumn gap="sm">
               <RowBetween>
                 <div>
-                  <TYPE.black>Your unclaimed QUICK</TYPE.black>
+                  <TYPE.black>Your unclaimed dQUICK</TYPE.black>
                 </div>
                 {stakingInfo?.earnedAmount && JSBI.notEqual(BIG_INT_ZERO, stakingInfo?.earnedAmount?.raw) && (
                   <ButtonEmpty
@@ -344,19 +344,19 @@ export default function Manage({
                   {stakingInfo?.rewardRate
                     ?.multiply((60 * 60 * 24).toString())
                     ?.toSignificant(4, { groupSeparator: ',' }) ?? '-'}
-                  {' QUICK / day'}
+                  {' dQUICK / day'}
                 </TYPE.black>
               }
               </RowBetween>
             </AutoColumn>
-          </StyledBottomCard>
+          </StyledBottomCard>}
         </BottomSection>
-        <TYPE.main style={{ textAlign: 'center' }} fontSize={14}>
+        {!stakingInfo?.ended && <TYPE.main style={{ textAlign: 'center' }} fontSize={14}>
           <span role="img" aria-label="wizard-icon" style={{ marginRight: '8px' }}>
             ⭐️
           </span>
-          When you withdraw, the contract will automagically claim QUICK on your behalf!
-        </TYPE.main>
+          When you withdraw, the contract will automagically claim dQUICK on your behalf!
+        </TYPE.main>}
         <TYPE.main style={{ textAlign: 'center', marginTop: -12}} fontSize={14}>
           * Incentivised rewards are not an endorsement and you are strongly encouraged to DYOR when providing liquidity.
         </TYPE.main>

@@ -16,7 +16,7 @@ import { useApproveCallback, ApprovalState } from '../../hooks/useApproveCallbac
 import { SyrupInfo, useDerivedSyrupInfo } from '../../state/stake/hooks'
 import { wrappedCurrencyAmount } from '../../utils/wrappedCurrency'
 import { TransactionResponse } from '@ethersproject/providers'
-import { useTransactionAdder } from '../../state/transactions/hooks'
+import { useTransactionAdder, useTransactionFinalizer } from '../../state/transactions/hooks'
 import { LoadingView, SubmittedView } from '../ModalViews'
 
 const HypotheticalRewardRate = styled.div<{ dim: boolean }>`
@@ -59,6 +59,7 @@ export default function StakingModal({ isOpen, onDismiss, syrupInfo, userLiquidi
 
   // state for pending and submitted txn views
   const addTransaction = useTransactionAdder()
+  const finalizedTransaction = useTransactionFinalizer()
   const [attempting, setAttempting] = useState<boolean>(false)
   const [hash, setHash] = useState<string | undefined>()
   const wrappedOnDismiss = useCallback(() => {
@@ -81,11 +82,15 @@ export default function StakingModal({ isOpen, onDismiss, syrupInfo, userLiquidi
       if (approval === ApprovalState.APPROVED) {
         stakingContract.stake(
           `0x${parsedAmount.raw.toString(16)}`, { gasLimit: 350000 }
-        ).then((response: TransactionResponse) => {
+        ).then(async(response: TransactionResponse) => {
           addTransaction(response, {
-            summary: `Deposit liquidity`
+            summary: `Deposit dQUICK`
           })
           setHash(response.hash)
+          const receipt = await response.wait();
+          finalizedTransaction(receipt,{
+            summary: `Deposit dQUICK`
+          })
         })
         .catch((error: any) => {
           setAttempting(false)
@@ -106,6 +111,7 @@ export default function StakingModal({ isOpen, onDismiss, syrupInfo, userLiquidi
               summary: `Deposit liquidity`
             })
             setHash(response.hash)
+            
           })
           .catch((error: any) => {
             setAttempting(false)
@@ -179,7 +185,7 @@ export default function StakingModal({ isOpen, onDismiss, syrupInfo, userLiquidi
               Approve
             </ButtonConfirmed>
             <ButtonError
-              disabled={!!error || (signatureData === null && approval !== ApprovalState.APPROVED)}
+              disabled={!!error || (approval !== ApprovalState.APPROVED)}
               error={!!error && !!parsedAmount}
               onClick={onStake}
             >

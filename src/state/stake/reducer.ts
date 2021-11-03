@@ -1,8 +1,9 @@
 import { createReducer } from "@reduxjs/toolkit"
-import { updateLairInfo, updateOldStakingInfo, updateStakingInfo, updateSyrupInfo, updateVeryOldStakingInfo } from "./actions"
-import { LairInfo, StakingInfo, SyrupInfo } from "./hooks"
+import { updateLairInfo, updateOldStakingInfo, updateStakingInfo, updateSyrupInfo, updateVeryOldStakingInfo, updateDualRewardsStakingInfo } from "./actions"
+import { LairInfo, StakingInfo, SyrupInfo, DualStakingInfo } from "./hooks"
 
 export interface StakeState {
+  readonly dualRewardsStakingInfo: DualStakingInfo[]
   readonly stakingInfo: StakingInfo[]
   readonly syrupInfo: SyrupInfo[]
   readonly lairInfo: LairInfo | null
@@ -11,6 +12,7 @@ export interface StakeState {
 }
 
 const initialState: StakeState = {
+  dualRewardsStakingInfo: [],
   stakingInfo: [],
   syrupInfo: [],
   lairInfo: null,
@@ -22,6 +24,9 @@ export default createReducer(initialState, builder =>
   builder
     .addCase(updateStakingInfo, (state, action) => {
       state.stakingInfo = action.payload
+    })
+    .addCase(updateDualRewardsStakingInfo, (state, action) => {
+      state.dualRewardsStakingInfo = action.payload
     })
     .addCase(updateLairInfo, (state, action) => {
       state.lairInfo = action.payload

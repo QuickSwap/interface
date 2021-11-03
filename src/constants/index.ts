@@ -16,6 +16,11 @@ type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
 }
 
+//Remove these 2 after testing
+export const TOKENA = new Token(ChainId.MATIC, '0xd46422d62c1d3b6b6934727be2f8aad4162a88dc', 18, 'TokenA', 'TokenA')
+export const TOKENB = new Token(ChainId.MATIC, '0xc447b32a05819d82b06bf95f9bb878f6ae9c7ecc', 18, 'TokenB', 'TokenA')
+
+
 export const EMPTY = new Token(ChainId.MATIC, '0x0000000000000000000000000000000000000000', 0, 'EMPTY', 'EMPTY')
 export const DAI = new Token(ChainId.MATIC, '0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063', 18, 'DAI', 'Dai Stablecoin')
 export const USDC = new Token(ChainId.MATIC, '0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174', 6, 'USDC', 'USDC')
@@ -117,7 +122,7 @@ export const IRON  = new Token(ChainId.MATIC, '0xD86b5923F3AD7b585eD81B448170ae0
 export const TITAN  = new Token(ChainId.MATIC, '0xaAa5B9e6c589642f98a1cDA99B9D024B8407285A', 18, 'TITAN', 'IRON Titanium Token')
 //export const ZEE  = new Token(ChainId.MATIC, '0xfd4959c06FbCc02250952DAEbf8e0Fb38cF9FD8C', 18, 'ZEE', 'ZeroSwapToken')
 export const FFF  = new Token(ChainId.MATIC, '0x9aCeB6f749396d1930aBc9e263eFc449E5e82c13', 18, 'FFF', 'Future of Finance Fund')
-//export const IQ  = new Token(ChainId.MATIC, '0xB9638272aD6998708de56BBC0A290a1dE534a578', 18, 'IQ', 'Everipedia IQ')
+export const IQ  = new Token(ChainId.MATIC, '0xB9638272aD6998708de56BBC0A290a1dE534a578', 18, 'IQ', 'Everipedia IQ')
 //export const INRP  = new Token(ChainId.MATIC, '0xde485931674F4EdD3Ed3bf22e86E7d3C7D5347a1', 18, 'INRP', 'Rupeeto')
 
 
@@ -141,7 +146,7 @@ export const START  = new Token(ChainId.MATIC, '0x6Ccf12B480A99C54b23647c995f452
 export const HONOR  = new Token(ChainId.MATIC, '0xb82A20B4522680951F11c94c54B8800c1C237693', 18, 'HONOR', 'HONOR')
 //export const FSW  = new Token(ChainId.MATIC, '0xad5dc12E88C6534Eea8cFe2265851D9d4A1472AD', 18, 'FSW', 'FalconSwap Token')
 export const YAYO  = new Token(ChainId.MATIC, '0xf7058856f405542cd660e8ce4751248F2d037f2B', 4, 'YAYO', 'YAYO Coin')
-//export const CGG  = new Token(ChainId.MATIC, '0x2Ab4f9aC80F33071211729e45Cfc346C1f8446d5', 18, 'CGG', 'ChainGuardians Governance Token')
+export const CGG  = new Token(ChainId.MATIC, '0x2Ab4f9aC80F33071211729e45Cfc346C1f8446d5', 18, 'CGG', 'ChainGuardians Governance Token')
 
 export const BUNNY  = new Token(ChainId.MATIC, '0x4C16f69302CcB511c5Fac682c7626B9eF0Dc126a', 18, 'polyBUNNY', 'Polygon BUNNY Token')
 export const GBTS  = new Token(ChainId.MATIC, '0xbe9512e2754cb938dd69Bbb96c8a09Cb28a02D6D', 18, 'GBTS', 'GemBites')
@@ -214,7 +219,7 @@ export const ORBS = new Token(ChainId.MATIC, '0x614389EaAE0A6821DC49062D56BDA3d9
 export const SHI3LD = new Token(ChainId.MATIC, '0xF239E69ce434c7Fb408b05a0Da416b14917d934e', 18, 'SHI3LD', 'PolyShield')
 export const BABYQUICK = new Token(ChainId.MATIC, '0x9a05D1FF699ea187Dc8523E333eD63503f0d82db', 18, 'BABYQUICK', 'BABYQUICK')
 export const PERA = new Token(ChainId.MATIC, '0xe95fD76CF16008c12FF3b3a937CB16Cd9Cc20284', 18, 'PERA', 'PERA')
-export const IRIS = new Token(ChainId.MATIC, '0xdaB35042e63E93Cc8556c9bAE482E5415B5Ac4B1', 18, 'IRIS', 'Iris')
+//export const IRIS = new Token(ChainId.MATIC, '0xdaB35042e63E93Cc8556c9bAE482E5415B5Ac4B1', 18, 'IRIS', 'Iris')
 export const XCASH = new Token(ChainId.MATIC, '0x03678f2c2c762DC63c2Bb738c3a837D366eDa560', 18, 'XCASH', 'X-Cash')
 export const SNK = new Token(ChainId.MATIC, '0x689f8e5913C158fFB5Ac5aeb83b3C875F5d20309', 18, 'SNK', 'Snook')
 
@@ -233,6 +238,37 @@ export const MVERSE = new Token(ChainId.MATIC, '0x0B313b4C589A3BD3350f625f2e94DC
 export const TECH = new Token(ChainId.MATIC, '0x6286A9e6f7e745A6D884561D88F94542d6715698', 18, 'TECH', 'Cryptomeda')
 export const GMEE = new Token(ChainId.MATIC, '0xcf32822ff397Ef82425153a9dcb726E5fF61DCA7', 18, 'GAMEE', 'GMEE')
 
+export const YFDAI = new Token(ChainId.MATIC, '0x7E7fF932FAb08A0af569f93Ce65e7b8b23698Ad8', 18, 'Yf-DAI', 'YfDAI.finance')
+export const MOT = new Token(ChainId.MATIC, '0x2db0Db271a10661e7090b6758350E18F6798a49D', 18, 'MOT', 'Mobius Token')
+export const NSDX = new Token(ChainId.MATIC, '0xE8d17b127BA8b9899a160D9a07b69bCa8E08bfc6', 18, 'NSDX', 'NASDEX Token')
+export const EROWAN = new Token(ChainId.MATIC, '0xa7051C5a22d963b81D71C2BA64D46a877fBc1821', 18, 'EROWAN', 'SifChain (erowan)')
+export const ATOM = new Token(ChainId.MATIC, '0xac51C4c48Dc3116487eD4BC16542e27B5694Da1b', 18, 'ATOM', 'Cosmos')
+
+export const WATCH = new Token(ChainId.MATIC, '0x09211Dc67f9fe98Fb7bBB91Be0ef05f4a12FA2b2', 18, 'WATCH', 'yieldwatch')
+export const MCASH = new Token(ChainId.MATIC, '0xa25610a77077390A75aD9072A084c5FbC7d43A0d', 18, 'MCASH', 'Monsoon Finance')
+export const KNIGHT = new Token(ChainId.MATIC, '0x4455eF8B4B4A007a93DaA12DE63a47EEAC700D9D', 18, 'KNIGHT', 'Forest Knight')
+export const JRT = new Token(ChainId.MATIC, '0x596eBE76e2DB4470966ea395B0d063aC6197A8C5', 18, 'JRT', 'Jarvis Reward Token')
+
+export const BLOK = new Token(ChainId.MATIC, '0x229b1b6C23ff8953D663C4cBB519717e323a0a84', 18, 'BLOK', 'BLOK')
+export const ALN = new Token(ChainId.MATIC, '0xa8fcEe762642f156b5D757b6FabC36E06b6d4A1A', 18, 'ALN', 'Aluna')
+export const XPRT = new Token(ChainId.MATIC, '0xb3b9c016AD1E9f7EFdAE451b04EF696e05658b32', 6, 'XPRT', 'Persistence')
+export const IRIS = new Token(ChainId.MATIC, '0x3dc6052a693E4a2fc28Eb2Ea12fe0CfD3BD221D1', 6, 'IRIS', 'IRISnet')
+export const AKT = new Token(ChainId.MATIC, '0xf14fbC6B30e2c4BC05A1D4fbE34bf9f14313309D', 6, 'AKT', 'Akash Network')
+export const UCO = new Token(ChainId.MATIC, '0x3C720206bFaCB2d16fA3ac0ed87D2048Dbc401Fc', 18, 'UCO', 'UnirisToken')
+export const REGEN = new Token(ChainId.MATIC, '0xEc482De9569a5EA3Dd9779039b79e53F15791fDE', 6, 'REGEN', 'Regen Network')
+
+export const DPI = new Token(ChainId.MATIC, '0x85955046DF4668e1DD369D2DE9f3AEB98DD2A369', 18, 'DPI', 'DefiPulse Index')
+export const FTM = new Token(ChainId.MATIC, '0xB85517b87BF64942adf3A0B9E4c71E4Bc5Caa4e5', 18, 'FTM', 'Fantom Token')
+export const ELON = new Token(ChainId.MATIC, '0xE0339c80fFDE91F3e20494Df88d4206D86024cdF', 18, 'ELON', 'Dogelon')
+export const SHIB = new Token(ChainId.MATIC, '0x6f8a06447Ff6FcF75d803135a7de15CE88C1d4ec', 18, 'SHIB', 'SHIBA INU')
+export const DES = new Token(ChainId.MATIC, '0xa062fc09cA6bdeb2f6E3b77E1d4e09C42C964742', 18, 'DES', 'DeSpace Protocol')
+export const SNE = new Token(ChainId.MATIC, '0x32934CB16DA43fd661116468c1B225Fc26CF9A8c', 18, 'SNE', 'StrongNodeEdge Token')
+
+export const ICE = new Token(ChainId.MATIC, '0xc6C855AD634dCDAd23e64DA71Ba85b8C51E5aD7c', 18, 'ICE', 'Decentral Games ICE')
+export const UFI = new Token(ChainId.MATIC, '0x3c205C8B3e02421Da82064646788c82f7bd753B9', 18, 'UFI', 'PureFi Token')
+export const TETU = new Token(ChainId.MATIC, '0x255707B70BF90aa112006E1b07B9AeA6De021424', 18, 'TETU', 'TETU Reward Token')
+export const GNS = new Token(ChainId.MATIC, '0xE5417Af564e4bFDA1c483642db72007871397896', 18, 'GNS', 'Gains Network')
+export const SCA = new Token(ChainId.MATIC, '0x11a819Beb0AA3327E39f52F90d65Cc9bCA499F33', 18, 'SCA', 'ScaleSwapToken')
 
 export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -262,7 +298,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, USDT, QUICK, ETHER, WBTC, DAI, MAUSDC, MI]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, USDT, QUICK, ETHER, WBTC, DAI, MAUSDC, MI, EROWAN]
 }
 
 /**
@@ -406,4 +442,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.1.5/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.4/build/quickswap-default.tokenlist.json'

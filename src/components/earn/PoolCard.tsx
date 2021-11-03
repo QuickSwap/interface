@@ -117,7 +117,7 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
     valueOfTotalStakedAmountInBaseToken && USDPrice?.quote(valueOfTotalStakedAmountInBaseToken)
   
   //@ts-ignore
-  const perMonthReturnInRewards: any = (stakingInfo?.rate * stakingInfo?.quickPrice * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6));
+  const perMonthReturnInRewards: any = (stakingInfo?.dQuickToQuick * stakingInfo?.quickPrice * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6));
   
 
   //let apy = 0;
@@ -127,7 +127,7 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
   //apy = perMonthReturnInRewards/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
 
   //@ts-ignore
-  rewards = stakingInfo?.rate * stakingInfo?.quickPrice;
+  rewards = stakingInfo?.dQuickToQuick * stakingInfo?.quickPrice;
 
   if(stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0) {
     //@ts-ignore
@@ -163,7 +163,7 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
         ) : (
           <StyledInternalLink to={`/quick/${currencyId(currency0)}/${currencyId(currency1)}/${stakingInfo.stakingRewardAddress}`} style={{ width: '100%' }}>
             <ButtonPrimary padding="8px" borderRadius="8px">
-              {isStaking ? 'Manage' : 'Deposit'}
+              { stakingInfo.ended ? 'Withdraw' : isStaking ? 'Manage' : 'Deposit'}
             </ButtonPrimary>
           </StyledInternalLink>
         ) }
@@ -179,18 +179,26 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
               : `${valueOfTotalStakedAmountInBaseToken?.toSignificant(4, { groupSeparator: ',' }) ?? '-'} ETH`}
           </TYPE.white>
         </RowBetween>
-        <RowBetween>
+        {!stakingInfo.ended ? ( <span><RowBetween>
           <TYPE.white> Total Rewards </TYPE.white>
-          <TYPE.white>{`$${ parseInt(rewards.toFixed(0)).toLocaleString()} / day`}</TYPE.white>
+          <TYPE.white >{`$${ parseInt(rewards.toFixed(0)).toLocaleString()} / day`}</TYPE.white>
         </RowBetween>
-        <RowBetween>
+        <RowBetween style={{ marginTop: '13px' }}>
           <TYPE.white> Pool rate </TYPE.white>
           <TYPE.white>{`${stakingInfo.totalRewardRate
-            ?.toFixed(2, { groupSeparator: ',' }).replace(/[.,]00$/, "")} QUICK / day`}</TYPE.white>
+            ?.toFixed(2, { groupSeparator: ',' }).replace(/[.,]00$/, "")} dQUICK / day`}</TYPE.white>
+        </RowBetween> </span>) :(
+          <RowBetween>
+          <TYPE.white> Status </TYPE.white>
+          <TYPE.white>Rewards ended</TYPE.white>
         </RowBetween>
+        )
+        
+      }
+        
 
         { 
-          stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0 && ( 
+          !stakingInfo.ended && stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0 && ( 
           <RowBetween>
           <TYPE.white> Fees (24hr) </TYPE.white>
           <TYPE.white>{`$${parseInt(stakingInfo?.oneDayFee.toFixed(0)).toLocaleString()}`}</TYPE.white>
@@ -198,7 +206,7 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
         }
         
         { 
-          stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0 && ( 
+          !stakingInfo.ended && stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0 && ( 
           <RowBetween>
           <TYPE.white> Rewards + Fee APY </TYPE.white>
           <TYPE.white>{`${apyWithFee}%`}</TYPE.white>
@@ -233,7 +241,7 @@ export default function PoolCard({ stakingInfo, isOld }: { stakingInfo: StakingI
               </span>
               {`${stakingInfo.rewardRate
                 ?.multiply(`${60 * 60 * 24}`)
-                ?.toSignificant(4, { groupSeparator: ',' })} QUICK / day`}
+                ?.toSignificant(4, { groupSeparator: ',' })} dQUICK / day`}
             </TYPE.black>
           </BottomSection>
 

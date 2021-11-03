@@ -1,9 +1,10 @@
 import { BigNumber } from '@ethersproject/bignumber'
 import { Contract } from '@ethersproject/contracts'
+import { TransactionResponse } from '@ethersproject/providers'
 import { JSBI, Percent, Router, SwapParameters, Trade, TradeType } from '@uniswap/sdk'
 import { useMemo } from 'react'
 import { BIPS_BASE, INITIAL_ALLOWED_SLIPPAGE, DEFAULT_DEADLINE_FROM_NOW } from '../constants'
-import { useTransactionAdder } from '../state/transactions/hooks'
+import { useTransactionAdder, useTransactionFinalizer } from '../state/transactions/hooks'
 import { calculateGasMargin, getRouterContract, isAddress, shortenAddress } from '../utils'
 import isZero from '../utils/isZero'
 import { useActiveWeb3React } from './index'
@@ -95,15 +96,17 @@ export function useSwapCallback(
   trade: Trade | undefined, // trade to execute, required
   allowedSlippage: number = INITIAL_ALLOWED_SLIPPAGE, // in bips
   recipientAddressOrName: string | null // the ENS name or address of the recipient of the trade, or null if swap should be returned to sender
-): { state: SwapCallbackState; callback: null | (() => Promise<string>); error: string | null } {
+): { state: SwapCallbackState; callback: null | ((swapObject:any, swapStateFunction:any) => Promise<TransactionResponse>); error: string | null } {
   const { account, chainId, library } = useActiveWeb3React()
 
   const swapCalls = useSwapCallArguments(trade, allowedSlippage, recipientAddressOrName)
 
   const addTransaction = useTransactionAdder()
+  const finalizedTransaction = useTransactionFinalizer()
 
   const { address: recipientAddress } = useENS(recipientAddressOrName)
   const recipient = recipientAddressOrName === null ? account : recipientAddress
+
 
   return useMemo(() => {
     if (!trade || !library || !account || !chainId) {
@@ -121,7 +124,7 @@ export function useSwapCallback(
 
     return {
       state: SwapCallbackState.VALID,
-      callback: async function onSwap(): Promise<string> {
+      callback: async function onSwap(swapObject:any, swapStateFunction:any): Promise<TransactionResponse> {
         const estimatedCalls: EstimatedSwapCall[] = await Promise.all(
           swapCalls.map(call => {
             const {
@@ -187,7 +190,7 @@ export function useSwapCallback(
           gasLimit: calculateGasMargin(gasEstimate),
           ...(value && !isZero(value) ? { value, from: account } : { from: account })
         })
-          .then((response: any) => {
+          .then(async(response: TransactionResponse) => {
             const inputSymbol = trade.inputAmount.currency.symbol
             const outputSymbol = trade.outputAmount.currency.symbol
             const inputAmount = trade.inputAmount.toSignificant(3)
@@ -209,8 +212,14 @@ export function useSwapCallback(
             addTransaction(response, {
               summary: withVersion
             })
+            swapStateFunction({ attemptingTxn: false, tradeToConfirm: swapObject.tradeToConfirm, showConfirm:swapObject.showConfirm, swapErrorMessage: undefined, txHash: response.hash })
 
-            return response.hash
+            const receipt = await response.wait();
+            finalizedTransaction(receipt,{
+              summary: withVersion
+            })
+
+            return response
           })
           .catch((error: any) => {
             // if the user rejected the tx, pass this along
@@ -225,5 +234,5 @@ export function useSwapCallback(
       },
       error: null
     }
-  }, [trade, library, account, chainId, recipient, recipientAddressOrName, swapCalls, addTransaction])
+  }, [trade, library, account, chainId, recipient, recipientAddressOrName, swapCalls, addTransaction, finalizedTransaction])
 }

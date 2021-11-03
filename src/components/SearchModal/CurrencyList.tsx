@@ -6,7 +6,6 @@ import styled from 'styled-components'
 import { useActiveWeb3React } from '../../hooks'
 import { useSelectedTokenList, WrappedTokenInfo } from '../../state/lists/hooks'
 import { useAddUserToken, useRemoveUserAddedToken } from '../../state/user/hooks'
-import { useCurrencyBalance } from '../../state/wallet/hooks'
 import { LinkStyledButton, TYPE } from '../../theme'
 import { useIsUserAddedToken } from '../../hooks/Tokens'
 import Column from '../Column'
@@ -87,13 +86,15 @@ function CurrencyRow({
   onSelect,
   isSelected,
   otherSelected,
-  style
+  style,
+  balance
 }: {
   currency: Token
   onSelect: () => void
   isSelected: boolean
   otherSelected: boolean
   style: CSSProperties
+  balance: CurrencyAmount | undefined
 }) {
   const { ethereum } = window;
 
@@ -102,13 +103,13 @@ function CurrencyRow({
   const selectedTokenList = useSelectedTokenList()
   const isOnSelectedList = isTokenOnList(selectedTokenList, currency)
   const customAdded = useIsUserAddedToken(currency)
-  const balance = useCurrencyBalance(account ?? undefined, currency)
 
   const removeToken = useRemoveUserAddedToken()
   const addToken = useAddUserToken()
   const isMetamask = (ethereum && ethereum.isMetaMask && Number(ethereum.chainId) === 137 && isOnSelectedList);
+  // const currencyBalance = useCurrencyBalance(account || undefined, currency);
+  const currencyBalance = balance;
 
-  
   const addTokenToMetamask = (tokenAddress:any, tokenSymbol:any, tokenDecimals:any, tokenImage:any) => {
     if(ethereum) {
       // @ts-ignore
@@ -204,11 +205,12 @@ function CurrencyRow({
       </Column>
       <TokenTags currency={currency} />
       <RowFixed style={{ justifySelf: 'flex-end' }}>
-        {balance ? <Balance balance={balance} /> : account ? <Loader /> : null}
+        {currencyBalance ? <Balance balance={currencyBalance} /> : account ? <Loader /> : null}
       </RowFixed>
     </MenuItem>
   )
 }
+
 
 export default function CurrencyList({
   height,
@@ -217,7 +219,8 @@ export default function CurrencyList({
   onCurrencySelect,
   otherCurrency,
   fixedListRef,
-  showETH
+  showETH,
+  balances
 }: {
   height: number
   currencies: Token[]
@@ -226,14 +229,16 @@ export default function CurrencyList({
   otherCurrency?: Currency | null
   fixedListRef?: MutableRefObject<FixedSizeList | undefined>
   showETH: boolean
+  balances: (CurrencyAmount | undefined)[]
 }) {
   const itemData = useMemo(() => (showETH ? [Token.ETHER, ...currencies] : currencies), [currencies, showETH])
-
+  
   const Row = useCallback(
     ({ data, index, style }) => {
       const currency: Token = data[index]
       const isSelected = Boolean(selectedCurrency && currencyEquals(selectedCurrency, currency))
       const otherSelected = Boolean(otherCurrency && currencyEquals(otherCurrency, currency))
+      const balance = balances[index]
       const handleSelect = () => onCurrencySelect(currency)
       return (
         <CurrencyRow
@@ -242,10 +247,11 @@ export default function CurrencyList({
           isSelected={isSelected}
           onSelect={handleSelect}
           otherSelected={otherSelected}
+          balance={balance}
         />
       )
     },
-    [onCurrencySelect, otherCurrency, selectedCurrency]
+    [onCurrencySelect, otherCurrency, selectedCurrency, balances]
   )
 
   const itemKey = useCallback((index: number, data: any) => currencyKey(data[index]), [])
