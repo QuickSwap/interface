@@ -469,17 +469,7 @@ export const SYRUP_REWARDS_INFO: {
       baseToken: QUICK,
       rate: 1000000,
       ending: 1636390770
-    },
-    {
-      token: ANGEL,
-      stakingRewardAddress: '0x1D68F94a1c56ef1706cf2BB66F671E3830B3B0bA',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 6666.67,
-      ending: 1635960912
-    },  
+    }, 
     {
       token: TEL,
       stakingRewardAddress: '0x346C9e501aDc38F1f325CC0c2D44C325283eEaF1',
@@ -489,16 +479,6 @@ export const SYRUP_REWARDS_INFO: {
       baseToken: USDC,
       rate: 333333.33,
       ending: 1640200125
-    },
-    {
-      token: TRADE,
-      stakingRewardAddress: '0x9f48eB6E139855ebc89de973ea91c7596583E6Bc',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: MATIC,
-      rate: 2458,
-      ending: 1636117833
     }
 ]
 }
@@ -516,6 +496,26 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: ANGEL,
+      stakingRewardAddress: '0x1D68F94a1c56ef1706cf2BB66F671E3830B3B0bA',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 6666.67,
+      ending: 1635960912
+    },
+    {
+      token: TRADE,
+      stakingRewardAddress: '0x9f48eB6E139855ebc89de973ea91c7596583E6Bc',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 2458,
+      ending: 1636117833
+    },
     {
       token: MASK,
       stakingRewardAddress: '0x15cB4132e4438F11fde5199aC6aE15881f1C1456',
