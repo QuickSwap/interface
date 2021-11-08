@@ -305,6 +305,9 @@ const StyledMenu = styled.div`
   display: flex;
   flex-direction: column;
   z-index: 100;
+  & > button {
+    margin: 6px;
+  }
 `
 
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
@@ -394,6 +397,8 @@ export default function Header() {
   const countUpValuePrevious = usePrevious(countUpValue) ?? '0'
 
   const [widgetMenuOpen, setWidgetMenuOpen] = useState(false)
+  const [buyMenuOpen, setBuyMenuOpen] = useState(false)
+  const [showMoonPayWidget, setShowMoonPayWidget] = useState(false)
 
   const[bridgeMenuOpen, setBridgeMenuOpen] = useState(false)
 
@@ -404,6 +409,20 @@ export default function Header() {
       <ClaimModal />
       <Modal isOpen={showUniBalanceModal} onDismiss={() => setShowUniBalanceModal(false)}>
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
+      </Modal>
+      <Modal isOpen={showMoonPayWidget} onDismiss={() => setShowMoonPayWidget(false)}>
+        <div style={{ height: '100%', width: '100%', overflowY: 'auto'}}>
+          <iframe
+            title="moonpay"
+            allow="accelerometer; autoplay; camera; gyroscope; payment"
+            frameBorder="0"
+            height="600px"
+            src="https://buy.moonpay.com?apiKey=pk_live_72EGoobLnlgc8WB7AaxyiWu2S43dj8eY"
+            width="100%"
+          >
+            <p>Your browser does not support iframes.</p>
+          </iframe>
+        </div>
       </Modal>
       <HeaderRow>
         <Title href="." >
@@ -459,9 +478,19 @@ export default function Header() {
             Charts {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
 
-          <StyledLinkStyledButton id={`stake-nav-link-02`} onClick={()=>{initiateTransak(account)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}}>
-            Buy
-          </StyledLinkStyledButton>
+          <div style={{ position: 'relative' }} onMouseEnter={() => {setBuyMenuOpen(true)}} onMouseLeave={() => {setBuyMenuOpen(false)}}>
+            <StyledLinkStyledButton id={`stake-nav-link`} onClick={() => {setBuyMenuOpen(true)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
+              Buy
+            </StyledLinkStyledButton>
+          {buyMenuOpen && (
+            <StyledMenuContainer>
+              <StyledMenu>
+                <StyledLinkStyledButton onClick={()=>{initiateTransak(account)}}>Transak</StyledLinkStyledButton>
+                <StyledLinkStyledButton onClick={()=>{setShowMoonPayWidget(true)}}>MoonPay</StyledLinkStyledButton>
+              </StyledMenu>
+            </StyledMenuContainer>   
+          )}
+          </div>
 
           <StyledExternalLink id={`startido-nav-link-03`} href={'https://idos.starter.xyz/quickstart'} style={{marginLeft: mobile?'4px':'12px', marginRight: mobile?'0px':'12px'}}>
             IDO {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
