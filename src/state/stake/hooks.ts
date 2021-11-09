@@ -221,6 +221,26 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: WATCH,
+      stakingRewardAddress: '0x0B2b63500243FF87B1299A56094b76c7Db8A4087',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 3333.33,
+      ending: 1639073521
+    },
+    {
+      token: KNIGHT,
+      stakingRewardAddress: '0xCAdfDB2077c32e04a5B78cbECA6de84B1694325c',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 2166.67,
+      ending: 1639073521
+    },  
+    {
       token: ELON,
       stakingRewardAddress: '0x0D0dD9b1f34101AF5Def323725a2e8a0C2Ba91Fc',
       ended: false,
@@ -451,26 +471,6 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1636816820
     },
     {
-      token: PLR,
-      stakingRewardAddress: '0x6E0635d3a2c76b38B69aB8Ef3c1a970D9e3475Fc',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 38402,
-      ending: 1636390770
-    },
-    {
-      token: KOM,
-      stakingRewardAddress: '0x3B1ed79d61d13Ea50863c0667BAb5Da335feeD0b',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 1000000,
-      ending: 1636390770
-    }, 
-    {
       token: TEL,
       stakingRewardAddress: '0x346C9e501aDc38F1f325CC0c2D44C325283eEaF1',
       ended: false,
@@ -496,6 +496,26 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: PLR,
+      stakingRewardAddress: '0x6E0635d3a2c76b38B69aB8Ef3c1a970D9e3475Fc',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 38402,
+      ending: 1636390770
+    },
+    {
+      token: KOM,
+      stakingRewardAddress: '0x3B1ed79d61d13Ea50863c0667BAb5Da335feeD0b',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 1000000,
+      ending: 1636390770
+    },
     {
       token: ANGEL,
       stakingRewardAddress: '0x1D68F94a1c56ef1706cf2BB66F671E3830B3B0bA',
