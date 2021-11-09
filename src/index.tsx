@@ -10,6 +10,7 @@ import { HashRouter } from 'react-router-dom'
 import { NetworkContextName } from './constants'
 import './i18n'
 import App from './pages/App'
+import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 import store from './state'
 import ListsUpdater from './state/lists/updater'
 import ApplicationUpdater from './state/application/updater'
@@ -108,3 +109,8 @@ ReactDOM.render(
   </StrictMode>,
   document.getElementById('root')
 )
+
+if (process.env.REACT_APP_SERVICE_WORKER !== 'false') {
+  serviceWorkerRegistration.register()
+}
+
