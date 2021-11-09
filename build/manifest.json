@@ -5,13 +5,13 @@
   "icons": [
     {
       "src": "./logo_circle.png",
-      "sizes": "192x192",
+      "sizes": "50x150",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
       "src": "./logo_circle.png",
-      "sizes": "512x512",
+      "sizes": "50x50",
       "type": "image/png",
       "purpose": "any maskable"
     }
