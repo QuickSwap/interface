@@ -140,23 +140,23 @@ export default function StakingModal({ isOpen, onDismiss, stakingInfo, userLiqui
 
           <HypotheticalRewardRate dim={!hypotheticalRewardRateA.greaterThan('0')}>
             <div>
-              <TYPE.black fontWeight={600}>Daily QUICK Rewards</TYPE.black>
+              <TYPE.black fontWeight={600}>Daily {stakingInfo?.rewardTokenA?.symbol} Rewards</TYPE.black>
             </div>
 
             <TYPE.black>
               {hypotheticalRewardRateA.toSignificant(4, { groupSeparator: ',' })}{' '}
-              QUICK / day
+              {stakingInfo?.rewardTokenA?.symbol} / day
             </TYPE.black>
           </HypotheticalRewardRate>
 
           <HypotheticalRewardRate dim={!hypotheticalRewardRateB.greaterThan('0')}>
             <div>
-              <TYPE.black fontWeight={600}>Daily MATIC Rewards</TYPE.black>
+              <TYPE.black fontWeight={600}>Daily {stakingInfo?.rewardTokenB?.symbol} Rewards</TYPE.black>
             </div>
 
             <TYPE.black>
               {hypotheticalRewardRateB.toSignificant(4, { groupSeparator: ',' })}{' '}
-              MATIC / day
+              {stakingInfo?.rewardTokenB?.symbol} / day
             </TYPE.black>
           </HypotheticalRewardRate>
 
