@@ -442,7 +442,7 @@ export const getTokenLogoURL = (address: string) => {
     }
 
     if (address?.toLowerCase() === '0x904371845Bc56dCbBcf0225ef84a669b2fD6bd0d'.toLowerCase()) {
-      uri = 'https://starter.xyz/Relay.png'
+      uri = 'https://assets.coingecko.com/coins/images/17816/small/relay-logo-200.png?1629339288'
     }if (address?.toLowerCase() === '0xFAD65Eb62a97fF5Ed91B23aFD039956aaCa6e93b'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/2822/small/huobi-token-logo.png?1547036992'
     }if (address?.toLowerCase() === '0x5f1657896B38c4761dbc5484473c7A7C845910b6'.toLowerCase()) {
@@ -648,6 +648,26 @@ export const getTokenLogoURL = (address: string) => {
     }
     if (address?.toLowerCase() === '0x3C1BB39bb696B443a1D80BB2b3a3d950Ba9DEE87'.toLowerCase()) {
       uri = 'https://i.imgur.com/BDibHLm.png'
+    }
+
+    if (address?.toLowerCase() === '0x6AE7Dfc73E0dDE2aa99ac063DcF7e8A63265108c'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17277/small/WoZ8rruL_400x400.png?1627016492'
+    }if (address?.toLowerCase() === '0x51869836681BcE74a514625c856aFb697a013797'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19905/small/kKkWmniB_400x400.jpg?1636100432'
+    }if (address?.toLowerCase() === '0x873801Ae2ff12d816Db9a7B082F5796BEC64C82C'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15155/small/coin_%282%29.png?1619995483'
+    }if (address?.toLowerCase() === '0xBA25B552C8A098AFdf276324C32C71fE28e0Ad40'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14633/small/macaron.png?1623038435'
+    }if (address?.toLowerCase() === '0xB6bcae6468760bc0CDFb9C8ef4Ee75C9dd23e1Ed'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/11659/small/pNetwork.png?1592411134'
+    }if (address?.toLowerCase() === '0xd7ecf95Cf7eF5256990BeAf4ac895cD9e64cb947'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/10805/small/J51iIea.png?1583891599'
+    }if (address?.toLowerCase() === '0x1646C835d70F76D9030DF6BaAeec8f65c250353d'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/3688/small/mqTDGK7Q.png?1566256777'
+    }if (address?.toLowerCase() === '0x5647Fe4281F8F6F01E84BCE775AD4b828A7b8927'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/16825/small/logo200x200.png?1625834139'
+    }if (address?.toLowerCase() === '0x8f9E8e833A69Aa467E42c46cCA640da84DD4585f'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19536/small/champ.png?1635905981'
     }
 
     if (address?.toLowerCase() === '0x6Ccf12B480A99C54b23647c995f4525D544A7E72'.toLowerCase()) {

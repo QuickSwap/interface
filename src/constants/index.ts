@@ -270,18 +270,31 @@ export const TETU = new Token(ChainId.MATIC, '0x255707B70BF90aa112006E1b07B9AeA6
 export const GNS = new Token(ChainId.MATIC, '0xE5417Af564e4bFDA1c483642db72007871397896', 18, 'GNS', 'Gains Network')
 export const SCA = new Token(ChainId.MATIC, '0x11a819Beb0AA3327E39f52F90d65Cc9bCA499F33', 18, 'SCA', 'ScaleSwapToken')
 
-export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
+export const JPYC = new Token(ChainId.MATIC, '0x6AE7Dfc73E0dDE2aa99ac063DcF7e8A63265108c', 18, 'JPYC', 'JPY Coin')
+export const GENESIS = new Token(ChainId.MATIC, '0x51869836681BcE74a514625c856aFb697a013797', 18, 'GENESIS', 'Genesis')
+export const LMT = new Token(ChainId.MATIC, '0x873801Ae2ff12d816Db9a7B082F5796BEC64C82C', 18, 'LMT', 'Lympo Market Token')
+export const MCRN = new Token(ChainId.MATIC, '0xBA25B552C8A098AFdf276324C32C71fE28e0Ad40', 18, 'MCRN', 'MacaronSwap Token')
+export const PNT = new Token(ChainId.MATIC, '0xB6bcae6468760bc0CDFb9C8ef4Ee75C9dd23e1Ed', 18, 'PNT', 'pTokens PNT')
+export const PBTC = new Token(ChainId.MATIC, '0xd7ecf95Cf7eF5256990BeAf4ac895cD9e64cb947', 18, 'pBTC', 'pTokens BTC')
+export const HBAR = new Token(ChainId.MATIC, '0x1646C835d70F76D9030DF6BaAeec8f65c250353d', 8, 'HBAR', 'HBAR')
+export const MM = new Token(ChainId.MATIC, '0x5647Fe4281F8F6F01E84BCE775AD4b828A7b8927', 18, 'MM', 'Million')
+export const CHAMPS = new Token(ChainId.MATIC, '0x8f9E8e833A69Aa467E42c46cCA640da84DD4585f', 18, 'CHAMPS', 'NFT Champions')
+export const AUMI = new Token(ChainId.MATIC, '0x3eB177A6693eC81d1E170136f8AD02fffBE172a7', 18, 'AUMI', 'AutoMatic')
+export const UM = new Token(ChainId.MATIC, '0x3B1A0c9252ee7403093fF55b4a5886d49a3d837a', 18, 'UM', 'Continuum')
+export const WSG = new Token(ChainId.MATIC, '0x3C1BB39bb696B443a1D80BB2b3a3d950Ba9DEE87', 18, 'WSG', 'Wall Street Games')
+export const DERC = new Token(ChainId.MATIC, '0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6', 18, 'DERC', 'DeRace Token')
+
+
+//export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
 export const PROPOSAL_LENGTH_IN_DAYS = 7
 
 export const GOVERNANCE_ADDRESS = '0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'//TODO: MATIC
 
-const UNI_ADDRESS = '0x831753DD7087CaC61aB5644b308642cc1c33Dc13'//TODO: MATIC QUICK
-
 export const UNI: { [chainId in ChainId]: Token } = {
-  [ChainId.MATIC]: new Token(ChainId.MATIC, UNI_ADDRESS, 18, 'QUICK', 'Quickswap'),
-  [ChainId.MUMBAI]: new Token(ChainId.MUMBAI, UNI_ADDRESS, 18, 'QUICK', 'Quickswap')
+  [ChainId.MATIC]: new Token(ChainId.MATIC, QUICK_ADDRESS, 18, 'QUICK', 'Quickswap'),
+  [ChainId.MUMBAI]: new Token(ChainId.MUMBAI, QUICK_ADDRESS, 18, 'QUICK', 'Quickswap')
 }
 
 // TODO: specify merkle distributor for mainnet
@@ -298,7 +311,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, USDT, QUICK, ETHER, WBTC, DAI, MAUSDC, MI, EROWAN]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, USDT, QUICK, ETHER, WBTC, DAI, MI, EROWAN]
 }
 
 /**
@@ -318,7 +331,7 @@ export const SUGGESTED_BASES: ChainTokenList = {
 // used to construct the list of all pairs we consider by default in the frontend
 export const BASES_TO_TRACK_LIQUIDITY_FOR: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC],DAI, USDC, USDT, QUICK, ETHER, WBTC, MAUSDC]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC],DAI, USDC, USDT, QUICK, ETHER, WBTC]
 }
 
 export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } = {
@@ -326,18 +339,12 @@ export const PINNED_PAIRS: { readonly [chainId in ChainId]?: [Token, Token][] } 
     
     [USDC, USDT],
     [USDC, DAI],
-    [DAI, USDT],
-    [ETHER, DAI],
     [ETHER, USDC],
+    [WBTC, ETHER],
     [WETH[ChainId.MATIC], USDT],
     [WETH[ChainId.MATIC], USDC],
-    [WETH[ChainId.MATIC], USDT],
-    [WETH[ChainId.MATIC], DAI],
     [WETH[ChainId.MATIC], ETHER],
-    [ETHER, QUICK],
-    [UNITOKEN, USDT],
-    [QUICK, UNITOKEN]
-
+    [ETHER, QUICK]
   ]
 }
 
@@ -442,4 +449,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.4/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.7/build/quickswap-default.tokenlist.json'

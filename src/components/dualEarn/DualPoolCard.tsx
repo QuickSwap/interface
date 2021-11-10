@@ -14,7 +14,7 @@ import { unwrappedToken } from '../../utils/wrappedCurrency'
 import { useTotalSupply } from '../../data/TotalSupply'
 import { usePair } from '../../data/Reserves'
 import useUSDCPrice from '../../utils/useUSDCPrice'
-import {EMPTY} from "../../constants/index";
+import {EMPTY, USDC} from "../../constants/index";
 
 const StatContainer = styled.div`
   display: flex;
@@ -79,6 +79,11 @@ export default function DualPoolCard({ stakingInfo, isOld }: { stakingInfo: Dual
 
   const rewardTokenA = stakingInfo.rewardTokenA
   const rewardTokenB = stakingInfo.rewardTokenB
+  const rewardTokenBBase = stakingInfo.rewardTokenBBase
+  
+  const [, rewardTokenBPair]  = usePair(rewardTokenB, rewardTokenBBase);
+
+  const rewardTokenBPriceInBaseToken = Number(rewardTokenBPair?.priceOf(rewardTokenB)?.toSignificant(6))
 
   const currency0 = unwrappedToken(token0)
   const currency1 = unwrappedToken(token1)
@@ -129,8 +134,17 @@ export default function DualPoolCard({ stakingInfo, isOld }: { stakingInfo: Dual
   //apy = ((1 + ((perMonthReturnInRewards) * 12) / 12) ** 12 - 1) * 100 // compounding monthly APY
   //apy = perMonthReturnInRewards/Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6)) * 100;
 
+  var rewardTokenBPrice = 0;
+
+  if (rewardTokenBBase.equals(USDC)) {
+    rewardTokenBPrice = rewardTokenBPriceInBaseToken 
+  }
+  else {
+    //@ts-ignore
+    rewardTokenBPrice = rewardTokenBPriceInBaseToken * stakingInfo?.quickPrice
+  }
   //@ts-ignore
-  rewards = (stakingInfo?.rateA * stakingInfo?.quickPrice) + (stakingInfo?.rateB * stakingInfo?.maticPrice);
+  rewards = (stakingInfo?.rateA * stakingInfo?.quickPrice) + (stakingInfo?.rateB * rewardTokenBPrice );
 
   if(stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0) {
     //@ts-ignore
