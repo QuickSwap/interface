@@ -230,8 +230,8 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
-      token: ALN,
-      stakingRewardAddress: '0x568E635426804400f306c6D3Ec56D14782D74261',
+      token: MCASH,
+      stakingRewardAddress: '0xb3DacE74b857C7b0F0890334B8E4770762Bcda5c',
       ended: false,
       lp: '',
       name: '',
@@ -240,8 +240,8 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1639241173
     },
     {
-      token: MCASH,
-      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      token: ALN,
+      stakingRewardAddress: '0x568E635426804400f306c6D3Ec56D14782D74261',
       ended: false,
       lp: '',
       name: '',
