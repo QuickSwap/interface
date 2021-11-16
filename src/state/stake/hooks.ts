@@ -230,6 +230,16 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: UM,
+      stakingRewardAddress: '0x1e027abDD77f8A93Cf58982b9878702d14941c56',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 16666.68,
+      ending: 1642241616
+    },  
+    {
       token: MCASH,
       stakingRewardAddress: '0xb3DacE74b857C7b0F0890334B8E4770762Bcda5c',
       ended: false,
@@ -440,36 +450,6 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1637513623
     },
     {
-      token: OM,
-      stakingRewardAddress: '0x304cd598F973208888e959D7f808052Ab863A7eA',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 15833.33,
-      ending: 1637076798
-    },
-    {
-      token: ELET,
-      stakingRewardAddress: '0x18e23130973AA586652BB6d472f0eEf05a88fD3E',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 83333.33,
-      ending: 1637076798
-    },
-    {
-      token: ODDZ,
-      stakingRewardAddress: '0x8DBa41FD5aDD941825f96a33b58d3242db7b918f',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: MATIC,
-      rate: 4065.05,
-      ending: 1637076798
-    },
-    {
       token: XCASH,
       stakingRewardAddress: '0xe01e81c76253831602520582793991650225Bf81',
       ended: false,
@@ -478,26 +458,6 @@ export const SYRUP_REWARDS_INFO: {
       baseToken: QUICK,
       rate: 27777777.78,
       ending: 1639408820
-    },
-    {
-      token: TCP,
-      stakingRewardAddress: '0x6d05D7aC6CC4b8A5552CF26cA04583c95e2F2b98',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 17475.7,
-      ending: 1636816820
-    },
-    {
-      token: MEEB,
-      stakingRewardAddress: '0x639F9394Ca689824ABE4e3d4D6acdB726f4a54F0',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 166.67,
-      ending: 1636816820
     },
     {
       token: TEL,
@@ -525,6 +485,56 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: OM,
+      stakingRewardAddress: '0x304cd598F973208888e959D7f808052Ab863A7eA',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 15833.33,
+      ending: 1637076798
+    },
+    {
+      token: ELET,
+      stakingRewardAddress: '0x18e23130973AA586652BB6d472f0eEf05a88fD3E',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 83333.33,
+      ending: 1637076798
+    },
+    {
+      token: ODDZ,
+      stakingRewardAddress: '0x8DBa41FD5aDD941825f96a33b58d3242db7b918f',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 4065.05,
+      ending: 1637076798
+    },
+    {
+      token: TCP,
+      stakingRewardAddress: '0x6d05D7aC6CC4b8A5552CF26cA04583c95e2F2b98',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 17475.7,
+      ending: 1636816820
+    },
+    {
+      token: MEEB,
+      stakingRewardAddress: '0x639F9394Ca689824ABE4e3d4D6acdB726f4a54F0',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 166.67,
+      ending: 1636816820
+    },
     {
       token: PLR,
       stakingRewardAddress: '0x6E0635d3a2c76b38B69aB8Ef3c1a970D9e3475Fc',
