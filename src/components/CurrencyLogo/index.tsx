@@ -668,6 +668,10 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/16825/small/logo200x200.png?1625834139'
     }if (address?.toLowerCase() === '0x8f9E8e833A69Aa467E42c46cCA640da84DD4585f'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/19536/small/champ.png?1635905981'
+    }if (address?.toLowerCase() === '0xB382C1cfA622795a534e5bd56Fac93d59BAc8B0D'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12688/small/QmScxyKBwqbGJZmp38EwaoRpXbzPkq3tvuMjeuJE1YLZeG.png?1601672684'
+    }if (address?.toLowerCase() === '0x61299774020dA444Af134c82fa83E3810b309991'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/11636/small/uTDd98ZN_400x400.jpg?1592200150'
     }
 
     if (address?.toLowerCase() === '0x6Ccf12B480A99C54b23647c995f4525D544A7E72'.toLowerCase()) {

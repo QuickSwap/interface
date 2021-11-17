@@ -284,6 +284,8 @@ export const UM = new Token(ChainId.MATIC, '0x3B1A0c9252ee7403093fF55b4a5886d49a
 export const WSG = new Token(ChainId.MATIC, '0x3C1BB39bb696B443a1D80BB2b3a3d950Ba9DEE87', 18, 'WSG', 'Wall Street Games')
 export const DERC = new Token(ChainId.MATIC, '0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6', 18, 'DERC', 'DeRace Token')
 
+export const KIRO = new Token(ChainId.MATIC, '0xB382C1cfA622795a534e5bd56Fac93d59BAc8B0D', 18, 'KRIO', 'Kirobo')
+export const RNDR = new Token(ChainId.MATIC, '0x61299774020dA444Af134c82fa83E3810b309991', 18, 'RNDR', 'Render Token')
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -449,4 +451,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.7/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.8/build/quickswap-default.tokenlist.json'

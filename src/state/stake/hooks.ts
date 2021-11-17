@@ -230,6 +230,26 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: LMT,
+      stakingRewardAddress: '0x14902868ff379B89BaC6B6C47dcE06769A549Bfb',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 9222.22,
+      ending: 1644944188
+    },
+    {
+      token: PNT,
+      stakingRewardAddress: '0x396dFF9c3DA3E0ACe3BB8F0635de5a693f990664',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 1500,
+      ending: 1642352188
+    },
+    {
       token: UM,
       stakingRewardAddress: '0x1e027abDD77f8A93Cf58982b9878702d14941c56',
       ended: false,
