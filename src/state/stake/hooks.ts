@@ -320,16 +320,6 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1642525260
     },
     {
-      token: D11,
-      stakingRewardAddress: '0xc7E4C8024c580f2a7889b369Ea02957BcAC05b79',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: MATIC,
-      rate: 728.6,
-      ending: 1637341260
-    },
-    {
       token: UCO,
       stakingRewardAddress: '0xC328d6eC46d11a6ABdA3C02434861beA14739E1f',
       ended: false,
@@ -460,16 +450,6 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1638027392
     },
     {
-      token: MITX,
-      stakingRewardAddress: '0xBBD9146D2A687C0df7e6201D7b8cc4cebc5DF976',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 29609.1,
-      ending: 1637513623
-    },
-    {
       token: XCASH,
       stakingRewardAddress: '0xe01e81c76253831602520582793991650225Bf81',
       ended: false,
@@ -505,6 +485,26 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: MITX,
+      stakingRewardAddress: '0xBBD9146D2A687C0df7e6201D7b8cc4cebc5DF976',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 29609.1,
+      ending: 1637513623
+    },
+    {
+      token: D11,
+      stakingRewardAddress: '0xc7E4C8024c580f2a7889b369Ea02957BcAC05b79',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 728.6,
+      ending: 1637341260
+    },
     {
       token: OM,
       stakingRewardAddress: '0x304cd598F973208888e959D7f808052Ab863A7eA',
