@@ -674,6 +674,20 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/11636/small/uTDd98ZN_400x400.jpg?1592200150'
     }
 
+    if (address?.toLowerCase() === '0xf2D8124b8F9267DaD61351c7aD252362880C6638'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/7310/small/cypto.png?1547043960'
+    }if (address?.toLowerCase() === '0xA9536B9c75A9E0faE3B56a96AC8EdF76AbC91978'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19270/small/amun-peco.png?1634868167'
+    }if (address?.toLowerCase() === '0x23E8B6A3f6891254988B84Da3738D2bfe5E703b9'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/20505/small/welt.PNG?1637143324'
+    }if (address?.toLowerCase() === '0xEe9A352F6aAc4aF1A5B9f467F6a93E0ffBe9Dd35'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/13699/small/MASQ_Logo_Blue_Solo_Transparent.png?1616661801'
+    }if (address?.toLowerCase() === '0xED0bb69f9F96E8C5FffdF16c468eceC385134eA5'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18941/small/starchi.jpg?1633961292'
+    }if (address?.toLowerCase() === '0x7BeBd226154E865954A87650FAefA8F485d36081'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14796/small/zignaly.jpg?1618496339'
+    }
+
     if (address?.toLowerCase() === '0x6Ccf12B480A99C54b23647c995f4525D544A7E72'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/14301/small/logo_poly_sym.png?1624893386'
     }if (address?.toLowerCase() === '0x26f6Cb841F9D4D72b68D7dCb6fDB5d6C832dD2A7'.toLowerCase()) {
