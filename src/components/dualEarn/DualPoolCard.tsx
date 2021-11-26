@@ -14,7 +14,7 @@ import { unwrappedToken } from '../../utils/wrappedCurrency'
 import { useTotalSupply } from '../../data/TotalSupply'
 import { usePair } from '../../data/Reserves'
 import useUSDCPrice from '../../utils/useUSDCPrice'
-import {EMPTY, USDC} from "../../constants/index";
+import {EMPTY, QUICK, USDC} from "../../constants/index";
 
 const StatContainer = styled.div`
   display: flex;
@@ -139,9 +139,13 @@ export default function DualPoolCard({ stakingInfo, isOld }: { stakingInfo: Dual
   if (rewardTokenBBase.equals(USDC)) {
     rewardTokenBPrice = rewardTokenBPriceInBaseToken 
   }
-  else {
+  else if(rewardTokenBBase.equals(QUICK)){
     //@ts-ignore
     rewardTokenBPrice = rewardTokenBPriceInBaseToken * stakingInfo?.quickPrice
+  }
+  else {
+    //@ts-ignore
+    rewardTokenBPrice = rewardTokenBPriceInBaseToken * stakingInfo?.maticPrice
   }
   //@ts-ignore
   rewards = (stakingInfo?.rateA * stakingInfo?.quickPrice) + (stakingInfo?.rateB * rewardTokenBPrice );

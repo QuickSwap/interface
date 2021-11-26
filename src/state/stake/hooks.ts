@@ -237,6 +237,36 @@ export const SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    { 
+      token: UFI,
+      stakingRewardAddress: '0xE707bB8513873c2360811F01BfBd0e9EBFd96b0D',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 18315,
+      ending: 1640485140
+    },
+    { 
+      token: WSG,
+      stakingRewardAddress: '0x2b91d985AEb645cc580E35BdF52DF2694e742ADF',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 41347011961.97,
+      ending: 1643077140
+    },
+    {  
+      token: DERC,
+      stakingRewardAddress: '0xE800041A775D269e1cD38261B4500b0D8F0e9916',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 777.78,
+      ending: 1645669140
+    },
     {
       token: LMT,
       stakingRewardAddress: '0x14902868ff379B89BaC6B6C47dcE06769A549Bfb',
