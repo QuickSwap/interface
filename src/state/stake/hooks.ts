@@ -1620,6 +1620,16 @@ export const OLD_STAKING_REWARDS_INFO: {
       rate: 2,
       pair: '0x53b02ad5f6615262ec5b483937260135429d5af9'
     },
+    {
+      tokens: [PBR,USDT],
+      stakingRewardAddress: '0x4c510d82FD85F2B54FD0C41975fbb9305a92751B',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDT,
+      rate: 2,
+      pair: '0x53b02ad5f6615262ec5b483937260135429d5af9'
+    },
   {
     tokens: [UGT,QUICK],
     stakingRewardAddress: '0x20b07BF5d7c84171c84Daf1ec327306830561AD9',
