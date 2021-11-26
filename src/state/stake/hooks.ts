@@ -1738,6 +1738,16 @@ export const OLD_STAKING_REWARDS_INFO: {
     baseToken: ETHER,
     rate: 0.3865,
     pair: '0x1585d301b58661bc0cb5a8eba24ecae7b4600470'
+  },
+  {
+    tokens: [PBR,USDT],
+    stakingRewardAddress: '0x4d3D3659A87a71E9D6137C7acb183b6C41223D4f',
+    ended: true,
+    lp: '',
+    name: '',
+    baseToken: USDT,
+    rate: 2,
+    pair: '0x53b02ad5f6615262ec5b483937260135429d5af9'
   }
   ]
 }
@@ -2945,16 +2955,6 @@ export const VERY_OLD_STAKING_REWARDS_INFO: {
       baseToken: QUICK,
       rate: 2,
       pair: '0x082b58350a04d8d38b4bcae003bb1191b9aae565'
-    },
-    {
-      tokens: [PBR,USDT],
-      stakingRewardAddress: '0x4d3D3659A87a71E9D6137C7acb183b6C41223D4f',
-      ended: true,
-      lp: '',
-      name: '',
-      baseToken: USDT,
-      rate: 2,
-      pair: '0x53b02ad5f6615262ec5b483937260135429d5af9'
     },
     {
       tokens: [D11,MATIC],
