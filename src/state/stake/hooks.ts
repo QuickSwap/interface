@@ -1609,7 +1609,18 @@ export const OLD_STAKING_REWARDS_INFO: {
     pair: string
   }[]
 } = {
-  [ChainId.MATIC]: [{
+  [ChainId.MATIC]: [
+    {
+      tokens: [PBR,USDT],
+      stakingRewardAddress: '0x4d3D3659A87a71E9D6137C7acb183b6C41223D4f',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDT,
+      rate: 2,
+      pair: '0x53b02ad5f6615262ec5b483937260135429d5af9'
+    },
+  {
     tokens: [UGT,QUICK],
     stakingRewardAddress: '0x20b07BF5d7c84171c84Daf1ec327306830561AD9',
     ended: true,
@@ -1738,16 +1749,6 @@ export const OLD_STAKING_REWARDS_INFO: {
     baseToken: ETHER,
     rate: 0.3865,
     pair: '0x1585d301b58661bc0cb5a8eba24ecae7b4600470'
-  },
-  {
-    tokens: [PBR,USDT],
-    stakingRewardAddress: '0x4d3D3659A87a71E9D6137C7acb183b6C41223D4f',
-    ended: true,
-    lp: '',
-    name: '',
-    baseToken: USDT,
-    rate: 2,
-    pair: '0x53b02ad5f6615262ec5b483937260135429d5af9'
   }
   ]
 }
