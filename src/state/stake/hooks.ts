@@ -237,6 +237,16 @@ export const SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: TECH,
+      stakingRewardAddress: '0xD2C494057f57D845C67bb5825e83B657204875c8',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 40610.66,
+      ending: 1644090690
+    },
     { 
       token: UFI,
       stakingRewardAddress: '0xE707bB8513873c2360811F01BfBd0e9EBFd96b0D',
@@ -456,36 +466,6 @@ export const SYRUP_REWARDS_INFO: {
       baseToken: QUICK,
       rate: 15555.56,
       ending: 1641401056
-    },  
-    {
-      token: PBR,
-      stakingRewardAddress: '0xa751f7B39F6c111d10e2C603bE2a12bd5F70Fc83',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDT,
-      rate: 3333.33,
-      ending: 1638280789
-    },
-    {
-      token: PHX,
-      stakingRewardAddress: '0xcE4c95014Bd54B1D3ff30dbb585009aDf7358b0b',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: MATIC,
-      rate: 12000,
-      ending: 1638027392
-    },
-    {
-      token: REI,
-      stakingRewardAddress: '0xc9097837c52f0e9785539BD2d265df7fA890cb1A',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 5127.75,
-      ending: 1638027392
     },
     {
       token: XCASH,
@@ -523,6 +503,36 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: PBR,
+      stakingRewardAddress: '0xa751f7B39F6c111d10e2C603bE2a12bd5F70Fc83',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDT,
+      rate: 3333.33,
+      ending: 1638280789
+    },
+    {
+      token: PHX,
+      stakingRewardAddress: '0xcE4c95014Bd54B1D3ff30dbb585009aDf7358b0b',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 12000,
+      ending: 1638027392
+    },
+    {
+      token: REI,
+      stakingRewardAddress: '0xc9097837c52f0e9785539BD2d265df7fA890cb1A',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 5127.75,
+      ending: 1638027392
+    },
     {
       token: MITX,
       stakingRewardAddress: '0xBBD9146D2A687C0df7e6201D7b8cc4cebc5DF976',
