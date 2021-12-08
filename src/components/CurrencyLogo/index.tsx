@@ -102,8 +102,8 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://etherscan.io/token/images/pepedex_32.png?v=2'
     }
 
-    if (address?.toLowerCase() === '0x2a93172c8DCCbfBC60a39d56183B7279a2F647b4'.toLowerCase()) {
-      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/dg.jpg'
+    if (address?.toLowerCase() === '0xef938b6da8576a896f6E0321ef80996F4890f9c4'.toLowerCase()) {
+      uri = 'https://polygonscan.com/token/images/decentralgame_32.png?v=5'
     }
   
     if (address?.toLowerCase() === '0x3e121107F6F22DA4911079845a470757aF4e1A1b'.toLowerCase()) {
@@ -521,7 +521,7 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://i.imgur.com/KTS2F7I.png'
     }if (address?.toLowerCase() === '0x692597b009d13C4049a947CAB2239b7d6517875F'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/12681/small/UST.png?1601612407'
-    }if (address?.toLowerCase() === '0x24834BBEc7E39ef42f4a75EAF8E5B6486d3F0e57'.toLowerCase()) {
+    }if (address?.toLowerCase() === '0x74946A114ca2B26267983ef51aD8664Cabde4034'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/8284/small/luna1557227471663.png?1567147072'
     }if (address?.toLowerCase() === '0xdae89dA41a96956e9e70320Ac9c0dd077070D3a5'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/12743/small/logo_%2898%29.png?1602630445'
@@ -686,6 +686,24 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/18941/small/starchi.jpg?1633961292'
     }if (address?.toLowerCase() === '0x7BeBd226154E865954A87650FAefA8F485d36081'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/14796/small/zignaly.jpg?1618496339'
+    }
+
+    if (address?.toLowerCase() === '0x723B17718289A91AF252D616DE2C77944962d122'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19629/small/gaia_icon_new.png?1637559277'
+    }if (address?.toLowerCase() === '0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12129/small/sandbox_logo.jpg?1597397942'
+    }if (address?.toLowerCase() === '0xFF2382Bd52efaceF02Cc895bcBFc4618608AA56F'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19696/small/Thumbnail_-_500_px_-_Black.png?1635751681'
+    }if (address?.toLowerCase() === '0xcE899f26928a2B21c6a2Fddd393EF37c61dbA918'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15829/small/photo_2021-06-04_09.36.16.jpeg?1622770606'
+    }if (address?.toLowerCase() === '0x3642c3c8eBe0b36a29e37809e1c9A7DE06BC0B26'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18036/small/TQzTNi5.png?1630312183'
+    }if (address?.toLowerCase() === '0xc6480Da81151B2277761024599E8Db2Ad4C388C8'.toLowerCase()) {
+      uri = 'https://polygonscan.com/token/images/decentralgamesgov_32.png?v=1'
+    }if (address?.toLowerCase() === '0xf4C83080E80AE530d6f8180572cBbf1Ac9D5d435'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14209/small/blank.png?1614940842'
+    }if (address?.toLowerCase() === '0xE0B52e49357Fd4DAf2c15e02058DCE6BC0057db4'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19479/small/agEUR.png?1635283566'
     }
 
     if (address?.toLowerCase() === '0x6Ccf12B480A99C54b23647c995f4525D544A7E72'.toLowerCase()) {

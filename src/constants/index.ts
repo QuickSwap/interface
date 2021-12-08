@@ -39,7 +39,7 @@ export const MAUSDC  = new Token(ChainId.MATIC, '0x9719d867A500Ef117cC201206B8ab
 export const MADAI  = new Token(ChainId.MATIC, '0xE0b22E0037B130A9F56bBb537684E6fA18192341', 18, 'maDAI', 'Matic Aave interest bearing DAI')
 //export const SWG  = new Token(ChainId.MATIC, '0x043a3aa319b563ac25d4e342d32bffb51298db7b', 18, 'SWG', 'Swirge')
 //export const RBAL  = new Token(ChainId.MATIC, '0x03247a4368A280bEc8133300cD930A3a61d604f6', 18, 'RBAL', 'Rebalance Token')
-export const DG  = new Token(ChainId.MATIC, '0x2a93172c8DCCbfBC60a39d56183B7279a2F647b4', 18, '$DG', 'decentral.games')
+export const DG  = new Token(ChainId.MATIC, '0xef938b6da8576a896f6E0321ef80996F4890f9c4', 18, '$DG', 'decentral.games')
 export const SX  = new Token(ChainId.MATIC, '0x840195888Db4D6A99ED9F73FcD3B225Bb3cB1A79', 18, 'SX', 'SportX')
 //export const WRX  = new Token(ChainId.MATIC, '0x72d6066F486bd0052eefB9114B66ae40e0A6031a', 8, 'WRX', 'WazirX')
 //export const MUST  = new Token(ChainId.MATIC, '0x9C78EE466D6Cb57A4d01Fd887D2b5dFb2D46288f', 18, 'MUST', 'Must')
@@ -209,7 +209,7 @@ export const ANGEL = new Token(ChainId.MATIC, '0x0B6afe834dab840335F87d99b45C2a4
 export const UGT = new Token(ChainId.MATIC, '0xBa4c54Ea2d66b904C82847A7d2357d22B857E812', 18, 'UGT', 'Unreal Governance Token')
 export const KOM = new Token(ChainId.MATIC, '0xC004e2318722EA2b15499D6375905d75Ee5390B8', 8, 'KOM', 'Kommunitas')
 export const UST = new Token(ChainId.MATIC, '0x692597b009d13C4049a947CAB2239b7d6517875F', 18, 'UST', 'Wrapped UST Token')
-export const LUNA = new Token(ChainId.MATIC, '0x24834BBEc7E39ef42f4a75EAF8E5B6486d3F0e57', 18, 'LUNA', 'Wrapped LUNA Token')
+export const LUNA = new Token(ChainId.MATIC, '0x74946A114ca2B26267983ef51aD8664Cabde4034', 18, 'LUNA', 'Wrapped LUNA Token')
 export const CNTR = new Token(ChainId.MATIC, '0xdae89dA41a96956e9e70320Ac9c0dd077070D3a5', 18, 'CNTR', 'Centaur Token')
 export const TRADE = new Token(ChainId.MATIC, '0x692AC1e363ae34b6B489148152b12e2785a3d8d6', 18, 'TRADE', 'Polytrade')
 
@@ -294,6 +294,16 @@ export const MASQ = new Token(ChainId.MATIC, '0xEe9A352F6aAc4aF1A5B9f467F6a93E0f
 export const ELIXIR = new Token(ChainId.MATIC, '0xED0bb69f9F96E8C5FffdF16c468eceC385134eA5', 18, 'ELIXIR', 'Starchi Liquid Luck')
 export const ZIG = new Token(ChainId.MATIC, '0x7BeBd226154E865954A87650FAefA8F485d36081', 18, 'ZIG', 'ZigCoin')
 export const MANA = new Token(ChainId.MATIC, '0xA1c57f48F0Deb89f569dFbE6E2B7f46D33606fD4', 18, 'MANA', 'Decentraland MANA')
+
+export const GAIA = new Token(ChainId.MATIC, '0x723B17718289A91AF252D616DE2C77944962d122', 18, 'GAIA', 'GAIA Everworld')
+export const SAND = new Token(ChainId.MATIC, '0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683', 18, 'SAND', 'SAND')
+export const ORARE = new Token(ChainId.MATIC, '0xFF2382Bd52efaceF02Cc895bcBFc4618608AA56F', 18, 'ORARE', 'One Rare Token')
+export const MOCA = new Token(ChainId.MATIC, '0xcE899f26928a2B21c6a2Fddd393EF37c61dbA918', 18, 'MOCA', 'Museum of Crypto Art')
+export const MTCL = new Token(ChainId.MATIC, '0x3642c3c8eBe0b36a29e37809e1c9A7DE06BC0B26', 18, 'MTCL', 'MaticLaunch')
+export const XDG = new Token(ChainId.MATIC, '0xc6480Da81151B2277761024599E8Db2Ad4C388C8', 18, 'xDG', 'Decentral Games Governance')
+export const BLANK = new Token(ChainId.MATIC, '0xf4C83080E80AE530d6f8180572cBbf1Ac9D5d435', 18, 'BLANK', 'GoBlank Token')
+export const AGEUR = new Token(ChainId.MATIC, '0xE0B52e49357Fd4DAf2c15e02058DCE6BC0057db4', 18, 'agEUR', 'agEUR')
+export const GAMER = new Token(ChainId.MATIC, '0x3f6b3595ecF70735D3f48D69b09C4E4506DB3F47', 18, 'GAMER', 'GameStation')
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -459,4 +469,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.9/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.11/build/quickswap-default.tokenlist.json'
