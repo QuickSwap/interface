@@ -25,7 +25,10 @@ if (typeof NETWORK_URL === 'undefined') {
 }
 
 export const network = new NetworkConnector({
-  urls: { [Number("137")]: "https://polygon-rpc.com/" }
+  urls: { 
+    [Number("137")]: "https://polygon-rpc.com/"
+
+  }
 })
 
 let networkLibrary: Web3Provider | undefined
@@ -72,7 +75,7 @@ export const portis = new PortisConnector({
 // mainnet only
 export const walletlink = new WalletLinkConnector({
   url: NETWORK_URL,
-  appName: 'Uniswap',
+  appName: 'QuickSwap',
   appLogoUrl:
     'https://mpng.pngfly.com/20181202/bex/kisspng-emoji-domain-unicorn-pin-badges-sticker-unicorn-tumblr-emoji-unicorn-iphoneemoji-5c046729264a77.5671679315437924251569.jpg',
   supportedChainIds: [137]

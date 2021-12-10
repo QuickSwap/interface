@@ -3,13 +3,13 @@ import { AbstractConnector } from '@web3-react/abstract-connector'
 
 import { injected, walletconnect, walletlink, portis, arkaneconnect, safeApp } from '../connectors'
 
-export const ROUTER_ADDRESS = '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff'; //'0x6207A65a8bbc87dD02C3109D2c74a6bCE4af1C8c';//
-
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
 export const LAIR_ADDRESS = '0xf28164a485b0b2c90639e47b0f377b4a438a16b1';
 
 export const QUICK_ADDRESS = '0x831753DD7087CaC61aB5644b308642cc1c33Dc13';
+
+export const QUICK_ADDRESS_MUMBAI = "0x55bee1bd3eb9986f6d2d963278de09ee92a3ef1d";
 
 // a list of tokens by chain
 type ChainTokenList = {
@@ -314,12 +314,18 @@ export const GOVERNANCE_ADDRESS = '0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'//
 
 export const UNI: { [chainId in ChainId]: Token } = {
   [ChainId.MATIC]: new Token(ChainId.MATIC, QUICK_ADDRESS, 18, 'QUICK', 'Quickswap'),
-  [ChainId.MUMBAI]: new Token(ChainId.MUMBAI, QUICK_ADDRESS, 18, 'QUICK', 'Quickswap')
+  [ChainId.MUMBAI]: new Token(ChainId.MUMBAI, QUICK_ADDRESS_MUMBAI, 18, 'QUICK', 'Quickswap')
+}
+
+// TODO: specify merkle distributor for mainnet
+export const ROUTER_ADDRESS: { [chainId in ChainId]?: string } = {
+  [ChainId.MATIC]: '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff',
+  [ChainId.MUMBAI]: '0x8954AfA98594b838bda56FE4C12a09D7739D179b'
 }
 
 // TODO: specify merkle distributor for mainnet
 export const MERKLE_DISTRIBUTOR_ADDRESS: { [chainId in ChainId]?: string } = {
-  [ChainId.MATIC]: '0x4087F566796b46eEB01A38174c06E2f9924eAea8'//TODO: MATIC
+  [ChainId.MATIC]: '0x4087F566796b46eEB01A38174c06E2f9924eAea8'
 }
 
 const WETH_ONLY: ChainTokenList = {
@@ -469,4 +475,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.11/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.14/build/quickswap-default.tokenlist.json'

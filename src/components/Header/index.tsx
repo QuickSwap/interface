@@ -437,7 +437,7 @@ export default function Header() {
           <StyledNavLink id={`swap-nav-link`} to={'/swap'} style={{marginLeft: mobile ? '0px':'12px', marginRight: mobile ? '0px':'12px'}}>
             {t('swap')}
           </StyledNavLink>
-          {!mobile && <StyledNavLink id={`limit-order-nav-link`} to={'/limit-order'} style={{marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
+          {!mobile && (chainId === ChainId.MATIC) && <StyledNavLink id={`limit-order-nav-link`} to={'/limit-order'} style={{marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
             {t('Limit Order')}
           </StyledNavLink>}
           <StyledNavLink
@@ -454,20 +454,22 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
+          { (chainId === ChainId.MATIC) && 
+            <span onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link-00`} onClick={() => {setWidgetMenuOpen(!widgetMenuOpen)}} style={{margin: '0px', padding: '0px', marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
+              Farms
+            </StyledLinkStyledButton>
           
-          <span onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link-00`} onClick={() => {setWidgetMenuOpen(!widgetMenuOpen)}} style={{margin: '0px', padding: '0px', marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
-            Farms
-          </StyledLinkStyledButton>
-          {widgetMenuOpen && (
-            <StyledMenuContainer>
-              <StyledMenu>
-                <StyledNavLink id={`stake-nav-link-LP`} to={'/quick'} >LP Mining</StyledNavLink>
-                <StyledNavLink id={`stake-nav-link-LP`} to={'/dual'} style={{marginTop: 10}}>Dual Mining</StyledNavLink>
-                <StyledNavLink id={`stake-nav-link-DS`} to={'/syrup'} style={{marginTop: 10}}>Dragon's Syrup</StyledNavLink>
-              </StyledMenu>
-            </StyledMenuContainer>   
-          )}
-          </span>
+              {widgetMenuOpen && (
+                <StyledMenuContainer>
+                  <StyledMenu>
+                    <StyledNavLink id={`stake-nav-link-LP`} to={'/quick'} >LP Mining</StyledNavLink>
+                    <StyledNavLink id={`stake-nav-link-LP`} to={'/dual'} style={{marginTop: 10}}>Dual Mining</StyledNavLink>
+                    <StyledNavLink id={`stake-nav-link-DS`} to={'/syrup'} style={{marginTop: 10}}>Dragon's Syrup</StyledNavLink>
+                  </StyledMenu>
+                </StyledMenuContainer>   
+              )}
+            </span>
+          }
 
           {/*<StyledNavLink id={`stake-nav-link`} to={'/vote'}>*/}
             {/*Vote*/}
@@ -475,7 +477,7 @@ export default function Header() {
           <StyledExternalLink id={`stake-nav-link-01`} href={'https://info.quickswap.exchange'} style={{marginLeft: mobile?'8px':'12px', marginRight: mobile?'0px':'12px'}}>
             Charts {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
-
+          {(chainId === ChainId.MATIC) && 
           <div style={{ position: 'relative' }} onMouseEnter={() => {setBuyMenuOpen(true)}} onMouseLeave={() => {setBuyMenuOpen(false)}}>
             <StyledLinkStyledButton id={`stake-nav-link`} onClick={() => {setBuyMenuOpen(true)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
               Buy
@@ -489,11 +491,12 @@ export default function Header() {
             </StyledMenuContainer>   
           )}
           </div>
-
+        }
+        {(chainId === ChainId.MATIC) &&
           <StyledExternalLink id={`startido-nav-link-03`} href={'https://idos.starter.xyz/quickstart'} style={{marginLeft: mobile?'4px':'12px', marginRight: mobile?'0px':'12px'}}>
             IDO {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
-          
+        }
           
         </HeaderLinks>
       </HeaderRow>
@@ -505,6 +508,7 @@ export default function Header() {
               
             )}
           </HideSmall>
+          {(chainId === ChainId.MATIC) &&
           <HideSmall>
           <span style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'0px':'12px'}} onMouseEnter={() => {setBridgeMenuOpen(true)}} onMouseLeave={() => {setBridgeMenuOpen(false)}}><StyledLinkStyledButton id={`bridge-nav-link`} onClick={() => {setBridgeMenuOpen(!widgetMenuOpen)}} style={{margin: '0px', padding: '0px', marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
             Bridge
@@ -519,7 +523,7 @@ export default function Header() {
             </StyledMenuContainer>   
           )}
           </span>
-          </HideSmall>
+          </HideSmall>}
           {availableClaim && !showClaimPopup && (
             <UNIWrapper onClick={toggleClaimModal}>
               <UNIAmount active={!!account && !availableClaim} style={{ pointerEvents: 'auto' }}>
