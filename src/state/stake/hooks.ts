@@ -466,8 +466,8 @@ export const SYRUP_REWARDS_INFO: {
       lp: '',
       name: '',
       baseToken: ETHER,
-      rate: 2783.33,
-      ending: 1639155366
+      rate: 1913.43,
+      ending: 1641845720
     },
     {
       token: COMBO,
