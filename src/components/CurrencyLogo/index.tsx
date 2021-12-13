@@ -674,6 +674,10 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/11636/small/uTDd98ZN_400x400.jpg?1592200150'
     }
 
+    if (address?.toLowerCase() === '0x2c92a8A41f4b806a6f6F1F7C9D9DEc78DCd8c18e'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/21467/small/n1fqEYRI_400x400.png?1639345175'
+    }
+
     if (address?.toLowerCase() === '0xf2D8124b8F9267DaD61351c7aD252362880C6638'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/7310/small/cypto.png?1547043960'
     }if (address?.toLowerCase() === '0xA9536B9c75A9E0faE3B56a96AC8EdF76AbC91978'.toLowerCase()) {
