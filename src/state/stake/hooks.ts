@@ -328,47 +328,7 @@ export const SYRUP_REWARDS_INFO: {
       baseToken: ETHER,
       rate: 16666.68,
       ending: 1642241616
-    },  
-    {
-      token: MCASH,
-      stakingRewardAddress: '0xb3DacE74b857C7b0F0890334B8E4770762Bcda5c',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 18333.33,
-      ending: 1639241173
     },
-    {
-      token: ALN,
-      stakingRewardAddress: '0x568E635426804400f306c6D3Ec56D14782D74261',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 18333.33,
-      ending: 1639241173
-    },
-    {
-      token: WATCH,
-      stakingRewardAddress: '0x0B2b63500243FF87B1299A56094b76c7Db8A4087',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 3333.33,
-      ending: 1639073521
-    },
-    {
-      token: KNIGHT,
-      stakingRewardAddress: '0xCAdfDB2077c32e04a5B78cbECA6de84B1694325c',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 2166.67,
-      ending: 1639073521
-    },  
     {
       token: ELON,
       stakingRewardAddress: '0x0D0dD9b1f34101AF5Def323725a2e8a0C2Ba91Fc',
@@ -490,16 +450,6 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1641401056
     },
     {
-      token: XCASH,
-      stakingRewardAddress: '0xe01e81c76253831602520582793991650225Bf81',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 27777777.78,
-      ending: 1639408820
-    },
-    {
       token: TEL,
       stakingRewardAddress: '0x346C9e501aDc38F1f325CC0c2D44C325283eEaF1',
       ended: false,
@@ -525,6 +475,56 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: XCASH,
+      stakingRewardAddress: '0xe01e81c76253831602520582793991650225Bf81',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 27777777.78,
+      ending: 1639408820
+    },
+    {
+      token: MCASH,
+      stakingRewardAddress: '0xb3DacE74b857C7b0F0890334B8E4770762Bcda5c',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 18333.33,
+      ending: 1639241173
+    },
+    {
+      token: ALN,
+      stakingRewardAddress: '0x568E635426804400f306c6D3Ec56D14782D74261',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 18333.33,
+      ending: 1639241173
+    },
+    {
+      token: WATCH,
+      stakingRewardAddress: '0x0B2b63500243FF87B1299A56094b76c7Db8A4087',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 3333.33,
+      ending: 1639073521
+    },
+    {
+      token: KNIGHT,
+      stakingRewardAddress: '0xCAdfDB2077c32e04a5B78cbECA6de84B1694325c',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 2166.67,
+      ending: 1639073521
+    },
     {
       token: PBR,
       stakingRewardAddress: '0xa751f7B39F6c111d10e2C603bE2a12bd5F70Fc83',
