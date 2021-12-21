@@ -240,6 +240,36 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: PBR,
+      stakingRewardAddress: '0xa751f7B39F6c111d10e2C603bE2a12bd5F70Fc83',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDT,
+      rate: 1333.333333,
+      ending: 1642697231
+    },
+    {
+      token: GAMER,
+      stakingRewardAddress: '0x35F1962fec6B4605ef3Be3b63396552fbf5e99d0',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 1250,
+      ending: 1645289231
+    },
+    {
+      token: GNS,
+      stakingRewardAddress: '0xF5F645A01A4a7f874C15eC7F7Baa7221a71C180d',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: DAI,
+      rate: 833.3333333,
+      ending: 1645289231
+    },
+    {
       token: MM,
       stakingRewardAddress: '0xB224d9F687538a2FAF8964DcAabb71bFe627Aee0',
       ended: false,
@@ -350,16 +380,6 @@ export const SYRUP_REWARDS_INFO: {
       ending: 1642525260
     },
     {
-      token: UCO,
-      stakingRewardAddress: '0xC328d6eC46d11a6ABdA3C02434861beA14739E1f',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 13833.33,
-      ending: 1639933260
-    },
-    {
       token: MATIC,
       stakingRewardAddress: '0xd6Ce4f3D692C1c6684fb449993414C5c9E5D0073',
       ended: false,
@@ -416,6 +436,26 @@ export const OLD_SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: UCO,
+      stakingRewardAddress: '0xC328d6eC46d11a6ABdA3C02434861beA14739E1f',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 13833.33,
+      ending: 1639933260
+    },
+    {
+      token: XCAD,
+      stakingRewardAddress: '0xbdF64bf352D1291587b09a28984eE06d3b6538eE',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 1300,
+      ending: 1639844474
+    },
+    {
       token: ETHA,
       stakingRewardAddress: '0x2b1F043c8c97a6465F5B5A9E3F7027acb32CDC3b',
       ended: true,
@@ -463,16 +503,6 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 21891.67,
-      ending: 1639844474
-    },
-    {
-      token: XCAD,
-      stakingRewardAddress: '0xbdF64bf352D1291587b09a28984eE06d3b6538eE',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 1300,
       ending: 1639844474
     },
     {
