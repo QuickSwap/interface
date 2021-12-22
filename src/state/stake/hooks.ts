@@ -556,16 +556,6 @@ export const OLD_SYRUP_REWARDS_INFO: {
       ending: 1639073521
     },
     {
-      token: PBR,
-      stakingRewardAddress: '0xa751f7B39F6c111d10e2C603bE2a12bd5F70Fc83',
-      ended: true,
-      lp: '',
-      name: '',
-      baseToken: USDT,
-      rate: 3333.33,
-      ending: 1638280789
-    },
-    {
       token: PHX,
       stakingRewardAddress: '0xcE4c95014Bd54B1D3ff30dbb585009aDf7358b0b',
       ended: true,
