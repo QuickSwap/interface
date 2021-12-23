@@ -214,7 +214,8 @@ import {
   TOMB,
   WELT,
   WONE,
-  STZ
+  STZ,
+  PSP
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE, STAKING_DUAL_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -1032,6 +1033,20 @@ export const STAKING_DUAL_REWARDS_INFO: {
       rateA: 4.494,
       rateB: 14000,
       pair: '0x2fc4dfcee8c331d54341f5668a6d9bcdd86f8e2f'
+    },
+    {
+      tokens: [PSP,MATIC],
+      stakingRewardAddress: '0x64D2B3994F64E3E82E48CC92e1122489e88e8727',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rewardTokenA: DQUICK,
+      rewardTokenB: PSP,
+      rewardTokenBBase: MATIC,
+      rateA: 5.61,
+      rateB: 22223,
+      pair: '0x7afc060acca7ec6985d982dd85cc62b111cac7a7'
     }
   ]
 }
