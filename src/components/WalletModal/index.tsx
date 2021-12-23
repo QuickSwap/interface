@@ -205,6 +205,7 @@ export default function WalletModal({
   // get wallets user can switch too, depending on device/browser
   function getOptions() {
     const isMetamask = window.ethereum && window.ethereum.isMetaMask
+    const isBitKeep = window.ethereum && window.ethereum.isBitKeep
     return Object.keys(SUPPORTED_WALLETS).map(key => {
       const option = SUPPORTED_WALLETS[key]
       //disable safe app by in the list
@@ -280,7 +281,7 @@ export default function WalletModal({
                 : !option.href && tryActivation(option.connector)
             }}
             key={key}
-            active={option.connector === connector}
+            active={option.connector === connector && (connector !== injected || (isBitKeep === (option.name === 'BitKeep')) ||  ((!isBitKeep && isMetamask) === (option.name === 'MetaMask')))}
             color={option.color}
             link={option.href}
             header={option.name}

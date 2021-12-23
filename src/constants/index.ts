@@ -398,6 +398,22 @@ export interface WalletInfo {
 }
 
 export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
+  METAMASK: {
+    connector: injected,
+    name: 'MetaMask',
+    iconName: 'metamask.png',
+    description: 'Easy-to-use browser extension.',
+    href: null,
+    color: '#E8831D'
+  },
+  BITKEEP: {
+    connector: injected,
+    name: 'BitKeep',
+    iconName: 'bitkeep.png',
+    description: 'BitKeep browser extension.',
+    href: null,
+    color: '#E8831D'
+  },
   INJECTED: {
     connector: injected,
     name: 'Injected',
@@ -406,14 +422,6 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     href: null,
     color: '#010101',
     primary: true
-  },
-  METAMASK: {
-    connector: injected,
-    name: 'MetaMask',
-    iconName: 'metamask.png',
-    description: 'Easy-to-use browser extension.',
-    href: null,
-    color: '#E8831D'
   },
   SAFE_APP: {
     connector: safeApp,
