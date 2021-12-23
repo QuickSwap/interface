@@ -427,7 +427,7 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 333333.33,
-      ending: 1640200125
+      ending: 1645439402
     }
 ]
 }
