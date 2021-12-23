@@ -316,6 +316,8 @@ export const ORION = new Token(ChainId.MATIC, '0x5E0294Af1732498C77F8dB015a2d52a
 export const WONE = new Token(ChainId.MATIC, '0x80c0CBDB8d0B190238795d376f0bD57fd40525F2', 18, 'WONE', 'Wrapped ONE')
 export const STZ = new Token(ChainId.MATIC, '0x2c92a8A41f4b806a6f6F1F7C9D9DEc78DCd8c18e', 18, 'STZ', '99Starz')
 
+export const PSP = new Token(ChainId.MATIC, '0x42d61D766B85431666B39B89C43011f24451bFf6', 18, 'PSP', 'ParaSwap')
+
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
@@ -494,4 +496,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.16/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.17/build/quickswap-default.tokenlist.json'
