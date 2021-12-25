@@ -251,6 +251,26 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: POLYPUG,
+      stakingRewardAddress: '0xA206A97b30343a0802553dB48d71af349AbF563A',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 177781944.44,
+      ending: 1648223825
+    },
+    {
+      token: EGG,
+      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDT,
+      rate: 3.99,
+      ending: 1645631825
+    },  
+    {
       token: PBR,
       stakingRewardAddress: '0xa751f7B39F6c111d10e2C603bE2a12bd5F70Fc83',
       ended: false,
