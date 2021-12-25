@@ -262,7 +262,7 @@ export const SYRUP_REWARDS_INFO: {
     },
     {
       token: EGG,
-      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      stakingRewardAddress: '0x87C114Ca118987549e31f5023DfFF42041e446e4',
       ended: false,
       lp: '',
       name: '',
