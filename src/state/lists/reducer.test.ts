@@ -320,7 +320,7 @@ describe('list reducer', () => {
       store.dispatch(removeList('fake-url'))
       expect(store.getState()).toEqual({
         byUrl: {},
-        selectedListUrl: 'https://unpkg.com/quickswap-default-token-list@1.2.17/build/quickswap-default.tokenlist.json'
+        selectedListUrl: 'https://unpkg.com/quickswap-default-token-list@1.2.18/build/quickswap-default.tokenlist.json'
       })
     })
   })
