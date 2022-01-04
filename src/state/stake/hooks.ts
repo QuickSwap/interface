@@ -251,6 +251,26 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: CLAM2,
+      stakingRewardAddress: '0xb510935f4D67E27a11cD94E81bF0C465ee2a5509',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MI,
+      rate: 83.33,
+      ending: 1643900469
+    },
+    {
+      token: BLANK,
+      stakingRewardAddress: '0x5d6a48AF1a102CC9CD278fBd56b1Bdc833EeA1d0',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 2033,
+      ending: 1646492469
+    },
+    {
       token: WELT,
       stakingRewardAddress: '0x7AB75F4e332Ea4410Dc46f644D9cCACC165581d8',
       ended: false,

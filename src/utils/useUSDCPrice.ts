@@ -1,6 +1,6 @@
 import { ChainId, Currency, currencyEquals, JSBI, Price, WETH } from '@uniswap/sdk'
 import { useMemo } from 'react'
-import { USDC, USDT, DAI, FRAX, QUICK } from '../constants'
+import { USDC, USDT, DAI, FRAX, QUICK, MI } from '../constants'
 import { PairState, usePairs } from '../data/Reserves'
 import { useActiveWeb3React } from '../hooks'
 import { wrappedCurrency } from './wrappedCurrency'
@@ -54,6 +54,9 @@ export default function useUSDCPrice(currency?: Currency): Price | undefined {
     }
     if (wrapped.equals(FRAX)) {
       return new Price(FRAX, FRAX, '1', '1')
+    }
+    if (wrapped.equals(MI)) {
+      return new Price(MI, MI, '1', '1')
     }
 
     const ethPairETHAmount = ethPair?.reserveOf(WETH[chainId])

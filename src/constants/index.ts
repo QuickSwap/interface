@@ -305,7 +305,7 @@ export const AGEUR = new Token(ChainId.MATIC, '0xE0B52e49357Fd4DAf2c15e02058DCE6
 export const GAMER = new Token(ChainId.MATIC, '0x3f6b3595ecF70735D3f48D69b09C4E4506DB3F47', 18, 'GAMER', 'GameStation')
 
 export const TOMB = new Token(ChainId.MATIC, '0x0e98C977B943f06075b2D795794238fBfB9b9a34', 18, 'TOMB', 'TOMB')
-export const CLAM2 = new Token(ChainId.MATIC, '0xC250e9987A032ACAC293d838726C511E6E1C029d', 9, 'CLAM2', 'Otter Clam')
+export const CLAM2 = new Token(ChainId.MATIC, '0xC250e9987A032ACAC293d838726C511E6E1C029d', 9, 'CLAM', 'Otter Clam')
 export const FODL = new Token(ChainId.MATIC, '0x5314bA045a459f63906Aa7C76d9F337DcB7d6995', 18, 'FODL', 'Fodl')
 export const POLYPUG = new Token(ChainId.MATIC, '0xF13bfC42bFcc421Db1fD471EC49Bb865Cede7270', 18, 'PolyPug', 'PolyPug')
 export const MYST = new Token(ChainId.MATIC, '0x1379E8886A944d2D9d440b3d88DF536Aea08d9F3', 18, 'MYST', 'Mysterium')
