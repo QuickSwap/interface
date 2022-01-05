@@ -315,8 +315,15 @@ export const MSHEESHA = new Token(ChainId.MATIC, '0x88C949b4eB85a90071f2C0beF861
 export const ORION = new Token(ChainId.MATIC, '0x5E0294Af1732498C77F8dB015a2d52a76298542B', 18, 'ORION', 'Orion Money Token (Wormhole)')
 export const WONE = new Token(ChainId.MATIC, '0x80c0CBDB8d0B190238795d376f0bD57fd40525F2', 18, 'WONE', 'Wrapped ONE')
 export const STZ = new Token(ChainId.MATIC, '0x2c92a8A41f4b806a6f6F1F7C9D9DEc78DCd8c18e', 18, 'STZ', '99Starz')
-
 export const PSP = new Token(ChainId.MATIC, '0x42d61D766B85431666B39B89C43011f24451bFf6', 18, 'PSP', 'ParaSwap')
+
+export const BCMC = new Token(ChainId.MATIC, '0xc10358f062663448a3489fC258139944534592ac', 18, 'BCMC', 'Blockchain Monster Coin')
+
+export const NACHO = new Token(ChainId.MATIC, '0xcD86152047e800d67BDf00A4c635A8B6C0e5C4c2', 18, 'NACHO', 'NACHO')
+export const NSHARE = new Token(ChainId.MATIC, '0x948D0a28b600BDBd77AF4ea30E6F338167034181', 18, 'NSHARE', 'NSHARE')
+
+export const UART = new Token(ChainId.MATIC, '0xf244E91A46A9cdd48da295cA5d0B27894f8032B1', 12, 'UART', 'UniArts Network Token')
+export const SFF = new Token(ChainId.MATIC, '0xdf9B4b57865B403e08c85568442f95c26b7896b0', 18, 'SFF', 'Sunflower Farm')
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -496,4 +503,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.18/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.19/build/quickswap-default.tokenlist.json'
