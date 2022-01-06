@@ -1135,6 +1135,48 @@ export const STAKING_DUAL_REWARDS_INFO: {
       rateA: 5.208,
       rateB: 22223,
       pair: '0x7afc060acca7ec6985d982dd85cc62b111cac7a7'
+    },
+    {
+      tokens: [QUICK, TEL],
+      stakingRewardAddress: "0xF8bdC7bC282847EeB5d4291ec79172B48526e9dE",
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rewardTokenA: DQUICK,
+      rewardTokenB: TEL,
+      rewardTokenBBase: QUICK,
+      rateA: 5.9534,
+      rateB: 238095.24 ,
+      pair: "0xe88e24f49338f974b528ace10350ac4576c5c8a1",
+    },
+    {
+      tokens: [TEL, ETHER],
+      stakingRewardAddress: "0xEda437364DCF8AB00f07b49bCc213CDf356b3962",
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rewardTokenA: DQUICK,
+      rewardTokenB: TEL,
+      rewardTokenBBase: QUICK,
+      rateB: 148809.52,
+      rateA: 5.209225,
+      pair: "0xfc2fc983a411c4b1e238f7eb949308cf0218c750"
+    },
+    {
+      tokens: [TEL, USDC],
+      stakingRewardAddress: "0x84B3c86D660D680847258Fd20aAA1274Cc35EAcd",
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rewardTokenA: DQUICK,
+      rewardTokenB: TEL,
+      rewardTokenBBase: QUICK,
+      rateB: 238095.24,
+      rateA: 3.720875,
+      pair: "0xa5cabfc725dfa129f618d527e93702d10412f039"
     }
   ]
 }
