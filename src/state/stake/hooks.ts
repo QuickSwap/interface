@@ -256,6 +256,16 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: PSP,
+      stakingRewardAddress: '0xdcbDa338D12DBc823d0D484e7206E9AA55eeD844',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 2033,
+      ending: 1649254544
+    },
+    {
       token: CLAM2,
       stakingRewardAddress: '0xb510935f4D67E27a11cD94E81bF0C465ee2a5509',
       ended: false,
