@@ -262,7 +262,7 @@ export const SYRUP_REWARDS_INFO: {
       lp: '',
       name: '',
       baseToken: MATIC,
-      rate: 2033,
+      rate: 5555.55,
       ending: 1649254544
     },
     {
