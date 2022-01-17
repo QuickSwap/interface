@@ -4,7 +4,7 @@ import { TransactionResponse } from '@ethersproject/providers'
 import { JSBI, Percent, Router, SwapParameters, Trade, TradeType } from '@uniswap/sdk'
 import { useMemo } from 'react'
 import { BIPS_BASE, INITIAL_ALLOWED_SLIPPAGE, DEFAULT_DEADLINE_FROM_NOW } from '../constants'
-import { useTransactionAdder, useTransactionFinalizer } from '../state/transactions/hooks'
+import { useBlockNumberUpdater, useTransactionAdder, useTransactionFinalizer } from '../state/transactions/hooks'
 import { calculateGasMargin, getRouterContract, isAddress, shortenAddress } from '../utils'
 import isZero from '../utils/isZero'
 import { useActiveWeb3React } from './index'
@@ -103,6 +103,7 @@ export function useSwapCallback(
 
   const addTransaction = useTransactionAdder()
   const finalizedTransaction = useTransactionFinalizer()
+  const updateBlockNumber = useBlockNumberUpdater()
 
   const { address: recipientAddress } = useENS(recipientAddressOrName)
   const recipient = recipientAddressOrName === null ? account : recipientAddress
@@ -215,9 +216,12 @@ export function useSwapCallback(
             swapStateFunction({ attemptingTxn: false, tradeToConfirm: swapObject.tradeToConfirm, showConfirm:swapObject.showConfirm, swapErrorMessage: undefined, txHash: response.hash })
 
             const receipt = await response.wait();
+            const blockNumber = await library.getBlockNumber();
+
             finalizedTransaction(receipt,{
               summary: withVersion
             })
+            updateBlockNumber(blockNumber);
 
             return response
           })

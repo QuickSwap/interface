@@ -3,6 +3,7 @@ import { useCallback, useMemo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { useActiveWeb3React } from '../../hooks'
+import { updateBlockNumber } from '../application/actions'
 import { useAddPopup } from '../application/hooks'
 import { AppDispatch, AppState } from '../index'
 import { addTransaction, finalizeTransaction } from './actions'
@@ -35,6 +36,28 @@ export function useTransactionAdder(): (
       dispatch(addTransaction({ hash, from: account, chainId, approval, summary, claim }))
     },
     [dispatch, chainId, account]
+  )
+}
+
+export function useBlockNumberUpdater(): (
+  blockNumber: number
+) => void {
+  const { chainId } = useActiveWeb3React()
+  const dispatch = useDispatch()
+
+  return useCallback(
+    (
+      blockNumber: number
+      
+    ) => {
+      if (!chainId) return
+
+      if (!blockNumber) {
+        throw Error('Block number not found.')
+      }
+      dispatch(updateBlockNumber({ chainId: chainId, blockNumber: blockNumber }))
+    },
+    [dispatch, chainId]
   )
 }
 
