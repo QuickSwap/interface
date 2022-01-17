@@ -13,6 +13,7 @@ import useUSDCPrice from '../../utils/useUSDCPrice'
 import { currencyId } from '../../utils/currencyId'
 import { ButtonPrimary } from '../Button'
 import { useState } from 'react'
+import { QUICK } from '../../constants'
 
 
 const MINUTE = 60
@@ -93,6 +94,10 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
   
   const backgroundColor = useColor(token0)
 
+  const stakingToken = syrupInfo.stakingToken;
+
+  const isQuickStakingToken = stakingToken.equals(QUICK) ? true : false;
+
   const [, stakingTokenPair] = usePair(currency0, baseTokenCurrency);
 
   const price = stakingTokenPair?.priceOf(token0);
@@ -171,11 +176,11 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
       {!syrupInfo?.ended && (
           <StatContainer>
           <RowBetween>
-            <TYPE.white> dQUICK Deposits</TYPE.white>
+            <TYPE.white> {isQuickStakingToken ? 'QUICK' : 'dQUICK'} Deposits</TYPE.white>
             <TYPE.white>
               {syrupInfo?.valueOfTotalStakedAmountInUSDC
                 ? `$${thousands_separators(syrupInfo?.valueOfTotalStakedAmountInUSDC)}`
-                : `${syrupInfo?.totalStakedAmount?.toSignificant(6, { groupSeparator: ',' }) ?? '-'} dQUICK`}
+                : `${syrupInfo?.totalStakedAmount?.toSignificant(6, { groupSeparator: ',' }) ?? '-'} QUICK`}
             </TYPE.white>
           </RowBetween>
           <RowBetween>
@@ -190,10 +195,12 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
             <TYPE.white> {currency0.symbol} APR </TYPE.white>
             <TYPE.white>{tokenAPR} %</TYPE.white>
           </RowBetween>
-          <RowBetween>
-            <TYPE.white> dQUICK APY </TYPE.white>
-            <TYPE.white>{dQUICKAPY} %</TYPE.white>
-          </RowBetween>
+          { !isQuickStakingToken &&
+            <RowBetween>
+              <TYPE.white> dQUICK APY </TYPE.white>
+              <TYPE.white>{dQUICKAPY} %</TYPE.white>
+            </RowBetween>
+          }
           <RowBetween>
             <TYPE.white> Time remaining </TYPE.white>
             <TYPE.white>{Number.isFinite(timeRemaining) && (
