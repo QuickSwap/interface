@@ -18,6 +18,7 @@ import { wrappedCurrencyAmount } from '../../utils/wrappedCurrency'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useTransactionAdder, useTransactionFinalizer } from '../../state/transactions/hooks'
 import { LoadingView, SubmittedView } from '../ModalViews'
+import { QUICK } from '../../constants'
 
 const HypotheticalRewardRate = styled.div<{ dim: boolean }>`
   display: flex;
@@ -48,6 +49,10 @@ export default function StakingModal({ isOpen, onDismiss, syrupInfo, userLiquidi
   const { parsedAmount, error } = useDerivedSyrupInfo(typedValue, syrupInfo.stakedAmount.token, userLiquidityUnstaked)
   const parsedAmountWrapped = wrappedCurrencyAmount(parsedAmount, chainId)
 
+  const stakingToken = syrupInfo.stakingToken;
+
+  const isQuickStakingToken = stakingToken.equals(QUICK) ? true : false;
+
   let hypotheticalRewardRate: TokenAmount = new TokenAmount(syrupInfo.rewardRate.token, '0')
   if (parsedAmountWrapped?.greaterThan('0')) {
     hypotheticalRewardRate = syrupInfo.getHypotheticalRewardRate(
@@ -77,6 +82,8 @@ export default function StakingModal({ isOpen, onDismiss, syrupInfo, userLiquidi
 
   const stakingContract = useStakingContract(syrupInfo.stakingRewardAddress)
   async function onStake() {
+    const summary = isQuickStakingToken ? 'Deposit QUICK' : 'Deposit dQUICK';
+
     setAttempting(true)
     if (stakingContract && parsedAmount && deadline) {
       if (approval === ApprovalState.APPROVED) {
@@ -84,12 +91,12 @@ export default function StakingModal({ isOpen, onDismiss, syrupInfo, userLiquidi
           `0x${parsedAmount.raw.toString(16)}`, { gasLimit: 350000 }
         ).then(async(response: TransactionResponse) => {
           addTransaction(response, {
-            summary: `Deposit dQUICK`
+            summary: summary
           })
           setHash(response.hash)
           const receipt = await response.wait();
           finalizedTransaction(receipt,{
-            summary: `Deposit dQUICK`
+            summary: summary
           })
         })
         .catch((error: any) => {
@@ -108,7 +115,7 @@ export default function StakingModal({ isOpen, onDismiss, syrupInfo, userLiquidi
           )
           .then((response: TransactionResponse) => {
             addTransaction(response, {
-              summary: `Deposit liquidity`
+              summary: summary
             })
             setHash(response.hash)
             
@@ -199,7 +206,7 @@ export default function StakingModal({ isOpen, onDismiss, syrupInfo, userLiquidi
         <LoadingView onDismiss={wrappedOnDismiss}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>Depositing tokens</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>{parsedAmount?.toSignificant(4)} dQUICK</TYPE.body>
+            <TYPE.body fontSize={20}>{parsedAmount?.toSignificant(4)} {isQuickStakingToken ? 'QUICK' : 'dQUICK'}</TYPE.body>
           </AutoColumn>
         </LoadingView>
       )}
@@ -207,7 +214,7 @@ export default function StakingModal({ isOpen, onDismiss, syrupInfo, userLiquidi
         <SubmittedView onDismiss={wrappedOnDismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>Transaction Submitted</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>Deposited {parsedAmount?.toSignificant(4)} dQUICK</TYPE.body>
+            <TYPE.body fontSize={20}>Deposited {parsedAmount?.toSignificant(4)} {isQuickStakingToken ? 'QUICK' : 'dQUICK'}</TYPE.body>
           </AutoColumn>
         </SubmittedView>
       )}

@@ -12,6 +12,7 @@ import { TransactionResponse } from '@ethersproject/providers'
 import { useTransactionAdder, useTransactionFinalizer } from '../../state/transactions/hooks'
 import FormattedCurrencyAmount from '../FormattedCurrencyAmount'
 import { useActiveWeb3React } from '../../hooks'
+import { QUICK } from '../../constants'
 
 const ContentWrapper = styled(AutoColumn)`
   width: 100%;
@@ -34,6 +35,10 @@ export default function UnstakingModal({ isOpen, onDismiss, syrupInfo }: Staking
   const [hash, setHash] = useState<string | undefined>()
   const [attempting, setAttempting] = useState(false)
 
+  const stakingToken = syrupInfo.stakingToken;
+
+  const isQuickStakingToken = stakingToken.equals(QUICK) ? true : false;
+
   function wrappedOndismiss() {
     setHash(undefined)
     setAttempting(false)
@@ -44,17 +49,18 @@ export default function UnstakingModal({ isOpen, onDismiss, syrupInfo }: Staking
 
   async function onWithdraw() {
     if (stakingContract && syrupInfo?.stakedAmount) {
+      const summary = isQuickStakingToken ? 'Withdraw deposited QUICK' : 'Withdraw deposited dQUICK'
       setAttempting(true)
       await stakingContract
         .exit({ gasLimit: 300000 })
         .then(async(response: TransactionResponse) => {
           addTransaction(response, {
-            summary: `Withdraw deposited liquidity`
+            summary: summary
           })
           setHash(response.hash)
           const receipt = await response.wait();
           finalizedTransaction(receipt,{
-            summary: `Withdraw deposited dQUICK`
+            summary: summary
           })
         })
         .catch((error: any) => {
@@ -85,7 +91,7 @@ export default function UnstakingModal({ isOpen, onDismiss, syrupInfo }: Staking
               <TYPE.body fontWeight={600} fontSize={36}>
                 {<FormattedCurrencyAmount currencyAmount={syrupInfo.stakedAmount} />}
               </TYPE.body>
-              <TYPE.body>Deposited dQUICK:</TYPE.body>
+              <TYPE.body>Deposited {isQuickStakingToken ? 'QUICK' : 'dQUICK'}:</TYPE.body>
             </AutoColumn>
           )}
           {syrupInfo?.earnedAmount && (
@@ -97,7 +103,7 @@ export default function UnstakingModal({ isOpen, onDismiss, syrupInfo }: Staking
             </AutoColumn>
           )}
           <TYPE.subHeader style={{ textAlign: 'center' }}>
-            When you withdraw, your {syrupInfo?.token.symbol} is claimed and your dQUICK is removed from the syrup pool.
+            When you withdraw, your {syrupInfo?.token.symbol} is claimed and your {isQuickStakingToken ? 'QUICK' : 'dQUICK'} is removed from the syrup pool.
           </TYPE.subHeader>
           <ButtonError disabled={!!error} error={!!error && !!syrupInfo?.stakedAmount} onClick={onWithdraw}>
             {error ?? 'Withdraw & Claim'}
@@ -107,7 +113,7 @@ export default function UnstakingModal({ isOpen, onDismiss, syrupInfo }: Staking
       {attempting && !hash && (
         <LoadingView onDismiss={wrappedOndismiss}>
           <AutoColumn gap="12px" justify={'center'}>
-            <TYPE.body fontSize={20}>Withdrawing {syrupInfo?.stakedAmount?.toSignificant(4)} dQUICK</TYPE.body>
+            <TYPE.body fontSize={20}>Withdrawing {syrupInfo?.stakedAmount?.toSignificant(4)} {isQuickStakingToken ? 'QUICK' : 'dQUICK'}</TYPE.body>
             <TYPE.body fontSize={20}>Claiming {syrupInfo?.earnedAmount?.toSignificant(4)} {syrupInfo?.token.symbol}</TYPE.body>
           </AutoColumn>
         </LoadingView>
@@ -116,7 +122,7 @@ export default function UnstakingModal({ isOpen, onDismiss, syrupInfo }: Staking
         <SubmittedView onDismiss={wrappedOndismiss} hash={hash}>
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>Transaction Submitted</TYPE.largeHeader>
-            <TYPE.body fontSize={20}>Withdrew dQUICK!</TYPE.body>
+            <TYPE.body fontSize={20}>Withdrew {isQuickStakingToken ? 'QUICK' : 'dQUICK'}!</TYPE.body>
             <TYPE.body fontSize={20}>Claimed {syrupInfo?.token.symbol}!</TYPE.body>
           </AutoColumn>
         </SubmittedView>

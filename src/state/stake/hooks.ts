@@ -252,9 +252,43 @@ export const SYRUP_REWARDS_INFO: {
     baseToken: Token
     rate: Number
     ending: Number //DATE IN UNIX TIMESTAMP
+    stakingToken: Token
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: RELAY,
+      stakingRewardAddress: '0xB06ae8Db92aCba3B7767da98Ef16c9eF8F1bF3bb',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 277.78,
+      ending: 1647734484,
+      stakingToken: QUICK
+    },
+    {
+      token: BCMC,
+      stakingRewardAddress: '0xb2eb755B507ee5eE8Af17D71175B87c364CD52d0',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 1416.67,
+      ending: 1647734484,
+      stakingToken: QUICK
+    },
+    {
+      token: ORBS,
+      stakingRewardAddress: '0xf99E6796b571F5210EF62929c0023771612c4E70',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 20150.18,
+      ending: 1647734484,
+      stakingToken: QUICK
+    },  
     {
       token: PSP,
       stakingRewardAddress: '0xdcbDa338D12DBc823d0D484e7206E9AA55eeD844',
@@ -263,7 +297,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: MATIC,
       rate: 5555.55,
-      ending: 1649254544
+      ending: 1649254544,
+      stakingToken: DQUICK
     },
     {
       token: CLAM2,
@@ -273,7 +308,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: MI,
       rate: 83.33,
-      ending: 1643900469
+      ending: 1643900469,
+      stakingToken: DQUICK
     },
     {
       token: BLANK,
@@ -283,7 +319,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 2033,
-      ending: 1646492469
+      ending: 1646492469,
+      stakingToken: DQUICK
     },
     {
       token: WELT,
@@ -293,7 +330,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 20833.33,
-      ending: 1643474718
+      ending: 1643474718,
+      stakingToken: DQUICK
     },
     {
       token: MASQ,
@@ -303,7 +341,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: MATIC,
       rate: 6796.6,
-      ending: 1646066718
+      ending: 1646066718,
+      stakingToken: DQUICK
     },
     {
       token: SNE,
@@ -313,7 +352,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 160000,
-      ending: 1643302635
+      ending: 1643302635,
+      stakingToken: DQUICK
     },  
     {
       token: POLYPUG,
@@ -323,7 +363,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 177781944.44,
-      ending: 1648223825
+      ending: 1648223825,
+      stakingToken: DQUICK
     },
     {
       token: EGG,
@@ -333,7 +374,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDT,
       rate: 3.99,
-      ending: 1645631825
+      ending: 1645631825,
+      stakingToken: DQUICK
     },  
     {
       token: PBR,
@@ -343,7 +385,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDT,
       rate: 1333.333333,
-      ending: 1642697231
+      ending: 1642697231,
+      stakingToken: DQUICK
     },
     {
       token: GAMER,
@@ -353,7 +396,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 1250,
-      ending: 1645289231
+      ending: 1645289231,
+      stakingToken: DQUICK
     },
     {
       token: GNS,
@@ -363,7 +407,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: DAI,
       rate: 833.3333333,
-      ending: 1645289231
+      ending: 1645289231,
+      stakingToken: DQUICK
     },
     {
       token: MM,
@@ -373,7 +418,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 66.66666667,
-      ending: 1644296104
+      ending: 1644296104,
+      stakingToken: DQUICK
     },
     {
       token: ZIG,
@@ -383,7 +429,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 37037.03333,
-      ending: 1646888104
+      ending: 1646888104,
+      stakingToken: DQUICK
     },
     {
       token: TECH,
@@ -393,7 +440,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 40610.66,
-      ending: 1644090690
+      ending: 1644090690,
+      stakingToken: DQUICK
     },
     { 
       token: WSG,
@@ -403,7 +451,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 41347011961.97,
-      ending: 1643077140
+      ending: 1643077140,
+      stakingToken: DQUICK
     },
     {  
       token: DERC,
@@ -413,7 +462,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 777.78,
-      ending: 1645669140
+      ending: 1645669140,
+      stakingToken: DQUICK
     },
     {
       token: LMT,
@@ -423,7 +473,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 9222.22,
-      ending: 1644944188
+      ending: 1644944188,
+      stakingToken: DQUICK
     },
     {
       token: ELON,
@@ -433,7 +484,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 4878682189.7,
-      ending: 1643651726
+      ending: 1643651726,
+      stakingToken: DQUICK
     },
     {
       token: DES,
@@ -443,7 +495,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 3858,
-      ending: 1642525260
+      ending: 1642525260,
+      stakingToken: DQUICK
     },
     {
       token: TEL,
@@ -453,7 +506,8 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 333333.33,
-      ending: 1645439402
+      ending: 1645439402,
+      stakingToken: DQUICK
     }
 ]
 }
@@ -468,6 +522,7 @@ export const OLD_SYRUP_REWARDS_INFO: {
     baseToken: Token
     rate: Number
     ending: Number //DATE IN UNIX TIMESTAMP
+    stakingToken: Token
   }[]
 } = {
   [ChainId.MATIC]: [
@@ -479,7 +534,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 1913.43,
-      ending: 1641845720
+      ending: 1641845720,
+      stakingToken: DQUICK
     },
     {
       token: UM,
@@ -489,7 +545,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 16666.68,
-      ending: 1642241616
+      ending: 1642241616,
+      stakingToken: DQUICK
     },
     {
       token: PNT,
@@ -499,7 +556,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 1500,
-      ending: 1642352188
+      ending: 1642352188,
+      stakingToken: DQUICK
     },
     
     {
@@ -510,7 +568,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 8484.44,
-      ending: 1641401056
+      ending: 1641401056,
+      stakingToken: DQUICK
     },
     {
       token: GMEE,
@@ -520,7 +579,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 15555.56,
-      ending: 1641401056
+      ending: 1641401056,
+      stakingToken: DQUICK
     },
     { 
       token: UFI,
@@ -530,7 +590,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: MATIC,
       rate: 18315,
-      ending: 1640485140
+      ending: 1640485140,
+      stakingToken: DQUICK
     },
     {
       token: UCO,
@@ -540,7 +601,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 13833.33,
-      ending: 1639933260
+      ending: 1639933260,
+      stakingToken: DQUICK
     },
     {
       token: XCAD,
@@ -550,7 +612,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 1300,
-      ending: 1639844474
+      ending: 1639844474,
+      stakingToken: DQUICK
     },
     /**{
       token: ETHA,
@@ -560,7 +623,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 7496.53,
-      ending: 1639844474
+      ending: 1639844474,
+      stakingToken: DQUICK
     },*/
     {
       token: CNTR,
@@ -570,7 +634,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: MATIC,
       rate: 617283.95,
-      ending: 1639844474
+      ending: 1639844474,
+      stakingToken: DQUICK
     },
     /**{
       token: PERA,
@@ -580,7 +645,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 8333.33,
-      ending: 1639844474
+      ending: 1639844474,
+      stakingToken: DQUICK
     },*/
     {
       token: RAMP,
@@ -590,7 +656,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 8128.1,
-      ending: 1639844474
+      ending: 1639844474,
+      stakingToken: DQUICK
     },
     {
       token: EROWAN,
@@ -600,7 +667,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 21891.67,
-      ending: 1639844474
+      ending: 1639844474,
+      stakingToken: DQUICK
     },
     {
       token: XCASH,
@@ -610,7 +678,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 27777777.78,
-      ending: 1639408820
+      ending: 1639408820,
+      stakingToken: DQUICK
     },
     {
       token: MCASH,
@@ -620,7 +689,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 18333.33,
-      ending: 1639241173
+      ending: 1639241173,
+      stakingToken: DQUICK
     },
     /**{
       token: ALN,
@@ -630,7 +700,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 18333.33,
-      ending: 1639241173
+      ending: 1639241173,
+      stakingToken: DQUICK
     },
     {
       token: WATCH,
@@ -640,7 +711,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 3333.33,
-      ending: 1639073521
+      ending: 1639073521,
+      stakingToken: DQUICK
     },
     {
       token: KNIGHT,
@@ -650,7 +722,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 2166.67,
-      ending: 1639073521
+      ending: 1639073521,
+      stakingToken: DQUICK
     },
     {
       token: PHX,
@@ -660,7 +733,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: MATIC,
       rate: 12000,
-      ending: 1638027392
+      ending: 1638027392,
+      stakingToken: DQUICK
     },
     {
       token: REI,
@@ -670,7 +744,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 5127.75,
-      ending: 1638027392
+      ending: 1638027392,
+      stakingToken: DQUICK
     },
     {
       token: MITX,
@@ -680,7 +755,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 29609.1,
-      ending: 1637513623
+      ending: 1637513623,
+      stakingToken: DQUICK
     },
     {
       token: D11,
@@ -690,7 +766,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: MATIC,
       rate: 728.6,
-      ending: 1637341260
+      ending: 1637341260,
+      stakingToken: DQUICK
     },
     {
       token: OM,
@@ -700,7 +777,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 15833.33,
-      ending: 1637076798
+      ending: 1637076798,
+      stakingToken: DQUICK
     },
     {
       token: ELET,
@@ -710,7 +788,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 83333.33,
-      ending: 1637076798
+      ending: 1637076798,
+      stakingToken: DQUICK
     },
     {
       token: ODDZ,
@@ -720,7 +799,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: MATIC,
       rate: 4065.05,
-      ending: 1637076798
+      ending: 1637076798,
+      stakingToken: DQUICK
     },
     {
       token: TCP,
@@ -730,7 +810,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 17475.7,
-      ending: 1636816820
+      ending: 1636816820,
+      stakingToken: DQUICK
     },
     {
       token: MEEB,
@@ -740,7 +821,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 166.67,
-      ending: 1636816820
+      ending: 1636816820,
+      stakingToken: DQUICK
     },
     {
       token: PLR,
@@ -750,7 +832,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 38402,
-      ending: 1636390770
+      ending: 1636390770,
+      stakingToken: DQUICK
     },
     {
       token: KOM,
@@ -760,7 +843,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 1000000,
-      ending: 1636390770
+      ending: 1636390770,
+      stakingToken: DQUICK
     },
     {
       token: ANGEL,
@@ -770,7 +854,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 6666.67,
-      ending: 1635960912
+      ending: 1635960912,
+      stakingToken: DQUICK
     },*/
     {
       token: TRADE,
@@ -780,7 +865,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: MATIC,
       rate: 2458,
-      ending: 1636117833
+      ending: 1636117833,
+      stakingToken: DQUICK
     },
     {
       token: MASK,
@@ -790,7 +876,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 641.03,
-      ending: 1635858286
+      ending: 1635858286,
+      stakingToken: DQUICK
     },
     /**{
       token: SWAP,
@@ -800,7 +887,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 3133.33,
-      ending: 1635700624
+      ending: 1635700624,
+      stakingToken: DQUICK
     },
     {
       token: BUNNY,
@@ -810,7 +898,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 874.49,
-      ending: 1635700624
+      ending: 1635700624,
+      stakingToken: DQUICK
     },*/
     {
       token: MONA,
@@ -820,7 +909,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 1.52,
-      ending: 1635263542
+      ending: 1635263542,
+      stakingToken: DQUICK
     },
     /**{
       token: OOE,
@@ -830,7 +920,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 2166.66,
-      ending: 1635095958
+      ending: 1635095958,
+      stakingToken: DQUICK
     },
     {
       token: XED,
@@ -840,7 +931,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 3030.3,
-      ending: 1635095958
+      ending: 1635095958,
+      stakingToken: DQUICK
     },
     {
       token: DHV,
@@ -850,7 +942,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 555.55,
-      ending: 1635263542
+      ending: 1635263542,
+      stakingToken: DQUICK
     }, 
     {
       token: MOONED,
@@ -860,7 +953,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 27333.33,
-      ending: 1635263542
+      ending: 1635263542,
+      stakingToken: DQUICK
     },
     {
       token: HONOR,
@@ -870,7 +964,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 75757.57,
-      ending: 1634921623
+      ending: 1634921623,
+      stakingToken: DQUICK
     },*/
     {
       token: START,
@@ -880,7 +975,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 116.67,
-      ending: 1634680134
+      ending: 1634680134,
+      stakingToken: DQUICK
     },
     /**{
       token: RELAY,
@@ -890,7 +986,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 500,
-      ending: 1634680134
+      ending: 1634680134,
+      stakingToken: DQUICK
     },
     {
       token: DNXC,
@@ -900,7 +997,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 4800,
-      ending: 1634680134
+      ending: 1634680134,
+      stakingToken: DQUICK
     },*/
     {
       token: REVV,
@@ -910,7 +1008,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 16816.67,
-      ending: 1634680134
+      ending: 1634680134,
+      stakingToken: DQUICK
     },
     /**{
       token: YAMP,
@@ -920,7 +1019,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 9333.33,
-      ending: 1634680134
+      ending: 1634680134,
+      stakingToken: DQUICK
     },
     {
       token: FEAR,
@@ -930,7 +1030,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 1157,
-      ending: 1634680134
+      ending: 1634680134,
+      stakingToken: DQUICK
     },
     {
       token: CHICK,
@@ -940,7 +1041,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 3333.33,
-      ending: 1634680134
+      ending: 1634680134,
+      stakingToken: DQUICK
     },
     {
       token: ADS,
@@ -950,7 +1052,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 2150,
-      ending: 1634680134
+      ending: 1634680134,
+      stakingToken: DQUICK
     },*/
     {
       token: CIOTX,
@@ -960,7 +1063,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 16666.67,
-      ending: 1634680134
+      ending: 1634680134,
+      stakingToken: DQUICK
     },
     {
       token: ADDY,
@@ -970,7 +1074,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 59.5,
-      ending: 1634680134
+      ending: 1634680134,
+      stakingToken: DQUICK
     },
     /**{
       token: POLYDOGE,
@@ -980,7 +1085,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 333333333333.33,
-      ending: 1634410234
+      ending: 1634410234,
+      stakingToken: DQUICK
     },
      {
       
@@ -991,7 +1097,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: ETHER,
       rate: 17768.33,
-      ending: 1634317059
+      ending: 1634317059,
+      stakingToken: DQUICK
     },
     {
       token: GUARD,
@@ -1001,7 +1108,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 3333.33,
-      ending: 1634224820
+      ending: 1634224820,
+      stakingToken: DQUICK
     },
     {
       token: WOW,
@@ -1011,7 +1119,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 196.67,
-      ending: 1633108624
+      ending: 1633108624,
+      stakingToken: DQUICK
     }*/
 ]
 }
@@ -12207,8 +12316,10 @@ export interface DualStakingInfo {
 export interface SyrupInfo {
   // the address of the reward contract
   stakingRewardAddress: string
-  // the token involved in this staking
+  // the reward token involved in this staking
   token: Token
+  //staking token
+  stakingToken: Token
   // the amount of token currently staked, or undefined if no account
   stakedAmount: TokenAmount
   // the amount of reward token earned by the active account, or undefined if no account
@@ -12242,6 +12353,8 @@ export interface SyrupInfo {
   oneDayVol: Number
 
   valueOfTotalStakedAmountInUSDC: Number
+
+  valueOfMyStakedAmountInUSDC: Number
   
 
   // calculates a hypothetical amount of token distributed to the active account per second.
@@ -12356,8 +12469,8 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
         const lp = info[index].lp;
         // @ts-ignore
         const rate = web3.utils.toWei(info[index].rate.toString());
-        const stakedAmount = new TokenAmount(lp && lp !== '' ? new Token(137, lp, 18, "SLP", "Staked LP") : DQUICK, JSBI.BigInt(balanceState?.result?.[0] ?? 0))
-        const totalStakedAmount = new TokenAmount(lp && lp !== '' ? new Token(137, lp, 18, "SLP", "Staked LP") : DQUICK, JSBI.BigInt(totalSupplyState.result?.[0]))
+        const stakedAmount = new TokenAmount(lp && lp !== '' ? new Token(137, lp, 18, "SLP", "Staked LP") : info[index].stakingToken, JSBI.BigInt(balanceState?.result?.[0] ?? 0))
+        const totalStakedAmount = new TokenAmount(lp && lp !== '' ? new Token(137, lp, 18, "SLP", "Staked LP") : info[index].stakingToken, JSBI.BigInt(totalSupplyState.result?.[0]))
         const totalRewardRate = new TokenAmount(token, JSBI.BigInt(rate))
         //const pair = info[index].pair.toLowerCase();
         //@ts-ignore
@@ -12380,8 +12493,27 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
 
         const periodFinishMs = info[index].ending
         const dQUICKtoQUICK = new TokenAmount(QUICK, JSBI.BigInt(dQuickToQuick?.result?.[0] ?? 0))
+
+        
+
         //@ts-ignore
-        const valueOfTotalStakedAmountInUSDC = totalStakedAmount.toSignificant(6) * dQUICKtoQUICK.toSignificant(6) * USDPrice?.toSignificant(6)
+        let valueOfTotalStakedAmountInUSDC = 0;
+        let valueOfMyStakedAmountInUSDC = 0;
+
+        if (info[index].stakingToken.equals(QUICK)) {
+          //@ts-ignore
+          valueOfTotalStakedAmountInUSDC = totalStakedAmount.toSignificant(6) * USDPrice?.toSignificant(6)
+          //@ts-ignore
+          valueOfMyStakedAmountInUSDC = stakedAmount.toSignificant(6) * USDPrice?.toSignificant(6)
+        }
+        else {
+          //@ts-ignore
+          valueOfTotalStakedAmountInUSDC = totalStakedAmount.toSignificant(6) * dQUICKtoQUICK.toSignificant(6) * USDPrice?.toSignificant(6)
+
+          //@ts-ignore
+          valueOfMyStakedAmountInUSDC = stakedAmount.toSignificant(6) * dQUICKtoQUICK.toSignificant(6) * USDPrice?.toSignificant(6)
+
+        }
   
         memo.push({
           stakingRewardAddress: rewardsAddress,
@@ -12402,7 +12534,9 @@ export function useSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
           dQUICKtoQUICK: dQUICKtoQUICK,
           dQuickTotalSupply: new TokenAmount(DQUICK, JSBI.BigInt(_dQuickTotalSupply?.result?.[0] ?? 0)),
           valueOfTotalStakedAmountInUSDC: valueOfTotalStakedAmountInUSDC,
-          oneDayVol: oneDayVol
+          valueOfMyStakedAmountInUSDC :valueOfMyStakedAmountInUSDC,
+          oneDayVol: oneDayVol,
+          stakingToken: info[index].stakingToken
         })
       }
       return memo
@@ -12525,7 +12659,23 @@ export function useOldSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
         const periodFinishMs = info[index].ending
         const dQUICKtoQUICK = new TokenAmount(QUICK, JSBI.BigInt(0))
         //@ts-ignore
-        const valueOfTotalStakedAmountInUSDC = totalStakedAmount.toSignificant(6) * dQUICKtoQUICK.toSignificant(6) * USDPrice?.toSignificant(6)
+        let valueOfTotalStakedAmountInUSDC = 0;
+        let valueOfMyStakedAmountInUSDC = 0;
+
+        if (info[index].stakingToken.equals(QUICK)) {
+          //@ts-ignore
+          valueOfTotalStakedAmountInUSDC = totalStakedAmount.toSignificant(6) * USDPrice?.toSignificant(6)
+          //@ts-ignore
+          valueOfMyStakedAmountInUSDC = stakedAmount.toSignificant(6) * USDPrice?.toSignificant(6)
+        }
+        else {
+          //@ts-ignore
+          valueOfTotalStakedAmountInUSDC = totalStakedAmount.toSignificant(6) * dQUICKtoQUICK.toSignificant(6) * USDPrice?.toSignificant(6)
+
+          //@ts-ignore
+          valueOfMyStakedAmountInUSDC = stakedAmount.toSignificant(6) * dQUICKtoQUICK.toSignificant(6) * USDPrice?.toSignificant(6)
+
+        }
   
         memo.push({
           stakingRewardAddress: rewardsAddress,
@@ -12546,7 +12696,9 @@ export function useOldSyrupInfo(tokenToFilterBy?: Token | null): SyrupInfo[] {
           dQUICKtoQUICK: dQUICKtoQUICK,
           dQuickTotalSupply: new TokenAmount(DQUICK, JSBI.BigInt(0)),
           valueOfTotalStakedAmountInUSDC: valueOfTotalStakedAmountInUSDC,
-          oneDayVol: 0
+          valueOfMyStakedAmountInUSDC: valueOfMyStakedAmountInUSDC,
+          oneDayVol: 0,
+          stakingToken: info[index].stakingToken
         })
       }
       return memo
