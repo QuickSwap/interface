@@ -264,7 +264,7 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: QUICK,
       rate: 277.78,
-      ending: 1642525909,
+      ending: 1647734484,
       stakingToken: QUICK
     },
     {
@@ -275,7 +275,7 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: MATIC,
       rate: 1416.67,
-      ending: 1642525909,
+      ending: 1647734484,
       stakingToken: QUICK
     },
     {
@@ -285,8 +285,8 @@ export const SYRUP_REWARDS_INFO: {
       lp: '',
       name: '',
       baseToken: USDC,
-      rate: 11816.85,
-      ending: 1642525909,
+      rate: 20150.18,
+      ending: 1647734484,
       stakingToken: QUICK
     },  
     {
