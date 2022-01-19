@@ -325,6 +325,17 @@ export const NSHARE = new Token(ChainId.MATIC, '0x948D0a28b600BDBd77AF4ea30E6F33
 export const UART = new Token(ChainId.MATIC, '0xf244E91A46A9cdd48da295cA5d0B27894f8032B1', 12, 'UART', 'UniArts Network Token')
 export const SFF = new Token(ChainId.MATIC, '0xdf9B4b57865B403e08c85568442f95c26b7896b0', 18, 'SFF', 'Sunflower Farm')
 
+export const MCO2 = new Token(ChainId.MATIC, '0xAa7DbD1598251f856C12f63557A4C4397c253Cea', 18, 'MCO2', 'Moss Carbon Credit')
+export const DOGIRA = new Token(ChainId.MATIC, '0xdDa40cdfe4A0090f42Ff49f264A831402ADB801A', 9, 'DOGIRA', 'Dogira')
+export const ATLX = new Token(ChainId.MATIC, '0x0b68782eFF3177f1F9240B64A7e2F8E0497e2454', 18, 'ATLX', 'Atlantis')
+export const SAFLE = new Token(ChainId.MATIC, '0x04b33078Ea1aEf29bf3fB29c6aB7B200C58ea126', 18, 'SAFLE', 'Safle')
+export const MCHC = new Token(ChainId.MATIC, '0xee7666aACAEFaa6efeeF62ea40176d3eB21953B9', 18, 'MCHC', 'MCHCoin')
+export const SAWXFF = new Token(ChainId.MATIC, '0x56A0eFEFC9F1FBb54FBd25629Ac2aA764F1b56F7', 18, 'AWX', 'AurusDeFi')
+export const AWS = new Token(ChainId.MATIC, '0x24aD14A4f0BB79a9dcf201514CB0E651C79DB76B', 18, 'AWS', 'AurusSILVER')
+export const BOOK = new Token(ChainId.MATIC, '0x8192759Bf7f247cC92F74E39B3A4225516624fC1', 8, 'BOOK', 'Bookie')
+export const VOXEL = new Token(ChainId.MATIC, '0xd0258a3fD00f38aa8090dfee343f10A9D4d30D3F', 18, 'VOXEL', 'VOXEL Token')
+export const KEYFI = new Token(ChainId.MATIC, '0xD1A5f2A049343fc4D5F8d478f734eBa51B22375E', 18, 'KEYFI', 'KeyFi Token')
+
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
@@ -503,4 +514,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.19/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.20/build/quickswap-default.tokenlist.json'

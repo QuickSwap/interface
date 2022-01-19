@@ -668,6 +668,28 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/22198/small/download.png?1641192480'
     }
 
+    if (address?.toLowerCase() === '0xAa7DbD1598251f856C12f63557A4C4397c253Cea'.toLowerCase()) {
+      uri = 'https://i.imgur.com/ZcOLkHe.jpg'
+    }if (address?.toLowerCase() === '0xdDa40cdfe4A0090f42Ff49f264A831402ADB801A'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14634/small/IQgaRw0.png?1622439620'
+    }if (address?.toLowerCase() === '0x0b68782eFF3177f1F9240B64A7e2F8E0497e2454'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19362/small/atl.png?1635209629'
+    }if (address?.toLowerCase() === '0x04b33078Ea1aEf29bf3fB29c6aB7B200C58ea126'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/12691.png'
+    }if (address?.toLowerCase() === '0xee7666aACAEFaa6efeeF62ea40176d3eB21953B9'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15399/small/MCHC.jpg?1620721307'
+    }if (address?.toLowerCase() === '0x56A0eFEFC9F1FBb54FBd25629Ac2aA764F1b56F7'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12684/small/2021-12-06-Aurus-tokens-for-coingecko-AWX-flat-color-v1-r1-AS.png?1640223413'
+    }if (address?.toLowerCase() === '0x24aD14A4f0BB79a9dcf201514CB0E651C79DB76B'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14965/small/2021-12-06-Aurus-tokens-for-coingecko-AWS-flat-color-v1-r1-AS.png?1640223368'
+    }if (address?.toLowerCase() === '0x8192759Bf7f247cC92F74E39B3A4225516624fC1'.toLowerCase()) {
+      uri = 'https://bookie.farm/logoether/bookie200.png'
+    }if (address?.toLowerCase() === '0xd0258a3fD00f38aa8090dfee343f10A9D4d30D3F'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/21260/small/voxies.png?1638789903'
+    }if (address?.toLowerCase() === '0xD1A5f2A049343fc4D5F8d478f734eBa51B22375E'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/8561.png'
+    }
+
     if (address?.toLowerCase() === '0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/17438/small/derace-logo-black-coingecko.png?1627656907'
     }
