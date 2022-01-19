@@ -1538,7 +1538,7 @@ export const STAKING_REWARDS_INFO: {
     },
     {
       tokens: [AWX,USDC],
-      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      stakingRewardAddress: '0xfC7E3459F10503dDCd3c58C1F029478273B90c37',
       ended: false,
       lp: '',
       name: '',
@@ -1658,7 +1658,7 @@ export const STAKING_REWARDS_INFO: {
     },
     {
       tokens: [ORARE,USDT],
-      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      stakingRewardAddress: '0xA50D6c54080e81C9948e4E8375C8F468478A99Df',
       ended: false,
       lp: '',
       name: '',
@@ -1678,7 +1678,7 @@ export const STAKING_REWARDS_INFO: {
     },
     {
       tokens: [ATLX,USDC],
-      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      stakingRewardAddress: '0x6923f67f602646e57DCB7252DaaFE03d4E1a730f',
       ended: false,
       lp: '',
       name: '',
@@ -1888,7 +1888,7 @@ export const STAKING_REWARDS_INFO: {
     },
     {
       tokens: [KEYFI,QUICK],
-      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      stakingRewardAddress: '0x8b405c88cdACB1f54206183bC5866bdAdfa315c8',
       ended: false,
       lp: '',
       name: '',
