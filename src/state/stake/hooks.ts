@@ -1265,6 +1265,20 @@ export const STAKING_DUAL_REWARDS_INFO: {
       pair: '0x7afc060acca7ec6985d982dd85cc62b111cac7a7'
     },
     {
+      tokens: [BOOK,MATIC],
+      stakingRewardAddress: '0xd1E4545adeDBa83Ee85768612b0f1cdC6D69C493',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rewardTokenA: DQUICK,
+      rewardTokenB: BOOK,
+      rewardTokenBBase: MATIC,
+      rateA: 2.583,
+      rateB: 28125,
+      pair: '0xe6672538c35508b011b82c986b8822ecf26b1cbc'
+    },
+    {
       tokens: [QUICK, TEL],
       stakingRewardAddress: "0xF8bdC7bC282847EeB5d4291ec79172B48526e9dE",
       ended: false,
@@ -1531,16 +1545,6 @@ export const STAKING_REWARDS_INFO: {
       baseToken: USDC,
       rate: 2.952,
       pair: '0xe55aea66ea7f71a8af0506cb37fde3c551a9b089'
-    },
-    {
-      tokens: [BOOK,MATIC],
-      stakingRewardAddress: '0xD947F789e90859E26794a9A1f7b2FD63a433f762',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: MATIC,
-      rate: 2.583,
-      pair: '0xe6672538c35508b011b82c986b8822ecf26b1cbc'
     },
     {
       tokens: [SAND,MATIC],
