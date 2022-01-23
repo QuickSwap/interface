@@ -722,7 +722,7 @@ export const OLD_SYRUP_REWARDS_INFO: {
       ending: 1639241173,
       stakingToken: DQUICK
     },
-    /**{
+    {
       token: ALN,
       stakingRewardAddress: '0x568E635426804400f306c6D3Ec56D14782D74261',
       ended: true,
@@ -733,7 +733,7 @@ export const OLD_SYRUP_REWARDS_INFO: {
       ending: 1639241173,
       stakingToken: DQUICK
     },
-    {
+    /**{
       token: WATCH,
       stakingRewardAddress: '0x0B2b63500243FF87B1299A56094b76c7Db8A4087',
       ended: true,
