@@ -148,8 +148,8 @@ export function MinimalPositionCard({ pair, showUnwrapped = false, border }: Pos
             <span role="img" aria-label="wizard-icon">
               ⭐️
             </span>{' '}
-            By adding liquidity you&apos;ll earn 0.25% of all trades on this pair proportional to your share of the pool.
-            Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity.
+            By adding liquidity you&apos;ll earn 0.25% of all trades on this pair proportional to your share of the
+            pool. Fees are added to the pool, accrue in real time and can be claimed by withdrawing your liquidity.
           </TYPE.subHeader>
         </LightCard>
       )}
@@ -280,11 +280,11 @@ export default function FullPositionCard({ pair, border }: PositionCardProps) {
             <ButtonSecondary padding="8px" borderRadius="8px">
               <ExternalLink
                 style={{ width: '100%', textAlign: 'center' }}
-                href={`https://info.quickswap.exchange/account/${account}`}
+                href={`https://info.quickswap.exchange/#/account/${account}`}
               >
                 View accrued fees and analytics<span style={{ fontSize: '11px' }}>↗</span>
               </ExternalLink>
-              </ButtonSecondary>
+            </ButtonSecondary>
             <RowBetween marginTop="10px">
               <ButtonPrimary
                 padding="8px"
