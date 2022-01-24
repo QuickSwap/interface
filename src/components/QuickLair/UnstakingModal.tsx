@@ -13,9 +13,9 @@ import { useTransactionAdder } from '../../state/transactions/hooks'
 import FormattedCurrencyAmount from '../FormattedCurrencyAmount'
 import { useActiveWeb3React } from '../../hooks'
 
-import Web3 from "web3";
+import Web3 from 'web3'
 
-const web3 = new Web3();
+const web3 = new Web3()
 
 const ContentWrapper = styled(AutoColumn)`
   width: 100%;
@@ -42,15 +42,15 @@ export default function UnstakingModal({ isOpen, onDismiss, lairInfo }: StakingM
     onDismiss()
   }
 
-  const lairContract = useLairContract();
+  const lairContract = useLairContract()
 
   async function onWithdraw() {
     if (lairContract && lairInfo?.dQUICKBalance) {
       setAttempting(true)
-      var balanceString = lairInfo?.dQUICKBalance?.toSignificant(4);
-      var balance = web3.utils.toWei(balanceString, 'ether');
+      var balanceString = lairInfo?.dQUICKBalance?.toExact()
+      var balance = web3.utils.toWei(balanceString, 'ether')
       await lairContract
-        .leave( balance.toString() ,{ gasLimit: 300000 })
+        .leave(balance.toString(), { gasLimit: 300000 })
         .then((response: TransactionResponse) => {
           addTransaction(response, {
             summary: `Withdraw deposited liquidity`
@@ -117,7 +117,6 @@ export default function UnstakingModal({ isOpen, onDismiss, lairInfo }: StakingM
           <AutoColumn gap="12px" justify={'center'}>
             <TYPE.largeHeader>Transaction Submitted</TYPE.largeHeader>
             <TYPE.body fontSize={20}>Withdrew QUICK!</TYPE.body>
-            
           </AutoColumn>
         </SubmittedView>
       )}

@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import styled, { ThemeContext } from 'styled-components'
 import { Field } from '../../state/swap/actions'
 import { useUserSlippageTolerance } from '../../state/user/hooks'
-import { TYPE , ExternalLink} from '../../theme'
+import { TYPE, ExternalLink } from '../../theme'
 import { computeSlippageAdjustedAmounts, computeTradePriceBreakdown } from '../../utils/prices'
 import { AutoColumn } from '../Column'
 import QuestionHelper from '../QuestionHelper'
@@ -105,7 +105,10 @@ export function AdvancedSwapDetails({ trade }: AdvancedSwapDetailsProps) {
             </>
           )}
           <AutoColumn style={{ padding: '0 24px' }}>
-            <InfoLink href={'https://info.quickswap.exchange/pair/' + trade.route.pairs[0].liquidityToken.address} target="_blank">
+            <InfoLink
+              href={'https://info.quickswap.exchange/#/pair/' + trade.route.pairs[0].liquidityToken.address}
+              target="_blank"
+            >
               View pair analytics ↗
             </InfoLink>
           </AutoColumn>
