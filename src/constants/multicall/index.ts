@@ -3,7 +3,7 @@ import MULTICALL_ABI from './abi.json'
 
 const MULTICALL_NETWORKS: { [chainId in ChainId]: string } = {
  
-  [ChainId.MUMBAI]: '0xf6ad3ccf71abb3e12becf6b3d2a74c963859adcd',//TODO: CHANGE THIS
+  [ChainId.MUMBAI]: '0xc7efb32470dee601959b15f1f923e017c6a918ca',
   [ChainId.MATIC]: "0x02817C1e3543c2d908a590F5dB6bc97f933dB4BD"
 }
 
