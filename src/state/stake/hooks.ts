@@ -283,7 +283,7 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDT,
       rate: 3750,
-      ending: 1645917952,
+      ending: 1648509952,
       stakingToken: QUICK
     },
     {
