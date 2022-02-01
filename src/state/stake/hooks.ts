@@ -265,6 +265,28 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: KEYFI,
+      stakingRewardAddress: '0x32a5E77b86A6C54e9a763cC74B45c19222D8c870',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 2500,
+      ending: 1648935388,
+      stakingToken: QUICK
+    },
+    {
+      token: NSHARE,
+      stakingRewardAddress: '0x3bD0D0F0eAf2B74E3B0cc851238f7Afd26eA2A51',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 6.67,
+      ending: 1648935388,
+      stakingToken: QUICK
+    },
+    {
       token: ATLX,
       stakingRewardAddress: '0x8C0220490AC39b7b1F643cd4AfFbaFEB5ad16427',
       ended: false,
@@ -397,17 +419,6 @@ export const SYRUP_REWARDS_INFO: {
       stakingToken: DQUICK
     },
     {
-      token: WELT,
-      stakingRewardAddress: '0x7AB75F4e332Ea4410Dc46f644D9cCACC165581d8',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 20833.33,
-      ending: 1643474718,
-      stakingToken: DQUICK
-    },
-    {
       token: MASQ,
       stakingRewardAddress: '0x214758F370F7A7C802Ed64A91898e12c48aAAC67',
       ended: false,
@@ -518,17 +529,6 @@ export const SYRUP_REWARDS_INFO: {
       stakingToken: DQUICK
     },
     {
-      token: ELON,
-      stakingRewardAddress: '0x0D0dD9b1f34101AF5Def323725a2e8a0C2Ba91Fc',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 4878682189.7,
-      ending: 1643651726,
-      stakingToken: DQUICK
-    },
-    {
       token: TEL,
       stakingRewardAddress: '0x346C9e501aDc38F1f325CC0c2D44C325283eEaF1',
       ended: false,
@@ -556,6 +556,28 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: ELON,
+      stakingRewardAddress: '0x0D0dD9b1f34101AF5Def323725a2e8a0C2Ba91Fc',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 4878682189.7,
+      ending: 1643651726,
+      stakingToken: DQUICK
+    },
+    {
+      token: WELT,
+      stakingRewardAddress: '0x7AB75F4e332Ea4410Dc46f644D9cCACC165581d8',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 20833.33,
+      ending: 1643474718,
+      stakingToken: DQUICK
+    },
     {
       token: SNE,
       stakingRewardAddress: '0xf6Fe46F0001FDeFAde6b5E08635ED303f2E0a3aA',
