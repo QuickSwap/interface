@@ -690,6 +690,28 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/8561.png'
     }
 
+    if (address?.toLowerCase() === '0xE40d881Cf66e1F6D19979A5fF6c830C6Af65D278'.toLowerCase()) {
+      uri = 'https://ipfs.io/ipfs/QmY1uqAaLvQ2cnax4P6ETQwHJmsigS6tLUQkomd4eZJMpM'
+    }if (address?.toLowerCase() === '0xcFb54a6D2dA14ABeCD231174FC5735B4436965D8'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14065/small/b3_DFjFp_400x400.jpg?1614128740'
+    }if (address?.toLowerCase() === '0xB25e20De2F2eBb4CfFD4D16a55C7B395e8a94762'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/1031/small/Request_icon.png?1550832088'
+    }if (address?.toLowerCase() === '0xe20D2Df5041f8Ed06976846470f727295cDd4D23'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15600/small/BIOS_01.png?1621737736'
+    }if (address?.toLowerCase() === '0xdD2AF2E723547088D3846841fbDcC6A8093313d6'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/21341/small/gogo.png?1638952136'
+    }if (address?.toLowerCase() === '0x4e78011Ce80ee02d2c3e649Fb657E45898257815'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19169/small/klima-logo.png?1634606729'
+    }if (address?.toLowerCase() === '0x5CEeBB0947d58Fabde2fc026Ffe4B33ccFE1bA8B'.toLowerCase()) {
+      uri = 'https://polygonscan.com/token/images/forintfinance_32.png'
+    }if (address?.toLowerCase() === '0x91c89A94567980f0e9723b487b0beD586eE96aa7'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/21061/small/biconomy_logo.jpg?1638269749'
+    }if (address?.toLowerCase() === '0xA3c322Ad15218fBFAEd26bA7f616249f7705D945'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/23143/small/geno.png?1643626421'
+    }if (address?.toLowerCase() === '0x7cb810ecBFd6125E65f451cFBd8Ae657dFFDd6b4'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14686/small/sofi.png?1640249595'
+    }
+
     if (address?.toLowerCase() === '0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/17438/small/derace-logo-black-coingecko.png?1627656907'
     }
