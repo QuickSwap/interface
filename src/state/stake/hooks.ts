@@ -12589,6 +12589,7 @@ export interface DualStakingInfo {
 
   quickPrice: Number
   maticPrice: Number
+  ethPrice: Number
 
   rateA: Number
   rateB: Number
@@ -12598,6 +12599,7 @@ export interface DualStakingInfo {
   oneDayFee: Number
 
   accountFee: Number
+  dQuickToQuick: Number
   // calculates a hypothetical amount of token distributed to the active account per second.
   getHypotheticalRewardRate: (
     stakedAmount: TokenAmount,
@@ -13185,9 +13187,11 @@ export function useDualStakingInfo(pairToFilterBy?: Pair | null): DualStakingInf
   //const [quickPrice,setQuickPrice] = useState(0);
   const [, quickUsdcPair] = usePair(QUICK, USDC);
   const [, maticUsdcPair]  =usePair(MATIC, USDC);
+  const [, ethUsdcPair]  =usePair(ETHER, USDC); 
 
   const quickPrice = Number(quickUsdcPair?.priceOf(QUICK)?.toSignificant(6))
   const maticPrice = Number(maticUsdcPair?.priceOf(MATIC)?.toSignificant(6))
+  const ethPrice = Number(ethUsdcPair?.priceOf(ETHER)?.toSignificant(6))
 
   const info = useMemo(
     () =>
@@ -13215,13 +13219,16 @@ export function useDualStakingInfo(pairToFilterBy?: Pair | null): DualStakingInf
     })
   }, [pairAddresses])
 
+  const lair = useLairContract()
   const accountArg = useMemo(() => [account ?? undefined], [account])
-   
+  const args = useMemo(() => info.map(({ rateA }) => [web3.utils.toWei(rateA.toString(), "ether")]), [info])
+
   // get all the info from the staking rewards contracts
   const balances = useMultipleContractSingleData(rewardsAddresses, STAKING_DUAL_REWARDS_INTERFACE, 'balanceOf', accountArg)
   const earnedAAmounts = useMultipleContractSingleData(rewardsAddresses, STAKING_DUAL_REWARDS_INTERFACE, 'earnedA', accountArg)
   const earnedBAmounts = useMultipleContractSingleData(rewardsAddresses, STAKING_DUAL_REWARDS_INTERFACE, 'earnedB', accountArg)
   const totalSupplies = useMultipleContractSingleData(rewardsAddresses, STAKING_DUAL_REWARDS_INTERFACE, 'totalSupply')
+  const dQuickToQuicks = useSingleContractMultipleData(lair, 'dQUICKForQUICK', args);
 
   const periodFinishes = useMultipleContractSingleData(
     rewardsAddresses,
@@ -13254,6 +13261,7 @@ export function useDualStakingInfo(pairToFilterBy?: Pair | null): DualStakingInf
       const balanceState = balances[index]
       const earnedAAmountState = earnedAAmounts[index]
       const earnedBAmountState = earnedBAmounts[index]
+      const dQuickToQuickState = dQuickToQuicks[index];
 
       // these get fetched regardless of account
       const totalSupplyState = totalSupplies[index]
@@ -13263,6 +13271,7 @@ export function useDualStakingInfo(pairToFilterBy?: Pair | null): DualStakingInf
 
       if (
         // these may be undefined if not logged in
+        !dQuickToQuickState?.loading &&
         !balanceState?.loading &&
         !earnedAAmountState?.loading &&
         !earnedBAmountState?.loading &&
@@ -13277,6 +13286,7 @@ export function useDualStakingInfo(pairToFilterBy?: Pair | null): DualStakingInf
         !periodFinishState.loading
       ) {
         if (
+          dQuickToQuickState?.error ||
           balanceState?.error ||
           earnedAAmountState?.error ||
           earnedBAmountState?.error ||
@@ -13326,6 +13336,10 @@ export function useDualStakingInfo(pairToFilterBy?: Pair | null): DualStakingInf
         var oneYearFeeAPY = 0;
         var oneDayFee = 0;
         var accountFee = 0;
+        var dQuickToQuick:any = dQuickToQuickState?.result?.[0] ?? 0 
+
+        dQuickToQuick = web3.utils.fromWei(dQuickToQuick.toString(), 'ether');
+
         //@ts-ignore
         if(dualPairs !== undefined){
           //@ts-ignore
@@ -13362,6 +13376,7 @@ export function useDualStakingInfo(pairToFilterBy?: Pair | null): DualStakingInf
           pair: info[index].pair,
           quickPrice: quickPrice,
           maticPrice: maticPrice,
+          ethPrice: ethPrice,
           rateA: info[index].rateA,
           rateB: info[index].rateB,
           oneYearFeeAPY: oneYearFeeAPY,
@@ -13369,7 +13384,8 @@ export function useDualStakingInfo(pairToFilterBy?: Pair | null): DualStakingInf
           accountFee,
           rewardTokenA: info[index].rewardTokenA,
           rewardTokenB: info[index].rewardTokenB,
-          rewardTokenBBase: info[index].rewardTokenBBase
+          rewardTokenBBase: info[index].rewardTokenBBase,
+          dQuickToQuick: dQuickToQuick
         })
       }
       return memo

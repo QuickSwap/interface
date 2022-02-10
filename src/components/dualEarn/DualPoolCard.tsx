@@ -14,7 +14,7 @@ import { unwrappedToken } from '../../utils/wrappedCurrency'
 import { useTotalSupply } from '../../data/TotalSupply'
 import { usePair } from '../../data/Reserves'
 import useUSDCPrice from '../../utils/useUSDCPrice'
-import {EMPTY, MATIC, QUICK, USDC} from "../../constants/index";
+import {EMPTY, ETHER, MATIC, QUICK, USDC} from "../../constants/index";
 
 const StatContainer = styled.div`
   display: flex;
@@ -139,6 +139,10 @@ export default function DualPoolCard({ stakingInfo, isOld }: { stakingInfo: Dual
     //@ts-ignore
     rewardTokenBPrice = rewardTokenBPriceInBaseToken * stakingInfo?.quickPrice
   }
+  else if(rewardTokenBBase.equals(ETHER)){
+    //@ts-ignore
+    rewardTokenBPrice = rewardTokenBPriceInBaseToken * stakingInfo?.ethPrice
+  }
   else {
     //@ts-ignore
     rewardTokenBPrice = rewardTokenBPriceInBaseToken * stakingInfo?.maticPrice
@@ -148,15 +152,15 @@ export default function DualPoolCard({ stakingInfo, isOld }: { stakingInfo: Dual
 
   if (rewardTokenB.equals(MATIC)) {
     //@ts-ignore
-    perMonthReturnInRewards = (((stakingInfo?.rateA * stakingInfo?.quickPrice) + (stakingInfo?.rateB * stakingInfo?.maticPrice)) * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6));
+    perMonthReturnInRewards = (((stakingInfo?.dQuickToQuick * stakingInfo?.quickPrice) + (stakingInfo?.rateB * stakingInfo?.maticPrice)) * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6));
   }
 
   else {
     //@ts-ignore
-    perMonthReturnInRewards = (((stakingInfo?.rateA * stakingInfo?.quickPrice) + (stakingInfo?.rateB * rewardTokenBPrice)) * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6));
+    perMonthReturnInRewards = (((stakingInfo?.dQuickToQuick * stakingInfo?.quickPrice) + (stakingInfo?.rateB * rewardTokenBPrice)) * 30) / Number(valueOfTotalStakedAmountInUSDC?.toSignificant(6));
   }
   //@ts-ignore
-  rewards = (stakingInfo?.rateA * stakingInfo?.quickPrice) + (stakingInfo?.rateB * rewardTokenBPrice );
+  rewards = (stakingInfo?.dQuickToQuick * stakingInfo?.quickPrice) + (stakingInfo?.rateB * rewardTokenBPrice );
 
   if(stakingInfo?.oneYearFeeAPY && stakingInfo?.oneYearFeeAPY > 0) {
     //@ts-ignore
