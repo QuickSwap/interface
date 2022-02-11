@@ -13412,7 +13412,7 @@ export function useDualStakingInfo(pairToFilterBy?: Pair | null): DualStakingInf
       }
       return memo
     }, [])
-  }, [balances, chainId, earnedAAmounts, earnedBAmounts, info, periodFinishes, rewardsAddresses, totalSupplies, uni, quickPrice, maticPrice, rewardRatesA, rewardRatesB])
+  }, [dQuickToQuicks, ethPrice, balances, chainId, earnedAAmounts, earnedBAmounts, info, periodFinishes, rewardsAddresses, totalSupplies, uni, quickPrice, maticPrice, rewardRatesA, rewardRatesB])
 }
 
 export function useLairInfo(): LairInfo {
