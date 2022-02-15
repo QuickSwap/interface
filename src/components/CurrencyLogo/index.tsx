@@ -712,6 +712,14 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/14686/small/sofi.png?1640249595'
     }
 
+    if (address?.toLowerCase() === '0x64875Aaa68d1d5521666C67d692Ee0B926b08b2F'.toLowerCase()) {
+      uri = 'https://i.ibb.co/x3RcB6Q/cx-ADA-128x128.png'
+    }if (address?.toLowerCase() === '0x9Bd9aD490dD3a52f096D229af4483b94D63BE618'.toLowerCase()) {
+      uri = 'https://i.ibb.co/FH1GMYX/cx-DOGE-128x128.png'
+    }if (address?.toLowerCase() === '0xfe4546feFe124F30788c4Cc1BB9AA6907A7987F9'.toLowerCase()) {
+      uri = 'https://i.ibb.co/VDPBwHS/cx-ETH-128x128.png'
+    }
+
     if (address?.toLowerCase() === '0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/17438/small/derace-logo-black-coingecko.png?1627656907'
     }

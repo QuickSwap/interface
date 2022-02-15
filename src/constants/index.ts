@@ -347,6 +347,10 @@ export const BICO = new Token(ChainId.MATIC, '0x91c89A94567980f0e9723b487b0beD58
 export const MV = new Token(ChainId.MATIC, '0xA3c322Ad15218fBFAEd26bA7f616249f7705D945', 18, 'MV', 'Metaverse')
 export const SOFI = new Token(ChainId.MATIC, '0x7cb810ecBFd6125E65f451cFBd8Ae657dFFDd6b4', 18, 'SOFI', 'Rai.Finance')
 
+export const CXADA = new Token(ChainId.MATIC, '0x64875Aaa68d1d5521666C67d692Ee0B926b08b2F', 18, 'cxADA', 'CelsiusX Wrapped ADA')
+export const CXDOGE = new Token(ChainId.MATIC, '0x9Bd9aD490dD3a52f096D229af4483b94D63BE618', 18, 'cxDOGE', 'CelsiusX Wrapped DOGE')
+export const CXETH = new Token(ChainId.MATIC, '0xfe4546feFe124F30788c4Cc1BB9AA6907A7987F9', 18, 'cxETH', 'CelsiusX Wrapped ETH')
+
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
@@ -379,7 +383,7 @@ const WETH_ONLY: ChainTokenList = {
 // used to construct intermediary pairs for trading
 export const BASES_TO_CHECK_TRADES_AGAINST: ChainTokenList = {
   ...WETH_ONLY,
-  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, USDT, QUICK, ETHER, WBTC, DAI, MI, EROWAN]
+  [ChainId.MATIC]: [...WETH_ONLY[ChainId.MATIC], USDC, USDT, QUICK, ETHER, WBTC, DAI, MI, CXETH]
 }
 
 /**
@@ -525,4 +529,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.21/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.22/build/quickswap-default.tokenlist.json'
