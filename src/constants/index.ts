@@ -350,6 +350,7 @@ export const SOFI = new Token(ChainId.MATIC, '0x7cb810ecBFd6125E65f451cFBd8Ae657
 export const CXADA = new Token(ChainId.MATIC, '0x64875Aaa68d1d5521666C67d692Ee0B926b08b2F', 18, 'cxADA', 'CelsiusX Wrapped ADA')
 export const CXDOGE = new Token(ChainId.MATIC, '0x9Bd9aD490dD3a52f096D229af4483b94D63BE618', 18, 'cxDOGE', 'CelsiusX Wrapped DOGE')
 export const CXETH = new Token(ChainId.MATIC, '0xfe4546feFe124F30788c4Cc1BB9AA6907A7987F9', 18, 'cxETH', 'CelsiusX Wrapped ETH')
+export const MILK = new Token(ChainId.MATIC, '0x1599fE55Cda767b1F631ee7D414b41F5d6dE393d', 18, 'MILK', 'Milk')
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -529,4 +530,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.22/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.23/build/quickswap-default.tokenlist.json'

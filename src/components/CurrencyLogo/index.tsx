@@ -718,6 +718,8 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://i.ibb.co/FH1GMYX/cx-DOGE-128x128.png'
     }if (address?.toLowerCase() === '0xfe4546feFe124F30788c4Cc1BB9AA6907A7987F9'.toLowerCase()) {
       uri = 'https://i.ibb.co/VDPBwHS/cx-ETH-128x128.png'
+    }if (address?.toLowerCase() === '0x1599fE55Cda767b1F631ee7D414b41F5d6dE393d'.toLowerCase()) {
+      uri = 'https://i.ibb.co/6FDxmPG/milk-coin.png'
     }
 
     if (address?.toLowerCase() === '0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6'.toLowerCase()) {
