@@ -352,6 +352,16 @@ export const CXDOGE = new Token(ChainId.MATIC, '0x9Bd9aD490dD3a52f096D229af4483b
 export const CXETH = new Token(ChainId.MATIC, '0xfe4546feFe124F30788c4Cc1BB9AA6907A7987F9', 18, 'cxETH', 'CelsiusX Wrapped ETH')
 export const MILK = new Token(ChainId.MATIC, '0x1599fE55Cda767b1F631ee7D414b41F5d6dE393d', 18, 'MILK', 'Milk')
 
+
+export const TRACE = new Token(ChainId.MATIC, '0x4287F07CBE6954f9F0DecD91d0705C926d8d03A4', 18, 'TRACE', 'Trace Network')
+export const DLYCOP = new Token(ChainId.MATIC, '0x1659fFb2d40DfB1671Ac226A0D9Dcc95A774521A', 18, 'DLYCOP', 'Daily COP')
+export const TOWER = new Token(ChainId.MATIC, '0x2bC07124D8dAc638E290f401046Ad584546BC47b', 18, 'TOWER', 'TOWER')
+export const WRLD = new Token(ChainId.MATIC, '0xD5d86FC8d5C0Ea1aC1Ac5Dfab6E529c9967a45E9', 18, 'WRLD', 'NFT Worlds')
+export const WMETIS = new Token(ChainId.MATIC, '0xA863246658DEA34111C3C1DceDb2cfd5d6067334', 18, 'WMETIS', 'Wrapped METIS')
+export const VOLT = new Token(ChainId.MATIC, '0xE8A05E85883F9663b18a38d7aa89853deaba56e3', 18, 'VOLT', 'VOLTAGE')
+export const COT = new Token(ChainId.MATIC, '0x8d520c8E66091cfD6743fe37Fbe3A09505616C4b', 18, 'COT', 'CosplayToken')
+export const XGEM = new Token(ChainId.MATIC, '0x02649C1Ff4296038De4b9bA8F491b42b940A8252', 18, 'XGEM', 'Exchange Genesis Ethlas Medium')
+
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
@@ -530,4 +540,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.23/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.25/build/quickswap-default.tokenlist.json'

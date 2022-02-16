@@ -722,6 +722,24 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://i.ibb.co/6FDxmPG/milk-coin.png'
     }
 
+    if (address?.toLowerCase() === '0x4287F07CBE6954f9F0DecD91d0705C926d8d03A4'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/23266/small/93mryokp_400x400.png?1643413792'
+    }if (address?.toLowerCase() === '0x1659fFb2d40DfB1671Ac226A0D9Dcc95A774521A'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18283/small/logo.png?1631366443'
+    }if (address?.toLowerCase() === '0x2bC07124D8dAc638E290f401046Ad584546BC47b'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/14134/small/tower-circular-1000.png?1632195469'
+    }if (address?.toLowerCase() === '0xD5d86FC8d5C0Ea1aC1Ac5Dfab6E529c9967a45E9'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/22112/small/ZyBrRgfO.jpg?1640842284'
+    }if (address?.toLowerCase() === '0x8d520c8E66091cfD6743fe37Fbe3A09505616C4b'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/21294/small/brave_ZxsjzUc8xn.png?1638874098'
+    }if (address?.toLowerCase() === '0xA863246658DEA34111C3C1DceDb2cfd5d6067334'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15595/small/metis.PNG?1621298076'
+    }if (address?.toLowerCase() === '0xE8A05E85883F9663b18a38d7aa89853deaba56e3'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/18515/small/volt.png?1632219924'
+    }if (address?.toLowerCase() === '0x02649C1Ff4296038De4b9bA8F491b42b940A8252'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/22535/small/17200.png?1642023748'
+    }
+
     if (address?.toLowerCase() === '0xB35fcBCF1fD489fCe02Ee146599e893FDCdC60e6'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/17438/small/derace-logo-black-coingecko.png?1627656907'
     }
