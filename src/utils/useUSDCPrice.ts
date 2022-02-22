@@ -1,6 +1,6 @@
 import { ChainId, Currency, currencyEquals, JSBI, Price, WETH } from '@uniswap/sdk'
 import { useMemo } from 'react'
-import { USDC, USDT, DAI, FRAX, QUICK, MI } from '../constants'
+import { USDC, USDT, DAI, FRAX, QUICK, MI, CXETH, ETHER } from '../constants'
 import { PairState, usePairs } from '../data/Reserves'
 import { useActiveWeb3React } from '../hooks'
 import { wrappedCurrency } from './wrappedCurrency'
@@ -11,7 +11,12 @@ import { wrappedCurrency } from './wrappedCurrency'
  */
 export default function useUSDCPrice(currency?: Currency): Price | undefined {
   const { chainId } = useActiveWeb3React()
-  const wrapped = wrappedCurrency(currency, chainId)
+  let wrapped = wrappedCurrency(currency, chainId)
+  const internalWrapped = wrapped;
+  if(wrapped?.equals(CXETH)) {
+    wrapped = wrappedCurrency(ETHER,chainId);
+  }
+
   const tokenPairs: [Currency | undefined, Currency | undefined][] = useMemo(
     () => [
       [
@@ -67,6 +72,10 @@ export default function useUSDCPrice(currency?: Currency): Price | undefined {
     // first try the usdc pair
     if (usdcPairState === PairState.EXISTS && usdcPair && usdcPair.reserveOf(USDC).greaterThan(ethPairETHUSDCValue)) {
       const price = usdcPair.priceOf(wrapped)
+
+      if (internalWrapped?.equals(CXETH)) {
+        return new Price(CXETH, USDC, price.denominator, price.numerator)  
+      }
       return new Price(currency, USDC, price.denominator, price.numerator)
     }
     if (usdtPairState === PairState.EXISTS && usdtPair && usdtPair.reserveOf(USDT).greaterThan(ethPairETHUSDCValue)) {

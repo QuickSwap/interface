@@ -93,7 +93,7 @@ export default function DualPoolCard({ stakingInfo, isOld }: { stakingInfo: Dual
   const isStaking = Boolean(stakingInfo.stakedAmount.greaterThan('0'))
 
   // get the color of the token
-  const baseToken = baseTokenCurrency === empty ? token0: stakingInfo.baseToken;
+  let baseToken = baseTokenCurrency === empty ? token0: stakingInfo.baseToken;
   const token = baseTokenCurrency === empty ? token1: baseTokenCurrency === currency0 ? token1: token0;
   
   const backgroundColor = useColor(token)
