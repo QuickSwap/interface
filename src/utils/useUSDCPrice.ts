@@ -103,7 +103,7 @@ export default function useUSDCPrice(currency?: Currency): Price | undefined {
       }
     }
     return undefined
-  }, [chainId, currency, ethPair, ethPairState, usdcEthPair, usdcEthPairState, usdcPair, usdcPairState, wrapped, daiPair, daiPairState, quickPair, quickPairState, usdcQuickPair, usdcQuickPairState, usdtPair, usdtPairState])
+  }, [chainId, currency, ethPair, ethPairState, usdcEthPair, usdcEthPairState, usdcPair, usdcPairState, wrapped, daiPair, daiPairState, quickPair, quickPairState, usdcQuickPair, usdcQuickPairState, usdtPair, usdtPairState, internalWrapped])
 }
 
 export function useUSDCPrices(currencies: Currency[]): (Price | undefined)[] {
