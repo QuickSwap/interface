@@ -277,6 +277,28 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: TOWER,
+      stakingRewardAddress: '0xeEf2D69bd3aeDd1bd770d67E9B9A3C58a1267e50',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 48480.625,
+      ending: 1655932770,
+      stakingToken: QUICK
+    },
+    {
+      token: MV,
+      stakingRewardAddress: '0xAf94537FB2499276a87870B7328CC21e9bEB2BB0',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDT,
+      rate: 1666.67,
+      ending: 1648156770,
+      stakingToken: QUICK
+    },
+    {
       token: SOFI,
       stakingRewardAddress: '0x1fE664646804F95F9a8Ad3B6F8EFA639A8a47f58',
       ended: false,
@@ -561,17 +583,6 @@ export const SYRUP_REWARDS_INFO: {
       rate: 777.78,
       ending: 1645669140,
       stakingToken: DQUICK
-    },
-    {
-      token: TEL,
-      stakingRewardAddress: '0x346C9e501aDc38F1f325CC0c2D44C325283eEaF1',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 333333.33,
-      ending: 1645439402,
-      stakingToken: DQUICK
     }
 ]
 }
@@ -590,6 +601,17 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: TEL,
+      stakingRewardAddress: '0x346C9e501aDc38F1f325CC0c2D44C325283eEaF1',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 333333.33,
+      ending: 1645439402,
+      stakingToken: DQUICK
+    },
     {
       token: LMT,
       stakingRewardAddress: '0x14902868ff379B89BaC6B6C47dcE06769A549Bfb',
