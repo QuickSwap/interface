@@ -281,7 +281,7 @@ export default function Earn() {
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                  Deposit your Liquidity Provider tokens to receive QUICK and MATIC.
+                  Deposit your Liquidity Provider tokens to receive dual rewards.
                 </TYPE.white>
                 
               </RowBetween>{' '}

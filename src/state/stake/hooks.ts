@@ -240,7 +240,10 @@ import {
   TOWER,
   VOLT,
   WRLD,
-  WMETIS
+  WMETIS,
+  CXADA,
+  CXETH,
+  CXDOGE
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE, STAKING_DUAL_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -1318,6 +1321,48 @@ export const STAKING_DUAL_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      tokens: [CXADA,CXETH],
+      stakingRewardAddress: '0x8CC1178399f02EF0C53346486F0018005124658e',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: CXETH,
+      rewardTokenBBase: USDC,
+      rewardTokenA: DQUICK,
+      rewardTokenB: MATIC,
+      rateA: 39.92607,
+      rateB: 5533.33,
+      pair: '0xfec2385b26a4446a7813d16263348fde7e99fee4'
+    },
+    {
+      tokens: [CXDOGE,CXETH],
+      stakingRewardAddress: '0xb892B1EE648F5f3D9ab3a17384320C47e437111c',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: CXETH,
+      rewardTokenBBase: USDC,
+      rewardTokenA: DQUICK,
+      rewardTokenB: MATIC,
+      rateA: 39.92607,
+      rateB: 5533.33,
+      pair: '0x96a523d3576b9b1dfee49aa73723f64a5b553720'
+    },
+    {
+      tokens: [CXETH,ETHER],
+      stakingRewardAddress: '0xD8F0af6c455e09c44d134399eD1DF151043840E6',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rewardTokenBBase: USDC,
+      rewardTokenA: DQUICK,
+      rewardTokenB: MATIC,
+      rateA: 19.9882,
+      rateB: 2800,
+      pair: '0xda7cd765df426fca6fb5e1438c78581e4e66bfe7'
+    },
     {
       tokens: [MATIC,ETHER],
       stakingRewardAddress: '0x3c1f53fed2238176419F8f897aEc8791C499e3c8',
