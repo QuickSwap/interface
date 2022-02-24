@@ -280,6 +280,28 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: COT,
+      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 7407.4,
+      ending: 1653524379,
+      stakingToken: QUICK
+    },
+    {
+      token: MASQ,
+      stakingRewardAddress: '0x84dc01625a2ACAc0eb58776869e0F8BFb018D2fB',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 9150,
+      ending: 1648340379,
+      stakingToken: QUICK
+    },
+    {
       token: WSG,
       stakingRewardAddress: '0xB7070622F36e01A8f1B0eCc14c41553965BdD053',
       ended: false,
