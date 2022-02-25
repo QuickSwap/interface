@@ -577,39 +577,6 @@ export const SYRUP_REWARDS_INFO: {
       stakingToken: DQUICK
     },
     {
-      token: EGG,
-      stakingRewardAddress: '0x87C114Ca118987549e31f5023DfFF42041e446e4',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDT,
-      rate: 3.99,
-      ending: 1645631825,
-      stakingToken: DQUICK
-    },
-    {
-      token: GAMER,
-      stakingRewardAddress: '0x35F1962fec6B4605ef3Be3b63396552fbf5e99d0',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 1250,
-      ending: 1645289231,
-      stakingToken: DQUICK
-    },
-    {
-      token: GNS,
-      stakingRewardAddress: '0xF5F645A01A4a7f874C15eC7F7Baa7221a71C180d',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: DAI,
-      rate: 833.3333333,
-      ending: 1645289231,
-      stakingToken: DQUICK
-    },
-    {
       token: ZIG,
       stakingRewardAddress: '0xfE6174429a963bF4E25a80FE0B72d7Cce7Df6e2f',
       ended: false,
@@ -648,6 +615,39 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: EGG,
+      stakingRewardAddress: '0x87C114Ca118987549e31f5023DfFF42041e446e4',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDT,
+      rate: 3.99,
+      ending: 1645631825,
+      stakingToken: DQUICK
+    },
+    {
+      token: GAMER,
+      stakingRewardAddress: '0x35F1962fec6B4605ef3Be3b63396552fbf5e99d0',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 1250,
+      ending: 1645289231,
+      stakingToken: DQUICK
+    },
+    {
+      token: GNS,
+      stakingRewardAddress: '0xF5F645A01A4a7f874C15eC7F7Baa7221a71C180d',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: DAI,
+      rate: 833.3333333,
+      ending: 1645289231,
+      stakingToken: DQUICK
+    },
     {
       token: TEL,
       stakingRewardAddress: '0x346C9e501aDc38F1f325CC0c2D44C325283eEaF1',
@@ -825,7 +825,7 @@ export const OLD_SYRUP_REWARDS_INFO: {
       ending: 1641401056,
       stakingToken: DQUICK
     },
-    { 
+    /**{ 
       token: UFI,
       stakingRewardAddress: '0xE707bB8513873c2360811F01BfBd0e9EBFd96b0D',
       ended: true,
@@ -846,7 +846,7 @@ export const OLD_SYRUP_REWARDS_INFO: {
       rate: 13833.33,
       ending: 1639933260,
       stakingToken: DQUICK
-    },
+    },*/
     {
       token: XCAD,
       stakingRewardAddress: '0xbdF64bf352D1291587b09a28984eE06d3b6538eE',
@@ -868,7 +868,7 @@ export const OLD_SYRUP_REWARDS_INFO: {
       rate: 7496.53,
       ending: 1639844474,
       stakingToken: DQUICK
-    },*/
+    },
     {
       token: CNTR,
       stakingRewardAddress: '0xe59C2f9a2dCe18C6e19d63675e56BabA59a2339F',
@@ -880,7 +880,7 @@ export const OLD_SYRUP_REWARDS_INFO: {
       ending: 1639844474,
       stakingToken: DQUICK
     },
-    /**{
+    {
       token: PERA,
       stakingRewardAddress: '0xcA5b75C40583124DD08e7dF9cB148C0833418Fa8',
       ended: true,
@@ -902,7 +902,7 @@ export const OLD_SYRUP_REWARDS_INFO: {
       ending: 1639844474,
       stakingToken: DQUICK
     },
-    {
+    /**{
       token: EROWAN,
       stakingRewardAddress: '0x555670a51B56a310bcC71D55D96366F7B1ba1295',
       ended: true,
@@ -945,8 +945,8 @@ export const OLD_SYRUP_REWARDS_INFO: {
       rate: 18333.33,
       ending: 1639241173,
       stakingToken: DQUICK
-    },
-    /**{
+    }
+    {
       token: WATCH,
       stakingRewardAddress: '0x0B2b63500243FF87B1299A56094b76c7Db8A4087',
       ended: true,
@@ -1099,7 +1099,7 @@ export const OLD_SYRUP_REWARDS_INFO: {
       rate: 6666.67,
       ending: 1635960912,
       stakingToken: DQUICK
-    },*/
+    },
     {
       token: TRADE,
       stakingRewardAddress: '0x9f48eB6E139855ebc89de973ea91c7596583E6Bc',
@@ -1110,7 +1110,7 @@ export const OLD_SYRUP_REWARDS_INFO: {
       rate: 2458,
       ending: 1636117833,
       stakingToken: DQUICK
-    },
+    },*/
     {
       token: MASK,
       stakingRewardAddress: '0x15cB4132e4438F11fde5199aC6aE15881f1C1456',
