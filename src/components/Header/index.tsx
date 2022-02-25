@@ -455,7 +455,7 @@ export default function Header() {
             {t('pool')}
           </StyledNavLink>
           { (chainId === ChainId.MATIC) && 
-            <span onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link-00`} onClick={() => {setWidgetMenuOpen(!widgetMenuOpen)}} style={{margin: '0px', padding: '0px', marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
+            <div style={{ position: 'relative' }} onMouseEnter={() => {setWidgetMenuOpen(true)}} onMouseLeave={() => {setWidgetMenuOpen(false)}}><StyledLinkStyledButton id={`stake-nav-link-00`} onClick={() => {setWidgetMenuOpen(!widgetMenuOpen)}} style={{margin: '0px', padding: '0px', marginLeft: mobile ? '4px':'12px', marginRight: mobile ? '0px':'12px'}}>
               Farms
             </StyledLinkStyledButton>
           
@@ -468,7 +468,7 @@ export default function Header() {
                   </StyledMenu>
                 </StyledMenuContainer>   
               )}
-            </span>
+            </div>
           }
 
           {/*<StyledNavLink id={`stake-nav-link`} to={'/vote'}>*/}
