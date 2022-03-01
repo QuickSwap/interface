@@ -280,6 +280,17 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: VOLT,
+      stakingRewardAddress: '0x297F1d28a886dBc513C43A3BC39Dd6F3c4969378',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 1666.67,
+      ending: 1651359061,
+      stakingToken: QUICK
+    },
+    {
       token: COT,
       stakingRewardAddress: '0xA518cca4891e274DD85bDCc47ce8191bccA19854',
       ended: false,
@@ -555,17 +566,6 @@ export const SYRUP_REWARDS_INFO: {
       stakingToken: DQUICK
     },
     {
-      token: MASQ,
-      stakingRewardAddress: '0x214758F370F7A7C802Ed64A91898e12c48aAAC67',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: MATIC,
-      rate: 6796.6,
-      ending: 1646066718,
-      stakingToken: DQUICK
-    }, 
-    {
       token: POLYPUG,
       stakingRewardAddress: '0xA206A97b30343a0802553dB48d71af349AbF563A',
       ended: false,
@@ -586,17 +586,6 @@ export const SYRUP_REWARDS_INFO: {
       rate: 37037.03333,
       ending: 1646888104,
       stakingToken: DQUICK
-    },
-    {  
-      token: DERC,
-      stakingRewardAddress: '0xE800041A775D269e1cD38261B4500b0D8F0e9916',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 777.78,
-      ending: 1645669140,
-      stakingToken: DQUICK
     }
 ]
 }
@@ -615,6 +604,28 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: MASQ,
+      stakingRewardAddress: '0x214758F370F7A7C802Ed64A91898e12c48aAAC67',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 6796.6,
+      ending: 1646066718,
+      stakingToken: DQUICK
+    },
+    {  
+      token: DERC,
+      stakingRewardAddress: '0xE800041A775D269e1cD38261B4500b0D8F0e9916',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 777.78,
+      ending: 1645669140,
+      stakingToken: DQUICK
+    },
     {
       token: EGG,
       stakingRewardAddress: '0x87C114Ca118987549e31f5023DfFF42041e446e4',
