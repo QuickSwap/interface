@@ -208,7 +208,6 @@ export const ANGEL = new Token(ChainId.MATIC, '0x0B6afe834dab840335F87d99b45C2a4
 export const UGT = new Token(ChainId.MATIC, '0xBa4c54Ea2d66b904C82847A7d2357d22B857E812', 18, 'UGT', 'Unreal Governance Token')
 export const KOM = new Token(ChainId.MATIC, '0xC004e2318722EA2b15499D6375905d75Ee5390B8', 8, 'KOM', 'Kommunitas')
 export const UST = new Token(ChainId.MATIC, '0xE6469Ba6D2fD6130788E0eA9C0a0515900563b59', 6, 'UST', 'Wrapped UST Token')
-export const LUNA = new Token(ChainId.MATIC, '0x74946A114ca2B26267983ef51aD8664Cabde4034', 18, 'LUNA', 'Wrapped LUNA Token')
 export const CNTR = new Token(ChainId.MATIC, '0xdae89dA41a96956e9e70320Ac9c0dd077070D3a5', 18, 'CNTR', 'Centaur Token')
 export const TRADE = new Token(ChainId.MATIC, '0x692AC1e363ae34b6B489148152b12e2785a3d8d6', 18, 'TRADE', 'Polytrade')
 
@@ -361,6 +360,14 @@ export const WMETIS = new Token(ChainId.MATIC, '0xA863246658DEA34111C3C1DceDb2cf
 export const VOLT = new Token(ChainId.MATIC, '0xE8A05E85883F9663b18a38d7aa89853deaba56e3', 18, 'VOLT', 'VOLTAGE')
 export const COT = new Token(ChainId.MATIC, '0x8d520c8E66091cfD6743fe37Fbe3A09505616C4b', 18, 'COT', 'CosplayToken')
 export const XGEM = new Token(ChainId.MATIC, '0x02649C1Ff4296038De4b9bA8F491b42b940A8252', 18, 'XGEM', 'Exchange Genesis Ethlas Medium')
+
+export const FANCY = new Token(ChainId.MATIC, '0x7f280daC515121DcdA3EaC69eB4C13a52392CACE', 18, 'FANCY', 'Fancy Games')
+export const ETH2X = new Token(ChainId.MATIC, '0x3Ad707dA309f3845cd602059901E39C4dcd66473', 18, 'ETH2x-FLI-P', 'ETH 2x Flexible Leverage Index')
+export const FUSE = new Token(ChainId.MATIC, '0xF915fDDa4c882731C0456a4214548Cd13A822886', 18, 'FUSE', 'Fuse')
+export const ARTH = new Token(ChainId.MATIC, '0xE52509181FEb30EB4979E29EC70D50FD5C44D590', 18, 'ARTH', 'ARTH Valuecoin')
+export const UND = new Token(ChainId.MATIC, '0x1eBA4B44C4F8cc2695347C6a78F0B7a002d26413', 18, 'UND', 'Unbound Dollar')
+export const LUNA = new Token(ChainId.MATIC, '0x9cd6746665D9557e1B9a775819625711d0693439', 18, 'LUNA', 'LUNA (Wormhole)')
+
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -540,4 +547,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.25/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.26/build/quickswap-default.tokenlist.json'

@@ -722,6 +722,20 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://i.ibb.co/6FDxmPG/milk-coin.png'
     }
 
+    if (address?.toLowerCase() === '0x7f280daC515121DcdA3EaC69eB4C13a52392CACE'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/21367/small/fnc.png?1639025576'
+    }if (address?.toLowerCase() === '0x3Ad707dA309f3845cd602059901E39C4dcd66473'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/21183/small/ETH2x-FLO_token_logo.jpg?1638512434'
+    }if (address?.toLowerCase() === '0xF915fDDa4c882731C0456a4214548Cd13A822886'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/10347/small/vUXKHEe.png?1601523640'
+    }if (address?.toLowerCase() === '0xE52509181FEb30EB4979E29EC70D50FD5C44D590'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/16876/small/ARTH_Token.png?1625651538'
+    }if (address?.toLowerCase() === '0x1eBA4B44C4F8cc2695347C6a78F0B7a002d26413'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19932/small/und.PNG?1636325217'
+    }if (address?.toLowerCase() === '0x9cd6746665D9557e1B9a775819625711d0693439'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/8284/small/luna1557227471663.png?1567147072'
+    }
+
     if (address?.toLowerCase() === '0x4287F07CBE6954f9F0DecD91d0705C926d8d03A4'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/23266/small/93mryokp_400x400.png?1643413792'
     }if (address?.toLowerCase() === '0x1659fFb2d40DfB1671Ac226A0D9Dcc95A774521A'.toLowerCase()) {
