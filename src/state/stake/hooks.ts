@@ -447,17 +447,6 @@ export const SYRUP_REWARDS_INFO: {
       stakingToken: QUICK
     },
     {
-      token: ATLX,
-      stakingRewardAddress: '0x8C0220490AC39b7b1F643cd4AfFbaFEB5ad16427',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 400,
-      ending: 1645917952,
-      stakingToken: QUICK
-    },
-    {
       token: ORARE,
       stakingRewardAddress: '0x3Fb1058F4E248A9fe27edd2D7a4169DEDFC238c9',
       ended: false,
@@ -606,6 +595,17 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: ATLX,
+      stakingRewardAddress: '0x8C0220490AC39b7b1F643cd4AfFbaFEB5ad16427',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 400,
+      ending: 1645917952,
+      stakingToken: QUICK
+    },
     {
       token: MASQ,
       stakingRewardAddress: '0x214758F370F7A7C802Ed64A91898e12c48aAAC67',
