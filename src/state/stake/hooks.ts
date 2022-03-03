@@ -282,6 +282,28 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: KIRO,
+      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 3333.33,
+      ending: 1654122663,
+      stakingToken: QUICK
+    },
+    {
+      token: TEL,
+      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 222222.22,
+      ending: 1654122663,
+      stakingToken: QUICK
+    },
+    {
       token: VOLT,
       stakingRewardAddress: '0x297F1d28a886dBc513C43A3BC39Dd6F3c4969378',
       ended: false,
