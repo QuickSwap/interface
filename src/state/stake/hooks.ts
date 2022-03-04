@@ -283,7 +283,7 @@ export const SYRUP_REWARDS_INFO: {
   [ChainId.MATIC]: [
     {
       token: KIRO,
-      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      stakingRewardAddress: '0xB68842d78ef33C2b327f863D0E0e293C81d7a243',
       ended: false,
       lp: '',
       name: '',
@@ -294,7 +294,7 @@ export const SYRUP_REWARDS_INFO: {
     },
     {
       token: TEL,
-      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      stakingRewardAddress: '0xcC6Cc4e642c889742278CF302d5276E7eF498d66',
       ended: false,
       lp: '',
       name: '',
