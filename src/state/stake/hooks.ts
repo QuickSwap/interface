@@ -282,6 +282,17 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: DERC,
+      stakingRewardAddress: '0x09ecE0A8fF76AEa30d82480E8a89ec9fEeca9B0F',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 988.89,
+      ending: 1654558436,
+      stakingToken: QUICK
+    },
+    {
       token: KIRO,
       stakingRewardAddress: '0xB68842d78ef33C2b327f863D0E0e293C81d7a243',
       ended: false,
@@ -568,17 +579,6 @@ export const SYRUP_REWARDS_INFO: {
       stakingToken: DQUICK
     },
     {
-      token: BLANK,
-      stakingRewardAddress: '0x5d6a48AF1a102CC9CD278fBd56b1Bdc833EeA1d0',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 2033,
-      ending: 1646492469,
-      stakingToken: DQUICK
-    },
-    {
       token: POLYPUG,
       stakingRewardAddress: '0xA206A97b30343a0802553dB48d71af349AbF563A',
       ended: false,
@@ -617,6 +617,17 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: BLANK,
+      stakingRewardAddress: '0x5d6a48AF1a102CC9CD278fBd56b1Bdc833EeA1d0',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 2033,
+      ending: 1646492469,
+      stakingToken: DQUICK
+    },
     {
       token: ATLX,
       stakingRewardAddress: '0x8C0220490AC39b7b1F643cd4AfFbaFEB5ad16427',
@@ -1523,7 +1534,7 @@ export const STAKING_DUAL_REWARDS_INFO: {
     {
       tokens: [KIRO,MATIC],
       stakingRewardAddress: '0xfF22Bf1f778BcD6741D823b077285533EC582F78',
-      ended: true,
+      ended: false,
       lp: '',
       name: '',
       baseToken: MATIC,
@@ -1551,7 +1562,7 @@ export const STAKING_DUAL_REWARDS_INFO: {
     {
       tokens: [FODL,MATIC],
       stakingRewardAddress: '0x75CA5C33ed96222ddE8488C385E823852161d44a',
-      ended: false,
+      ended: true,
       lp: '',
       name: '',
       baseToken: MATIC,
