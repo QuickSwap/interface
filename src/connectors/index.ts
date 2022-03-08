@@ -9,6 +9,7 @@ import { FortmaticConnector } from './Fortmatic'
 import { ArkaneConnector } from './Arkane'
 import { NetworkConnector } from './NetworkConnector'
 import { SafeAppConnector } from './SafeApp'
+import { BitskiConnector } from './bitski'
 
 const POLLING_INTERVAL = 12000
 
@@ -41,6 +42,12 @@ export const injected = new InjectedConnector({
 })
 
 export const safeApp = new SafeAppConnector()
+
+export const bitski = new BitskiConnector({
+  clientId: 'd551e9cc-d393-40be-b444-8bc7da7a32b0',
+  chainId: 137,
+  callbackUrl: 'https://75rei.sse.codesandbox.io/callback.html'
+})
 
 // mainnet only
 export const walletconnect = new WalletConnectConnector({
