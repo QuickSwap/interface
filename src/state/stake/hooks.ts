@@ -1443,7 +1443,7 @@ export const STAKING_DUAL_REWARDS_INFO: {
       rewardTokenBBase: USDC,
       rewardTokenA: DQUICK,
       rewardTokenB: MATIC,
-      rateA: 39.92607,
+      rateA: 39.48183,
       rateB: 5533.33,
       pair: '0xfec2385b26a4446a7813d16263348fde7e99fee4'
     },
@@ -1457,7 +1457,7 @@ export const STAKING_DUAL_REWARDS_INFO: {
       rewardTokenBBase: USDC,
       rewardTokenA: DQUICK,
       rewardTokenB: MATIC,
-      rateA: 39.92607,
+      rateA: 39.48183,
       rateB: 5533.33,
       pair: '0x96a523d3576b9b1dfee49aa73723f64a5b553720'
     },
@@ -1471,7 +1471,7 @@ export const STAKING_DUAL_REWARDS_INFO: {
       rewardTokenBBase: USDC,
       rewardTokenA: DQUICK,
       rewardTokenB: MATIC,
-      rateA: 19.9882,
+      rateA: 19.7658,
       rateB: 2800,
       pair: '0xda7cd765df426fca6fb5e1438c78581e4e66bfe7'
     },
