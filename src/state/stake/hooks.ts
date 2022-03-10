@@ -588,17 +588,6 @@ export const SYRUP_REWARDS_INFO: {
       rate: 177781944.44,
       ending: 1648223825,
       stakingToken: DQUICK
-    },
-    {
-      token: ZIG,
-      stakingRewardAddress: '0xfE6174429a963bF4E25a80FE0B72d7Cce7Df6e2f',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 37037.03333,
-      ending: 1646888104,
-      stakingToken: DQUICK
     }
 ]
 }
@@ -617,6 +606,17 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: ZIG,
+      stakingRewardAddress: '0xfE6174429a963bF4E25a80FE0B72d7Cce7Df6e2f',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 37037.03333,
+      ending: 1646888104,
+      stakingToken: DQUICK
+    },
     {
       token: BLANK,
       stakingRewardAddress: '0x5d6a48AF1a102CC9CD278fBd56b1Bdc833EeA1d0',
