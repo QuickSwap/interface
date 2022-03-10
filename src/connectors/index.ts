@@ -44,9 +44,9 @@ export const injected = new InjectedConnector({
 export const safeApp = new SafeAppConnector()
 
 export const bitski = new BitskiConnector({
-  clientId: 'd551e9cc-d393-40be-b444-8bc7da7a32b0',
+  clientId: 'f3fd6cc0-6b0b-4dcf-9b1f-e6c94451e2ba',
   chainId: 137,
-  callbackUrl: 'https://75rei.sse.codesandbox.io/callback.html'
+  callbackUrl: 'https://quickswap.exchange/callback.html'
 })
 
 // mainnet only
