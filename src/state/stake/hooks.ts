@@ -282,6 +282,17 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: FUSE,
+      stakingRewardAddress: '0xF2f0eadC00FE2009B64D5B735F0F06B45C502D15',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 3333.33,
+      ending: 1652570793,
+      stakingToken: QUICK
+    },  
+    {
       token: DERC,
       stakingRewardAddress: '0x09ecE0A8fF76AEa30d82480E8a89ec9fEeca9B0F',
       ended: false,
