@@ -736,6 +736,16 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/8284/small/luna1557227471663.png?1567147072'
     }
 
+    if (address?.toLowerCase() === '0xE06Bd4F5aAc8D0aA337D13eC88dB6defC6eAEefE'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/20927/small/IXT_SYMBOL_SVG_RGB_BLACK.png?1637934555'
+    }if (address?.toLowerCase() === '0x283366bb42ef49a994913BAF22263c6562e588a4'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/23493/small/small-logo.png?1644221697'
+    }if (address?.toLowerCase() === '0xbC91347e80886453F3f8bBd6d7aC07C122D87735'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/17521/small/banana-token-cg.png?1646285527'
+    }if (address?.toLowerCase() === '0x8D546026012bF75073d8A586f24A5d5ff75b9716'.toLowerCase()) {
+      uri = 'https://i.ibb.co/xKnbP10/logo-icon-onlight-whitebg.png'
+    }
+
     if (address?.toLowerCase() === '0x4287F07CBE6954f9F0DecD91d0705C926d8d03A4'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/23266/small/93mryokp_400x400.png?1643413792'
     }if (address?.toLowerCase() === '0x1659fFb2d40DfB1671Ac226A0D9Dcc95A774521A'.toLowerCase()) {

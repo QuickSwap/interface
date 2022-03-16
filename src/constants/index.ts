@@ -368,6 +368,11 @@ export const ARTH = new Token(ChainId.MATIC, '0xE52509181FEb30EB4979E29EC70D50FD
 export const UND = new Token(ChainId.MATIC, '0x1eBA4B44C4F8cc2695347C6a78F0B7a002d26413', 18, 'UND', 'Unbound Dollar')
 export const LUNA = new Token(ChainId.MATIC, '0x9cd6746665D9557e1B9a775819625711d0693439', 18, 'LUNA', 'LUNA (Wormhole)')
 
+export const IXT = new Token(ChainId.MATIC, '0xE06Bd4F5aAc8D0aA337D13eC88dB6defC6eAEefE', 18, 'IXT', 'PlanetIX')
+export const PENT = new Token(ChainId.MATIC, '0x283366bb42ef49a994913BAF22263c6562e588a4', 18, 'PENT', 'PENT')
+export const BANANA = new Token(ChainId.MATIC, '0xbC91347e80886453F3f8bBd6d7aC07C122D87735', 18, 'BANANA', 'Banana')
+export const SPHERE = new Token(ChainId.MATIC, '0x8D546026012bF75073d8A586f24A5d5ff75b9716', 18, 'SPHERE', 'Sphere Finance')
+
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -547,4 +552,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.26/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.28/build/quickswap-default.tokenlist.json'
