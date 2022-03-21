@@ -1,7 +1,7 @@
 import { ChainId, JSBI, Percent, Token, WETH } from '@uniswap/sdk'
 import { AbstractConnector } from '@web3-react/abstract-connector'
 
-import { injected, walletconnect, walletlink, portis, arkaneconnect, safeApp } from '../connectors'
+import { injected, walletconnect, walletlink, portis, arkaneconnect, safeApp, bitski } from '../connectors'
 
 export const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
 
@@ -464,6 +464,22 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     href: null,
     color: '#E8831D'
   },
+  WALLET_LINK: {
+    connector: walletlink,
+    name: 'Coinbase Wallet',
+    iconName: 'coinbaseWalletIcon.svg',
+    description: 'Use Coinbase Wallet app on mobile device',
+    href: null,
+    color: '#315CF5'
+  },
+  BITSKI: {
+    connector: bitski,
+    name: 'Bitski',
+    iconName: 'bitski.svg',
+    description: 'Bitski Wallet.',
+    href: null,
+    color: '#E8831D'
+  },
   BITKEEP: {
     connector: injected,
     name: 'BitKeep',
@@ -481,6 +497,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     color: '#010101',
     primary: true
   },
+  
   SAFE_APP: {
     connector: safeApp,
     name: 'Gnosis Safe App',
@@ -507,14 +524,7 @@ export const SUPPORTED_WALLETS: { [key: string]: WalletInfo } = {
     color: '#4A6C9B',
     mobile: true
   },
-  WALLET_LINK: {
-    connector: walletlink,
-    name: 'Coinbase Wallet',
-    iconName: 'coinbaseWalletIcon.svg',
-    description: 'Use Coinbase Wallet app on mobile device',
-    href: null,
-    color: '#315CF5'
-  },
+  
   WALLET_CONNECT: {
     connector: walletconnect,
     name: 'WalletConnect',
