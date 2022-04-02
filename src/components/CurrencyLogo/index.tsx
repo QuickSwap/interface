@@ -746,6 +746,16 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://i.ibb.co/xKnbP10/logo-icon-onlight-whitebg.png'
     }
 
+    if (address?.toLowerCase() === '0xF868939Ee81F04f463010BC52EAb91c0839eF08c'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/21333/small/attack.PNG?1638948221'
+    }if (address?.toLowerCase() === '0x576c990A8a3E7217122e9973b2230A3be9678E94'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/12780/small/PdaW8Lb.png?1602500407'
+    }if (address?.toLowerCase() === '0x695FC8B80F344411F34bDbCb4E621aA69AdA384b'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/21668/small/_X6vYBDM_400x400.jpg?1639705848'
+    }if (address?.toLowerCase() === '0x5E430F88D1BE82EB3eF92b6fF06125168fD5DCf2'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/20870/small/ModaDAO__logomark-primary_3x.png?1637809145'
+    }
+
     if (address?.toLowerCase() === '0x4287F07CBE6954f9F0DecD91d0705C926d8d03A4'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/23266/small/93mryokp_400x400.png?1643413792'
     }if (address?.toLowerCase() === '0x1659fFb2d40DfB1671Ac226A0D9Dcc95A774521A'.toLowerCase()) {

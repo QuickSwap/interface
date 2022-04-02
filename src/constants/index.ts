@@ -374,6 +374,12 @@ export const BANANA = new Token(ChainId.MATIC, '0xbC91347e80886453F3f8bBd6d7aC07
 export const SPHERE = new Token(ChainId.MATIC, '0x8D546026012bF75073d8A586f24A5d5ff75b9716', 18, 'SPHERE', 'Sphere Finance')
 
 
+export const ATK = new Token(ChainId.MATIC, '0xF868939Ee81F04f463010BC52EAb91c0839eF08c', 18, 'ATK', 'Attack')
+export const FIN = new Token(ChainId.MATIC, '0x576c990A8a3E7217122e9973b2230A3be9678E94', 18, 'FIN', 'DeFiner')
+export const NITRO = new Token(ChainId.MATIC, '0x695FC8B80F344411F34bDbCb4E621aA69AdA384b', 18, 'NITRO', 'Nitro')
+export const MODA = new Token(ChainId.MATIC, '0x5E430F88D1BE82EB3eF92b6fF06125168fD5DCf2', 18, 'MODA', 'moda')
+
+
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
@@ -562,4 +568,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.27/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.29/build/quickswap-default.tokenlist.json'
