@@ -388,7 +388,7 @@ export const ALPHA = new Token(ChainId.MATIC, '0x6a3E7C3c6EF65Ee26975b12293cA1AA
 export const QUIDD = new Token(ChainId.MATIC, '0x123706cDD8e60324e610E9A2CC7012D0F45A5b8E', 18, 'QUIDD', 'QUIDD')
 export const PDDOLLAR = new Token(ChainId.MATIC, '0x146e58D34EaB0bFf7e0a63cfe9332908d680c667', 18, 'PDDOLLAR', 'pddollar')
 export const KEK = new Token(ChainId.MATIC, '0x42E5E06EF5b90Fe15F853F59299Fc96259209c5C', 18, 'KEK', 'Aavegotchi KEK')
-
+export const LDO = new Token(ChainId.MATIC, '0xC3C7d422809852031b44ab29EEC9F1EfF2A58756', 18, 'LDO', 'Lido DAO Token')
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -578,4 +578,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.30/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.31/build/quickswap-default.tokenlist.json'

@@ -253,7 +253,9 @@ import {
   MCHC,
   NEAR,
   PDDOLLAR,
-  QUIDD
+  QUIDD,
+  STMATIC,
+  LDO
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE, STAKING_DUAL_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -1573,6 +1575,20 @@ export const STAKING_DUAL_REWARDS_INFO: {
       pair: '0x604229c960e5cacf2aaeac8be68ac07ba9df81c3'
     },
     {
+      tokens: [STMATIC,MATIC],
+      stakingRewardAddress: '0x8ECbc9B0741C000fd7aaE9cb559e5eEe1D1883F3',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rewardTokenA: DQUICK,
+      rewardTokenB: LDO,
+      rewardTokenBBase: MATIC,
+      rateA: 2.091,
+      rateB: 1428,
+      pair: '0x65752c54d9102bdfd69d351e1838a1be83c924c6'
+    },
+    {
       tokens: [KIRO,MATIC],
       stakingRewardAddress: '0xfF22Bf1f778BcD6741D823b077285533EC582F78',
       ended: false,
@@ -2155,7 +2171,7 @@ export const STAKING_REWARDS_INFO: {
   },
   {
     tokens: [MATIC,NEAR],
-    stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+    stakingRewardAddress: '0xCa28ad52Cc3190D92Ca2133274F9aa2EBe8c84bf',
     ended: false,
     lp: '',
     name: '',

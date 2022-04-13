@@ -774,6 +774,8 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/24962/small/pddollar.png?1649574672'
     }if (address?.toLowerCase() === '0x42E5E06EF5b90Fe15F853F59299Fc96259209c5C'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/24739/small/kek.png?1648769879'
+    }if (address?.toLowerCase() === '0xC3C7d422809852031b44ab29EEC9F1EfF2A58756'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/13573/small/Lido_DAO.png?1609873644'
     }
 
     if (address?.toLowerCase() === '0x4287F07CBE6954f9F0DecD91d0705C926d8d03A4'.toLowerCase()) {
