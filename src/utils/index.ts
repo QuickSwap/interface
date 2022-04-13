@@ -6,7 +6,10 @@ import { BigNumber } from '@ethersproject/bignumber'
 import { abi as IUniswapV2Router02ABI } from '@uniswap/v2-periphery/build/IUniswapV2Router02.json'
 import { ROUTER_ADDRESS } from '../constants'
 import { ChainId, JSBI, Percent, Token, CurrencyAmount, Currency, ETHER } from '@uniswap/sdk'
+import dayjs from 'dayjs';
 import { TokenAddressMap } from '../state/lists/hooks'
+import { GET_BLOCK } from '../apollo/queries';
+import { blockClient } from '../apollo/client';
 
 // returns the checksummed address if the address is valid, otherwise returns false
 export function isAddress(value: any): string | false {
@@ -98,4 +101,21 @@ export function escapeRegExp(string: string): string {
 export function isTokenOnList(defaultTokens: TokenAddressMap, currency?: Currency): boolean {
   if (currency === ETHER) return true
   return Boolean(currency instanceof Token && defaultTokens[currency.chainId]?.[currency.address])
+}
+
+export async function getBlockFromTimestamp(timestamp: number): Promise<any> {
+  const result = await blockClient.query({
+    query: GET_BLOCK,
+    variables: {
+      timestampFrom: timestamp,
+      timestampTo: timestamp + 600,
+    },
+    fetchPolicy: 'network-only',
+  });
+  return result?.data?.blocks?.[0]?.number;
+}
+
+export function getDaysCurrentYear() {
+  const year = Number(dayjs().format('YYYY'));
+  return (year % 4 === 0 && year % 100 > 0) || year % 400 === 0 ? 366 : 365;
 }

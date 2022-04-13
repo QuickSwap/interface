@@ -10,6 +10,7 @@ import { useColor } from '../../hooks/useColor'
 import {  CardNoise, CardBGImage } from './styled'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
 import { QUICK, DQUICK } from "../../constants/index";
+import { getDaysCurrentYear } from '../../utils';
 
 const StatContainer = styled.div`
   display: flex;
@@ -53,19 +54,19 @@ const TopSection = styled.div`
 `
 export default function LairCard({ lairInfo }: { lairInfo: LairInfo }) {
   
-
+  const daysCurrentYear = getDaysCurrentYear();
   const currency0 = unwrappedToken(QUICK)
   const currency1 = unwrappedToken(DQUICK)
   const backgroundColor = useColor(QUICK)
   var show = true;
 
   //@ts-ignore
-  const APR =(((lairInfo.oneDayVol * 0.04 * 0.01) / lairInfo.dQuickTotalSupply.toSignificant(6)) * 365) / (lairInfo.dQUICKtoQUICK.toSignificant(6) * lairInfo.quickPrice);
+  const APR =(((lairInfo.oneDayVol * 0.04 * 0.01) / lairInfo.dQuickTotalSupply.toExact()) * daysCurrentYear) / (lairInfo.dQUICKtoQUICK.toExact() * lairInfo.quickPrice);
   
-  let APY: any = APR ? Math.pow(1 + APR / 365, 365) - 1 : 0;
+  let APY: any = APR ? Math.pow(1 + APR / daysCurrentYear, daysCurrentYear) - 1 : 0;
 
   //@ts-ignore
-  APY = parseFloat(APY).toFixed(4) * 100
+  APY = parseFloat(APY) * 100
 
   return (
     show ?
