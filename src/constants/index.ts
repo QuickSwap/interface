@@ -379,6 +379,16 @@ export const FIN = new Token(ChainId.MATIC, '0x576c990A8a3E7217122e9973b2230A3be
 export const NITRO = new Token(ChainId.MATIC, '0x695FC8B80F344411F34bDbCb4E621aA69AdA384b', 18, 'NITRO', 'Nitro')
 export const MODA = new Token(ChainId.MATIC, '0x5E430F88D1BE82EB3eF92b6fF06125168fD5DCf2', 18, 'MODA', 'moda')
 
+export const STMATIC = new Token(ChainId.MATIC, '0x3A58a54C066FdC0f2D55FC9C89F0415C92eBf3C4', 18, 'stMATIC', 'Staked MATIC')
+export const SPROCKET = new Token(ChainId.MATIC, '0x0D98EAe620491d8f6836a39Ac45E54b286FDd2d7', 18, 'SPROCKET', 'Sprocket')
+export const NEAR = new Token(ChainId.MATIC, '0x72bd80445b0db58ebe3E8dB056529D4C5FAF6F2f', 18, 'NEAR', 'NEAR')
+export const FOMO = new Token(ChainId.MATIC, '0x44A6e0BE76e1D9620A7F76588e4509fE4fa8E8C8', 18, 'FOMO', 'Aavegotchi FOMO')
+export const FUD = new Token(ChainId.MATIC, '0x403E967b044d4Be25170310157cB1A4Bf10bdD0f', 18, 'FUD', 'Aavegotchi FUD')
+export const ALPHA = new Token(ChainId.MATIC, '0x6a3E7C3c6EF65Ee26975b12293cA1AAD7e1dAeD2', 18, 'ALPHA', 'Aavegotchi ALPHA')
+export const QUIDD = new Token(ChainId.MATIC, '0x123706cDD8e60324e610E9A2CC7012D0F45A5b8E', 18, 'QUIDD', 'QUIDD')
+export const PDDOLLAR = new Token(ChainId.MATIC, '0x146e58D34EaB0bFf7e0a63cfe9332908d680c667', 18, 'PDDOLLAR', 'pddollar')
+export const KEK = new Token(ChainId.MATIC, '0x42E5E06EF5b90Fe15F853F59299Fc96259209c5C', 18, 'KEK', 'Aavegotchi KEK')
+
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -568,4 +578,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.29/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.30/build/quickswap-default.tokenlist.json'

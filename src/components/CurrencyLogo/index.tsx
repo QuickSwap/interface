@@ -756,6 +756,26 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/20870/small/ModaDAO__logomark-primary_3x.png?1637809145'
     }
 
+    if (address?.toLowerCase() === '0x3A58a54C066FdC0f2D55FC9C89F0415C92eBf3C4'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/24185/small/stMATIC.png?1646789287'
+    }if (address?.toLowerCase() === '0x0D98EAe620491d8f6836a39Ac45E54b286FDd2d7'.toLowerCase()) {
+      uri = 'https://i.ibb.co/6th7s4m/sprocket-symbol-200x200-col-trans.png'
+    }if (address?.toLowerCase() === '0x72bd80445b0db58ebe3E8dB056529D4C5FAF6F2f'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/10365/small/near_icon.png?1601359077'
+    }if (address?.toLowerCase() === '0x44A6e0BE76e1D9620A7F76588e4509fE4fa8E8C8'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/24737/small/fomo.png?1648769659'
+    }if (address?.toLowerCase() === '0x403E967b044d4Be25170310157cB1A4Bf10bdD0f'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/24736/small/fud.png?1648769512'
+    }if (address?.toLowerCase() === '0x6a3E7C3c6EF65Ee26975b12293cA1AAD7e1dAeD2'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/24738/small/alpha.png?1648769768'
+    }if (address?.toLowerCase() === '0x123706cDD8e60324e610E9A2CC7012D0F45A5b8E'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19725/small/quidd.png?1637303435'
+    }if (address?.toLowerCase() === '0x146e58D34EaB0bFf7e0a63cfe9332908d680c667'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/24962/small/pddollar.png?1649574672'
+    }if (address?.toLowerCase() === '0x42E5E06EF5b90Fe15F853F59299Fc96259209c5C'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/24739/small/kek.png?1648769879'
+    }
+
     if (address?.toLowerCase() === '0x4287F07CBE6954f9F0DecD91d0705C926d8d03A4'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/23266/small/93mryokp_400x400.png?1643413792'
     }if (address?.toLowerCase() === '0x1659fFb2d40DfB1671Ac226A0D9Dcc95A774521A'.toLowerCase()) {

@@ -106,8 +106,6 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
 
   //@ts-ignore
   const priceOfRewardTokenInUSD = price?.toSignificant(6) * USDPriceBaseToken?.toSignificant(6);
-
-  var show = isStaking || !syrupInfo.ended;
   
   let rewards = 0;
 
@@ -121,6 +119,10 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
 
   //@ts-ignore
   var timeRemaining = exactEnd - time
+
+  const ended:any = timeRemaining > 0 ? syrupInfo.ended : true
+
+  var show = isStaking || !ended;
 
   const days = (timeRemaining - (timeRemaining % DAY)) / DAY
   timeRemaining -= days * DAY
@@ -167,7 +169,7 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
         ) : (
           <StyledInternalLink to={`/syrup/${currencyId(currency0)}/${syrupInfo.stakingRewardAddress}`} style={{ width: '100%' }}>
             <ButtonPrimary padding="8px" borderRadius="8px">
-              {syrupInfo.ended ? 'Withdraw' : isStaking ? 'Manage' : 'Deposit'}
+              {ended ? 'Withdraw' : isStaking ? 'Manage' : 'Deposit'}
             </ButtonPrimary>
           </StyledInternalLink>
         ) }
@@ -218,7 +220,7 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
           
           {/**<RowBetween>
             <TYPE.white> Status </TYPE.white>
-            <TYPE.white>{!syrupInfo.ended ? 'Running':'Closed'}</TYPE.white>
+            <TYPE.white>{!ended ? 'Running':'Closed'}</TYPE.white>
           </RowBetween>*/}
           {/**<RowBetween>
             <TYPE.white> dQUICKAPR </TYPE.white>
@@ -245,7 +247,7 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
       )}
       
 
-      {isStaking && !syrupInfo.ended && (
+      {isStaking && !ended && (
         <>
           <Break />
           <BottomSection showBackground={true}>
