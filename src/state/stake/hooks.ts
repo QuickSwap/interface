@@ -1584,7 +1584,7 @@ export const STAKING_DUAL_REWARDS_INFO: {
       rewardTokenA: DQUICK,
       rewardTokenB: LDO,
       rewardTokenBBase: MATIC,
-      rateA: 2.091,
+      rateA: 10.455,
       rateB: 1428,
       pair: '0x65752c54d9102bdfd69d351e1838a1be83c924c6'
     },
@@ -1798,6 +1798,16 @@ export const STAKING_REWARDS_INFO: {
     baseToken: USDC,
     rate: 4.182,
     pair: '0x1f1e4c845183ef6d50e9609f16f6f9cae43bc9cb'
+  },
+  {
+    tokens: [LDO,MATIC],
+    stakingRewardAddress: '0xd04020De20df404D923c3b19e924878ead015b98',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: MATIC,
+    rate: 3.485,
+    pair: '0xa0f330f5fc47ee7a3297dbd6be6fe60cd0346b26'
   },
   {
     tokens: [MATIC,QUIDD],
