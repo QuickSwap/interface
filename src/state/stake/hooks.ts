@@ -292,6 +292,17 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: MCHC,
+      stakingRewardAddress: '0xca06B2661a4521461cb226234c0911421196d8FC',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 6666.67,
+      ending: 1655250563,
+      stakingToken: QUICK
+    },
+    {
       token: TRACE,
       stakingRewardAddress: '0xE9F0F6Fd89046aE69a96935B3e81707BA2961f1d',
       ended: false,
