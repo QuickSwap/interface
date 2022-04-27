@@ -330,7 +330,7 @@ export const ATLX = new Token(ChainId.MATIC, '0x0b68782eFF3177f1F9240B64A7e2F8E0
 export const SAFLE = new Token(ChainId.MATIC, '0x04b33078Ea1aEf29bf3fB29c6aB7B200C58ea126', 18, 'SAFLE', 'Safle')
 export const MCHC = new Token(ChainId.MATIC, '0xee7666aACAEFaa6efeeF62ea40176d3eB21953B9', 18, 'MCHC', 'MCHCoin')
 export const AWX = new Token(ChainId.MATIC, '0x56A0eFEFC9F1FBb54FBd25629Ac2aA764F1b56F7', 18, 'AWX', 'AurusDeFi')
-export const AWS = new Token(ChainId.MATIC, '0x24aD14A4f0BB79a9dcf201514CB0E651C79DB76B', 18, 'AWS', 'AurusSILVER')
+export const AWS = new Token(ChainId.MATIC, '0xA96D47c621a8316d4F9539E3B38180C7067e84CA', 18, 'AWS', 'AurusSILVER')
 export const BOOK = new Token(ChainId.MATIC, '0x8192759Bf7f247cC92F74E39B3A4225516624fC1', 8, 'BOOK', 'Bookie')
 export const VOXEL = new Token(ChainId.MATIC, '0xd0258a3fD00f38aa8090dfee343f10A9D4d30D3F', 18, 'VOXEL', 'VOXEL Token')
 export const KEYFI = new Token(ChainId.MATIC, '0xD1A5f2A049343fc4D5F8d478f734eBa51B22375E', 18, 'KEYFI', 'KeyFi Token')
@@ -389,6 +389,14 @@ export const QUIDD = new Token(ChainId.MATIC, '0x123706cDD8e60324e610E9A2CC7012D
 export const PDDOLLAR = new Token(ChainId.MATIC, '0x146e58D34EaB0bFf7e0a63cfe9332908d680c667', 18, 'PDDOLLAR', 'pddollar')
 export const KEK = new Token(ChainId.MATIC, '0x42E5E06EF5b90Fe15F853F59299Fc96259209c5C', 18, 'KEK', 'Aavegotchi KEK')
 export const LDO = new Token(ChainId.MATIC, '0xC3C7d422809852031b44ab29EEC9F1EfF2A58756', 18, 'LDO', 'Lido DAO Token')
+
+export const TRY = new Token(ChainId.MATIC, '0xEFeE2de82343BE622Dcb4E545f75a3b9f50c272D', 18, 'TRY', 'TryHards')
+export const PDSHARE = new Token(ChainId.MATIC, '0x3068382885602FC0089aeC774944b5ad6123ae60', 18, 'PDSHARE', 'PDSHARE')
+export const SD = new Token(ChainId.MATIC, '0x1d734A02eF1e1f5886e66b0673b71Af5B53ffA94', 18, 'SD', 'Stader')
+export const MATICX = new Token(ChainId.MATIC, '0xfa68FB4628DFF1028CFEc22b4162FCcd0d45efb6', 18, 'MaticX', 'Liquid Staking Matic')
+export const ACRE = new Token(ChainId.MATIC, '0x011734f6Ed20E8D011d85Cf7894814B897420acf', 18, 'ACRE', 'Arable Protocol')
+export const GOO = new Token(ChainId.MATIC, '0x6F3Cc27E17a0f2e52D8e7693FF0d892Cea1854bF', 9, 'GOO', 'Goo')
+export const NSFW = new Token(ChainId.MATIC, '0x8f006D1e1D9dC6C98996F50a4c810F17a47fBF19', 18, 'NSFW', 'Pleasure Coin')
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -578,4 +586,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.31/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.32/build/quickswap-default.tokenlist.json'

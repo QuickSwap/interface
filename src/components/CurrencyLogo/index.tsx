@@ -680,7 +680,7 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/15399/small/MCHC.jpg?1620721307'
     }if (address?.toLowerCase() === '0x56A0eFEFC9F1FBb54FBd25629Ac2aA764F1b56F7'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/12684/small/2021-12-06-Aurus-tokens-for-coingecko-AWX-flat-color-v1-r1-AS.png?1640223413'
-    }if (address?.toLowerCase() === '0x24aD14A4f0BB79a9dcf201514CB0E651C79DB76B'.toLowerCase()) {
+    }if (address?.toLowerCase() === '0xA96D47c621a8316d4F9539E3B38180C7067e84CA'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/14965/small/2021-12-06-Aurus-tokens-for-coingecko-AWS-flat-color-v1-r1-AS.png?1640223368'
     }if (address?.toLowerCase() === '0x8192759Bf7f247cC92F74E39B3A4225516624fC1'.toLowerCase()) {
       uri = 'https://bookie.farm/logoether/bookie200.png'
@@ -777,6 +777,23 @@ export const getTokenLogoURL = (address: string) => {
     }if (address?.toLowerCase() === '0xC3C7d422809852031b44ab29EEC9F1EfF2A58756'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/13573/small/Lido_DAO.png?1609873644'
     }
+
+    if (address?.toLowerCase() === '0xEFeE2de82343BE622Dcb4E545f75a3b9f50c272D'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/12225.png'
+    }if (address?.toLowerCase() === '0x3068382885602FC0089aeC774944b5ad6123ae60'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/24963/small/pdshare.png?1649574782'
+    }if (address?.toLowerCase() === '0x1d734A02eF1e1f5886e66b0673b71Af5B53ffA94'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/20658/small/sd.png?1642927667'
+    }if (address?.toLowerCase() === '0xfa68FB4628DFF1028CFEc22b4162FCcd0d45efb6'.toLowerCase()) {
+      uri = 'https://i.ibb.co/9bHbFsB/2022-04-26-11-53-13.jpg'
+    }if (address?.toLowerCase() === '0x011734f6Ed20E8D011d85Cf7894814B897420acf'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/23659/small/acre_token-02.png?1644989289'
+    }if (address?.toLowerCase() === '0x6F3Cc27E17a0f2e52D8e7693FF0d892Cea1854bF'.toLowerCase()) {
+      uri = 'https://playgooeys.com/GOO-200x200.png'
+    }if (address?.toLowerCase() === '0x8f006D1e1D9dC6C98996F50a4c810F17a47fBF19'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/15315/small/pleasurecoin-icon.png?1648724879'
+    }
+    
 
     if (address?.toLowerCase() === '0x4287F07CBE6954f9F0DecD91d0705C926d8d03A4'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/23266/small/93mryokp_400x400.png?1643413792'
