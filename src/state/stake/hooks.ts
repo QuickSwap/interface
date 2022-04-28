@@ -1695,7 +1695,7 @@ export const STAKING_DUAL_REWARDS_INFO: {
       name: '',
       baseToken: MATIC,
       rewardTokenA: DQUICK,
-      rewardTokenB: MATIC,
+      rewardTokenB: SD,
       rewardTokenBBase: USDC,
       rateA: 8.65,
       rateB: 629,
@@ -13997,7 +13997,7 @@ export function useStakingInfo(pairToFilterBy?: Pair | null): StakingInfo[] {
   const uni = chainId ? UNI[chainId] : undefined
 
   const rewardsAddresses = useMemo(() => info.map(({ stakingRewardAddress }) => stakingRewardAddress), [info])
-  const pairAddresses = useMemo(() => info.map(({ pair }) => pair), [info])
+  const pairAddresses = useMemo(() => info.map(({ pair }) => pair.toLowerCase()), [info])
   
   useEffect(() => {
  

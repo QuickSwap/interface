@@ -492,10 +492,10 @@ export default function Header() {
           )}
           </div>
         }
-        {(chainId === ChainId.MATIC) &&
+        {/**(chainId === ChainId.MATIC) &&
           <StyledExternalLink id={`startido-nav-link-03`} href={'https://idos.starter.xyz/quickstart'} style={{marginLeft: mobile?'4px':'12px', marginRight: mobile?'0px':'12px'}}>
             IDO {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
-          </StyledExternalLink>
+          </StyledExternalLink>*/
         }
           
         </HeaderLinks>
