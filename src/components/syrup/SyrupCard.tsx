@@ -13,8 +13,6 @@ import useUSDCPrice from '../../utils/useUSDCPrice'
 import { currencyId } from '../../utils/currencyId'
 import { ButtonPrimary } from '../Button'
 import { useState } from 'react'
-import { QUICK } from '../../constants'
-
 
 const MINUTE = 60
 const HOUR = MINUTE * 60
@@ -96,8 +94,6 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
 
   const stakingToken = syrupInfo.stakingToken;
 
-  const isQuickStakingToken = stakingToken.equals(QUICK) ? true : false;
-
   const [, stakingTokenPair] = usePair(currency0, baseTokenCurrency);
 
   const price = stakingTokenPair?.priceOf(token0);
@@ -130,14 +126,6 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
   timeRemaining -= hours * HOUR
   const minutes = (timeRemaining - (timeRemaining % MINUTE)) / MINUTE
 
-  //@ts-ignore
-  const dQUICKAPR =(((syrupInfo.oneDayVol * 0.04 * 0.01) / syrupInfo.dQuickTotalSupply.toSignificant(6)) * 365) / (syrupInfo.dQUICKtoQUICK.toSignificant(6) * syrupInfo.quickPrice);
-  
-  let dQUICKAPY: any = dQUICKAPR ? Math.pow(1 + dQUICKAPR / 365, 365) - 1 : 0;
-
-  //@ts-ignore
-  dQUICKAPY = parseFloat(dQUICKAPY).toFixed(4) * 100
-  
   let tokenAPR: any = 0;
 
   if (syrupInfo?.valueOfTotalStakedAmountInUSDC > 0) {
@@ -178,7 +166,7 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
       {!syrupInfo?.ended && (
           <StatContainer>
           <RowBetween>
-            <TYPE.white> {isQuickStakingToken ? 'QUICK' : 'dQUICK'} Deposits</TYPE.white>
+            <TYPE.white> {stakingToken.symbol} Deposits</TYPE.white>
             <TYPE.white>
               {syrupInfo?.valueOfTotalStakedAmountInUSDC
                 ? `$${thousands_separators(syrupInfo?.valueOfTotalStakedAmountInUSDC)}`
@@ -197,12 +185,6 @@ export default function SyrupCard({ syrupInfo, isOld }: { syrupInfo: SyrupInfo, 
             <TYPE.white> {currency0.symbol} APR </TYPE.white>
             <TYPE.white>{tokenAPR} %</TYPE.white>
           </RowBetween>
-          { !isQuickStakingToken &&
-            <RowBetween>
-              <TYPE.white> dQUICK APY </TYPE.white>
-              <TYPE.white>{dQUICKAPY} %</TYPE.white>
-            </RowBetween>
-          }
           <RowBetween>
             <TYPE.white> Time remaining </TYPE.white>
             <TYPE.white>{Number.isFinite(timeRemaining) && (

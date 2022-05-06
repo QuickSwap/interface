@@ -333,7 +333,7 @@ export default function Syrup() {
               </RowBetween>
               <RowBetween>
                 <TYPE.white fontSize={14}>
-                  Deposit your QUICK/dQUICK tokens to earn more.
+                  Deposit your QUICK(OLD)/QUICK(NEW) tokens to earn more.
                 </TYPE.white>
                 
               </RowBetween>{' '}

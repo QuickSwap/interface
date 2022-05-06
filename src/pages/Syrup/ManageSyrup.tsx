@@ -20,7 +20,7 @@ import { useColor } from '../../hooks/useColor'
 import { CountUp } from 'use-count-up'
 import { wrappedCurrency } from '../../utils/wrappedCurrency'
 import usePrevious from '../../hooks/usePrevious'
-import { BIG_INT_ZERO, QUICK } from '../../constants'
+import { BIG_INT_ZERO } from '../../constants'
 import CurrencyLogo from '../../components/CurrencyLogo'
 
 const PageWrapper = styled(AutoColumn)`
@@ -117,8 +117,6 @@ export default function ManageSyrup({
 
   const stakingToken = syrupInfo?.stakingToken;
 
-  const isQuickStakingToken = stakingToken?.equals(QUICK) ? true : false;
-
   // detect existing unstaked LP position to show add button if none found
   const userLiquidityUnstaked = useTokenBalance(account ?? undefined, syrupInfo?.stakedAmount?.token)
 
@@ -174,7 +172,7 @@ export default function ManageSyrup({
       <DataRow style={{ gap: '24px' }}>
         <PoolData>
           <AutoColumn gap="sm">
-            <TYPE.body style={{ margin: 0 }}> {isQuickStakingToken ? 'QUICK' : 'dQUICK'} deposits</TYPE.body>
+            <TYPE.body style={{ margin: 0 }}> {stakingToken?.symbol} deposits</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
             {valueOfTotalStakedAmountInUSDC
                 ? `$${thousands_separators(valueOfTotalStakedAmountInUSDC)}`
@@ -199,7 +197,7 @@ export default function ManageSyrup({
           <CardSection>
             <AutoColumn gap="md">
               <RowBetween>
-              <TYPE.white fontWeight={600}>Please get {isQuickStakingToken ? 'QUICK' : 'dQUICK'} to participate</TYPE.white>
+              <TYPE.white fontWeight={600}>Please get {stakingToken?.symbol} to participate</TYPE.white>
               </RowBetween>
             </AutoColumn>
           </CardSection>
@@ -246,7 +244,7 @@ export default function ManageSyrup({
                 : `${syrupInfo?.stakedAmount?.toSignificant(4, { groupSeparator: ',' }) ?? '-'}`}
                   </TYPE.white>
                   <TYPE.white>
-                    {isQuickStakingToken ? 'QUICK' :'dQUICK'}
+                    {stakingToken?.symbol}
                   </TYPE.white>
                 </RowBetween>
               </AutoColumn>
@@ -312,7 +310,7 @@ export default function ManageSyrup({
           <DataRow style={{ marginBottom: '1rem' }}>
             { !syrupInfo?.ended && 
             <ButtonPrimary padding="8px" borderRadius="8px" width="160px" onClick={handleDepositClick}>
-              {syrupInfo?.stakedAmount?.greaterThan(JSBI.BigInt(0)) ? 'Deposit' : isQuickStakingToken ? 'Deposit QUICK' : 'Deposit dQUICK'}
+              {syrupInfo?.stakedAmount?.greaterThan(JSBI.BigInt(0)) ? 'Deposit' : 'Deposit ' + stakingToken?.symbol}
             </ButtonPrimary>
             } 
 
@@ -331,7 +329,7 @@ export default function ManageSyrup({
           </DataRow>
         )}
         { !userLiquidityUnstaked ? null : userLiquidityUnstaked.equalTo('0') ? null : (
-          <TYPE.main>{userLiquidityUnstaked.toSignificant(6)} {isQuickStakingToken ? 'QUICK' :'dQUICK'} tokens available</TYPE.main>
+          <TYPE.main>{userLiquidityUnstaked.toSignificant(6)} {stakingToken?.symbol} tokens available</TYPE.main>
         )}
       </PositionInfo>
     </PageWrapper>

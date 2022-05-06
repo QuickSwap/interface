@@ -877,6 +877,10 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/14796/small/zignaly.jpg?1618496339'
     }
 
+    if (address?.toLowerCase() === '0xB5C064F955D8e7F38fE0460C556a72987494eE17'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/QUICK_NEW.svg'
+    }
+
     if (address?.toLowerCase() === '0x723B17718289A91AF252D616DE2C77944962d122'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/19629/small/gaia_icon_new.png?1637559277'
     }if (address?.toLowerCase() === '0xBbba073C31bF03b8ACf7c28EF0738DeCF3695683'.toLowerCase()) {

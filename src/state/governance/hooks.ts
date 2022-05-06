@@ -100,6 +100,7 @@ export function useAllProposalData() {
 
   const proposalIndexes = []
   for (let i = 1; i <= (proposalCount ?? 0); i++) {
+    //@ts-ignore
     proposalIndexes.push([i])
   }
 

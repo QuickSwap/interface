@@ -397,6 +397,7 @@ export const MATICX = new Token(ChainId.MATIC, '0xfa68FB4628DFF1028CFEc22b4162FC
 export const ACRE = new Token(ChainId.MATIC, '0x011734f6Ed20E8D011d85Cf7894814B897420acf', 18, 'ACRE', 'Arable Protocol')
 export const GOO = new Token(ChainId.MATIC, '0x6F3Cc27E17a0f2e52D8e7693FF0d892Cea1854bF', 9, 'GOO', 'Goo')
 export const NSFW = new Token(ChainId.MATIC, '0x8f006D1e1D9dC6C98996F50a4c810F17a47fBF19', 18, 'NSFW', 'Pleasure Coin')
+export const QUICKNEW = new Token(ChainId.MATIC, '0xB5C064F955D8e7F38fE0460C556a72987494eE17', 18, 'QUICK(NEW)', 'QuickSwap(NEW)')
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
