@@ -315,7 +315,7 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: USDC,
       rate: 3000,
-      ending: 1654444738,
+      ending: 1657076781,
       stakingToken: QUICKNEW
     },
     {
@@ -326,7 +326,7 @@ export const SYRUP_REWARDS_INFO: {
       name: '',
       baseToken: MATIC,
       rate: 5200,
-      ending: 1654444738,
+      ending: 1659668781,
       stakingToken: QUICKNEW
     },
     {
