@@ -399,6 +399,10 @@ export const GOO = new Token(ChainId.MATIC, '0x6F3Cc27E17a0f2e52D8e7693FF0d892Ce
 export const NSFW = new Token(ChainId.MATIC, '0x8f006D1e1D9dC6C98996F50a4c810F17a47fBF19', 18, 'NSFW', 'Pleasure Coin')
 export const QUICKNEW = new Token(ChainId.MATIC, '0xB5C064F955D8e7F38fE0460C556a72987494eE17', 18, 'QUICK(NEW)', 'QuickSwap(NEW)')
 
+export const PS1 = new Token(ChainId.MATIC, '0x32Cd1BCB75473845b5d1dB6ecE60AEC6E41d8518', 18, 'PS1', 'PolysportsToken')
+export const EMT = new Token(ChainId.MATIC, '0x3fB256CFefedb6A54De7465c0EE86dC574AE464D', 18, 'EMT', 'Emanate')
+export const LCD = new Token(ChainId.MATIC, '0xc2A45FE7d40bCAc8369371B08419DDAFd3131b4a', 18, 'LCD', 'Lucidao')
+
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
@@ -587,4 +591,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.32/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.34/build/quickswap-default.tokenlist.json'

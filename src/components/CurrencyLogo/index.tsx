@@ -793,6 +793,14 @@ export const getTokenLogoURL = (address: string) => {
     }if (address?.toLowerCase() === '0x8f006D1e1D9dC6C98996F50a4c810F17a47fBF19'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/15315/small/pleasurecoin-icon.png?1648724879'
     }
+
+    if (address?.toLowerCase() === '0x32Cd1BCB75473845b5d1dB6ecE60AEC6E41d8518'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/25070/small/L-T2x_cG_400x400.jpg?1650024620'
+    }if (address?.toLowerCase() === '0x3fB256CFefedb6A54De7465c0EE86dC574AE464D'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/4152/small/emanate.png?1558422824'
+    }if (address?.toLowerCase() === '0xc2A45FE7d40bCAc8369371B08419DDAFd3131b4a'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/23693/small/lcd-icon-color-200px.png?1645450706'
+    }
     
 
     if (address?.toLowerCase() === '0x4287F07CBE6954f9F0DecD91d0705C926d8d03A4'.toLowerCase()) {
