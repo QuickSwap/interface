@@ -299,7 +299,7 @@ export const SYRUP_REWARDS_INFO: {
   [ChainId.MATIC]: [
     {
       token: NSFW,
-      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      stakingRewardAddress: '0xDd3D03931f6F4CE8D49bE04D7f816433B14b8820',
       ended: false,
       lp: '',
       name: '',
