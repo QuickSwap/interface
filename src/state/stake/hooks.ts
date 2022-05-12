@@ -271,7 +271,12 @@ import Web3 from 'web3';
 import { useLairContract, useQUICKContract } from '../../hooks/useContract'
 import useUSDCPrice from '../../utils/useUSDCPrice'
 import { useSelector } from 'react-redux'
+import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc';
 import { AppState } from '..'
+import { getBlockFromTimestamp } from '../../utils'
+
+dayjs.extend(utc);
 
 const web3 = new Web3("https://polygon-rpc.com/");
 
@@ -13736,7 +13741,10 @@ const getOneDayVolume = async() => {
     query: SUBGRAPH_HEALTH,
   })
   let current = Number(healthInfo.data.indexingStatusForCurrentVersion.chains[0].latestBlock.number)
-  const oneDayOldBlock = current - 45000;
+  const currentTime = dayjs();
+  const utcOneDayBack = currentTime.subtract(1, 'day').unix();
+
+  const oneDayOldBlock = await getBlockFromTimestamp(utcOneDayBack);
   
   let result = await client.query({
     query: GLOBAL_DATA(current),
