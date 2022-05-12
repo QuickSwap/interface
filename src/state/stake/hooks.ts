@@ -298,6 +298,17 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: NSFW,
+      stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 11743333.33,
+      ending: 1657586739,
+      stakingToken: QUICKNEW
+    },
+    {
       token: FODL,
       stakingRewardAddress: '0xFc80C8817405f7D7a345051a47EC457ED0080664',
       ended: false,
