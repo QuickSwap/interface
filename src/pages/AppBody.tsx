@@ -13,11 +13,24 @@ export const BodyWrapper = styled.div`
   padding: 1rem;
 `
 
+const StyledPollingDot = styled.div`
+  width: 15px;
+  height: 15px;
+  min-height: 8px;
+  min-width: 8px;
+  margin-left: 11.5rem;
+  margin-top: 0px;
+  border-radius: 50%;
+  position: relative;
+  background-color: ${({ theme }) => theme.green1};
+`
+
 /**
  * The styled container element that wraps the content of most pages and the tabs.
  */
 export default function AppBody({ children }: { children: React.ReactNode }) {
   return <BodyWrapper>
+    <StyledPollingDot></StyledPollingDot>
         <ToastContainer
           position="bottom-right"
           autoClose={5000}
