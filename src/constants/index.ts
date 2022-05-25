@@ -403,6 +403,11 @@ export const PS1 = new Token(ChainId.MATIC, '0x32Cd1BCB75473845b5d1dB6ecE60AEC6E
 export const EMT = new Token(ChainId.MATIC, '0x3fB256CFefedb6A54De7465c0EE86dC574AE464D', 18, 'EMT', 'Emanate')
 export const LCD = new Token(ChainId.MATIC, '0xc2A45FE7d40bCAc8369371B08419DDAFd3131b4a', 18, 'LCD', 'Lucidao')
 
+export const CXBTC = new Token(ChainId.MATIC, '0xD30DC92b8ec0fa8de625768d208f51A93C10aFF2', 18, 'cxBTC', 'CelsiusX Wrapped BTC')
+export const BETS = new Token(ChainId.MATIC, '0x9246a5F10A79a5a939b0C2a75A3AD196aAfDB43b', 18, 'BETS', 'BetSwirl Token')
+export const CVOL = new Token(ChainId.MATIC, '0x9CD552551EC130b50c1421649C8d11E76aC821e1', 18, 'CVOL', 'Crypto Volatility Token')
+
+
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
 // TODO this is only approximate, it's actually based on blocks
@@ -591,4 +596,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.34/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.35/build/quickswap-default.tokenlist.json'

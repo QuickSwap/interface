@@ -794,6 +794,14 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/15315/small/pleasurecoin-icon.png?1648724879'
     }
 
+    if (address?.toLowerCase() === '0xD30DC92b8ec0fa8de625768d208f51A93C10aFF2'.toLowerCase()) {
+      uri = 'https://i.ibb.co/3fQ0Vx9/Group-66.png'
+    }if (address?.toLowerCase() === '0x9246a5F10A79a5a939b0C2a75A3AD196aAfDB43b'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/23693/small/lcd-icon-color-200px.png?1645450706'
+    }if (address?.toLowerCase() === '0x9CD552551EC130b50c1421649C8d11E76aC821e1'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/24008/small/govi-dao.03ef3083.png?1646029661'
+    }
+
     if (address?.toLowerCase() === '0x32Cd1BCB75473845b5d1dB6ecE60AEC6E41d8518'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/25070/small/L-T2x_cG_400x400.jpg?1650024620'
     }if (address?.toLowerCase() === '0x3fB256CFefedb6A54De7465c0EE86dC574AE464D'.toLowerCase()) {
