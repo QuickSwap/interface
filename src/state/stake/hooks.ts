@@ -2256,7 +2256,7 @@ export const OLD_STAKING_REWARDS_INFO: {
     pair: '0x9b7e966fe005d616b5560E4BaA7cFA8747d6cBb9'
   },
   {
-    tokens: [ MATIC, CRO ],
+    tokens: [ MATIC, WCRO ],
     stakingRewardAddress: '0xd2A750C2Ce25E47C3A0Abe9B5966a20e60288091',
     ended: true,
     lp: '',
