@@ -2195,7 +2195,76 @@ export const OLD_STAKING_REWARDS_INFO: {
     pair: string
   }[]
 } = {
-  [ChainId.MATIC]: []
+  [ChainId.MATIC]: [{
+    tokens: [ MATIC, FIN ],
+    stakingRewardAddress: '0xe5eB096d43BD4f3cfabbbcCA37c29038A1AF5e3A',
+    ended: true,
+    lp: '',
+    name: '',
+    baseToken: MATIC,
+    rate: 0,
+    pair: '0xB5a458A583Ff7c9FEc0EcECc4Eea8ca8B8A12C76'
+  },
+  {
+    tokens: [ ETHER, WSG ],
+    stakingRewardAddress: '0x102aBFc497ecC62E9491e7AdC4A3321cf9E08B77',
+    ended: true,
+    lp: '',
+    name: '',
+    baseToken: ETHER,
+    rate: 0,
+    pair: '0xCCB65f861266EF7dEF8bF35D4247e3ffA03563c7'
+  },
+  {
+    tokens: [ MATIC, NEAR ],
+    stakingRewardAddress: '0xCa28ad52Cc3190D92Ca2133274F9aa2EBe8c84bf',
+    ended: true,
+    lp: '',
+    name: '',
+    baseToken: MATIC,
+    rate: 0,
+    pair: '0x35140e275bBABcfD1Ca4177c0F2e82Ca00e22974'
+  },
+  {
+    tokens: [ MATIC, VOLT ],
+    stakingRewardAddress: '0x1D441673EA86BF695dfb2a1abcc8fEbf79e5bb68',
+    ended: true,
+    lp: '',
+    name: '',
+    baseToken: MATIC,
+    rate: 0,
+    pair: '0x8fa6C2Dccf3f1dDefd0140e9fe850eF293ff62f8'
+  },
+  {
+    tokens: [ MATIC, WMETIS ],
+    stakingRewardAddress: '0x7249e02039F5f3b917CcEd34e32B869b03f51d6c',
+    ended: true,
+    lp: '',
+    name: '',
+    baseToken: MATIC,
+    rate: 0,
+    pair: '0xBd13D74A9b4cFf99FEAefA916E357056689dF91f'
+  },
+  {
+    tokens: [ MATIC, UST ],
+    stakingRewardAddress: '0x03E215DeA6227af79FF4fEf1be4a7F1198ca43B7',
+    ended: true,
+    lp: '',
+    name: '',
+    baseToken: MATIC,
+    rate: 0,
+    pair: '0x9b7e966fe005d616b5560E4BaA7cFA8747d6cBb9'
+  },
+  {
+    tokens: [ MATIC, CRO ],
+    stakingRewardAddress: '0xd2A750C2Ce25E47C3A0Abe9B5966a20e60288091',
+    ended: true,
+    lp: '',
+    name: '',
+    baseToken: MATIC,
+    rate: 0,
+    pair: '0xfD168748dD07a32A401E800240aEC8EC6EFc706f'
+  }]
 }
 
 export const VERY_OLD_STAKING_REWARDS_INFO: {
