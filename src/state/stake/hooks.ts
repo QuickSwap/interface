@@ -1575,7 +1575,7 @@ export const STAKING_DUAL_REWARDS_INFO: {
       baseToken: MATIC,
       rewardTokenBBase: MATIC,
       rewardTokenA: DQUICK,
-      rewardTokenB: MATIC,
+      rewardTokenB: LCD,
       rateA: 2.001,
       rateB: 80000,
       pair: '0xaab5254e17380511887aaba7e96a5339a519e26a'
