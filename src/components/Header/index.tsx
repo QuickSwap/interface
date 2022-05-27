@@ -477,7 +477,10 @@ export default function Header() {
           <StyledExternalLink id={`stake-nav-link-01`} href={'https://info.quickswap.exchange'} style={{marginLeft: mobile?'8px':'12px', marginRight: mobile?'0px':'12px'}}>
             Charts {!mobile && <span style={{ fontSize: '11px' }}>↗</span>}
           </StyledExternalLink>
-          {(chainId === ChainId.MATIC) && 
+          <StyledNavLink id={`convert-nav-link`} to={'/convert'} style={{marginLeft: mobile ? '0px':'12px', marginRight: mobile ? '0px':'12px'}}>
+            {t('Convert')}
+          </StyledNavLink>
+          {!mobile &&(chainId === ChainId.MATIC) && 
           <div style={{ position: 'relative' }} onMouseEnter={() => {setBuyMenuOpen(true)}} onMouseLeave={() => {setBuyMenuOpen(false)}}>
             <StyledLinkStyledButton id={`stake-nav-link`} onClick={() => {setBuyMenuOpen(true)}} style={{marginLeft: mobile?'0px':'12px', marginRight: mobile?'4px':'12px'}}>
               Buy

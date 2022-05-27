@@ -11,6 +11,8 @@ export const QUICK_ADDRESS = '0x831753DD7087CaC61aB5644b308642cc1c33Dc13';
 
 export const QUICK_ADDRESS_MUMBAI = "0x55bee1bd3eb9986f6d2d963278de09ee92a3ef1d";
 
+export const CONVERTER_ADDRESS = "0x333068d06563a8dfdbf330a0e04a9d128e98bf5a";
+
 // a list of tokens by chain
 type ChainTokenList = {
   readonly [chainId in ChainId]: Token[]
