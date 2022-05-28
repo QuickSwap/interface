@@ -14683,6 +14683,37 @@ export function useDerivedStakeInfo(
   }
 }
 
+export function useDerivedConversionInfo(
+  typedValue: string,
+  token: Token,
+  userBalance: TokenAmount | undefined
+): {
+  parsedAmount?: CurrencyAmount
+  error?: string
+} {
+  const { account } = useActiveWeb3React()
+
+  const parsedInput: CurrencyAmount | undefined = tryParseAmount(typedValue, token)
+
+  const parsedAmount =
+    parsedInput && userBalance && JSBI.lessThanOrEqual(parsedInput.raw, userBalance.raw)
+      ? parsedInput
+      : undefined
+
+  let error: string | undefined
+  if (!account) {
+    error = 'Connect Wallet'
+  }
+  if (!parsedAmount) {
+    error = error ?? 'Enter an amount'
+  }
+
+  return {
+    parsedAmount,
+    error
+  }
+}
+
 export function useDerivedLairInfo(
   typedValue: string,
   stakingToken: Token,
