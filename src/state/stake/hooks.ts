@@ -305,6 +305,17 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: LCD,
+      stakingRewardAddress: '0x99787cc11354b4bb7f506D63b0340f56C65E72F5',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 40000,
+      ending: 1659224731,
+      stakingToken: QUICKNEW
+    },
+    {
       token: NSFW,
       stakingRewardAddress: '0xDd3D03931f6F4CE8D49bE04D7f816433B14b8820',
       ended: false,
