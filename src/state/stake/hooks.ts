@@ -305,6 +305,17 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: TEL,
+      stakingRewardAddress: '0xbaef1B35798bA6C2FA95d340dc6aAf284BBe2EEe',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 222222.22,
+      ending: 1661995203,
+      stakingToken: QUICKNEW
+    },
+    {
       token: LCD,
       stakingRewardAddress: '0x99787cc11354b4bb7f506D63b0340f56C65E72F5',
       ended: false,
@@ -448,17 +459,6 @@ export const SYRUP_REWARDS_INFO: {
       stakingToken: QUICK
     },
     {
-      token: TEL,
-      stakingRewardAddress: '0xcC6Cc4e642c889742278CF302d5276E7eF498d66',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 222222.22,
-      ending: 1654122663,
-      stakingToken: QUICK
-    },
-    {
       token: VOLT,
       stakingRewardAddress: '0x297F1d28a886dBc513C43A3BC39Dd6F3c4969378',
       ended: false,
@@ -574,6 +574,17 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: TEL,
+      stakingRewardAddress: '0xcC6Cc4e642c889742278CF302d5276E7eF498d66',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 222222.22,
+      ending: 1654122663,
+      stakingToken: QUICK
+    },
     {
       token: PSP,
       stakingRewardAddress: '0xdcbDa338D12DBc823d0D484e7206E9AA55eeD844',
