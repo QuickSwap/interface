@@ -802,6 +802,20 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://assets.coingecko.com/coins/images/24008/small/govi-dao.03ef3083.png?1646029661'
     }
 
+    if (address?.toLowerCase() === '0xFFA4D863C96e743A2e1513824EA006B8D0353C57'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/25380/small/UUSD.jpg?1651823371'
+    }if (address?.toLowerCase() === '0x2e1AD108fF1D8C782fcBbB89AAd783aC49586756'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/3449/small/tusd.png?1618395665'
+    }if (address?.toLowerCase() === '0x8063037ea50E4a066bF1430EA1E3e609CD5cEf6B'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/23420/small/logo192_%282%29.png?1644194954'
+    }if (address?.toLowerCase() === '0xA0dF47432d9d88bcc040E9ee66dDC7E17A882715'.toLowerCase()) {
+      uri = 'https://matic.ripae.finance/static/media/ripae_pftm.1a3fe2b4.svg'
+    }if (address?.toLowerCase() === '0x3801C3B3B5c98F88a9c9005966AA96aa440B9Afc'.toLowerCase()) {
+      uri = 'https://i.ibb.co/qMMwsK7/gltr-token.png'
+    }if (address?.toLowerCase() === '0x45c32fA6DF82ead1e2EF74d17b76547EDdFaFF89'.toLowerCase()) {
+      uri = 'https://polygonscan.com/token/images/frax_32.png'
+    }
+
     if (address?.toLowerCase() === '0x32Cd1BCB75473845b5d1dB6ecE60AEC6E41d8518'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/25070/small/L-T2x_cG_400x400.jpg?1650024620'
     }if (address?.toLowerCase() === '0x3fB256CFefedb6A54De7465c0EE86dC574AE464D'.toLowerCase()) {

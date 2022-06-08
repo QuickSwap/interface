@@ -45,7 +45,7 @@ export const DG  = new Token(ChainId.MATIC, '0xef938b6da8576a896f6E0321ef80996F4
 export const SX  = new Token(ChainId.MATIC, '0x840195888Db4D6A99ED9F73FcD3B225Bb3cB1A79', 18, 'SX', 'SportX')
 //export const WRX  = new Token(ChainId.MATIC, '0x72d6066F486bd0052eefB9114B66ae40e0A6031a', 8, 'WRX', 'WazirX')
 //export const MUST  = new Token(ChainId.MATIC, '0x9C78EE466D6Cb57A4d01Fd887D2b5dFb2D46288f', 18, 'MUST', 'Must')
-export const FRAX  = new Token(ChainId.MATIC, '0x104592a158490a9228070E0A8e5343B499e125D0', 18, 'FRAX', 'FRAX')
+export const FRAX  = new Token(ChainId.MATIC, '0x45c32fA6DF82ead1e2EF74d17b76547EDdFaFF89', 18, 'FRAX', 'FRAX')
 export const FXS  = new Token(ChainId.MATIC, '0x3e121107F6F22DA4911079845a470757aF4e1A1b', 18, 'FXS', 'Frax Shares')
 export const MAWETH  = new Token(ChainId.MATIC, '0x20D3922b4a1A8560E1aC99FBA4faDe0c849e2142', 18, 'maWETH', 'Matic Aave interest bearing WETH')
 export const MAAAVE  = new Token(ChainId.MATIC, '0x823CD4264C1b951C9209aD0DeAea9988fE8429bF', 18, 'maAAVE', 'Matic Aave interest bearing AAVE')
@@ -409,6 +409,12 @@ export const CXBTC = new Token(ChainId.MATIC, '0xD30DC92b8ec0fa8de625768d208f51A
 export const BETS = new Token(ChainId.MATIC, '0x9246a5F10A79a5a939b0C2a75A3AD196aAfDB43b', 18, 'BETS', 'BetSwirl Token')
 export const CVOL = new Token(ChainId.MATIC, '0x9CD552551EC130b50c1421649C8d11E76aC821e1', 18, 'CVOL', 'Crypto Volatility Token')
 
+export const USDD = new Token(ChainId.MATIC, '0xFFA4D863C96e743A2e1513824EA006B8D0353C57', 18, 'USDD', 'Decentralized USD')
+export const TUSD = new Token(ChainId.MATIC, '0x2e1AD108fF1D8C782fcBbB89AAd783aC49586756', 18, 'TUSD', 'TrueUSD')
+export const PAE = new Token(ChainId.MATIC, '0x8063037ea50E4a066bF1430EA1E3e609CD5cEf6B', 18, 'PAE', 'Ripae')
+export const PMATIC = new Token(ChainId.MATIC, '0xA0dF47432d9d88bcc040E9ee66dDC7E17A882715', 18, 'pMATIC', 'pMATIC')
+export const GLTR = new Token(ChainId.MATIC, '0x3801C3B3B5c98F88a9c9005966AA96aa440B9Afc', 18, 'GLTR', 'GAX Liquidity Token Reward')
+
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -598,4 +604,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.36/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.38/build/quickswap-default.tokenlist.json'
