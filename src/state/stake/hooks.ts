@@ -311,7 +311,7 @@ export const SYRUP_REWARDS_INFO: {
     {
       token: TEL,
       stakingRewardAddress: '0xbaef1B35798bA6C2FA95d340dc6aAf284BBe2EEe',
-      ended: false,
+      ended: true,
       lp: '',
       name: '',
       baseToken: ETHER,
