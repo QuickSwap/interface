@@ -66,6 +66,8 @@ export default function QuickLair() {
   const lairInfo = useLairInfo();
   const newLairInfo = useNewLairInfo();
 
+  const showOld = Number(lairInfo?.dQUICKBalance?.toFixed(0)) === 0 ? false : true
+
   const DataRow = styled(RowBetween)`
     ${({ theme }) => theme.mediaWidth.upToSmall`
     flex-direction: column;
@@ -98,15 +100,16 @@ export default function QuickLair() {
       </TopSection>
       <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
         <DataRow style={{ alignItems: 'baseline' }}>
-          <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>New Dragon's Lair</TYPE.mediumHeader>
+          <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Dragon's Lair</TYPE.mediumHeader>
         </DataRow>
 
         <PoolSection>
           <LairCard lairInfo={newLairInfo} isNew={true}/>
         </PoolSection>
       </AutoColumn>
-
-      <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
+      {
+        showOld && 
+        <AutoColumn gap="lg" style={{ width: '100%', maxWidth: '720px' }}>
         <DataRow style={{ alignItems: 'baseline' }}>
           <TYPE.mediumHeader style={{ marginTop: '0.5rem' }}>Old Dragon's Lair</TYPE.mediumHeader>
         </DataRow>
@@ -115,6 +118,7 @@ export default function QuickLair() {
           <LairCard lairInfo={lairInfo} isNew={false}/>
         </PoolSection>
       </AutoColumn>
+      }
 
     </PageWrapper>
   )
