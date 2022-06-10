@@ -128,8 +128,9 @@ export default function ManageLair({
         </PoolData>
       </DataRow>
 
-      {lairInfoToUse && (
+      {lairInfoToUse &&  (
         <>
+          
           <StakingModal
             isOpen={showStakingModal}
             onDismiss={() => setShowStakingModal(false)}
@@ -137,6 +138,8 @@ export default function ManageLair({
             isNew={isNew}
             userLiquidityUnstaked={userLiquidityUnstaked}
           />
+          
+          
           <UnstakingModal
             isOpen={showUnstakingModal}
             onDismiss={() => setShowUnstakingModal(false)}
@@ -179,10 +182,12 @@ export default function ManageLair({
 
         { (
           <DataRow style={{ marginBottom: '1rem' }}>
-            <ButtonPrimary padding="8px" borderRadius="8px" width="160px"  onClick={handleDepositClick}>
-              Deposit
-            </ButtonPrimary>
-
+            {
+              isNew && 
+              <ButtonPrimary padding="8px" borderRadius="8px" width="160px"  onClick={handleDepositClick}>
+                Deposit
+              </ButtonPrimary>
+            }
             {lairInfoToUse?.dQUICKBalance?.greaterThan(JSBI.BigInt(0)) && (
               <>
                 <ButtonPrimary
