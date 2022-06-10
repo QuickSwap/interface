@@ -71,6 +71,10 @@ export default function LairCard({ lairInfo, isNew }: { lairInfo: LairInfo, isNe
   //@ts-ignore
   APY = parseFloat(APY) * 100
 
+  if (!isNew) {
+    APY = parseFloat(APY) * 0
+  }
+
   return (
     show ?
     <Wrapper showBackground={true} bgColor={backgroundColor}>
