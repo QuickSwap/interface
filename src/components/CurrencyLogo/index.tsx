@@ -910,6 +910,9 @@ export const getTokenLogoURL = (address: string) => {
     if (address?.toLowerCase() === '0xB5C064F955D8e7F38fE0460C556a72987494eE17'.toLowerCase()) {
       uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/QUICK_NEW.svg'
     }
+    if (address?.toLowerCase() === '0x958d208Cdf087843e9AD98d23823d32E17d723A1'.toLowerCase()) {
+      uri = 'https://raw.githubusercontent.com/sameepsi/quickswap-default-token-list/master/assets/QUICK_NEW.svg'
+    }
 
     if (address?.toLowerCase() === '0x723B17718289A91AF252D616DE2C77944962d122'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/19629/small/gaia_icon_new.png?1637559277'

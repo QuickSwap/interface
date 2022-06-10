@@ -9,7 +9,7 @@ import ProgressCircles from '../ProgressSteps'
 import CurrencyInputPanel from '../CurrencyInputPanel'
 import { TokenAmount, Pair } from '@uniswap/sdk'
 import { maxAmountSpend } from '../../utils/maxAmountSpend'
-import { useLairContract } from '../../hooks/useContract'
+import { useLairContract, useNewLairContract } from '../../hooks/useContract'
 import { useApproveCallback, ApprovalState } from '../../hooks/useApproveCallback'
 import { LairInfo, useDerivedLairInfo } from '../../state/stake/hooks'
 
@@ -33,10 +33,11 @@ interface StakingModalProps {
   isOpen: boolean
   onDismiss: () => void
   lairInfo: LairInfo
+  isNew: Boolean
   userLiquidityUnstaked: TokenAmount | undefined
 }
 
-export default function StakingModal({ isOpen, onDismiss, lairInfo, userLiquidityUnstaked }: StakingModalProps) {
+export default function StakingModal({ isOpen, onDismiss, lairInfo, isNew, userLiquidityUnstaked }: StakingModalProps) {
 
   // track and parse user input
   const [typedValue, setTypedValue] = useState('')
@@ -58,12 +59,15 @@ export default function StakingModal({ isOpen, onDismiss, lairInfo, userLiquidit
   const [approval, approveCallback] = useApproveCallback(parsedAmount, lairInfo.lairAddress)
 
   const lairContract = useLairContract();
+  const newLairContract = useNewLairContract();
+
+  const lairContractToUse = isNew ? newLairContract : lairContract;
 
   async function onStake() {
     setAttempting(true)
-    if (lairContract && parsedAmount) {
+    if (lairContractToUse && parsedAmount) {
       if (approval === ApprovalState.APPROVED) {
-        await lairContract.enter(`0x${parsedAmount.raw.toString(16)}`, { gasLimit: 350000 })
+        await lairContractToUse.enter(`0x${parsedAmount.raw.toString(16)}`, { gasLimit: 350000 })
       } else {
         setAttempting(false)
         throw new Error('Attempting to stake without approval or a signature. Please contact support.')
@@ -84,7 +88,7 @@ export default function StakingModal({ isOpen, onDismiss, lairInfo, userLiquidit
   }, [maxAmountInput, onUserInput])
 
   async function onAttemptToApprove() {
-    if (!lairContract ) throw new Error('missing dependencies')
+    if (!lairContractToUse ) throw new Error('missing dependencies')
     const liquidityAmount = parsedAmount
     if (!liquidityAmount) throw new Error('missing liquidity amount')
     return approveCallback()

@@ -3,8 +3,8 @@ import { AutoColumn } from '../../components/Column'
 import styled from 'styled-components'
 
 import { JSBI } from '@uniswap/sdk'
-import { QUICK, DQUICK } from "../../constants/index";
-import { useLairInfo } from '../../state/stake/hooks'
+import { QUICK, DQUICK, QUICKNEW, DQUICKNEW } from "../../constants/index";
+import { useLairInfo, useNewLairInfo } from '../../state/stake/hooks'
 import DoubleCurrencyLogo from '../../components/DoubleLogo'
 import { useWalletModalToggle } from '../../state/application/hooks'
 import { TYPE } from '../../theme'
@@ -19,6 +19,7 @@ import { useColor } from '../../hooks/useColor'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
 import StakingModal from '../../components/QuickLair/StakingModal'
 import UnstakingModal from '../../components/QuickLair/UnstakingModal'
+import { RouteComponentProps } from 'react-router-dom';
 
 const PageWrapper = styled(AutoColumn)`
   max-width: 640px;
@@ -62,20 +63,31 @@ const DataRow = styled(RowBetween)`
   `};
 `
 
-export default function ManageLair() {
+export default function ManageLair({
+  match: {
+    params: { version }
+  }
+}: RouteComponentProps<{ version: string }>) {
   const { account } = useActiveWeb3React()
+  
+  var isNew = version === 'new' ? true : false;
+
+  const newLairInfo = useNewLairInfo();
 
   const lairInfo = useLairInfo();
-  const currency0 = unwrappedToken(QUICK)
-  const currency1 = unwrappedToken(DQUICK)
+
+  const lairInfoToUse = isNew ? newLairInfo : lairInfo;
+
+  const currency0 = isNew ? unwrappedToken(QUICKNEW) : unwrappedToken(QUICKNEW);
+  const currency1 = isNew ? unwrappedToken(DQUICKNEW) : unwrappedToken(DQUICK);
 
   const [showStakingModal, setShowStakingModal] = useState(false)
   const [showUnstakingModal, setShowUnstakingModal] = useState(false)
 
   const backgroundColor = useColor(QUICK);
 
-  const userLiquidityUnstaked = useTokenBalance(account ?? undefined, QUICK)
-  const showAddLiquidityButton = Boolean(lairInfo?.dQUICKBalance?.equalTo('0') && userLiquidityUnstaked?.equalTo('0'))
+  const userLiquidityUnstaked = useTokenBalance(account ?? undefined, isNew ? QUICKNEW : QUICK)
+  const showAddLiquidityButton = Boolean(lairInfoToUse?.dQUICKBalance?.equalTo('0') && userLiquidityUnstaked?.equalTo('0'))
 
 
   const toggleWalletModal = useWalletModalToggle()
@@ -101,7 +113,7 @@ export default function ManageLair() {
           <AutoColumn gap="sm">
             <TYPE.body style={{ margin: 0 }}>Total QUICK</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
-            { lairInfo ? lairInfo.totalQuickBalance.toFixed(2, {groupSeparator: ','}): 0 }
+            { lairInfoToUse ? lairInfoToUse.totalQuickBalance.toFixed(2, {groupSeparator: ','}): 0 }
             </TYPE.body>
           </AutoColumn>
         </PoolData>
@@ -109,56 +121,27 @@ export default function ManageLair() {
           <AutoColumn gap="sm">
             <TYPE.body style={{ margin: 0 }}>QUICK Rate</TYPE.body>
             <TYPE.body fontSize={24} fontWeight={500}>
-            {`${lairInfo.dQUICKtoQUICK
+            {`${lairInfoToUse.dQUICKtoQUICK
             ?.toFixed(8, { groupSeparator: ',' })} QUICK / dQUICK`}
             </TYPE.body>
           </AutoColumn>
         </PoolData>
       </DataRow>
 
-      {/**showAddLiquidityButton && (
-        <VoteCard>
-          <CardBGImage />
-          <CardNoise />
-          <CardSection>
-            <AutoColumn gap="md">
-              <RowBetween>
-      <TYPE.white fontWeight={600}>Step 1. Get {(stakingInfo?.name && stakingInfo?.name !== "" ? stakingInfo.name : "QUICK-V2")} Liquidity tokens</TYPE.white>
-              </RowBetween>
-              <RowBetween style={{ marginBottom: '1rem' }}>
-                <TYPE.white fontSize={14}>
-                  { (stakingInfo?.name && stakingInfo?.name !== "" ? stakingInfo.name : "QUICK-V2") + " tokens are required. Once you've added liquidity to the " + currencyA?.symbol + "-" + currencyB?.symbol + " pool you can stake your liquidity tokens on " + (stakingInfo?.lp && stakingInfo?.lp !== "" ? "the Aavegotchi page" : "this page.")}
-                
-                </TYPE.white>
-              </RowBetween>
-              <ButtonPrimary
-                padding="8px"
-                borderRadius="8px"
-                width={'fit-content'}
-                as={Link}
-                to={`/add/${currencyA && currencyId(currencyA)}/${currencyB && currencyId(currencyB)}`}
-              >
-                {`Add ${currencyA?.symbol}-${currencyB?.symbol} liquidity`}
-              </ButtonPrimary>
-            </AutoColumn>
-          </CardSection>
-          <CardBGImage />
-          <CardNoise />
-        </VoteCard>
-      )*/}
-
-      {lairInfo && (
+      {lairInfoToUse && (
         <>
           <StakingModal
             isOpen={showStakingModal}
             onDismiss={() => setShowStakingModal(false)}
-            lairInfo={lairInfo}
+            lairInfo={lairInfoToUse}
+            isNew={isNew}
             userLiquidityUnstaked={userLiquidityUnstaked}
           />
           <UnstakingModal
             isOpen={showUnstakingModal}
             onDismiss={() => setShowUnstakingModal(false)}
-            lairInfo={lairInfo}
+            isNew={isNew}
+            lairInfo={lairInfoToUse}
           />
         </>
       )}
@@ -175,7 +158,7 @@ export default function ManageLair() {
                 </RowBetween>
                 <RowBetween style={{ alignItems: 'baseline' }}>
                   <TYPE.white fontSize={36} fontWeight={600}>
-                  {`${lairInfo.QUICKBalance
+                  {`${lairInfoToUse.QUICKBalance
                       ?.toFixed(10, { groupSeparator: ',' })}`}
                   </TYPE.white>
                   <TYPE.white>
@@ -200,7 +183,7 @@ export default function ManageLair() {
               Deposit
             </ButtonPrimary>
 
-            {lairInfo?.dQUICKBalance?.greaterThan(JSBI.BigInt(0)) && (
+            {lairInfoToUse?.dQUICKBalance?.greaterThan(JSBI.BigInt(0)) && (
               <>
                 <ButtonPrimary
                   padding="8px"

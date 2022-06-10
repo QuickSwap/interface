@@ -265,14 +265,16 @@ import {
   LCD,
   CXBTC,
   TUSD,
-  PAE
+  PAE,
+  DQUICKNEW,
+  NEW_LAIR_ADDRESS
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE, STAKING_DUAL_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
 import { NEVER_RELOAD, useMultipleContractSingleData, useSingleCallResult, useSingleContractMultipleData } from '../multicall/hooks'
 import { tryParseAmount } from '../swap/hooks'
 import Web3 from 'web3';
-import { useLairContract, useQUICKContract } from '../../hooks/useContract'
+import { useLairContract, useQUICKContract, useNewLairContract, useNewQUICKContract } from '../../hooks/useContract'
 import useUSDCPrice from '../../utils/useUSDCPrice'
 import { useSelector } from 'react-redux'
 import dayjs from 'dayjs'
@@ -309,7 +311,7 @@ export const SYRUP_REWARDS_INFO: {
     {
       token: TEL,
       stakingRewardAddress: '0xbaef1B35798bA6C2FA95d340dc6aAf284BBe2EEe',
-      ended: true,
+      ended: false,
       lp: '',
       name: '',
       baseToken: ETHER,
@@ -14219,6 +14221,56 @@ export function useLairInfo(): LairInfo {
         totalQuickBalance: new TokenAmount(QUICK, JSBI.BigInt(lairsQuickBalance?.result?.[0] ?? 0)),
         quickPrice,
         dQuickTotalSupply: new TokenAmount(DQUICK, JSBI.BigInt(_dQuickTotalSupply?.result?.[0] ?? 0)),
+        oneDayVol: oneDayVol
+      }
+    )
+    
+  }, [dQuickToQuick, quickToDQuick, quickBalance, dQuickBalance, _dQuickTotalSupply, quickPrice, lairsQuickBalance])
+
+}
+
+export function useNewLairInfo(): LairInfo {
+  const { account } = useActiveWeb3React()
+
+  let accountArg = useMemo(() => [account ?? undefined], [account])
+
+  const inputs = ['1000000000000000000']
+
+  const lair = useNewLairContract()
+  const quick = useNewQUICKContract();
+  const [, quickUsdcPair] = usePair(QUICKNEW, USDC);
+  const quickPrice = Number(quickUsdcPair?.priceOf(QUICKNEW)?.toSignificant(6))
+
+  const dQuickToQuick = useSingleCallResult(lair, 'dQUICKForQUICK', inputs);
+  const quickToDQuick = useSingleCallResult(lair, 'QUICKForDQUICK', inputs);
+
+  const _dQuickTotalSupply = useSingleCallResult(lair, 'totalSupply', []);
+
+  const quickBalance = useSingleCallResult(lair, 'QUICKBalance', accountArg);
+  const dQuickBalance = useSingleCallResult(lair, 'balanceOf', accountArg);
+
+  accountArg = [NEW_LAIR_ADDRESS ?? undefined]
+
+  const lairsQuickBalance = useSingleCallResult(quick, 'balanceOf', accountArg);
+
+  useEffect(() => {
+ 
+    getOneDayVolume().then((data)=>{
+      console.log(data);
+    })
+  }, [])
+
+  return useMemo(() => {
+    return (
+      {
+        lairAddress: NEW_LAIR_ADDRESS,
+        dQUICKtoQUICK: new TokenAmount(QUICKNEW, JSBI.BigInt(dQuickToQuick?.result?.[0] ?? 0)),
+        QUICKtodQUICK: new TokenAmount(DQUICKNEW, JSBI.BigInt(quickToDQuick?.result?.[0] ?? 0)),
+        dQUICKBalance: new TokenAmount(DQUICKNEW, JSBI.BigInt(dQuickBalance?.result?.[0] ?? 0)),
+        QUICKBalance: new TokenAmount(QUICKNEW, JSBI.BigInt(quickBalance?.result?.[0] ?? 0)),
+        totalQuickBalance: new TokenAmount(QUICKNEW, JSBI.BigInt(lairsQuickBalance?.result?.[0] ?? 0)),
+        quickPrice,
+        dQuickTotalSupply: new TokenAmount(DQUICKNEW, JSBI.BigInt(_dQuickTotalSupply?.result?.[0] ?? 0)),
         oneDayVol: oneDayVol
       }
     )

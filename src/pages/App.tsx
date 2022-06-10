@@ -25,6 +25,7 @@ import Pool from './Pool'
 import PoolFinder from './PoolFinder'
 import RemoveLiquidity from './RemoveLiquidity'
 import LimitOrder from './LimitOrder'
+import QuickLair from './QuickLair'
 
 import { RedirectOldRemoveLiquidityPathStructure } from './RemoveLiquidity/redirects'
 import Swap from './Swap'
@@ -89,6 +90,7 @@ export default function App() {
           <Web3ReactManager>
             <Switch>
               <Route exact strict path="/swap" component={Swap} />
+              <Route exact strict path="/lair" component={QuickLair} />
               <Route exact strict path="/convert" component={Convert} />
               <Route exact strict path="/claim" component={OpenClaimAddressModalAndRedirectToSwap} />
               <Route exact strict path="/swap/:outputCurrency" component={RedirectToSwap} />
@@ -112,7 +114,7 @@ export default function App() {
               <Route exact strict path="/quick/:currencyIdA/:currencyIdB/:rewardsAddress" component={Manage} />
               <Route exact strict path="/dual/:currencyIdA/:currencyIdB/:rewardsAddress" component={ManageDual} />
               <Route exact strict path="/syrup/:currencyIdA/:rewardsAddress" component={ManageSyrup} />
-              <Route exact strict path="/dquick" component={ManageLair} />
+              <Route exact strict path="/lair/:version" component={ManageLair} />
               <Route exact strict path="/archive/:currencyIdA/:currencyIdB/:rewardsAddress" component={ManageOld} />
               <Route exact strict path="/vote/:id" component={VotePage} />
               <Route exact strict path="/limit-order/:outputCurrency" component={RedirectToSwap} />

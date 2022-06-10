@@ -6,7 +6,7 @@ import { RowBetween } from '../Row'
 import { TYPE, CloseIcon } from '../../theme'
 import { ButtonError } from '../Button'
 import { LairInfo } from '../../state/stake/hooks'
-import { useLairContract } from '../../hooks/useContract'
+import { useLairContract, useNewLairContract } from '../../hooks/useContract'
 import { SubmittedView, LoadingView } from '../ModalViews'
 import { TransactionResponse } from '@ethersproject/providers'
 import { useTransactionAdder } from '../../state/transactions/hooks'
@@ -26,9 +26,10 @@ interface StakingModalProps {
   isOpen: boolean
   onDismiss: () => void
   lairInfo: LairInfo
+  isNew: Boolean
 }
 
-export default function UnstakingModal({ isOpen, onDismiss, lairInfo }: StakingModalProps) {
+export default function UnstakingModal({ isOpen, onDismiss, lairInfo, isNew }: StakingModalProps) {
   const { account } = useActiveWeb3React()
 
   // monitor call to help UI loading state
@@ -43,13 +44,16 @@ export default function UnstakingModal({ isOpen, onDismiss, lairInfo }: StakingM
   }
 
   const lairContract = useLairContract()
+  const newLairContract = useNewLairContract();
+
+  const lairContractToUse = isNew ? newLairContract : lairContract;
 
   async function onWithdraw() {
-    if (lairContract && lairInfo?.dQUICKBalance) {
+    if (lairContractToUse && lairInfo?.dQUICKBalance) {
       setAttempting(true)
       var balanceString = lairInfo?.dQUICKBalance?.toExact()
       var balance = web3.utils.toWei(balanceString, 'ether')
-      await lairContract
+      await lairContractToUse
         .leave(balance.toString(), { gasLimit: 300000 })
         .then((response: TransactionResponse) => {
           addTransaction(response, {

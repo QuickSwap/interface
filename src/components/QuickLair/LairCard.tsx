@@ -9,7 +9,7 @@ import { LairInfo } from '../../state/stake/hooks'
 import { useColor } from '../../hooks/useColor'
 import {  CardNoise, CardBGImage } from './styled'
 import { unwrappedToken } from '../../utils/wrappedCurrency'
-import { QUICK, DQUICK } from "../../constants/index";
+import { QUICK, DQUICK, QUICKNEW, DQUICKNEW } from "../../constants/index";
 import { getDaysCurrentYear } from '../../utils';
 
 const StatContainer = styled.div`
@@ -52,12 +52,15 @@ const TopSection = styled.div`
     grid-template-columns: 48px 1fr 96px;
   `};
 `
-export default function LairCard({ lairInfo }: { lairInfo: LairInfo }) {
+export default function LairCard({ lairInfo, isNew }: { lairInfo: LairInfo, isNew: Boolean }) {
   
+  const version = isNew ? 'new' : 'old';
+  const quick = isNew ? QUICKNEW : QUICK;
+  const dquick = isNew ? DQUICKNEW : DQUICK;
   const daysCurrentYear = getDaysCurrentYear();
-  const currency0 = unwrappedToken(QUICK)
-  const currency1 = unwrappedToken(DQUICK)
-  const backgroundColor = useColor(QUICK)
+  const currency0 = unwrappedToken(quick)
+  const currency1 = unwrappedToken(dquick)
+  const backgroundColor = useColor(quick)
   var show = true;
 
   //@ts-ignore
@@ -80,7 +83,7 @@ export default function LairCard({ lairInfo }: { lairInfo: LairInfo }) {
           QUICK-dQUICK
           
         </TYPE.white>
-        <StyledInternalLink to={`/dquick`} style={{ width: '100%' }}>
+        <StyledInternalLink to={'/lair/'+version} style={{ width: '100%' }}>
             <ButtonPrimary padding="8px" borderRadius="8px">
               Manage
             </ButtonPrimary>

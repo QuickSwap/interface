@@ -8,7 +8,7 @@ import { STAKING_DUAL_REWARDS_INTERFACE } from '../constants/abis/staking-reward
 import { ChainId, WETH } from '@uniswap/sdk'
 import { abi as IUniswapV2PairABI } from '@uniswap/v2-core/build/IUniswapV2Pair.json'
 import { useMemo } from 'react'
-import { GOVERNANCE_ADDRESS, MERKLE_DISTRIBUTOR_ADDRESS, UNI, LAIR_ADDRESS, QUICK_ADDRESS, CONVERTER_ADDRESS } from '../constants'
+import { GOVERNANCE_ADDRESS, MERKLE_DISTRIBUTOR_ADDRESS, UNI, LAIR_ADDRESS, QUICK_ADDRESS, NEW_QUICK_ADDRESS, CONVERTER_ADDRESS, NEW_LAIR_ADDRESS } from '../constants'
 import {
   ARGENT_WALLET_DETECTOR_ABI,
   ARGENT_WALLET_DETECTOR_MAINNET_ADDRESS
@@ -135,12 +135,20 @@ export function useLairContract(): Contract | null {
   return useContract(LAIR_ADDRESS, LairABI, true)
 }
 
+export function useNewLairContract(): Contract | null {
+  return useContract(NEW_LAIR_ADDRESS, LairABI, true)
+}
+
 export function useConverterContract(): Contract | null {
   return useContract(CONVERTER_ADDRESS, ConverterABI, true);
 }
 
 export function useQUICKContract(): Contract | null {
   return useContract(QUICK_ADDRESS, ERC20_ABI, true)
+}
+
+export function useNewQUICKContract(): Contract | null {
+  return useContract(NEW_QUICK_ADDRESS, ERC20_ABI, true)
 }
 
 export function useV1FactoryContract(): Contract | null {
