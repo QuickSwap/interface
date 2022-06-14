@@ -357,7 +357,7 @@ export const SYRUP_REWARDS_INFO: {
       lp: '',
       name: '',
       baseToken: USDC,
-      rate: 3000,
+      rate: 1500,
       ending: 1657076781,
       stakingToken: QUICKNEW
     },
