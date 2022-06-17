@@ -309,7 +309,7 @@ export const SYRUP_REWARDS_INFO: {
     {
       token: TEL,
       stakingRewardAddress: '0xbaef1B35798bA6C2FA95d340dc6aAf284BBe2EEe',
-      ended: true,
+      ended: false,
       lp: '',
       name: '',
       baseToken: ETHER,
@@ -1761,14 +1761,14 @@ export const STAKING_DUAL_REWARDS_INFO: {
     {
       tokens: [STMATIC,MATIC],
       stakingRewardAddress: '0x8ECbc9B0741C000fd7aaE9cb559e5eEe1D1883F3',
-      ended: true,
+      ended: false,
       lp: '',
       name: '',
       baseToken: MATIC,
       rewardTokenA: DQUICK,
       rewardTokenB: LDO,
       rewardTokenBBase: MATIC,
-      rateA: 6.6,
+      rateA: 6.47,
       rateB: 1428,
       pair: '0x65752c54d9102bdfd69d351e1838a1be83c924c6'
     },
