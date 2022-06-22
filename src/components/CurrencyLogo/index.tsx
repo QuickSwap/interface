@@ -816,6 +816,12 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://polygonscan.com/token/images/frax_32.png'
     }
 
+    if (address?.toLowerCase() === '0xCa7BF3C514d412AC12D10Eff302301A81153F557'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/24594/small/lfi.png?1648310927'
+    }if (address?.toLowerCase() === '0x45c32fA6DF82ead1e2EF74d17b76547EDdFaFF89'.toLowerCase()) {
+      uri = 'https://polygonscan.com/token/images/frax_32.png'
+    }
+
     if (address?.toLowerCase() === '0x32Cd1BCB75473845b5d1dB6ecE60AEC6E41d8518'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/25070/small/L-T2x_cG_400x400.jpg?1650024620'
     }if (address?.toLowerCase() === '0x3fB256CFefedb6A54De7465c0EE86dC574AE464D'.toLowerCase()) {
