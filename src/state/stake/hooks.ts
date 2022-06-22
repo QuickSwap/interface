@@ -1975,7 +1975,7 @@ export const STAKING_REWARDS_INFO: {
   },
   {
     tokens: [ USDC, NSFW ],
-    stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+    stakingRewardAddress: '0x307297915A5A39F312d5a37F29EF779C59e7140d',
     ended: false,
     lp: '',
     name: '',
