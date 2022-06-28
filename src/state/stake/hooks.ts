@@ -307,6 +307,17 @@ export const SYRUP_REWARDS_INFO: {
 } = {
   [ChainId.MATIC]: [
     {
+      token: PAE,
+      stakingRewardAddress: '0x7b9B6F2bf9A0472761A65BACFDA97Ef3B87B170b',
+      ended: false,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 58.89,
+      ending: 1664237536,
+      stakingToken: QUICKNEW
+    },
+    {
       token: TEL,
       stakingRewardAddress: '0xbaef1B35798bA6C2FA95d340dc6aAf284BBe2EEe',
       ended: true,
@@ -390,10 +401,11 @@ export const SYRUP_REWARDS_INFO: {
       lp: '',
       name: '',
       baseToken: MATIC,
-      rate: 29366.67,
-      ending: 1654444738,
+      rate: 150001.1111,
+      ending: 1664237536,
       stakingToken: QUICKNEW
     },
+    
     {
       token: MCHC,
       stakingRewardAddress: '0xca06B2661a4521461cb226234c0911421196d8FC',
@@ -426,138 +438,6 @@ export const SYRUP_REWARDS_INFO: {
       rate: 2666.666667,
       ending: 1661042020,
       stakingToken: QUICK
-    },  
-    {
-      token: FUSE,
-      stakingRewardAddress: '0xF2f0eadC00FE2009B64D5B735F0F06B45C502D15',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 3333.33,
-      ending: 1652570793,
-      stakingToken: QUICK
-    },  
-    {
-      token: DERC,
-      stakingRewardAddress: '0x09ecE0A8fF76AEa30d82480E8a89ec9fEeca9B0F',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 988.89,
-      ending: 1654558436,
-      stakingToken: QUICK
-    },
-    {
-      token: KIRO,
-      stakingRewardAddress: '0xB68842d78ef33C2b327f863D0E0e293C81d7a243',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: MATIC,
-      rate: 3333.33,
-      ending: 1654122663,
-      stakingToken: QUICK
-    },
-    {
-      token: VOLT,
-      stakingRewardAddress: '0x297F1d28a886dBc513C43A3BC39Dd6F3c4969378',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: MATIC,
-      rate: 1666.67,
-      ending: 1651359061,
-      stakingToken: QUICK
-    },
-    {
-      token: COT,
-      stakingRewardAddress: '0xA518cca4891e274DD85bDCc47ce8191bccA19854',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 7407.4,
-      ending: 1653524379,
-      stakingToken: QUICK
-    },
-    {
-      token: WSG,
-      stakingRewardAddress: '0xB7070622F36e01A8f1B0eCc14c41553965BdD053',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: ETHER,
-      rate: 49605378111,
-      ending: 1653442686,
-      stakingToken: QUICK
-    },
-    {
-      token: FOURINT,
-      stakingRewardAddress: '0x5bF3A873F3ac58644df59B990E663810e212955f',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: MATIC,
-      rate: 32316.68,
-      ending: 1650850686,
-      stakingToken: QUICK
-    },
-    {
-      token: TOWER,
-      stakingRewardAddress: '0xeEf2D69bd3aeDd1bd770d67E9B9A3C58a1267e50',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: MATIC,
-      rate: 48475,
-      ending: 1655934441,
-      stakingToken: QUICK
-    },
-    {
-      token: SAFLE,
-      stakingRewardAddress: '0xDaFee9cafDc99c73d2288a9e2dc2c6A22dFB75fC',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: QUICK,
-      rate: 16666.67,
-      ending: 1651705754,
-      stakingToken: QUICK
-    },
-    {
-      token: BOOK,
-      stakingRewardAddress: '0xFBE299d79B3f8fEcAc2A5B7183edDD033FfF9fC3',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: MATIC,
-      rate: 12500,
-      ending: 1651705754,
-      stakingToken: QUICK
-    },
-    {
-      token: AWX,
-      stakingRewardAddress: '0xa590372307e7b85e55E3472E3F9A8EF852fA993f',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDC,
-      rate: 1111.11,
-      ending: 1650920902,
-      stakingToken: QUICK
-    },
-    {
-      token: MSHEESHA,
-      stakingRewardAddress: '0x63f7e114c4B5169ddD1a46b99a8e8d396a242ef3',
-      ended: false,
-      lp: '',
-      name: '',
-      baseToken: USDT,
-      rate: 51666.67,
-      ending: 1653093496,
-      stakingToken: QUICK
     }
 ]
 }
@@ -576,6 +456,138 @@ export const OLD_SYRUP_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      token: FUSE,
+      stakingRewardAddress: '0xF2f0eadC00FE2009B64D5B735F0F06B45C502D15',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 3333.33,
+      ending: 1652570793,
+      stakingToken: QUICK
+    },  
+    {
+      token: DERC,
+      stakingRewardAddress: '0x09ecE0A8fF76AEa30d82480E8a89ec9fEeca9B0F',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 988.89,
+      ending: 1654558436,
+      stakingToken: QUICK
+    },
+    {
+      token: KIRO,
+      stakingRewardAddress: '0xB68842d78ef33C2b327f863D0E0e293C81d7a243',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 3333.33,
+      ending: 1654122663,
+      stakingToken: QUICK
+    },
+    {
+      token: VOLT,
+      stakingRewardAddress: '0x297F1d28a886dBc513C43A3BC39Dd6F3c4969378',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 1666.67,
+      ending: 1651359061,
+      stakingToken: QUICK
+    },
+    {
+      token: COT,
+      stakingRewardAddress: '0xA518cca4891e274DD85bDCc47ce8191bccA19854',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 7407.4,
+      ending: 1653524379,
+      stakingToken: QUICK
+    },
+    {
+      token: WSG,
+      stakingRewardAddress: '0xB7070622F36e01A8f1B0eCc14c41553965BdD053',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: ETHER,
+      rate: 49605378111,
+      ending: 1653442686,
+      stakingToken: QUICK
+    },
+    {
+      token: FOURINT,
+      stakingRewardAddress: '0x5bF3A873F3ac58644df59B990E663810e212955f',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 32316.68,
+      ending: 1650850686,
+      stakingToken: QUICK
+    },
+    {
+      token: TOWER,
+      stakingRewardAddress: '0xeEf2D69bd3aeDd1bd770d67E9B9A3C58a1267e50',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 48475,
+      ending: 1655934441,
+      stakingToken: QUICK
+    },
+    {
+      token: SAFLE,
+      stakingRewardAddress: '0xDaFee9cafDc99c73d2288a9e2dc2c6A22dFB75fC',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: QUICK,
+      rate: 16666.67,
+      ending: 1651705754,
+      stakingToken: QUICK
+    },
+    {
+      token: BOOK,
+      stakingRewardAddress: '0xFBE299d79B3f8fEcAc2A5B7183edDD033FfF9fC3',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 12500,
+      ending: 1651705754,
+      stakingToken: QUICK
+    },
+    {
+      token: AWX,
+      stakingRewardAddress: '0xa590372307e7b85e55E3472E3F9A8EF852fA993f',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDC,
+      rate: 1111.11,
+      ending: 1650920902,
+      stakingToken: QUICK
+    },
+    {
+      token: MSHEESHA,
+      stakingRewardAddress: '0x63f7e114c4B5169ddD1a46b99a8e8d396a242ef3',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: USDT,
+      rate: 51666.67,
+      ending: 1653093496,
+      stakingToken: QUICK
+    },
     {
       token: TEL,
       stakingRewardAddress: '0xcC6Cc4e642c889742278CF302d5276E7eF498d66',
