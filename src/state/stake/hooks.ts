@@ -265,7 +265,9 @@ import {
   LCD,
   CXBTC,
   TUSD,
-  PAE
+  PAE,
+  PAXG,
+  RVLT
 } from '../../constants'
 import { STAKING_REWARDS_INTERFACE, STAKING_DUAL_REWARDS_INTERFACE } from '../../constants/abis/staking-rewards'
 import { useActiveWeb3React } from '../../hooks'
@@ -2026,16 +2028,6 @@ export const STAKING_REWARDS_INFO: {
     pair: '0x561ed3fbeac3c4e5b060024666f9a1cd2aec7847'
   },
   {
-    tokens: [ MATIC, QUIDD ],
-    stakingRewardAddress: '0x3E3eB91c928734fbab0AC41cA40C118F25ab28a7',
-    ended: false,
-    lp: '',
-    name: '',
-    baseToken: MATIC,
-    rate: 1.92,
-    pair: '0xadbd183ff04ff3dc9cd980f07b308c25df77e860'
-  },
-  {
     tokens: [ USDC, QUICKNEW ],
     stakingRewardAddress: '0xF49dC344E2B110540e7c71B9d067c455C7A90d5a',
     ended: false,
@@ -2116,6 +2108,26 @@ export const STAKING_REWARDS_INFO: {
     pair: '0x55a08b3c363a2cc61a07d54b52fee201bd4ec0dc'
   },
   {
+    tokens: [ USDC, PAXG ],
+    stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: USDC,
+    rate: 1.28,
+    pair: '0x9c3e6de086632973bce6e5814f7c621cd1799a3d'
+  },
+  {
+    tokens: [ USDC, RVLT ],
+    stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+    ended: false,
+    lp: '',
+    name: '',
+    baseToken: USDC,
+    rate: 1.28,
+    pair: '0xd1945ad6afa01f9416d6dc67a873014c8a3795e7'
+  },
+  {
     tokens: [ USDC, GHST ],
     stakingRewardAddress: '0x3759D7904a5A0fcdB5AA2d55D5fF1132aE4f2575',
     ended: false,
@@ -2160,6 +2172,16 @@ export const OLD_STAKING_REWARDS_INFO: {
   }[]
 } = {
   [ChainId.MATIC]: [
+    {
+      tokens: [ MATIC, QUIDD ],
+      stakingRewardAddress: '0x3E3eB91c928734fbab0AC41cA40C118F25ab28a7',
+      ended: true,
+      lp: '',
+      name: '',
+      baseToken: MATIC,
+      rate: 0,
+      pair: '0xADBd183ff04FF3dc9cd980F07b308c25dF77E860'
+    },
     {
       tokens: [ MATIC, PDDOLLAR ],
       stakingRewardAddress: '0x1bd082eC458Cf2EB4a2918C5de3b4b6cc655e977',

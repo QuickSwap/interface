@@ -816,6 +816,20 @@ export const getTokenLogoURL = (address: string) => {
       uri = 'https://polygonscan.com/token/images/frax_32.png'
     }
 
+    if (address?.toLowerCase() === '0x236eeC6359fb44CCe8f97E99387aa7F8cd5cdE1f'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/25757/small/USD__logo.png?1653519267'
+    }
+  
+    if (address?.toLowerCase() === '0xf0f9D895aCa5c8678f706FB8216fa22957685A13'.toLowerCase()) {
+      uri = 'https://s2.coinmarketcap.com/static/img/coins/64x64/19893.png'
+    }if (address?.toLowerCase() === '0x553d3D295e0f695B9228246232eDF400ed3560B5'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/9519/small/paxg.PNG?1568542565'
+    }if (address?.toLowerCase() === '0x0169eC1f8f639B32Eec6D923e24C2A2ff45B9DD6'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/19580/small/13211.png?1635469023'
+    }if (address?.toLowerCase() === '0xD1f9c58e33933a993A3891F8acFe05a68E1afC05'.toLowerCase()) {
+      uri = 'https://assets.coingecko.com/coins/images/25514/small/download.png?1652164203'
+    }
+
     if (address?.toLowerCase() === '0xCa7BF3C514d412AC12D10Eff302301A81153F557'.toLowerCase()) {
       uri = 'https://assets.coingecko.com/coins/images/24594/small/lfi.png?1648310927'
     }if (address?.toLowerCase() === '0x45c32fA6DF82ead1e2EF74d17b76547EDdFaFF89'.toLowerCase()) {

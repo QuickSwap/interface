@@ -418,6 +418,11 @@ export const GLTR = new Token(ChainId.MATIC, '0x3801C3B3B5c98F88a9c9005966AA96aa
 export const LunaFi = new Token(ChainId.MATIC, '0xCa7BF3C514d412AC12D10Eff302301A81153F557', 18, 'LFI', 'LunaFi')
 export const USDPLUS = new Token(ChainId.MATIC, '0x236eeC6359fb44CCe8f97E99387aa7F8cd5cdE1f', 6, 'USD+', 'USD+')
 
+export const RVLT = new Token(ChainId.MATIC, '0xf0f9D895aCa5c8678f706FB8216fa22957685A13', 18, 'RVLT', 'Revolt 2 Earn')
+export const PAXG = new Token(ChainId.MATIC, '0x553d3D295e0f695B9228246232eDF400ed3560B5', 18, 'PAXG', 'Paxos Gold')
+export const ALGB = new Token(ChainId.MATIC, '0x0169eC1f8f639B32Eec6D923e24C2A2ff45B9DD6', 18, 'ALGB', 'Algebra')
+export const SFL = new Token(ChainId.MATIC, '0xD1f9c58e33933a993A3891F8acFe05a68E1afC05', 18, 'SFL', 'Sunflower Land')
+
 
 //export const TT = new Token(ChainId.MATIC, '0x16887befea6772175240a8b3aa797c460f80a08e', 18, 'TT', 'Test Token')
 export const MATIC = WETH[ChainId.MATIC];
@@ -607,4 +612,4 @@ export const MIN_ETH: JSBI = JSBI.exponentiate(JSBI.BigInt(10), JSBI.BigInt(16))
 export const BETTER_TRADE_LINK_THRESHOLD = new Percent(JSBI.BigInt(75), JSBI.BigInt(10000))
 
 // the Uniswap Default token list lives here
-export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@1.2.40/build/quickswap-default.tokenlist.json'
+export const DEFAULT_TOKEN_LIST_URL = 'https://unpkg.com/quickswap-default-token-list@latest/build/quickswap-default.tokenlist.json'
