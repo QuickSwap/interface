@@ -2109,7 +2109,7 @@ export const STAKING_REWARDS_INFO: {
   },
   {
     tokens: [ USDC, PAXG ],
-    stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+    stakingRewardAddress: '0x577A0A718d7aD39A88E012817267C6A797A631E4',
     ended: false,
     lp: '',
     name: '',
@@ -2119,7 +2119,7 @@ export const STAKING_REWARDS_INFO: {
   },
   {
     tokens: [ USDC, RVLT ],
-    stakingRewardAddress: '0x0000000000000000000000000000000000000000',
+    stakingRewardAddress: '0x95099E0E64558d1FDd39A2e4Ffb134f4a174F1Af',
     ended: false,
     lp: '',
     name: '',
