@@ -433,13 +433,15 @@ export const GOVERNANCE_ADDRESS = '0x5e4be8Bc9637f0EAA1A755019e06A68ce081D58F'//
 
 export const UNI: { [chainId in ChainId]: Token } = {
   [ChainId.MATIC]: new Token(ChainId.MATIC, QUICK_ADDRESS, 18, 'QUICK', 'Quickswap'),
-  [ChainId.MUMBAI]: new Token(ChainId.MUMBAI, QUICK_ADDRESS_MUMBAI, 18, 'QUICK', 'Quickswap')
+  [ChainId.MUMBAI]: new Token(ChainId.MUMBAI, QUICK_ADDRESS_MUMBAI, 18, 'QUICK', 'Quickswap'),
+  [ChainId.DOEGCHAIN_TESTNET]: new Token(ChainId.DOEGCHAIN_TESTNET, QUICK_ADDRESS_MUMBAI, 18, 'QUICK', 'Quickswap')
 }
 
 // TODO: specify merkle distributor for mainnet
 export const ROUTER_ADDRESS: { [chainId in ChainId]?: string } = {
   [ChainId.MATIC]: '0xa5E0829CaCEd8fFDD4De3c43696c57F7D7A678ff',
-  [ChainId.MUMBAI]: '0x8954AfA98594b838bda56FE4C12a09D7739D179b'
+  [ChainId.MUMBAI]: '0x8954AfA98594b838bda56FE4C12a09D7739D179b',
+  [ChainId.DOEGCHAIN_TESTNET]: '0x4857Dfd11c712e862eC362cEee29F7974B70EfcD'
 }
 
 // TODO: specify merkle distributor for mainnet
@@ -450,7 +452,8 @@ export const MERKLE_DISTRIBUTOR_ADDRESS: { [chainId in ChainId]?: string } = {
 const WETH_ONLY: ChainTokenList = {
   
   [ChainId.MUMBAI]: [WETH[ChainId.MUMBAI]],
-  [ChainId.MATIC]: [WETH[ChainId.MATIC]]
+  [ChainId.MATIC]: [WETH[ChainId.MATIC]],
+  [ChainId.DOEGCHAIN_TESTNET]: [WETH[ChainId.DOEGCHAIN_TESTNET]]
 }
 
 // used to construct intermediary pairs for trading

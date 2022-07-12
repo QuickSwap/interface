@@ -3715,10 +3715,10 @@
     tiny-invariant "^1.1.0"
     toformat "^2.0.0"
 
-"@uniswap/sdk@npm:quickswap-sdk@3.0.8":
-  version "3.0.8"
-  resolved "https://registry.yarnpkg.com/quickswap-sdk/-/quickswap-sdk-3.0.8.tgz#7fada995bb4e054212a0920de1f29977d617c997"
-  integrity sha512-1pMOS5/RC4K++RCrt3hrhSHDzzVzy40CiLgM8UbvdSVUuYMN5jZZVocbkG+5fRlJA1JqhKhs2OYYLh08t50KOw==
+"@uniswap/sdk@npm:quickswap-sdk@3.0.9":
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/quickswap-sdk/-/quickswap-sdk-3.0.9.tgz#905af4ed4117396beabcc836a0171124975afe93"
+  integrity sha512-4Txvhb4xhrkNNbsxWGguUJsUlv2LP8NUGD7rpvrlOv8FXhtvataVBv/EFAr5QAh0PrxLOuOWeo7V7BhVlT61ww==
   dependencies:
     "@uniswap/v2-core" "^1.0.0"
     big.js "^5.2.2"
@@ -7498,6 +7498,11 @@ dayjs@^1.10.4:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.1.tgz#90b33a3dda3417258d48ad2771b415def6545eb0"
   integrity sha512-ER7EjqVAMkRRsxNCC5YqJ9d9VQYuWdGt7aiH2qA5R5wt8ZmWaP2dLUSIK6y/kVzLMlmh1Tvu5xUf4M/wdGJ5KA==
+
+dayjs@^1.11.0:
+  version "1.11.3"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.11.3.tgz#4754eb694a624057b9ad2224b67b15d552589258"
+  integrity sha512-xxwlswWOlGhzgQ4TKzASQkUhqERI3egRNqgV4ScR8wlANA/A9tZ7miXa44vTTKEq5l7vWoL5G57bG3zA+Kow0A==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.8, debug@^2.6.9:
   version "2.6.9"
@@ -14202,9 +14207,9 @@ ndjson@^1.5.0:
     split2 "^2.1.0"
     through2 "^2.0.3"
 
-"neat-frame@git+https://github.com/agentofuser/neat-frame.git#wrap-ansi-options":
+"neat-frame@https://github.com/agentofuser/neat-frame#wrap-ansi-options":
   version "1.0.2"
-  resolved "git+https://github.com/agentofuser/neat-frame.git#b244ca11078bd35f63b2d7cb22d5e4b5c12ae2aa"
+  resolved "https://github.com/agentofuser/neat-frame#b244ca11078bd35f63b2d7cb22d5e4b5c12ae2aa"
   dependencies:
     inspect-with-kind "^1.0.5"
     merge-options "^1.0.1"

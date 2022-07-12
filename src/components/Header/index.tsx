@@ -312,7 +312,8 @@ const StyledMenu = styled.div`
 const NETWORK_LABELS: { [chainId in ChainId]: string | undefined } = {
   
   [ChainId.MUMBAI]: 'Mumbai',
-  [ChainId.MATIC]: 'Polygon'
+  [ChainId.MATIC]: 'Polygon',
+  [ChainId.DOEGCHAIN_TESTNET]: 'DogeChain Testnet',
 }
 
 export default function Header() {

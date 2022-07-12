@@ -21,7 +21,7 @@ export function isAddress(value: any): string | false {
 }
 
 export function getEtherscanLink(chainId: ChainId, data: string, type: 'transaction' | 'token' | 'address' | 'block'): string {
-  const prefix = "https://" + (chainId === 80001 ? "polygonscan.com":"polygonscan.com");
+  const prefix = "https://" + (chainId === 80001 ? "mumbai.polygonscan.com":"polygonscan.com");
 
   switch (type) {
     case 'transaction': {
