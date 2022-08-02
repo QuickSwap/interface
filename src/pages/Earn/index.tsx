@@ -385,7 +385,7 @@ export default function Earn() {
                 
               </RowBetween>{' '}
               <RowBetween>
-              <ExternalLink id={`old-pools-link`} href={'https://quickswap.exchange/#/archive'} style={{width: isMobile?'50%':'25%'}}>
+              <ExternalLink id={`old-pools-link`} href={'https://legacy.quickswap.exchange/#/archive'} style={{width: isMobile?'50%':'25%'}}>
               
                   <ButtonPrimary padding="8px" borderRadius="8px">
                     Archived Pools

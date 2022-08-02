@@ -60,7 +60,7 @@ export default function Old() {
               </RowBetween>{' '}
               <RowBetween>
 
-              <ExternalLink id={`old-pools-link`} href={'https://quickswap.exchange/#/quick'} style={{ width: '20%' }}>
+              <ExternalLink id={`old-pools-link`} href={'https://legacy.quickswap.exchange/#/quick'} style={{ width: '20%' }}>
               
                   <ButtonPrimary padding="8px" borderRadius="8px">
                     New Pools
