@@ -3,6 +3,7 @@ import { InjectedConnector } from '@web3-react/injected-connector'
 import { WalletConnectConnector } from '@web3-react/walletconnect-connector'
 import { WalletLinkConnector } from './WalletLink'
 import { PortisConnector } from './Portis'
+import { UAuthConnector } from '@uauth/web3-react'
 
 import { FortmaticConnector } from './Fortmatic'
 import { ArkaneConnector } from './Arkane'
@@ -73,4 +74,16 @@ export const walletlink = new WalletLinkConnector({
   appLogoUrl:
     'https://mpng.pngfly.com/20181202/bex/kisspng-emoji-domain-unicorn-pin-badges-sticker-unicorn-tumblr-emoji-unicorn-iphoneemoji-5c046729264a77.5671679315437924251569.jpg',
   supportedChainIds: [137]
+})
+
+export const unstopabbledomains = new UAuthConnector({
+  clientID: process.env.REACT_APP_CLIENT_ID!,
+  redirectUri: process.env.REACT_APP_REDIRECT_URI!,
+  postLogoutRedirectUri: process.env.REACT_APP_POST_LOGOUT_REDIRECT_URI!,
+
+  // Scope must include openid and wallet
+  scope: 'openid wallet',
+
+  // Injected and walletconnect connectors are required.
+  connectors: { injected, walletconnect }
 })
