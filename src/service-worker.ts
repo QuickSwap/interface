@@ -13,8 +13,13 @@ self.addEventListener('install', () => {
   self.skipWaiting();
 });
 
-self.addEventListener('activate', () => {
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim());
   console.log("new service worker activate")
+  self.registration.unregister().then(() => {
+    console.log('QUICKSWAP Safety Worker - unregistered old service worker');
+  });
+  
   // Optional: Get a list of all the current open windows/tabs under
   // our service worker's control, and force them to reload.
   // This can "unbreak" any open windows/tabs as soon as the new
