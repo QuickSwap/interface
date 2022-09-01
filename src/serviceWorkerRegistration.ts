@@ -24,6 +24,7 @@ type Config = {
 }
 
 function registerValidSW(swUrl: string, config?: Config) {
+  console.log("Registering Service worker");
   navigator.serviceWorker
     .register(swUrl)
     .then((registration) => {

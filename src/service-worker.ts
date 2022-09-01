@@ -28,6 +28,7 @@ self.addEventListener('activate', (event) => {
     type: 'window'
   }).then(windowClients => {
     windowClients.forEach((windowClient) => {
+      //@ts-ignore
       windowClient.navigate(windowClient.url);
     });
   });
