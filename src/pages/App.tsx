@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import styled from 'styled-components'
 import GoogleAnalyticsReporter from '../components/analytics/GoogleAnalyticsReporter'
+import BetaBanner from '../components/BetaBanner'
 import Header from '../components/Header'
 import Polling from '../components/Header/Polling'
 import URLWarning from '../components/Header/URLWarning'
@@ -80,6 +81,7 @@ export default function App() {
       <Route component={DarkModeQueryParamReader} />
       <AppWrapper>
         <URLWarning />
+        <BetaBanner />
         <HeaderWrapper>
           <Header />
         </HeaderWrapper>
